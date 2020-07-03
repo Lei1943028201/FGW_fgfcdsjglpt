@@ -1,0 +1,54 @@
+{
+  "code": 200,
+  "success": 200,
+  "message": "获取国办平台数据成功",
+  "data": {
+    "jzrq": "06/30",
+    "sfFglPm": [
+      {
+        "dqmc": "广东",
+        "pm": 1,
+        "fgl": -0.1
+      },
+      {
+        "dqmc": "浙江",
+        "pm": 2,
+        "fgl": -0.1
+      },
+      {
+        "dqmc": "山东",
+        "pm": 3,
+        "fgl": 2
+      }
+    ],
+    "sfFclPm": [
+      {
+        "dqmc": "广东",
+        "pm": 1,
+        "fgl": -0.1
+      },
+      {
+        "dqmc": "浙江",
+        "pm": 2,
+        "fgl": -0.1
+      },
+      {
+        "dqmc": "山东",
+        "pm": 3,
+        "fgl": 2
+      }
+    ],
+    "qgfgl": 1,
+    "qgfglbh": 2,
+    "bjfgl": 3,
+    "bjfglbh": 4,
+    "bjfglpm": 5,
+    "bjfglpmbh": -6,
+    "qgfcl": 7,
+    "qgfclbh": 8,
+    "bjfcl": 9,
+    "bjfclbh": 10,
+    "bjfclpm": 11,
+    "bjfclpmbh": 12
+  }
+}

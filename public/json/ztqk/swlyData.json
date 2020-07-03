@@ -1,0 +1,37 @@
+{
+  "code": -7075918.045690119,
+  "success": true,
+  "message": "dolor",
+  "data": {
+    "jzrq": "06/30",
+    "cyyqList": [
+      {
+        "cyyqlx": "CBD",
+        "cyyqgs": 1,
+        "cyyqfgl": 11.1,
+        "cyyqfglbh": -1.1
+      },
+      {
+        "cyyqlx": "中关村海淀园",
+        "cyyqgs": 2,
+        "cyyqfgl": 21.2,
+        "cyyqfglbh": 2.2
+      },
+      {
+        "cyyqlx": "金融街",
+        "cyyqgs": 3,
+        "cyyqfgl": 31.3,
+        "cyyqfglbh": 3.3
+      },
+      {
+        "cyyqlx": "亦庄开发区",
+        "cyyqgs": 4,
+        "cyyqfgl": 41.4,
+        "cyyqfglbh": 4.4
+      }
+    ],
+    "qslyzs": 1,
+    "dwzs": 2,
+    "gsqyzs": 3
+  }
+}

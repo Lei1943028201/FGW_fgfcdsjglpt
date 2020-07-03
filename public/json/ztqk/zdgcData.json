@@ -1,0 +1,33 @@
+{
+  "code": -40365513.48629232,
+  "success": true,
+  "message": "deserunt Excepteur",
+  "data": {
+    "jzrq": "03/20",
+    "dqQsKgl": [
+      {
+        "dqmc": "海淀区",
+        "pm": -1,
+        "kgl": -1.1
+      },
+      {
+        "dqmc": "海淀区",
+        "pm": 1,
+        "kgl": 1.1
+      },
+      {
+        "dqmc": "海淀区",
+        "pm": 1,
+        "kgl": 1.1
+      }
+    ],
+    "dqHsKgl": [],
+    "jdmc": "第二季度复工率",
+    "jdykgs": 1,
+    "jdxms": 2,
+    "jdfgl": -3,
+    "qnykgs": -4,
+    "qnxms": 5,
+    "qnfgl": 6
+  }
+}

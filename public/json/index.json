@@ -1,0 +1,98 @@
+[
+  {
+    "name": "平谷区",
+    "code": "93AAC59B7554B59A3322BCDDCCF51CA1",
+    "show": false,
+    "val": 960
+  },
+  {
+    "name": "通州区",
+    "code": "2B07A20D66C7E629DBBA5F139331F38E",
+    "show": false,
+    "val": 218
+  },
+  {
+    "name": "东城区",
+    "code": "FB16AD8BB2F6BECCDDF92888D5371309",
+    "show": false,
+    "val": 1630
+  },
+  {
+    "name": "海淀区",
+    "code": "ABDB2A04E44F24E246F4DCFCA99ECF24",
+    "show": false,
+    "val": 500
+  },
+  {
+    "name": "昌平区",
+    "code": "9CA37880978F0800E78273687B44EC82",
+    "show": false,
+    "val": 999
+  },
+  {
+    "name": "朝阳区",
+    "code": "3C5E6D7A07E15B4174A2289C414B3101",
+    "show": false,
+    "val": 800
+  },
+  {
+    "name": "顺义区",
+    "code": "D20F5773BC59754677A41C3BF7866B0F",
+    "show": false,
+    "val": 1730
+  },
+  {
+    "name": "房山区",
+    "code": "7334E39C7C8A8A402FBF1D3F08EABC21",
+    "show": true,
+    "val": 30
+  },
+  {
+    "name": "西城区",
+    "code": "251FFCA7F1CF44E7B5E2ABCB3CF504B9",
+    "show": true,
+    "val": 1920
+  },
+  {
+    "name": "丰台区",
+    "code": "A6B7B440D73F001BEF379579C986EB24",
+    "show": true,
+    "val": 280
+  },
+  {
+    "name": "大兴区",
+    "code": "FBBF6E15C8F4E2C5A33DDAAC0BBAD670",
+    "show": true,
+    "val": 1080
+  },
+  {
+    "name": "门头沟区",
+    "code": "2B526B513E748B3C5454E823771DA010",
+    "show": true,
+    "val": 1300
+  },
+  {
+    "name": "密云区",
+    "code": "DC4A0662C1DB18CAC86BC4E43FE17F19",
+    "show": true,
+    "val": 333
+  },
+  {
+    "name": "怀柔区",
+    "code": "C69FB3C138863680B2639791DD365FE0",
+    "show": true,
+    "val": 1536
+  },
+  {
+    "name": "延庆区",
+    "code": "B618ADA976669A3FFB4CF0BC308FE50D",
+    "show": true,
+    "val": 1632
+  },
+  {
+    "name": "石景山区",
+    "code": "156D2960DEA40E387F962ACE2E567635",
+    "show": true,
+    "val": 280
+  }
+]

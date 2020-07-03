@@ -1,0 +1,29 @@
+{
+  "code": -6158060460485652,
+  "message": "T$gz",
+  "success": true,
+  "data": {
+    "qsData": {
+      "qyyhs": 100,
+      "qyyhsdw": "万户",
+      "fgs": 10,
+      "fgsdw": "户",
+      "fgl": 1
+    },
+    "zdqyData": {
+      "qyyhs": 200,
+      "qyyhsdw": "万户",
+      "fgs": 20,
+      "fgsdw": "户",
+      "fgl": 2
+    },
+    "xwqyData": {
+      "qyyhs": 300,
+      "qyyhsdw": "万户",
+      "fgs": 30,
+      "fgsdw": "户",
+      "fgl": 3
+    },
+    "jzrq": "06/60"
+  }
+}
