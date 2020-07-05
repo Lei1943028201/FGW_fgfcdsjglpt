@@ -21,7 +21,7 @@
 
         <!-- 地图 -->
         <div class="fd-box-map">
-            <ChartMap ref="chartMap"></ChartMap>
+            <ChartMap ref="chartMap"/>
         </div>
 
         <!-- 三个圆球--开始 -->

@@ -1,19 +1,19 @@
 <template>
     <div id="Gdqy">
         <!-- 标题模块 -->
-        <CcTitle title="国电企业" :time="jzrq"></CcTitle>
+        <CcTitle title="国电企业" :time="jzrq"/>
 
         <!-- tab切换--模块 -->
-        <CcTab :tab-list="tabList" @handlerTab="handlerTab"></CcTab>
+        <CcTab :tab-list="tabList" @handlerTab="handlerTab"/>
 
         <div v-if="activeTab=== '1'">
             <!-- 数据展示模块 -->
-            <CcCard :data-list="cardData"></CcCard>
+            <CcCard :data-list="cardData"/>
 
             <!-- echarts图--开始 -->
             <div class="fd-content-echarts clear">
-                <CcEcharts :option="option_zd" class="left"></CcEcharts>
-                <CcEcharts :option="option_xw" class="right"></CcEcharts>
+                <CcEcharts :option="option_zd" class="left"/>
+                <CcEcharts :option="option_xw" class="right"/>
             </div>
             <!-- echarts图--结束 -->
 
@@ -32,7 +32,7 @@
         </div>
         <div v-else>
             <div class="fd-content-echarts-hy">
-                <CcEcharts :option="option_hy"></CcEcharts>
+                <CcEcharts :option="option_hy"/>
             </div>
         </div>
     </div>

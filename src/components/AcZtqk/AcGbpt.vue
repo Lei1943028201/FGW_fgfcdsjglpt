@@ -1,20 +1,20 @@
 <template>
     <div>
         <!-- 标题模块 -->
-        <CcTitle title="国办平台" :time="resData.jzrq"></CcTitle>
+        <CcTitle title="国办平台" :time="resData.jzrq"/>
 
         <!-- tab切换--开始  -->
         <div class="fd-content-tab clear">
             <!-- 复工复产 -->
-            <CcTab class="left" :tab-list="tab1" @handlerTab="handlerTab1"></CcTab>
+            <CcTab class="left" :tab-list="tab1" @handlerTab="handlerTab1"/>
             <!-- 产业 -->
-            <CcTabText class="right" :tab-list="tab2" @handlerTab="handlerTab2"></CcTabText>
+            <CcTabText class="right" :tab-list="tab2" @handlerTab="handlerTab2"/>
         </div>
         <!-- tab切换--结束 -->
 
         <!-- 排行榜--开始 -->
         <span class="fd-icon-right"></span>
-        <CcTop :data-list="topList"></CcTop>
+        <CcTop :data-list="topList"/>
         <!-- 排行榜--结束 -->
 
         <!-- 数据展示--开始 -->

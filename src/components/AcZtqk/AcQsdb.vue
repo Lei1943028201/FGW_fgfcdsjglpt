@@ -1,17 +1,17 @@
 <template>
     <div id="Qsdb">
         <!-- 标题模块 -->
-        <CcTitle title="趋势对比" :time="jzrq"></CcTitle>
+        <CcTitle title="趋势对比" :time="jzrq"/>
 
         <!-- 左侧Tab模块 -->
-        <CcTab class="fd-tab-qsdb" :tab-list="tabList1" @handlerTab="handlerTab1"></CcTab>
+        <CcTab class="fd-tab-qsdb" :tab-list="tabList1" @handlerTab="handlerTab1"/>
 
         <!-- 右侧Tab模块-->
-        <CcTabText class="fd-tab-qsdb--text" :tab-list="tabList2" @handlerTab="handlerTab2"></CcTabText>
+        <CcTabText class="fd-tab-qsdb--text" :tab-list="tabList2" @handlerTab="handlerTab2"/>
 
         <!-- echarts图--开始 -->
         <div class="fd-content-echarts">
-            <CcEcharts :option="option" @clickEcharts="clickEcharts"></CcEcharts>
+            <CcEcharts :option="option" @clickEcharts="clickEcharts"/>
             <!-- 弹层 -->
             <div :style="tooltipStyle" class="fd-tooltip-xAxis">北京调至二级响应</div>
         </div>

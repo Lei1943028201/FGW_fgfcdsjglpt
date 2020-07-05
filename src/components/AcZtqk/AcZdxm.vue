@@ -1,10 +1,10 @@
 <template>
     <div>
         <!-- 标题模块 -->
-        <CcTitle title="重点项目" :time="resData.jzrq"></CcTitle>
+        <CcTitle title="重点项目" :time="resData.jzrq"/>
 
         <!-- 排行榜模块 -->
-        <CcTop :data-list="topList"></CcTop>
+        <CcTop :data-list="topList"/>
 
         <!-- 数据展示--开始 -->
         <!--<div class="fd-content-card clear">
@@ -32,7 +32,7 @@
 
         <div class="fd-content-card clear">
             <div class="left">
-                <CcEcharts :option="option(resData.jdfgl || '')"></CcEcharts>
+                <CcEcharts :option="option(resData.jdfgl || '')"/>
                 <div class="fd-content-detail">
                     <p class="fd-detail-p1 clear"><span class="left">已开工{{resData.jdykgs}}</span><span class="right">项目数{{resData.jdxms}}</span>
                     </p>
@@ -40,7 +40,7 @@
                 </div>
             </div>
             <div class="right">
-                <CcEcharts :option="option(resData.qnfgl || '')"></CcEcharts>
+                <CcEcharts :option="option(resData.qnfgl || '')"/>
                 <div class="fd-content-detail">
                     <p class="fd-detail-p1 clear"><span class="left">已开工{{resData.qnykgs}}</span><span class="right">项目数{{resData.qnxms}}</span>
                     </p>

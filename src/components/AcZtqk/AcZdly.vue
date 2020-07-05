@@ -1,7 +1,7 @@
 <template>
     <div>
         <!-- 标题模块 -->
-        <CcTitle title="重点领域" :time="jzrq"></CcTitle>
+        <CcTitle title="重点领域" :time="jzrq"/>
 
         <!-- 数据展示--开始 -->
         <ul class="fd-content-card clear">
@@ -22,7 +22,7 @@
 
         <!-- echarts图--开始 -->
         <div class="fd-content-echarts">
-            <CcEcharts :option="option"></CcEcharts>
+            <CcEcharts :option="option"/>
         </div>
         <!-- echarts图--结束 -->
     </div>

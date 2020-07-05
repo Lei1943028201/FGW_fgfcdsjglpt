@@ -1,7 +1,7 @@
 <template>
     <div>
         <!-- 标题模块 -->
-        <CcTitle title="商务楼宇" :time="resData.jzrq"></CcTitle>
+        <CcTitle title="商务楼宇" :time="resData.jzrq"/>
 
         <div v-if="type === 1">
             <!-- 进度条 -->
@@ -30,7 +30,7 @@
             </div>
 
             <!-- 数据展示模块 -->
-            <CcCard :data-list="cardData" class="fd-card"></CcCard>
+            <CcCard :data-list="cardData" class="fd-card"/>
         </div>
         <div v-else class="fd-content-02">
             <div class="fd-item fd-item-01 clear">
