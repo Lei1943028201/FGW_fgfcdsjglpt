@@ -11,11 +11,14 @@
 
         <!-- echarts图--开始 -->
         <div class="fd-content-echarts">
-            <CcEcharts :option="option" @clickEcharts="clickEcharts"/>
+            <CcEcharts :option="option"
+                       @clickEcharts="clickEcharts"
+                       @mouseoutEcharts="mouseoutEcharts"
+                       @mousemoveEcharts="mousemoveEcharts"/>
             <!-- 弹层 -->
-            <div :style="tooltipStyle" class="fd-tooltip-xAxis">北京调至二级响应</div>
+            <div :style="tooltipStyle" class="fd-tooltip-xAxis" ref="tooltipxAxis">北京调至二级响应</div>
             <!-- echartsTooltip  -->
-            <div class="fd-tooltip clear">
+            <div class="fd-tooltip clear" ref="tooltip">
                 <h2>趋势变化</h2>
                 <div class="left">
                     <h3>各区</h3>
@@ -384,7 +387,28 @@
                     this.tooltipStyle = `position: absolute; bottom: 50px;left: ${params.event.event.layerX}px;`
                 }
             },
+            /* 进入 */
+            mousemoveEcharts(params) {
+                if(params.componentType === 'series'){
+                    let $tooltip = this.$refs.tooltip.style
+                    $tooltip.top = params.event.event.zrY-50+'px'
+                    $tooltip.left = params.event.event.zrX+30+'px'
+                    $tooltip.display = 'block'
+                }
+                if(params.componentType === 'xAxis'){
+                    let $tooltip = this.$refs.tooltipxAxis.style
+                    $tooltip.top = params.event.event.zrY-30+'px'
+                    $tooltip.left = params.event.event.zrX-70+'px'
+                    $tooltip.display = 'block'
+                }
 
+            },
+            /* 离开 */
+            mouseoutEcharts(params) {
+                console.log(params);
+                this.$refs.tooltip.style.display = 'none'
+                this.$refs.tooltipxAxis.style.display = 'none'
+            },
             init() {
                 getQsdbData({sjfw: this.activeTab, sfxsjjr: this.activeTabJjr})
                     .then(res => {
@@ -437,6 +461,9 @@
     .fd-tooltip-xAxis {
         display: none;
         box-sizing: border-box;
+        position: absolute;
+        top: 0;
+        left: 0;
         padding: 17px 0;
         width: 238px;
         height: 67px;

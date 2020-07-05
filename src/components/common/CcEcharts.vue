@@ -30,7 +30,19 @@
                 this.theEchart = echarts.init(this.$refs.theEchart)
                 this.theEchart.setOption(this.option)
 
-                this.theEchart.on('click', params => this.$emit('clickEcharts', params))
+                this.theEchart.on('click', params => {
+                    this.$emit('clickEcharts', params)
+                })
+
+                this.theEchart.on('mousemove', params => {
+                    this.$emit('mousemoveEcharts', params)
+                })
+
+                this.theEchart.on('mouseout', params => {
+                    this.$emit('mouseoutEcharts', params)
+                })
+
+
 
                 /* 图表自适应 */
                 window.addEventListener("resize", () => this.theEchart.resize());
