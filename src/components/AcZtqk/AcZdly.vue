@@ -187,7 +187,15 @@
             /* 图例 */
             legend() {
                 let {legend} = this.gzlsqk
-                return legend || []
+                if(legend){
+                    return legend.map(item=>{
+                        return {
+                            name: item,
+                            icon: item === '复工率' ? 'rect': 'roundRect',
+                        }
+                    }) || []
+                }
+                return  []
             },
             /* 部门 */
             bmArr() {

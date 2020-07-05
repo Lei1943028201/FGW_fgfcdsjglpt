@@ -14,8 +14,80 @@
             <CcEcharts :option="option" @clickEcharts="clickEcharts"/>
             <!-- 弹层 -->
             <div :style="tooltipStyle" class="fd-tooltip-xAxis">北京调至二级响应</div>
+            <!-- echartsTooltip  -->
+            <div class="fd-tooltip clear">
+                <h2>趋势变化</h2>
+                <div class="left">
+                    <h3>各区</h3>
+                    <table>
+                        <thead>
+                        <tr>
+                            <td></td>
+                            <td><span>今日</span></td>
+                            <td><span>昨日</span></td>
+                            <td><span>环比</span></td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td><span>大兴区</span></td>
+                            <td><span>71.15</span></td>
+                            <td><span>71.15</span></td>
+                            <td><span>71.15</span></td>
+                        </tr>
+                        <tr>
+                            <td><span>大兴区</span></td>
+                            <td><span>71.15</span></td>
+                            <td><span>71.15</span></td>
+                            <td><span>71.15</span></td>
+                        </tr>
+                        <tr>
+                            <td><span>大兴区</span></td>
+                            <td><span>71.15</span></td>
+                            <td><span>71.15</span></td>
+                            <td><span>71.15</span></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="right">
+                    <h3>各行业</h3>
+                    <table>
+                        <thead>
+                        <tr>
+                            <td></td>
+                            <td><span>今日</span></td>
+                            <td><span>昨日</span></td>
+                            <td><span>环比</span></td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td><span>批发和零售业</span></td>
+                            <td><span>71.15</span></td>
+                            <td><span>71.15</span></td>
+                            <td><span>71.15</span></td>
+                        </tr>
+                        <tr>
+                            <td><span>批发和零售业</span></td>
+                            <td><span>71.15</span></td>
+                            <td><span>71.15</span></td>
+                            <td><span>71.15</span></td>
+                        </tr>
+                        <tr>
+                            <td><span>批发和零售业</span></td>
+                            <td><span>71.15</span></td>
+                            <td><span>71.15</span></td>
+                            <td><span>71.15</span></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
         <!-- echarts图--结束 -->
+
+
     </div>
 </template>
 
@@ -81,7 +153,12 @@
         },
         computed: {
             gwbfData() {
-                let data = this.gwbfDataList.map(item => item.fgfczs)
+                let data = this.gwbfDataList.map(item => {
+                    return {
+                        value: item.fgfczs,
+                        ...item
+                    }
+                })
                 return {
                     name: '国网北分复工复产指数',
                     type: 'line',
@@ -93,7 +170,12 @@
                 }
             },
             sjxjData() {
-                let data = this.sjxjDataList.map(item => item.fgfczs)
+                let data = this.sjxjDataList.map(item => {
+                    return {
+                        value: item.fgfczs,
+                        ...item
+                    }
+                })
                 return {
                     name: '市经信局复工复产指数',
                     type: 'line',
@@ -206,7 +288,7 @@
                                 }
                             },
                             axisLabel: {
-                                interval:0, //强制显示文字
+                                interval: 0, //强制显示文字
                                 rich: {
                                     white: {
                                         fontSize: 15,      //更改坐标轴文字大小
@@ -218,11 +300,11 @@
                                     }
                                 },
                                 formatter: (value, index) => {
-                                    let str = this.dateList[index].sfjjr ? 'company': 'white'
-                                    if(this.clientWidth>=1660){
+                                    let str = this.dateList[index].sfjjr ? 'company' : 'white'
+                                    if (this.clientWidth >= 1660) {
                                         return `{${str}|${value}}`
                                     }
-                                    if(index%2 === 1){
+                                    if (index % 2 === 1) {
                                         return `{${str}|\n${value}}`
                                     }
                                     return `{${str}|${value}}`
@@ -296,9 +378,9 @@
                 }
                 this.init()
             },
-            clickEcharts(params){
-                if(params.componentType === 'xAxis'){
-                    console.log(params.event.event,params.event.event.layerX)
+            clickEcharts(params) {
+                if (params.componentType === 'xAxis') {
+                    console.log(params.event.event, params.event.event.layerX)
                     this.tooltipStyle = `position: absolute; bottom: 50px;left: ${params.event.event.layerX}px;`
                 }
             },
@@ -351,7 +433,8 @@
         width: 100%;
         height: 260px;
     }
-    .fd-tooltip-xAxis{
+
+    .fd-tooltip-xAxis {
         display: none;
         box-sizing: border-box;
         padding: 17px 0;
@@ -360,5 +443,59 @@
         background: url('../../../public/img/bg-01.png') no-repeat center/100%;
         font-size: 15px;
         text-align: center;
+    }
+
+    .fd-tooltip {
+        display: none;
+        box-sizing: border-box;
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 10px 15px;
+        width: 573px;
+        height: 185px;
+        font-size: 15px;
+        background: rgba(0, 36, 86, 0.8);
+        border: 1px solid #00a1e9;
+        box-shadow: 0 0 13px #0072ff inset;
+        z-index: 1;
+        & > h2, h3 {
+            font-size: 16px;
+            text-align: center;
+        }
+        & > h2 {
+            text-shadow: 0 0 7px #00b4ff;
+        }
+        h3 {
+            margin-bottom: 5px;
+            color: #208fff;
+        }
+        & > .left {
+            width: 236px;
+            height: 100%;
+        }
+        & > .right {
+            width: 274px;
+            height: 100%;
+        }
+        table {
+            table-layout: fixed;
+            width: 100%;
+            text-align: right;
+            span {
+                display: inline-block;
+                min-height: 24px;
+                white-space: nowrap;
+                line-height: 24px;
+            }
+            thead {
+                color: #00eaff;
+                tr, td {
+                    background: #022d67;
+                }
+            }
+
+        }
+
     }
 </style>

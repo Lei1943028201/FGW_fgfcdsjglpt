@@ -266,6 +266,61 @@
                                 },
 
                             },
+                            /*{
+                                name: "外圈", //刻度背景
+                                type: "gauge",
+                                z: 6,
+                                radius: "65%",
+                                splitNumber: 0,
+                                startAngle: 180,
+                                endAngle: 0,
+                                min: 0,
+                                max: max,
+                                center: centerArr, //整体的位置设置
+                                axisLine: {
+                                    lineStyle: {
+                                        color: [
+                                            [
+                                                1, new echarts.graphic.LinearGradient(0, 1, 0, 0,
+                                                [
+                                                    {
+                                                        offset: 1,
+                                                        color: '#0066ff'
+                                                    },
+                                                    {
+                                                        offset: 0,
+                                                        color: '#0af4ff'
+                                                    }
+                                                ]
+                                            )
+                                            ],
+                                            [
+                                                1, '#413e54'
+                                            ]
+                                        ],
+                                        width: 4
+                                    }
+                                },
+                                splitLine: {
+                                    show: false
+                                },
+                                data: [{
+                                    show: false,
+                                    value: "80"
+                                }],
+                                axisLabel: {
+                                    show: false
+                                },
+                                pointer: {
+                                    show: false
+                                },
+                                axisTick: {
+                                    show: false
+                                },
+                                detail: {
+                                    show: 0
+                                }
+                            },*/
                         ]
                     };
                 }
