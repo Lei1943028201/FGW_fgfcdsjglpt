@@ -32,24 +32,13 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td><span>大兴区</span></td>
-                            <td><span>71.15</span></td>
-                            <td><span>71.15</span></td>
-                            <td><span>71.15</span></td>
+                        <tr v-for="(item, index) in tooltipData.gdqfgfczs" :key="index">
+                            <td><span>{{item.dqmc}}</span></td>
+                            <td><span>{{item.fgfczs}}</span></td>
+                            <td><span>{{item.zrfgfczs}}</span></td>
+                            <td><span>{{item.zshb}}</span></td>
                         </tr>
-                        <tr>
-                            <td><span>大兴区</span></td>
-                            <td><span>71.15</span></td>
-                            <td><span>71.15</span></td>
-                            <td><span>71.15</span></td>
-                        </tr>
-                        <tr>
-                            <td><span>大兴区</span></td>
-                            <td><span>71.15</span></td>
-                            <td><span>71.15</span></td>
-                            <td><span>71.15</span></td>
-                        </tr>
+
                         </tbody>
                     </table>
                 </div>
@@ -65,23 +54,11 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td><span>批发和零售业</span></td>
-                            <td><span>71.15</span></td>
-                            <td><span>71.15</span></td>
-                            <td><span>71.15</span></td>
-                        </tr>
-                        <tr>
-                            <td><span>批发和零售业</span></td>
-                            <td><span>71.15</span></td>
-                            <td><span>71.15</span></td>
-                            <td><span>71.15</span></td>
-                        </tr>
-                        <tr>
-                            <td><span>批发和零售业</span></td>
-                            <td><span>71.15</span></td>
-                            <td><span>71.15</span></td>
-                            <td><span>71.15</span></td>
+                        <tr v-for="(item, index) in tooltipData.ghyfgfczs" :key="index">
+                            <td><span>{{item.hymc}}</span></td>
+                            <td><span>{{item.fgfczs}}</span></td>
+                            <td><span>{{item.zrfgfczs}}</span></td>
+                            <td><span>{{item.zshb}}</span></td>
                         </tr>
                         </tbody>
                     </table>
@@ -142,19 +119,40 @@
                 gwbfDataList: [],
                 /* 市经信局复工复产指数数据 */
                 sjxjDataList: [],
-                /* 累计确诊数数据 */
-                ljqzsDataList: [],
+
+                /* 复工复产累计确诊数数据 */
+                fgfcLjqzsDataList: [],
+                /* 健康宝累计确诊数数据 */
+                jkbLjqzsDataList: [],
+                /* 12345累计确诊数数据 */
+                jsjbLjqzsDataList: [],
+
                 /* 健康宝查询数数据 */
                 cxsJkbDataList: [],
                 /* 12345接诉即办查询数数据 */
                 cxsJsjbDataList: [],
-                /* 时间轴 */
-                dateList: [],
+
+                /* 复工复产情况时间列表 */
+                fgfcDateList: [],
+                /* 健康宝时间列表 */
+                jkbDateList: [],
+                /* 12345时间列表 */
+                jsjbDateList: [],
                 tooltipStyle: '',
-                clientWidth: 0
+                clientWidth: 0,
+                /* 鼠标移入图表中需要展示的数据 */
+                hoverEChartsLine: {
+                    name: '',
+                    index: ''
+                },
+                /* 鼠标移入图表中需要展示的数据 */
+                hoverEChartsXAxis: {
+                    index: ''
+                }
             }
         },
         computed: {
+            /* 国网北分数据 */
             gwbfData() {
                 let data = this.gwbfDataList.map(item => {
                     return {
@@ -172,6 +170,7 @@
                     data
                 }
             },
+            /* 市经信局数据 */
             sjxjData() {
                 let data = this.sjxjDataList.map(item => {
                     return {
@@ -189,8 +188,9 @@
                     data
                 }
             },
+            /* 累计查询次数 */
             ljqzsData() {
-                let data = this.ljqzsDataList.map(item => item)
+                let data = this.jsjbLjqzsDataList.map(item => item)
                 return {
                     name: '累计查询次数',
                     type: 'line',
@@ -201,6 +201,7 @@
                     data
                 }
             },
+            /* 健康宝查询次数 */
             cxsJkbData() {
                 let data = this.cxsJkbDataList.map(item => item)
                 return {
@@ -213,6 +214,7 @@
                     data
                 }
             },
+            /* 12345查询次数 */
             cxsJsjbData() {
                 let data = this.cxsJsjbDataList.map(item => item)
                 return {
@@ -224,6 +226,7 @@
                     data
                 }
             },
+            /* 图例数据 */
             legendData() {
                 switch (this.activeTab1) {
                     case '1':
@@ -236,8 +239,33 @@
                         return []
                 }
             },
+            /* x轴数据 */
             xAxisData() {
-                return this.dateList.map(item => item.date)
+                switch (this.activeTab1) {
+                    case '1':
+                        return this.fgfcDateList.map(item => {
+                            return {
+                                value: item.date,
+                                ...item
+                            }
+                        })
+                    case '2':
+                        return this.jkbDateList.map(item => {
+                            return {
+                                value: item.date,
+                                ...item
+                            }
+                        })
+                    case '3':
+                        return this.jsjbDateList.map(item => {
+                            return {
+                                value: item.date,
+                                ...item
+                            }
+                        })
+                    default:
+                        return []
+                }
             },
             seriesData() {
                 switch (this.activeTab1) {
@@ -261,6 +289,7 @@
                         return []
                 }
             },
+            /* echarts配置 */
             option() {
                 return {
                     legend: {
@@ -303,7 +332,16 @@
                                     }
                                 },
                                 formatter: (value, index) => {
-                                    let str = this.dateList[index].sfjjr ? 'company' : 'white'
+                                    let str
+                                    if (this.activeTab1 === '1') {
+                                        str = this.fgfcDateList[index].sftsrq ? 'company' : 'white'
+                                    }
+                                    if (this.activeTab1 === '2') {
+                                        str = this.jkbDateList[index].sftsrq ? 'company' : 'white'
+                                    }
+                                    if (this.activeTab1 === '3') {
+                                        str = this.jsjbDateList[index].sftsrq ? 'company' : 'white'
+                                    }
                                     if (this.clientWidth >= 1660) {
                                         return `{${str}|${value}}`
                                     }
@@ -360,8 +398,31 @@
             },
             /* 截至日期 */
             jzrq() {
-                return this.resData.sjjzrq
+                switch (this.activeTab1) {
+                    case '1' :
+                        return this.resData.fgfcSjjzrq
+                    case '2' :
+                        return this.resData.jkbSjjzrq
+                    case '3' :
+                        return this.resData.jsjbSjjzrq
+                    default :
+                        return '--/--'
+                }
             },
+
+            /* 浮显框中展示的数据 */
+            tooltipData() {
+                if (this.hoverEChartsLine.name === '国网北分复工复产指数') {
+                    return this.gwbfData.data[this.hoverEChartsLine.dataIndex]
+                }
+                if (this.hoverEChartsLine.name === '市经信局复工复产指数') {
+                    return this.sjxjData.data[this.hoverEChartsLine.dataIndex]
+                }
+                return {
+                    gdqfgfczs: [],
+                    ghyfgfczs: [],
+                }
+            }
         },
         methods: {
             handlerTab1(tab) {
@@ -389,36 +450,52 @@
             },
             /* 进入 */
             mousemoveEcharts(params) {
-                if(params.componentType === 'series'){
-                    let $tooltip = this.$refs.tooltip.style
-                    $tooltip.top = params.event.event.zrY-50+'px'
-                    $tooltip.left = params.event.event.zrX+30+'px'
-                    $tooltip.display = 'block'
+                if (params.componentType === 'series') {
+                    this.hoverEChartsLine.name = params.seriesName
+                    this.hoverEChartsLine.dataIndex = params.dataIndex
+                    if (params.seriesName === '国网北分复工复产指数' || params.seriesName === '市经信局复工复产指数') {
+                        let $tooltip = this.$refs.tooltip.style
+                        $tooltip.top = params.event.event.zrY - 50 + 'px'
+                        $tooltip.left = params.event.event.zrX + 30 + 'px'
+                        $tooltip.display = 'block'
+                    }
                 }
-                if(params.componentType === 'xAxis'){
-                    let $tooltip = this.$refs.tooltipxAxis.style
-                    $tooltip.top = params.event.event.zrY-30+'px'
-                    $tooltip.left = params.event.event.zrX-70+'px'
-                    $tooltip.display = 'block'
+                if (params.componentType === 'xAxis') {
+                    this.hoverEChartsXAxis.dataIndex = params.xAxisIndex
+                    console.log(params, this.xAxisData);
+                    if (this.xAxisData[params.xAxisIndex]) {
+                        let $tooltip = this.$refs.tooltipxAxis.style
+                        $tooltip.top = params.event.event.zrY - 30 + 'px'
+                        $tooltip.left = params.event.event.zrX - 100 + 'px'
+                        $tooltip.display = 'block'
+                    }
                 }
 
             },
             /* 离开 */
-            mouseoutEcharts(params) {
-                console.log(params);
+            mouseoutEcharts() {
                 this.$refs.tooltip.style.display = 'none'
                 this.$refs.tooltipxAxis.style.display = 'none'
             },
             init() {
-                getQsdbData({sjfw: this.activeTab, sfxsjjr: this.activeTabJjr})
+                getQsdbData({sjfw: this.activeTab1, sfxsjjr: this.activeTabJjr})
                     .then(res => {
                         this.resData = res.data
-                        this.gwbfDataList = res.data.gwbfDataList
-                        this.sjxjDataList = res.data.sjxjDataList
-                        this.ljqzsDataList = res.data.ljqzsDataList
+
                         this.cxsJkbDataList = res.data.cxsJkbDataList
                         this.cxsJsjbDataList = res.data.cxsJsjbDataList
-                        this.dateList = res.data.dateList
+
+                        this.gwbfDataList = res.data.gwbfDataList
+                        this.sjxjDataList = res.data.sjxjDataList
+
+                        this.fgfcLjqzsDataList = res.data.fgfcLjqzsDataList
+                        this.jkbLjqzsDataList = res.data.jkbLjqzsDataList
+                        this.jsjbLjqzsDataList = res.data.jsjbLjqzsDataList
+
+
+                        this.fgfcDateList = res.data.fgfcDateList
+                        this.jkbDateList = res.data.jkbDateList
+                        this.jsjbDateList = res.data.jsjbDateList
                     })
                     .catch(err => {
                         console.log(err)

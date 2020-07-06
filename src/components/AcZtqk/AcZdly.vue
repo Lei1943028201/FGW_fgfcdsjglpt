@@ -57,6 +57,9 @@
                     grid: {
                         x: 58,
                     },
+                    tooltip: {
+                        show: true
+                    },
                     xAxis: [
                         {
                             type: 'category',
