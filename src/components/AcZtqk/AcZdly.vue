@@ -164,7 +164,6 @@
                             type: 'line',
                             smooth: true,
                             stack: '复工',
-                            barWidth: 10,//柱图宽度
                             color: '#10f680',
                             data: this.fglArr
                         },

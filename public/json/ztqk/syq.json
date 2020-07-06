@@ -1,29 +1,29 @@
 {
-  "code": -6158060460485652,
-  "message": "T$gz",
-  "success": true,
+  "code": 200,
   "data": {
     "qsData": {
-      "qyyhs": 100,
-      "qyyhsdw": "万户",
-      "fgs": 10,
-      "fgsdw": "户",
-      "fgl": 1
+      "fgs": "11.50",
+      "fgsdw": "万户",
+      "qys": "15.83",
+      "fgl": 72.65,
+      "qysdw": "万户"
     },
     "zdqyData": {
-      "qyyhs": 200,
-      "qyyhsdw": "万户",
-      "fgs": 20,
-      "fgsdw": "户",
-      "fgl": 2
+      "fgs": "14.97",
+      "fgsdw": "万户",
+      "qys": "20.21",
+      "fgl": 74.08,
+      "qysdw": "万户"
     },
+    "jzrq": "2020/06/25",
     "xwqyData": {
-      "qyyhs": 300,
-      "qyyhsdw": "万户",
-      "fgs": 30,
+      "fgs": "1946",
       "fgsdw": "户",
-      "fgl": 3
-    },
-    "jzrq": "06/60"
-  }
+      "qys": "2853",
+      "fgl": 68.21,
+      "qysdw": "户"
+    }
+  },
+  "message": "ok",
+  "success": true
 }

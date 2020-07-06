@@ -20,11 +20,11 @@
             <!-- 数据展示--开始 -->
             <div class="fd-content-list clear">
                 <div class="left">
-                    <p class="fd-list-item">企业数<span>{{zdData.qyyhs}}</span>{{zdData.qyyhsdw}}</p>
+                    <p class="fd-list-item">企业数<span>{{zdData.qys}}</span>{{zdData.qysdw}}</p>
                     <p class="fd-list-item">复工数<span>{{zdData.fgs}}</span>{{zdData.fgsdw}}</p>
                 </div>
                 <div class="right">
-                    <p class="fd-list-item">企业数<span>{{xwData.qyyhs}}</span>{{xwData.qyyhsdw}}</p>
+                    <p class="fd-list-item">企业数<span>{{xwData.qys}}</span>{{xwData.qysdw}}</p>
                     <p class="fd-list-item">复工数<span>{{xwData.fgs}}</span>{{xwData.fgsdw}}</p>
                 </div>
             </div>
@@ -333,13 +333,13 @@
                     ],
                     series: [
                         {
-                            name: '复工数',
+                            name: '复工企业数',
                             type: 'bar',
                             stack: '复工',
                             barWidth: 10,//柱图宽度
                             color:'#ffc300',
                             yAxisIndex: 0,
-                            data: this.qyzsArr
+                            data: this.fgqysArr
                         },
                         {
                             name: '企业总数',
@@ -348,17 +348,24 @@
                             barWidth: 10,//柱图宽度
                             color: '#02edff',
                             yAxisIndex: 0,
-                            data: this.fgzsArr
+                            data: this.qyzsArr
                         },
                         {
-                            name: '复工率',
+                            name: '当日复工复产指数',
                             type: 'line',
-                            stack: '复工',
-                            barWidth: 10,//柱图宽度
+                            stack: '指数',
                             color: '#d841fe',
                             yAxisIndex: 1,
-                            data: this.fglArr
+                            data: this.drfgfczsArr
                         },
+                        /*{
+                            name: '昨日复工复产指数',
+                            type: 'line',
+                            stack: '复工',
+                            color: '#02edff',
+                            yAxisIndex: 1,
+                            data: this.zrfgfczsArr
+                        },*/
                     ]
                 };
             },
@@ -377,13 +384,18 @@
                 let {qyzsArr} = this.resData
                 return qyzsArr || []
             },
-            /* 复工数 */
-            fgzsArr() {
+            /* 复工企业数 */
+            fgqysArr() {
+                let {fgqysArr} = this.resData
+                return fgqysArr || []
+            },
+            /* 当日复工复产指数 */
+            drfgfczsArr() {
                 let {drfgfczsArr} = this.resData
                 return drfgfczsArr || []
             },
-            /* 复工率 */
-            fglArr() {
+            /* 昨日复工复产指数 */
+            zrfgfczsArr() {
                 let {zrfgfczsArr} = this.resData
                 return zrfgfczsArr || []
             },
@@ -396,9 +408,9 @@
                 let {qsData} = this.resData
                 return qsData ? [
                     {
-                        name: '共计',
-                        value: qsData.qyyhs,
-                        unit: qsData.qyyhsdw
+                        name: '企业数',
+                        value: qsData.qys,
+                        unit: qsData.qysdw
                     },
                     {
                         name: '复工数',
