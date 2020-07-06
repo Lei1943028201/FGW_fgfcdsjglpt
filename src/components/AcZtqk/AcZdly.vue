@@ -98,7 +98,6 @@
                     yAxis: [
                         {
                             type: 'value',
-                            name: '复工率',
                             nameTextStyle: {
                                 color: "#00b6ff",
                                 fontSize: 15,
@@ -123,12 +122,28 @@
                                 }
                             }
                         },
+                        {
+                            type: 'value',
+                            axisLine: {
+                                show: false,
+                            },
+                            //设置网格线颜色
+                            splitLine: {
+                                show: false,
+                            },
+                            axisLabel: {
+                                formatter: function () {
+                                    return ''
+                                }
+                            },
+                        },
                     ],
                     series: [
                         {
                             name: '复工数',
                             type: 'bar',
-                            stack: '复工',
+                            yAxisIndex: 1,
+                            stack: '万',
                             barWidth: 10,//柱图宽度
                             color: new echarts.graphic.LinearGradient(0, 1, 0, 0, [
                                 {
@@ -145,7 +160,8 @@
                         {
                             name: '企业总数',
                             type: 'bar',
-                            stack: '复工',
+                            yAxisIndex: 1,
+                            stack: '万',
                             barWidth: 10,//柱图宽度
                             color: new echarts.graphic.LinearGradient(0, 1, 0, 0, [
                                 {
@@ -162,8 +178,9 @@
                         {
                             name: '复工率',
                             type: 'line',
+                            yAxisIndex: 0,
                             smooth: true,
-                            stack: '复工',
+                            stack: '%',
                             color: '#10f680',
                             data: this.fglArr
                         },

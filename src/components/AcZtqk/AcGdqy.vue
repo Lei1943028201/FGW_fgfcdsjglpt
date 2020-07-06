@@ -335,7 +335,7 @@
                         {
                             name: '复工企业数',
                             type: 'bar',
-                            stack: '复工',
+                            stack: '万',
                             barWidth: 10,//柱图宽度
                             color:'#ffc300',
                             yAxisIndex: 0,
@@ -344,28 +344,20 @@
                         {
                             name: '企业总数',
                             type: 'bar',
-                            stack: '复工',
+                            stack: '万',
                             barWidth: 10,//柱图宽度
                             color: '#02edff',
                             yAxisIndex: 0,
                             data: this.qyzsArr
                         },
                         {
-                            name: '当日复工复产指数',
+                            name: '复工率',
                             type: 'line',
-                            stack: '指数',
+                            stack: '%',
                             color: '#d841fe',
                             yAxisIndex: 1,
-                            data: this.drfgfczsArr
+                            data: this.drfglArr
                         },
-                        /*{
-                            name: '昨日复工复产指数',
-                            type: 'line',
-                            stack: '复工',
-                            color: '#02edff',
-                            yAxisIndex: 1,
-                            data: this.zrfgfczsArr
-                        },*/
                     ]
                 };
             },
@@ -390,14 +382,9 @@
                 return fgqysArr || []
             },
             /* 当日复工复产指数 */
-            drfgfczsArr() {
-                let {drfgfczsArr} = this.resData
-                return drfgfczsArr || []
-            },
-            /* 昨日复工复产指数 */
-            zrfgfczsArr() {
-                let {zrfgfczsArr} = this.resData
-                return zrfgfczsArr || []
+            drfglArr() {
+                let {drfglArr} = this.resData
+                return drfglArr || []
             },
             /* 截至日期 */
             jzrq(){
