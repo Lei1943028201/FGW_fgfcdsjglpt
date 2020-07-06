@@ -2,7 +2,7 @@ export default {
     filters: {
         /* 去除负号的显示 */
         filterText: function (value) {
-            if (!value) {
+            if (!value && value != 0) {
                 return ''
             }
             value = String(value)

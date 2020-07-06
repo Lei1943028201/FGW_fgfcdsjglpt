@@ -331,7 +331,6 @@
                 getZdgcData().then(res => {
                     this.resData = res.data
                     this.dqQsKgl = res.data.dqQsKgl
-                    this.dqHsKgl = res.data.dqHsKgl
                 })
             }
         },

@@ -13,7 +13,7 @@
         <!-- tab切换--结束 -->
 
         <!-- 排行榜--开始 -->
-        <span class="fd-icon-right"></span>
+        <span class="fd-icon-right" v-if="false"></span>
         <CcTop :data-list="topList"/>
         <!-- 排行榜--结束 -->
 
@@ -21,12 +21,12 @@
         <ul class="fd-content-card clear">
             <li>
                 <p class="fd-text-1"><span>{{cardData1.value1}}</span>%</p>
-                <p class="fd-text-2">全国复产率</p>
+                <p class="fd-text-2">全国{{activeTabName1}}率</p>
                 <p class="fd-text-3"><span :class="classNameIsUp(cardData1.value2)">{{cardData1.value2 | filterText}}%</span>昨日</p>
             </li>
             <li>
                 <p class="fd-text-1"><span>{{cardData2.value1}}</span>%</p>
-                <p class="fd-text-2">北京复产率</p>
+                <p class="fd-text-2">北京{{activeTabName1}}率</p>
                 <p class="fd-text-3"><span :class="classNameIsUp(cardData2.value2)">{{cardData2.value2 | filterText}}%</span>昨日</p>
             </li>
             <li>
@@ -48,6 +48,7 @@
             return {
                 /* 复工/复产 */
                 activeTab1: '1',
+                activeTabName1: '复工',
                 /* 产业 */
                 activeTab2: '0',
                 /* 复工/复产 */
@@ -121,7 +122,7 @@
                 }else{
                     return {
                         value1: this.resData.bjfcl,
-                        value2: this.resData.bjfclbc
+                        value2: this.resData.bjfclbh
                     }
                 }
             },
@@ -143,6 +144,7 @@
             /* 切换--复工/复产 */
             handlerTab1(tab) {
                 this.activeTab1 = tab.code
+                this.activeTabName1 = tab.name
             },
             /* 切换--产业 */
             handlerTab2(item) {

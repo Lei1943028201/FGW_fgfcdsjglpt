@@ -1,33 +1,32 @@
 {
-  "code": -40365513.48629232,
-  "success": true,
-  "message": "deserunt Excepteur",
+  "code": 200,
   "data": {
-    "jzrq": "03/20",
     "dqQsKgl": [
       {
-        "dqmc": "海淀区",
-        "pm": -1,
-        "kgl": -1.1
+        "dqmc": "丰台区",
+        "kgl": 20.0,
+        "pm": 1
       },
       {
-        "dqmc": "海淀区",
-        "pm": 1,
-        "kgl": 1.1
+        "dqmc": "朝阳区",
+        "kgl": 10.0,
+        "pm": 2
       },
       {
-        "dqmc": "海淀区",
-        "pm": 1,
-        "kgl": 1.1
+        "dqmc": "昌平区",
+        "kgl": 0.0,
+        "pm": 3
       }
     ],
-    "dqHsKgl": [],
-    "jdmc": "第二季度复工率",
-    "jdykgs": 1,
-    "jdxms": 2,
-    "jdfgl": -3,
-    "qnykgs": -4,
-    "qnxms": 5,
-    "qnfgl": 6
-  }
+    "jdfgl": 4.4,
+    "jdmc": "第三季度复工率",
+    "jdxms": 160,
+    "jdykgs": 7,
+    "jzrq": "2020/07/03",
+    "qnfgl": 43.75,
+    "qnxms": 320,
+    "qnykgs": 140
+  },
+  "message": "ok",
+  "success": true
 }

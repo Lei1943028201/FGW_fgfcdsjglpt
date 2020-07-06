@@ -1,54 +1,54 @@
 {
   "code": 200,
-  "success": 200,
-  "message": "获取国办平台数据成功",
   "data": {
-    "jzrq": "06/30",
-    "sfFglPm": [
-      {
-        "dqmc": "广东",
-        "pm": 1,
-        "fgl": -0.1
-      },
-      {
-        "dqmc": "浙江",
-        "pm": 2,
-        "fgl": -0.1
-      },
-      {
-        "dqmc": "山东",
-        "pm": 3,
-        "fgl": 2
-      }
-    ],
+    "bjfcl": 87.29,
+    "bjfclbh": 0.16,
+    "bjfclpm": 16,
+    "bjfclpmbh": -2,
+    "bjfgl": 86.05,
+    "bjfglbh": 0.48,
+    "bjfglpm": 17,
+    "bjfglpmbh": 0,
+    "jzrq": "2020/06/29",
+    "qgfcl": 89.51,
+    "qgfclbh": 0.03,
+    "qgfgl": 86.6,
+    "qgfglbh": 0.02,
     "sfFclPm": [
       {
         "dqmc": "广东",
-        "pm": 1,
-        "fgl": -0.1
+        "fcl": 95.45,
+        "pm": 1
       },
       {
         "dqmc": "浙江",
-        "pm": 2,
-        "fgl": -0.1
+        "fcl": 93.3,
+        "pm": 2
       },
       {
-        "dqmc": "山东",
-        "pm": 3,
-        "fgl": 2
+        "dqmc": "湖南",
+        "fcl": 92.25,
+        "pm": 3
       }
     ],
-    "qgfgl": 1,
-    "qgfglbh": 2,
-    "bjfgl": 3,
-    "bjfglbh": 4,
-    "bjfglpm": 5,
-    "bjfglpmbh": -6,
-    "qgfcl": 7,
-    "qgfclbh": 8,
-    "bjfcl": 9,
-    "bjfclbh": 10,
-    "bjfclpm": 11,
-    "bjfclpmbh": 12
-  }
+    "sfFglPm": [
+      {
+        "dqmc": "湖南",
+        "fgl": 91.0,
+        "pm": 1
+      },
+      {
+        "dqmc": "吉林",
+        "fgl": 90.01,
+        "pm": 2
+      },
+      {
+        "dqmc": "四川",
+        "fgl": 89.97,
+        "pm": 3
+      }
+    ]
+  },
+  "message": "ok",
+  "success": true
 }
