@@ -445,3 +445,5 @@ var mapFunction = {
     })
   }
 }
+
+export default mapFunction

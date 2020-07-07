@@ -5,15 +5,15 @@
             <div>
                 <p>
                     <span class="fd-name">国网指数</span>
-                    <span class="fd-value-01">{{qsfgfcData.gwbffgfczs }}</span>
-                    <span class="fd-value-02" :class="classNameIsUp(qsfgfcData.gwbffgfczsbhz)">{{qsfgfcData.gwbffgfczsbhz | filterText}}</span>
+                    <span class="fd-value-01">{{showMapData.gwbffgfczs }}</span>
+                    <span class="fd-value-02" :class="classNameIsUp(showMapData.gwbffgfczsbhz)">{{showMapData.gwbffgfczsbhz | filterText}}</span>
                 </p>
             </div>
             <div>
                 <p>
                     <span class="fd-name">日报指数</span>
-                    <span class="fd-value-04">{{qsfgfcData.sjxjfgfczs}}</span>
-                    <span class="fd-value-02" :class="classNameIsUp(qsfgfcData.sjxjfgfczsbhz)">{{qsfgfcData.sjxjfgfczsbhz | filterText}}</span>
+                    <span class="fd-value-04">{{showMapData.sjxjfgfczs}}</span>
+                    <span class="fd-value-02" :class="classNameIsUp(showMapData.sjxjfgfczsbhz)">{{showMapData.sjxjfgfczsbhz | filterText}}</span>
                 </p>
             </div>
         </div>
@@ -29,14 +29,14 @@
         <div class="fd-ball fd-ball-1">
             <div class="fd-top">
                 <p>
-                    <span class="fd-value-01">{{qsfgfcData.qzbldw}}</span>
+                    <span class="fd-value-01">{{showMapData.qzbldw}}</span>
                     <span class="fd-unit">个</span>
                 </p>
                 <p><span class="fd-name">确诊病例单位</span></p>
             </div>
             <div class="fd-bottom">
                 <p>
-                    <span class="fd-value-01">{{qsfgfcData.gtdw}}</span>
+                    <span class="fd-value-01">{{showMapData.gtdw}}</span>
                     <span class="fd-unit">个</span>
                 </p>
                 <p><span class="fd-name">关停单位</span></p>
@@ -46,14 +46,14 @@
         <div class="fd-ball fd-ball-2">
             <div class="fd-top">
                 <p>
-                    <span class="fd-value-01">{{qsfgfcData.ljqz}}</span>
+                    <span class="fd-value-01">{{showMapData.ljqz}}</span>
                     <span class="fd-unit">例</span>
                 </p>
                 <p><span class="fd-name">累计确诊</span></p>
             </div>
             <div class="fd-bottom">
                 <p>
-                    <span class="fd-value-01">{{qsfgfcData.xyqz}}</span>
+                    <span class="fd-value-01">{{showMapData.xyqz}}</span>
                     <span class="fd-unit">例</span>
                 </p>
                 <p><span class="fd-name">现有确诊</span></p>
@@ -63,14 +63,14 @@
         <div class="fd-ball fd-ball-3">
             <div class="fd-top">
                 <p>
-                    <span class="fd-value-01">{{qsfgfcData.fxdq}}</span>
+                    <span class="fd-value-01">{{showMapData.fxdq}}</span>
                     <span class="fd-unit">个</span>
                 </p>
                 <p><span class="fd-name">风险地区</span></p>
             </div>
             <div class="fd-bottom">
                 <p class="fd-high-risk">
-                    <span class="fd-value-01">{{qsfgfcData.gfxdq}}</span>
+                    <span class="fd-value-01">{{showMapData.gfxdq}}</span>
                     <span class="fd-unit">个</span>
                 </p>
                 <p><span class="fd-name">高风险地区</span></p>
@@ -81,7 +81,9 @@
 </template>
 
 <script>
+
     import ChartMap from '../../components/common/map/index.vue';
+    import {mapState, mapGetters} from 'vuex'
     import {getFgfczsData} from '../../api/ztqk'
     /* 地图 */
     export default {
@@ -91,122 +93,21 @@
         },
         data() {
             return {
-                mapData: [
-                    {
-                        "name": "平谷区",
-                        "code": "93AAC59B7554B59A3322BCDDCCF51CA1",
-                        "show": false,
-                        "val": 960
-                    },
-                    {
-                        "name": "通州区",
-                        "code": "2B07A20D66C7E629DBBA5F139331F38E",
-                        "show": false,
-                        "val": 218
-                    },
-                    {
-                        "name": "东城区",
-                        "code": "FB16AD8BB2F6BECCDDF92888D5371309",
-                        "show": false,
-                        "val": 1630
-                    },
-                    {
-                        "name": "海淀区",
-                        "code": "ABDB2A04E44F24E246F4DCFCA99ECF24",
-                        "show": false,
-                        "val": 500
-                    },
-                    {
-                        "name": "昌平区",
-                        "code": "9CA37880978F0800E78273687B44EC82",
-                        "show": false,
-                        "val": 999
-                    },
-                    {
-                        "name": "朝阳区",
-                        "code": "3C5E6D7A07E15B4174A2289C414B3101",
-                        "show": false,
-                        "val": 800
-                    },
-                    {
-                        "name": "顺义区",
-                        "code": "D20F5773BC59754677A41C3BF7866B0F",
-                        "show": false,
-                        "val": 1730
-                    },
-                    {
-                        "name": "房山区",
-                        "code": "7334E39C7C8A8A402FBF1D3F08EABC21",
-                        "show": true,
-                        "val": 30
-                    },
-                    {
-                        "name": "西城区",
-                        "code": "251FFCA7F1CF44E7B5E2ABCB3CF504B9",
-                        "show": true,
-                        "val": 1920
-                    },
-                    {
-                        "name": "丰台区",
-                        "code": "A6B7B440D73F001BEF379579C986EB24",
-                        "show": true,
-                        "val": 280
-                    },
-                    {
-                        "name": "大兴区",
-                        "code": "FBBF6E15C8F4E2C5A33DDAAC0BBAD670",
-                        "show": true,
-                        "val": 1080
-                    },
-                    {
-                        "name": "门头沟区",
-                        "code": "2B526B513E748B3C5454E823771DA010",
-                        "show": true,
-                        "val": 1300
-                    },
-                    {
-                        "name": "密云区",
-                        "code": "DC4A0662C1DB18CAC86BC4E43FE17F19",
-                        "show": true,
-                        "val": 333
-                    },
-                    {
-                        "name": "怀柔区",
-                        "code": "C69FB3C138863680B2639791DD365FE0",
-                        "show": true,
-                        "val": 1536
-                    },
-                    {
-                        "name": "延庆区",
-                        "code": "B618ADA976669A3FFB4CF0BC308FE50D",
-                        "show": true,
-                        "val": 1632
-                    },
-                    {
-                        "name": "石景山区",
-                        "code": "156D2960DEA40E387F962ACE2E567635",
-                        "show": true,
-                        "val": 280
-                    }
-                ],
-                /* 全市复工复产数据 */
-                qsfgfcData: {},
-                /* 各地区复工复产数据 */
-                gdqfgfcDataList: [],
+
             }
+        },
+        computed: {
+            ...mapState(['mapId']),
+            ...mapGetters(['showMapData']),
         },
         methods: {
             init() {
                 getFgfczsData().then(res => {
-                    this.qsfgfcData = res.data.qsfgfcData
-                    this.gdqfgfcDataList = res.data.gdqfgfcDataList
-                    let mapData = this.gdqfgfcDataList.map(item=>({
-                        name: item.dqmc,
-                        val: item.gwbffgfczs,
-                    }))
-                    setTimeout(()=>{
-                        this.$refs.chartMap.updateData(this.mapData);
-                    }, 1000)
+                    res.data.qsfgfcData.code = '1100000'
+                    this.$store.dispatch('SetMapData', [
+                        res.data.qsfgfcData,
+                        ...res.data.gdqfgfcDataList,
+                    ])
                 })
             }
         },

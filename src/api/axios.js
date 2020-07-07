@@ -1,9 +1,11 @@
 import axios from 'axios';
-// 创建axios实例
+
+/**
+ * 创建axios实例
+ */
 let service = axios.create({
-    //baseURL: 'http://yapi.thunisoft.com/mock/2716',
-    baseURL: '',
-    timeout: 50000, // 请求超时时间
+    baseURL: '', // api的base_url
+    //timeout: 5000 // 请求超时时间
 })
 
 /**

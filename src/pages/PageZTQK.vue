@@ -25,7 +25,7 @@
             <!-- 重点领域模块 -->
             <AcZdly></AcZdly>
             <!-- banner图 -->
-            <div class="fd-banner">联通北分复工复产监测平台</div>
+            <div class="fd-banner hand" @click="clickBanner">联通北分复工复产监测平台</div>
             <!-- 国电企业模块 -->
             <AcGdqy></AcGdqy>
         </div>
@@ -52,6 +52,11 @@
             AcQsdb,
             AcMap,
         },
+        methods: {
+            clickBanner(){
+                window.open('http://172.26.72.128/bjfgw/pages/unicom.html?menu=3#')
+            }
+        }
     }
 </script>
 
