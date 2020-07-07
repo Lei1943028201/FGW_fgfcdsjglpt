@@ -16,7 +16,7 @@
                        @mouseoutEcharts="mouseoutEcharts"
                        @mousemoveEcharts="mousemoveEcharts"/>
             <!-- 弹层 -->
-            <div :style="tooltipStyle" class="fd-tooltip-xAxis" ref="tooltipxAxis">北京调至二级响应</div>
+            <div :style="tooltipStyle" class="fd-tooltip-xAxis" ref="tooltipxAxis">{{tooltipxAxisData}}</div>
             <!-- echartsTooltip  -->
             <div class="fd-tooltip clear" ref="tooltip">
                 <h2>趋势变化</h2>
@@ -146,9 +146,7 @@
                     index: ''
                 },
                 /* 鼠标移入图表中需要展示的数据 */
-                hoverEChartsXAxis: {
-                    index: ''
-                }
+                hoverEChartsXAxis: '',
             }
         },
         computed: {
@@ -293,7 +291,7 @@
             option() {
 
                 let minAndMax = {}
-                if(this.activeTab1 === '1'){
+                if (this.activeTab1 === '1') {
                     minAndMax = {
                         min: 600,
                         max: 1200
@@ -433,6 +431,15 @@
                     gdqfgfczs: [],
                     ghyfgfczs: [],
                 }
+            },
+            tooltipxAxisData(){
+                let str = ''
+                this.xAxisData.map(item=>{
+                    if(item.value === this.hoverEChartsXAxis){
+                        str = item.tssj
+                    }
+                })
+                return str
             }
         },
         methods: {
@@ -472,8 +479,9 @@
                     }
                 }
                 if (params.componentType === 'xAxis') {
-                    this.hoverEChartsXAxis.dataIndex = params.xAxisIndex
-                    if (this.xAxisData[params.xAxisIndex]) {
+                    let text = params.event.target.style.text
+                    if (text.indexOf('company') > -1) {
+                        this.hoverEChartsXAxis = params.value
                         let $tooltip = this.$refs.tooltipxAxis.style
                         $tooltip.top = params.event.event.zrY - 30 + 'px'
                         $tooltip.left = params.event.event.zrX - 100 + 'px'
