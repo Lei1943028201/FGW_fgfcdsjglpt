@@ -5,15 +5,15 @@
             <div>
                 <p>
                     <span class="fd-name">国网指数</span>
-                    <span class="fd-value-01">{{showMapData.gwbffgfczs }}</span>
-                    <span class="fd-value-02" :class="classNameIsUp(showMapData.gwbffgfczsbhz)">{{showMapData.gwbffgfczsbhz | filterText}}</span>
+                    <span class="fd-value-01">{{qsfgfcData.gwbffgfczs }}</span>
+                    <span class="fd-value-02" :class="classNameIsUp(qsfgfcData.gwbffgfczsbhz)">{{qsfgfcData.gwbffgfczsbhz | filterText}}</span>
                 </p>
             </div>
             <div>
                 <p>
                     <span class="fd-name">日报指数</span>
-                    <span class="fd-value-04">{{showMapData.sjxjfgfczs}}</span>
-                    <span class="fd-value-02" :class="classNameIsUp(showMapData.sjxjfgfczsbhz)">{{showMapData.sjxjfgfczsbhz | filterText}}</span>
+                    <span class="fd-value-04">{{qsfgfcData.sjxjfgfczs}}</span>
+                    <span class="fd-value-02" :class="classNameIsUp(qsfgfcData.sjxjfgfczsbhz)">{{qsfgfcData.sjxjfgfczsbhz | filterText}}</span>
                 </p>
             </div>
         </div>
@@ -93,7 +93,7 @@
         },
         data() {
             return {
-
+                qsfgfcData: {}
             }
         },
         computed: {
@@ -104,6 +104,7 @@
             init() {
                 getFgfczsData().then(res => {
                     res.data.qsfgfcData.code = '1100000'
+                    this.qsfgfcData = res.data.qsfgfcData
                     this.$store.dispatch('SetMapData', [
                         res.data.qsfgfcData,
                         ...res.data.gdqfgfcDataList,
@@ -112,7 +113,7 @@
             }
         },
         created() {
-            this.init()
+            setTimeout(()=>{this.init()}, 1000)
         }
     }
 

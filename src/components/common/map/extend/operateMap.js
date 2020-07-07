@@ -305,12 +305,12 @@ MapCharts.prototype = {
                         ratio: 0.5,//缩放比例
                         img01: {
                             show: true,
-                            src:"public/img/fd-xfzs-icon01.png",
+                            src:"http://172.16.193.212:8080/img/icon-bar-01.png",
                             size: [12, 90],
                         },
                         img02: {
                             show: true,
-                            src:"public/img/fd-xfzs-icon02.png",
+                            src:"http://172.16.193.212:8080/img/icon-bar-02.png",
                             size: [12, 90],
                         },
                         outer: {
@@ -462,7 +462,6 @@ MapCharts.prototype = {
         var _this = this,
             _ratio1 =  style.ratio,
             _ratio2 =  style.ratio;
-
         if (data) {
             /*具体显示多大*/
             /*  if (data.bqxfsljs > 1000) {
@@ -482,8 +481,9 @@ MapCharts.prototype = {
                   _ratio2 *= 0.5;
               }*/
             _ratio2=1.0*data.zbwxfsljs/_this.opts.xsMaxValue;
-            if(_ratio1>=0.7){
-                style.img01.src="public/img/fd-xfzs-icon01.png"
+
+            if(_ratio1>=0.7 || true){
+                style.img01.src="http://172.16.193.212:8080/img/icon-bar-01.png"
             }else if(_ratio1<0.7&&_ratio1>=0.5){
                 style.img01.src='public/img/img-yellow-01.png'
             }else if(_ratio1<0.5&&_ratio1>=0.3){
@@ -493,8 +493,8 @@ MapCharts.prototype = {
             }else if(_ratio1<0.1){
                 style.img01.src='public/img/img-yellow-04.png'
             }
-            if(_ratio2>=0.7){
-                style.img02.src="public/img/fd-xfzs-icon02.png"
+            if(_ratio2>=0.7 || true){
+                style.img02.src="http://172.16.193.212:8080/img/icon-bar-02.png"
             }else if(_ratio2<0.7&&_ratio2>=0.5){
                 style.img02.src='public/img/img-green-01.png'
             }else if(_ratio2<0.5&&_ratio2>=0.3){
@@ -550,8 +550,6 @@ MapCharts.prototype = {
                 symbolSvg.attr({
                     display: style.show ? 'block' : 'none',
                     transform:"translate("+point.x+","+point.y+")"
-
-
                 })
 
             }
@@ -598,7 +596,7 @@ MapCharts.prototype = {
     /*
      * 请求svg地图
      * */
-    requestSvgMap: function (url) {
+    requestSvgMap: function () {
         var _this = this;
         //  加载svg地图
         getMapSvg().then(res=>{

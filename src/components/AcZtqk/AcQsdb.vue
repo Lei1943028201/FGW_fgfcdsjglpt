@@ -291,6 +291,14 @@
             },
             /* echarts配置 */
             option() {
+
+                let minAndMax = {}
+                if(this.activeTab1 === '1'){
+                    minAndMax = {
+                        min: 600,
+                        max: 1200
+                    }
+                }
                 return {
                     legend: {
                         data: this.legendData,
@@ -306,7 +314,7 @@
                     grid: {
                         x: 58,
                         y: 80,
-                        x2: 34,
+                        x2: 55,
                         y2: 45
                     },
                     xAxis: [
@@ -376,6 +384,7 @@
                             }
                         },
                         {
+                            ...minAndMax,
                             type: 'value',
                             axisLine: {
                                 show: false,
@@ -434,7 +443,6 @@
                 this.activeTab1 = tab.code
             },
             handlerTab2(tab) {
-                debugger
                 if (this.activeTab2 === tab.code && tab.type !== 'other') {
                     return
                 }

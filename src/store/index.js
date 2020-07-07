@@ -12,7 +12,7 @@ export default new Vuex.Store({
         showMapData(state){
             return state.mapData.filter(item => {
                 return item.code === state.mapId
-            })[0] || state.mapData[0]
+            })[0] || state.mapData[0] || {}
 
         }
     },
