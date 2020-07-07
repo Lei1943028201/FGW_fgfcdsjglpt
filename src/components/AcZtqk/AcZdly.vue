@@ -43,6 +43,7 @@
         },
         computed: {
             option() {
+                let _this = this
                 return {
                     legend: {
                         data: this.legend,
@@ -58,7 +59,11 @@
                         x: 58,
                     },
                     tooltip: {
-                        show: true
+                        show: true,
+                        formatter(params){
+                            let index = params.dataIndex
+                            return `企业总数:${_this.qyzsArr[index]}<br/>复工数:${_this.fgzsArr[index]}<br/>复工率:${_this.fglArr[index]}`
+                        }
                     },
                     xAxis: [
                         {
@@ -158,7 +163,7 @@
                                     color: '#ffd65c'
                                 }
                             ]),
-                            data: this.qyzsArr
+                            data: this.fgzsArr
                         },
                         {
                             name: '企业总数',
@@ -176,7 +181,7 @@
                                     color: '#00f4ff'
                                 }
                             ]),
-                            data: this.fgzsArr
+                            data: this.qyzsArr
                         },
                         {
                             name: '复工率',

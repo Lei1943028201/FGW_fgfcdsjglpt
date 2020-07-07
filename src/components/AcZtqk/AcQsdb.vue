@@ -58,7 +58,7 @@
                             <td><span>{{item.hymc}}</span></td>
                             <td><span>{{item.fgfczs}}</span></td>
                             <td><span>{{item.zrfgfczs}}</span></td>
-                            <td><span>{{item.zshb}}</span></td>
+                            <td><span :class="classNameIsUp(item.zshb)">{{item.zshb | filterText}}%</span></td>
                         </tr>
                         </tbody>
                     </table>
@@ -333,6 +333,7 @@
                                 },
                                 formatter: (value, index) => {
                                     let str
+                                    /* 判断是否特殊数据 */
                                     if (this.activeTab1 === '1') {
                                         str = this.fgfcDateList[index].sftsrq ? 'company' : 'white'
                                     }
@@ -342,7 +343,8 @@
                                     if (this.activeTab1 === '3') {
                                         str = this.jsjbDateList[index].sftsrq ? 'company' : 'white'
                                     }
-                                    if (this.clientWidth >= 1660) {
+                                    /* 判断是否错位展示 */
+                                    if (this.clientWidth >= 1660 && this.activeTab2 === '1') {
                                         return `{${str}|${value}}`
                                     }
                                     if (index % 2 === 1) {
@@ -432,6 +434,7 @@
                 this.activeTab1 = tab.code
             },
             handlerTab2(tab) {
+                debugger
                 if (this.activeTab2 === tab.code && tab.type !== 'other') {
                     return
                 }
@@ -462,7 +465,6 @@
                 }
                 if (params.componentType === 'xAxis') {
                     this.hoverEChartsXAxis.dataIndex = params.xAxisIndex
-                    console.log(params, this.xAxisData);
                     if (this.xAxisData[params.xAxisIndex]) {
                         let $tooltip = this.$refs.tooltipxAxis.style
                         $tooltip.top = params.event.event.zrY - 30 + 'px'
@@ -478,7 +480,7 @@
                 this.$refs.tooltipxAxis.style.display = 'none'
             },
             init() {
-                getQsdbData({sjfw: this.activeTab1, sfxsjjr: this.activeTabJjr})
+                getQsdbData({sjfw: this.activeTab2, sfxsjjr: this.activeTabJjr})
                     .then(res => {
                         this.resData = res.data
 
@@ -599,6 +601,28 @@
                 }
             }
 
+        }
+        .fd-text-up {
+            color: #ff3a56;
+            margin-right: 5px;
+            &:before {
+                content: '';
+                display: inline-block;
+                width: 9px;
+                height: 13px;
+                background: url("../../../public/img/icon-up.png") no-repeat center/100% 100%;
+            }
+        }
+        .fd-text-down {
+            color: #2ddf81;
+            margin-right: 5px;
+            &:before {
+                content: '';
+                display: inline-block;
+                width: 9px;
+                height: 13px;
+                background: url("../../../public/img/icon-down.png") no-repeat center/100% 100%;
+            }
         }
 
     }

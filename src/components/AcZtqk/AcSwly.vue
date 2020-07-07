@@ -20,7 +20,7 @@
                             </div>
                         </div>
                         <!-- 右侧布局 -->
-                        <div class="right" style="width: 120px">
+                        <div class="right" style="width: 120px; white-space: nowrap;">
                             <span v-if="index === 0" style="color: #6194b4;margin-left: 15px">复工率</span><br/>
                             <span class="fd-progress--value2">{{item.cyyqfgl}}%</span>
                             <span :class="classNameIsUp(item.cyyqfglbh)">{{item.cyyqfglbh | filterText}}%</span>

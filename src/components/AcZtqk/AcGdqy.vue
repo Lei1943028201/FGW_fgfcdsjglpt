@@ -252,6 +252,7 @@
                 }
             },
             option_hy() {
+                let _this = this
                 return {
                     legend: {
                         data: this.legend,
@@ -266,6 +267,13 @@
                     grid: {
                         x: 58,
                         x2: 48
+                    },
+                    tooltip: {
+                        show: true,
+                        formatter(params){
+                            let index = params.dataIndex
+                            return `企业总数:${_this.qyzsArr[index]}<br/>复工企业数:${_this.fgqysArr[index]}<br/>复工率:${_this.drfglArr[index]}`
+                        }
                     },
                     xAxis: [
                         {
