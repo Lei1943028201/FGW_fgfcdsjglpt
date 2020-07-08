@@ -60,6 +60,7 @@
         }
         & > .active {
             color: #208fff;
+            font-weight: bold;
         }
         & > span:not(:last-child):after {
             content: '|';

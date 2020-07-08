@@ -179,7 +179,7 @@
 
     /* CcTop模块样式 */
     .fd-content-top {
-        width: calc(100% - 25px);
+        //width: calc(100% - 25px);
     }
 
     .fd-content-card {

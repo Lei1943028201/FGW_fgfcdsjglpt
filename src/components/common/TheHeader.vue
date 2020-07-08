@@ -83,13 +83,15 @@
             width: 180px;
             height: 45px;
             font-size: 20px;
-            font-weight: bold;
             text-align: center;
             line-height: 45px;
             color: #d6f0ff;
             background: url("../../../public/img/bg-menu.png") no-repeat center/100% 100%;
             margin-left: -15px;
             cursor: pointer;
+            span{
+                font-weight: bold;
+            }
             &:hover {
                 color: #f8c207;
                 background: url("../../../public/img/bg-menu-active.png") no-repeat center/100% 100%;
