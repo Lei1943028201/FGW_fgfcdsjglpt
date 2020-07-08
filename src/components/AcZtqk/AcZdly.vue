@@ -56,7 +56,8 @@
                         },
                     },
                     grid: {
-                        x: 58,
+                        x: 48,
+                        x2: 0,
                     },
                     tooltip: {
                         show: true,
@@ -81,6 +82,13 @@
                                     fontSize: 15      //更改坐标轴文字大小
                                 },
                                 formatter: function (value) {
+                                    if(value === '商场（超市）'){
+                                        return '商场\n（超市）'
+                                    }
+                                    if(value === '餐馆（食堂）'){
+                                        return '餐馆\n（食堂）'
+
+                                    }
                                     let ret = "";//拼接加\n返回的类目项
                                     let maxLength = 2;//每项显示文字个数
                                     let valLength = value.length;//X轴类目项的文字个数
@@ -297,9 +305,9 @@
             text-align: center;
             font-size: 15px;
             .fd-text-1 {
-                color: #ffd016;
+                color: #ffa910;
                 span {
-                    font-size: 25px;
+                    font-size: 26px;
                     font-weight: bold;
                 }
             }
@@ -309,7 +317,7 @@
             .fd-text-up {
                 margin-right: 5px;
                 color: #ff3a56;
-                font-size: 25px !important;
+                font-size: 26px !important;
                 font-weight: bold;
                 span {
                     font-size: 15px;
@@ -326,7 +334,7 @@
             .fd-text-down {
                 margin-right: 5px;
                 color: #2ddf81;
-                font-size: 25px !important;
+                font-size: 26px !important;
                 font-weight: bold;
                 span {
                     font-size: 15px;

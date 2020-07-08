@@ -180,6 +180,7 @@
     /* CcTop模块样式 */
     .fd-content-top {
         //width: calc(100% - 25px);
+        margin-top: 0 !important;
     }
 
     .fd-content-card {
@@ -213,7 +214,7 @@
             .fd-text-1 {
                 color: #ffa910;
                 span {
-                    font-size: 25px;
+                    font-size: 26px;
                     font-weight: bold;
                 }
             }

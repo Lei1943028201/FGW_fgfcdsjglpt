@@ -266,7 +266,7 @@
                     },
                     grid: {
                         x: 58,
-                        x2: 48
+                        x2: 35
                     },
                     tooltip: {
                         show: true,
@@ -478,7 +478,7 @@
 
 <style scoped lang="less" rel="stylesheet/less">
     #Gdqy {
-        margin-top: 40px;
+        margin-top: 25px;
         padding-bottom: 30px;
         background: url("../../../public/img/bg-gdqy.png") no-repeat center bottom/390px 160px;
     }

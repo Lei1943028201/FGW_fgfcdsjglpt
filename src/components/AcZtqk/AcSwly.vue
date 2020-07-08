@@ -111,7 +111,7 @@
 <style scoped lang="less" rel="stylesheet/less">
     .fd-content-progress{
         li{
-            margin-top: 13px;
+            margin-top: 15px;
             height: 30px;
             font-size: 15px;
         }

@@ -65,7 +65,7 @@
             .fd-text-1 {
                 color: #00f0ff;
                 span {
-                    font-size: 25px;
+                    font-size: 26px;
                     font-weight: bold;
                 }
             }

@@ -20,7 +20,7 @@
         width: 100%;
         min-height: 60px;
         font-size: 15px;
-        color: #00b6ff;
+        color: #0377aa;
         text-align: center;
         background: url("../../../public/img/bg-footer.png") repeat-x 1px 100%;
     }

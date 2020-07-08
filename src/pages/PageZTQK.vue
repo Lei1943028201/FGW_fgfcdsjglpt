@@ -79,6 +79,7 @@
         height: 926px;
     }
     .fd-banner{
+        margin-top: 20px;
         width: 100%;
         height: 93px;
         background: url("../../public/img/bg-banner.png") no-repeat center/100% 100%;

@@ -302,7 +302,7 @@
                         data: this.legendData,
                         icon: 'roundRect',
                         itemHeight: 4,
-                        y: 45,
+                        y: 55,
                         x: 'center',
                         textStyle: {
                             color: '#00b6ff',
@@ -311,7 +311,7 @@
                     },
                     grid: {
                         x: 58,
-                        y: 80,
+                        y: 90,
                         x2: 55,
                         y2: 45
                     },
@@ -577,7 +577,7 @@
         width: 573px;
         height: 185px;
         font-size: 15px;
-        background: rgba(0, 36, 86, 0.8);
+        background: rgba(0, 36, 86, 0.95);
         border: 1px solid #00a1e9;
         box-shadow: 0 0 13px #0072ff inset;
         z-index: 1;

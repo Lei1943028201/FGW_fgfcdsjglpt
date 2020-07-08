@@ -44,7 +44,7 @@
     .fd-tab {
         display: inline-block;
         margin: 15px 0;
-        background: #112550;
+        background: #061f40;
         font-size: 16px;
         border-radius: 7px;
         color: #036bc2;
