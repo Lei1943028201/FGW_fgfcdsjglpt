@@ -306,12 +306,12 @@ MapCharts.prototype = {
                         img01: {
                             show: true,
                             src:"http://172.16.193.212:8080/img/icon-bar-01.png",
-                            size: [12, 90],
+                            size: [12, 50],
                         },
                         img02: {
                             show: true,
                             src:"http://172.16.193.212:8080/img/icon-bar-02.png",
-                            size: [12, 90],
+                            size: [12, 50],
                         },
                         outer: {
                             radius: [30, 6],

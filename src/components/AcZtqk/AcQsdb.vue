@@ -67,7 +67,6 @@
         </div>
         <!-- echarts图--结束 -->
 
-
     </div>
 </template>
 
@@ -190,7 +189,7 @@
             ljqzsData() {
                 let data = this.jsjbLjqzsDataList.map(item => item)
                 return {
-                    name: '累计查询次数',
+                    name: '累计确诊数',
                     type: 'line',
                     smooth: true,
                     color: '#8e40e7',
@@ -228,11 +227,11 @@
             legendData() {
                 switch (this.activeTab1) {
                     case '1':
-                        return ['国网北分复工复产指数', '市经信局复工复产指数', '累计查询次数']
+                        return ['国网北分复工复产指数', '市经信局复工复产指数', '累计确诊数']
                     case '2':
-                        return ['健康宝查询次数', '累计查询次数']
+                        return ['健康宝查询次数', '累计确诊数']
                     case '3':
-                        return ['12345查询次数', '累计查询次数']
+                        return ['12345查询次数', '累计确诊数']
                     default:
                         return []
                 }
@@ -289,13 +288,9 @@
             },
             /* echarts配置 */
             option() {
-
-                let minAndMax = {}
-                if (this.activeTab1 === '1') {
-                    minAndMax = {
-                        min: 600,
-                        max: 1200
-                    }
+                let minAndMax = {
+                    min: 600,
+                    max: 1200
                 }
                 return {
                     legend: {
@@ -365,6 +360,13 @@
                     yAxis: [
                         {
                             type: 'value',
+                            name: `单位:${this.activeTab1 === '3'? '次': '万'}`,
+                            splitNumber : 3,
+                            nameTextStyle: {
+                                color: "#00b6ff",
+                                fontSize: 15,
+                                padding: [0, 0, 0, -60]
+                            },
                             axisLine: {
                                 show: false,
                             },
@@ -384,6 +386,7 @@
                         {
                             ...minAndMax,
                             type: 'value',
+                            splitNumber : 4,
                             axisLine: {
                                 show: false,
                             },
@@ -498,6 +501,7 @@
             init() {
                 getQsdbData({sjfw: this.activeTab2, sfxsjjr: this.activeTabJjr})
                     .then(res => {
+                        console.log(res);
                         this.resData = res.data
 
                         this.cxsJkbDataList = res.data.cxsJkbDataList

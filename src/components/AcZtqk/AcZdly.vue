@@ -63,7 +63,7 @@
                         show: true,
                         formatter(params){
                             let index = params.dataIndex
-                            return `企业总数:${_this.qyzsArr[index]}<br/>复工数:${_this.fgzsArr[index]}<br/>复工率:${_this.fglArr[index]}`
+                            return `企业总数:${_this.qyzsArr[index] + _this.fgzsArr[index]}万<br/>复工数:${_this.fgzsArr[index]}万<br/>复工率:${_this.fglArr[index]}%`
                         }
                     },
                     xAxis: [
@@ -114,6 +114,9 @@
                     yAxis: [
                         {
                             type: 'value',
+                            min:0,
+                            max: this.gzlsqk.fglMax || 100,
+                            splitNumber : 2,
                             nameTextStyle: {
                                 color: "#00b6ff",
                                 fontSize: 15,
@@ -140,6 +143,8 @@
                         },
                         {
                             type: 'value',
+                            min:0,
+                            max: this.gzlsqk.qyzsMax || 100,
                             axisLine: {
                                 show: false,
                             },
@@ -237,7 +242,12 @@
             /* 企业总数 */
             qyzsArr() {
                 let {qyzsArr} = this.gzlsqk
-                return qyzsArr || []
+                if(qyzsArr){
+                    return qyzsArr.map((item, index)=>{
+                        return item-this.fgzsArr[index]
+                    })
+                }
+                return []
             },
             /* 复工数 */
             fgzsArr() {

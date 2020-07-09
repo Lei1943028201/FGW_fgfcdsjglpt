@@ -199,10 +199,10 @@
             }
         }
         .fd-bottom {
-            margin-top: 10px;
+            margin-top: 5px;
         }
         .fd-value-01 {
-            font-size: 24px;
+            font-size: 28px;
             font-weight: bold;
 
         }
@@ -213,7 +213,7 @@
             }
         }
         .fd-value-01 {
-            font-size: 24px;
+            font-size: 28px;
             font-weight: bold;
 
         }

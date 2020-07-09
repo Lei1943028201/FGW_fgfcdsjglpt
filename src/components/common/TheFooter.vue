@@ -22,6 +22,5 @@
         font-size: 15px;
         color: #0377aa;
         text-align: center;
-        background: url("../../../public/img/bg-footer.png") repeat-x 1px 100%;
     }
 </style>

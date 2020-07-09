@@ -272,7 +272,7 @@
                         show: true,
                         formatter(params){
                             let index = params.dataIndex
-                            return `企业总数:${_this.qyzsArr[index]}<br/>复工企业数:${_this.fgqysArr[index]}<br/>复工率:${_this.drfglArr[index]}`
+                            return `企业总数:${_this.accAdd(_this.qyzsArr[index], _this.fgqysArr[index])}万<br/>复工企业数:${_this.fgqysArr[index]}万<br/>复工率:${_this.drfglArr[index]}%`
                         }
                     },
                     xAxis: [
@@ -297,6 +297,8 @@
                     yAxis: [
                         {
                             name: '单位:万',
+                            min:0,
+                            splitNumber : 3,
                             nameTextStyle: {
                                 color: "#00b6ff",
                                 fontSize: 15,
@@ -321,6 +323,9 @@
                         },
                         {
                             type: 'value',
+                            min:0,
+                            max: this.resData.drfglMax || 100,
+                            splitNumber : 2,
                             axisLine: {
                                 show: false,
                             },
@@ -382,7 +387,12 @@
             /* 企业总数 */
             qyzsArr() {
                 let {qyzsArr} = this.resData
-                return qyzsArr || []
+                if(qyzsArr){
+                    return qyzsArr.map((item, index)=>{
+                        return this.accSub(item, this.fgqysArr[index])
+                    })
+                }
+                return  []
             },
             /* 复工企业数 */
             fgqysArr() {
