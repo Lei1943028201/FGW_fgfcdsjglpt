@@ -9,7 +9,7 @@
  *                      详细说明看注释  !important
  */
 // 默认开发环境
-const develop = true;
+const develop = false;
 //
 const config = {
     //  是否是调试模式，true 为json数据，false 为服务器数据

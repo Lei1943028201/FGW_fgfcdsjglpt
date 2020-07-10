@@ -3,11 +3,11 @@ export default {
         /* 去除负号的显示 */
         filterText: function (value) {
             if (!value && value != 0) {
-                return ''
+                return '--'
             }
             value = String(value)
             return value.replace(/-/, '');
-        }
+        },
     },
     computed: {
 

@@ -20,17 +20,17 @@
         <!-- 数据展示--开始 -->
         <ul class="fd-content-card clear">
             <li>
-                <p class="fd-text-1"><span>{{cardData1.value1}}</span>%</p>
+                <p class="fd-text-1"><span>{{cardData1.value1 | filterText}}</span>%</p>
                 <p class="fd-text-2">全国{{activeTabName1}}率</p>
                 <p class="fd-text-3"><span :class="classNameIsUp(cardData1.value2)">{{cardData1.value2 | filterText}}%</span>昨日</p>
             </li>
             <li>
-                <p class="fd-text-1"><span>{{cardData2.value1}}</span>%</p>
+                <p class="fd-text-1"><span>{{cardData2.value1 | filterText}}</span>%</p>
                 <p class="fd-text-2">北京{{activeTabName1}}率</p>
                 <p class="fd-text-3"><span :class="classNameIsUp(cardData2.value2)">{{cardData2.value2 | filterText}}%</span>昨日</p>
             </li>
             <li>
-                <p class="fd-text-1"><span>{{cardData3.value1}}</span></p>
+                <p class="fd-text-1"><span>{{cardData3.value1 | filterText}}</span></p>
                 <p class="fd-text-2">全国排名</p>
                 <p class="fd-text-3"><span :class="classNameIsUp(cardData3.value2)">{{cardData3.value2 | filterText}}</span>昨日</p>
             </li>

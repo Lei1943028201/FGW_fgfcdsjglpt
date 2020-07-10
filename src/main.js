@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
-import {Popover} from 'element-ui';
+import {Table, TableColumn} from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import router from './router'
 import './components' // 注册全局组件
@@ -9,8 +9,9 @@ import 'amfe-flexible';
 import store from './store/'
 import minxinCommon from './mixins/mixin-common'
 Vue.config.productionTip = false
+Vue.use(Table)
+Vue.use(TableColumn)
 Vue.mixin(minxinCommon)
-Vue.use(Popover)
 new Vue({
     el: '#app',
     router,

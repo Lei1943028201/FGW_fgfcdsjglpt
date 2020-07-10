@@ -50,6 +50,7 @@
 <style scoped lang="less" rel="stylesheet/less">
     .fd-content-top {
         margin-top: 12px;
+        min-height: 30px;
         li {
             float: left;
             margin-bottom: 6px;

@@ -8,13 +8,13 @@ const router = new Router({
     routes: [
         {
             path: '*',
-            redirect: '/PageZTQK',
+            redirect: '/pageZTQK',
             meta: {
                 title: '整体情况'
             }
         },
         {
-            path: '/PageZTQK',
+            path: '/pageZTQK',
             component: PageZTQK,
         },
     ],
