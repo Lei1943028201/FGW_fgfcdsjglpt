@@ -1,7 +1,7 @@
 <template>
     <ul class="fd-content-card clear">
         <li v-for="item in dataList" :key="item.name">
-            <p class="fd-text-1"><span>{{item.value}}</span>{{item.unit}}</p>
+            <p class="fd-text-1"><span>{{item.value | filterText}}</span>{{item.unit}}</p>
             <p class="fd-text-2">{{item.name}}</p>
         </li>
     </ul>

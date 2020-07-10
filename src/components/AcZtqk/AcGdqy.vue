@@ -20,11 +20,11 @@
             <!-- 数据展示--开始 -->
             <div class="fd-content-list clear">
                 <div class="left">
-                    <p class="fd-list-item">企业数<span>{{zdData.qys}}</span>{{zdData.qysdw}}</p>
+                    <p class="fd-list-item">企业数<span>{{zdData.qys | filterText}}</span>{{zdData.qysdw}}</p>
                     <p class="fd-list-item">复工数<span>{{zdData.fgs}}</span>{{zdData.fgsdw}}</p>
                 </div>
                 <div class="right">
-                    <p class="fd-list-item">企业数<span>{{xwData.qys}}</span>{{xwData.qysdw}}</p>
+                    <p class="fd-list-item">企业数<span>{{xwData.qys | filterText}}</span>{{xwData.qysdw}}</p>
                     <p class="fd-list-item">复工数<span>{{xwData.fgs}}</span>{{xwData.fgsdw}}</p>
                 </div>
             </div>

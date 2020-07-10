@@ -9,7 +9,7 @@
                 <ul>
                     <li v-for="(item, index) in swlyList" :key="item.name" class="clear fd-item">
                         <!-- 左侧布局 -->
-                        <div class="left" style="width: calc(100% - 130px);">
+                        <div class="left">
                             <p>
                                 <span class="fd-progress--name">{{item.cyyqlx}}</span>
                                 <span class="fd-progress--value1">{{item.cyyqgs}}个</span>
@@ -20,7 +20,7 @@
                             </div>
                         </div>
                         <!-- 右侧布局 -->
-                        <div class="right" style="width: 130px; white-space: nowrap;">
+                        <div class="right">
                             <span v-if="index === 0" style="color: #6194b4;margin-left: 15px">复工率</span><br/>
                             <span class="fd-progress--value2">{{item.cyyqfgl}}%</span>
                             <span :class="classNameIsUp(item.cyyqfglbh)">{{item.cyyqfglbh | filterText}}%</span>
@@ -110,10 +110,17 @@
 
 <style scoped lang="less" rel="stylesheet/less">
     .fd-content-progress{
+        min-height: 160px;
         li{
             margin-top: 15px;
             height: 30px;
             font-size: 15px;
+            .left{
+                width: calc(100% - 130px);
+            }
+            .right{
+                width: 130px; white-space: nowrap;
+            }
         }
         .fd-progress--name{
             margin-left: 5px;

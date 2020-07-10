@@ -6,11 +6,11 @@
         <!-- 数据展示--开始 -->
         <ul class="fd-content-card clear">
             <li>
-                <p class="fd-text-1"><span>{{cardData.qyzs}}</span>{{cardData.qyzsdw}}</p>
+                <p class="fd-text-1"><span>{{cardData.qyzs | filterText}}</span>{{cardData.qyzsdw}}</p>
                 <p class="fd-text-2">企业总数</p>
             </li>
             <li>
-                <p class="fd-text-1"><span>{{cardData.fgs}}</span>{{cardData.fgsdw}}</p>
+                <p class="fd-text-1"><span>{{cardData.fgs | filterText}}</span>{{cardData.fgsdw}}</p>
                 <p class="fd-text-2">复工数</p>
             </li>
             <li>

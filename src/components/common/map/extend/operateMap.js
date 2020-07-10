@@ -14,13 +14,15 @@ mapCharts.init = function (dom) {
     var charts = new MapCharts(dom);
     return charts;
 };
+
 /*
  * 地图图形的构造方法
  * */
 function MapCharts(dom) {
     this.dom = dom; //设置对应的dom元素
 }
-var Tinterval,TintervalJxz;
+
+var Tinterval, TintervalJxz;
 /*
  * 对象对应的属性方法
  * */
@@ -115,9 +117,7 @@ MapCharts.prototype = {
                 relativeWidth: 6028
             },
             areaMapColor: [],
-            data: {
-
-            }, //对应的数据对象
+            data: {}, //对应的数据对象
             setGray: '#0cafdb', //没数据的地图背景颜色
             setGrayStroke: '#333',
             mapidPrefix: 'map-', // mapid 的前缀
@@ -127,7 +127,7 @@ MapCharts.prototype = {
             //选中范围中的视觉元素
             inRange: {
                 //颜色
-                color: ['#07a6ed',"#0154d2"]
+                color: ['#07a6ed', "#0154d2"]
             },
             ///设置分段数
             STEPS: 200,
@@ -142,144 +142,144 @@ MapCharts.prototype = {
             animateObj: {},
             blankclickCallback: function (dataList) {
             },
-            flagNew:null,
+            flagNew: null,
             //气泡的数据
-            qpData:{},
+            qpData: {},
             //请求是否是市的地图
-            requestBjs:null,
+            requestBjs: null,
             //请求是否是区的地图
-            requestQy:null,
+            requestQy: null,
             //请求的svg地址
-            svgUrl:'',
-            list:[
+            svgUrl: '',
+            list: [
                 {
-                    name:'北京市',
-                    value:'1100000',
-                    isShow:true
+                    name: '北京市',
+                    value: '1100000',
+                    isShow: true
                 },
                 {
-                    name:'东城区',
-                    value:'110101',
-                    isShow:true
+                    name: '东城区',
+                    value: '110101',
+                    isShow: true
                 },
                 {
-                    name:'西城区',
-                    value:'110102',
-                    isShow:true
+                    name: '西城区',
+                    value: '110102',
+                    isShow: true
                 },
                 {
-                    name:'朝阳区',
-                    value:'110105',
-                    isShow:true
+                    name: '朝阳区',
+                    value: '110105',
+                    isShow: true
                 },
                 {
-                    name:'丰台区',
-                    value:'110106',
-                    isShow:true
+                    name: '丰台区',
+                    value: '110106',
+                    isShow: true
                 },
                 {
-                    name:'石景山区',
-                    value:'110107',
-                    isShow:true
+                    name: '石景山区',
+                    value: '110107',
+                    isShow: true
                 },
                 {
-                    name:'海淀区',
-                    value:'110108',
-                    isShow:true
+                    name: '海淀区',
+                    value: '110108',
+                    isShow: true
                 },
                 {
-                    name:'门头沟区',
-                    value:'110109',
-                    isShow:true
+                    name: '门头沟区',
+                    value: '110109',
+                    isShow: true
                 },
                 {
-                    name:'房山区',
-                    value:'110111',
-                    isShow:true
+                    name: '房山区',
+                    value: '110111',
+                    isShow: true
                 },
                 {
-                    name:'通州区',
-                    value:'110112',
-                    isShow:true
+                    name: '通州区',
+                    value: '110112',
+                    isShow: true
                 },
                 {
-                    name:'顺义区',
-                    value:'110113',
-                    isShow:true
+                    name: '顺义区',
+                    value: '110113',
+                    isShow: true
                 },
                 {
-                    name:'昌平区',
-                    value:'110114',
-                    isShow:true
+                    name: '昌平区',
+                    value: '110114',
+                    isShow: true
                 },
                 {
-                    name:'大兴区',
-                    value:'110115',
-                    isShow:true
+                    name: '大兴区',
+                    value: '110115',
+                    isShow: true
                 },
                 {
-                    name:'怀柔区',
-                    value:'110116',
-                    isShow:true
+                    name: '怀柔区',
+                    value: '110116',
+                    isShow: true
                 },
                 {
-                    name:'平谷区',
-                    value:'110117',
-                    isShow:true
+                    name: '平谷区',
+                    value: '110117',
+                    isShow: true
                 },
                 {
-                    name:'密云区',
-                    value:'110228',
-                    isShow:true
+                    name: '密云区',
+                    value: '110228',
+                    isShow: true
                 },
                 {
-                    name:'延庆区',
-                    value:'110229',
-                    isShow:true
+                    name: '延庆区',
+                    value: '110229',
+                    isShow: true
                 }
             ],
-            clickCallback: function (name,value) {
+            clickCallback: function (name, value) {
 
             },
             hoverCallback: function (id) {
 
             },
-            bjList:{
-                1001:['110101'], //东城
-                1002:['110102','110117'],//西城，平谷
-                1004:['110105'], //朝阳
-                1005:['110112','110109'], //通州，门头沟
-                1006:['110229','110115'],//延庆，大兴
-                1007:['110116','110111'],//怀柔，房山
-                1008:['110106','110117'],//丰台，平谷
-                1009:['110107','110117'],//石景山，平谷
-                1010:['110114','110117'],//昌平，平谷
-                1011:['110108'],//海淀
-                1012:['110113'], //顺义
+            bjList: {
+                1001: ['110101'], //东城
+                1002: ['110102', '110117'],//西城，平谷
+                1004: ['110105'], //朝阳
+                1005: ['110112', '110109'], //通州，门头沟
+                1006: ['110229', '110115'],//延庆，大兴
+                1007: ['110116', '110111'],//怀柔，房山
+                1008: ['110106', '110117'],//丰台，平谷
+                1009: ['110107', '110117'],//石景山，平谷
+                1010: ['110114', '110117'],//昌平，平谷
+                1011: ['110108'],//海淀
+                1012: ['110113'], //顺义
             },
-            Tinterval:'',
+            Tinterval: '',
             //街乡镇的动画
-            TintervalJxz:'',
-            activeMapId2:'',
-            mapName:'',
-            ssqList:{
-                110101:[ //东城区
-                    ['110101017','110101014'], //永定门外街道   龙潭街道
-                    ['110101016','110101010'], //天坛街道   和平里街道
+            TintervalJxz: '',
+            activeMapId2: '',
+            mapName: '',
+            ssqList: {
+                110101: [ //东城区
+                    ['110101017', '110101014'], //永定门外街道   龙潭街道
+                    ['110101016', '110101010'], //天坛街道   和平里街道
                     ['110101015'], //体育馆街道
                     ['110101011'], //前门街道
-                    ['110101004','110101014'],  //安定门街道  龙潭街道
+                    ['110101004', '110101014'],  //安定门街道  龙潭街道
                     ['110101012'], //崇文门外
-                    ['110101007','110101017'], //朝阳门    永定门外街道
-                    ['110101002','110101014'], //景山街道   龙潭街道
-                    ['110101006','110101017'], //东四街道  永定门外街道
+                    ['110101007', '110101017'], //朝阳门    永定门外街道
+                    ['110101002', '110101014'], //景山街道   龙潭街道
+                    ['110101006', '110101017'], //东四街道  永定门外街道
                     ['110101013'], //东花市街道
                     ['110101001'], //东华门街道
-                    ['110101010','110101017'],  //和平里街道  永定门外街道
+                    ['110101010', '110101017'],  //和平里街道  永定门外街道
                     ['110101008'], //建国门街道
-                    ['110101003','110101014'],  //交道口街道  龙潭街道
+                    ['110101003', '110101014'],  //交道口街道  龙潭街道
                     ['110101005'], //北新桥街道
-                    ['110101009','110101017'] //东直门街道  永定门外街道
+                    ['110101009', '110101017'] //东直门街道  永定门外街道
                 ]
             },
             //标记，即区域圆点的展现形式
@@ -305,12 +305,12 @@ MapCharts.prototype = {
                         ratio: 0.5,//缩放比例
                         img01: {
                             show: true,
-                            src:"http://172.16.193.212:8080/img/icon-bar-01.png",
+                            src: "http://172.16.193.212:8080/img/icon-bar-01.png",
                             size: [12, 50],
                         },
                         img02: {
                             show: true,
-                            src:"http://172.16.193.212:8080/img/icon-bar-02.png",
+                            src: "http://172.16.193.212:8080/img/icon-bar-02.png",
                             size: [12, 50],
                         },
                         outer: {
@@ -345,15 +345,15 @@ MapCharts.prototype = {
 
         var _this = this;
         _this.clearAnimation();
-        var url= _this.opts.svgUrl;
-        if(_this.opts.requestBjs==true&&_this.opts.requestQy==false){
+        var url = _this.opts.svgUrl;
+        if (_this.opts.requestBjs == true && _this.opts.requestQy == false) {
             //请求全市 svg地图
-            _this.requestSvgMap('../svg/'+url+'.svg');
+            _this.requestSvgMap('../svg/' + url + '.svg');
         }
-        if(_this.opts.requestBjs==false&&_this.opts.requestQy==true){
-            _this.opts.mapName=url.substring(4,11);
+        if (_this.opts.requestBjs == false && _this.opts.requestQy == true) {
+            _this.opts.mapName = url.substring(4, 11);
             //请求区 svg地图
-            _this.requestSvgMapJxz('../svg/'+url+'.svg');
+            _this.requestSvgMapJxz('../svg/' + url + '.svg');
         }
 
     },
@@ -400,16 +400,13 @@ MapCharts.prototype = {
 
     },
     addLoadAnimate: function () {
-        var _this=this;
+        var _this = this;
         _this.setSize(0);
-        Snap.animate(0, 1, function (value) {
-            _this.setSize(value);
-        }, 400, mina.easeout(), function () {
-        });
+        Snap.animate(0, 1, function (value) {_this.setSize(value);}, 400, mina.easeout(), function () {});
     },
     setSize: function (ratio) {
-        var _this=this;
-        var imgData={},outerData={},innerData={};
+        var _this = this;
+        var imgData = {}, outerData = {}, innerData = {};
 
         //先将将元素属性置零
         $.each(_this.animateCircleOuter, function (key, value) {
@@ -427,19 +424,24 @@ MapCharts.prototype = {
         })
         $.each(_this.animateImg, function (key, value) {
             _this.imgData = _this.animateImg[key].data("data");
-            if(key.indexOf("X")>-1){
+            if(_this.imgData.height !== _this.imgData.height){
+                _this.imgData.height = 0
+                _this.imgData.y = 0
+            }
+
+            if (key.indexOf("X") > -1) {
                 _this.animateImg[key].attr({
                     x: -16,
-                    y: _this.imgData.y - _this.imgData.height * ratio*2,
+                    y: _this.imgData.y - _this.imgData.height * ratio * 2,
                     width: _this.imgData.width * ratio,
                     height: _this.imgData.height * ratio,
                     display: _this.imgData.show ? 'block' : 'none',
                 });
-            }else{
+            } else {
                 _this.animateImg[key].attr({
 
                     x: 0,
-                    y: _this.imgData.y - _this.imgData.height * ratio*2,
+                    y: _this.imgData.y - _this.imgData.height * ratio * 2,
                     width: _this.imgData.width * ratio,
                     height: _this.imgData.height * ratio,
                     display: _this.imgData.show ? 'block' : 'none',
@@ -460,8 +462,8 @@ MapCharts.prototype = {
     setSymbolStyle: function (propName, style, data, point, symbolSvg) {
 
         var _this = this,
-            _ratio1 =  style.ratio,
-            _ratio2 =  style.ratio;
+            _ratio1 = style.ratio,
+            _ratio2 = style.ratio;
         if (data) {
             /*具体显示多大*/
             /*  if (data.bqxfsljs > 1000) {
@@ -471,7 +473,7 @@ MapCharts.prototype = {
               } else{
                   _ratio1 *= 0.5;
               }*/
-            _ratio1=1.0*data.bqxfsljs/_this.opts.xsMaxValue;
+            _ratio1 = 1.0 * data.bqxfsljs / _this.opts.xsMaxValue;
             /*具体显示多大*/
             /*  if (data.zbwxfsljs > 1000) {
                   _ratio2 *= 1.5;
@@ -480,36 +482,36 @@ MapCharts.prototype = {
               } else{
                   _ratio2 *= 0.5;
               }*/
-            _ratio2=1.0*data.zbwxfsljs/_this.opts.xsMaxValue;
+            _ratio2 = 1.0 * data.zbwxfsljs / _this.opts.xsMaxValue;
 
-            if(_ratio1>=0.7 || true){
-                style.img01.src="http://172.16.193.212:8080/img/icon-bar-01.png"
-            }else if(_ratio1<0.7&&_ratio1>=0.5){
-                style.img01.src='public/img/img-yellow-01.png'
-            }else if(_ratio1<0.5&&_ratio1>=0.3){
-                style.img01.src='public/img/img-yellow-02.png'
-            }else if(_ratio1<0.3&&_ratio1>=0.1){
-                style.img01.src='public/img/img-yellow-03.png'
-            }else if(_ratio1<0.1){
-                style.img01.src='public/img/img-yellow-04.png'
+            if (_ratio1 >= 0.7 || true) {
+                style.img01.src = "http://172.16.193.212:8080/img/icon-bar-01.png"
+            } else if (_ratio1 < 0.7 && _ratio1 >= 0.5) {
+                style.img01.src = 'public/img/img-yellow-01.png'
+            } else if (_ratio1 < 0.5 && _ratio1 >= 0.3) {
+                style.img01.src = 'public/img/img-yellow-02.png'
+            } else if (_ratio1 < 0.3 && _ratio1 >= 0.1) {
+                style.img01.src = 'public/img/img-yellow-03.png'
+            } else if (_ratio1 < 0.1) {
+                style.img01.src = 'public/img/img-yellow-04.png'
             }
-            if(_ratio2>=0.7 || true){
-                style.img02.src="http://172.16.193.212:8080/img/icon-bar-02.png"
-            }else if(_ratio2<0.7&&_ratio2>=0.5){
-                style.img02.src='public/img/img-green-01.png'
-            }else if(_ratio2<0.5&&_ratio2>=0.3){
-                style.img02.src='public/img/img-green-02.png'
-            }else if(_ratio2<0.3&&_ratio2>=0.1){
-                style.img02.src='public/img/img-green-03.png'
-            }else if(_ratio2<0.1){
-                style.img02.src='public/img/img-green-04.png'
+            if (_ratio2 >= 0.7 || true) {
+                style.img02.src = "http://172.16.193.212:8080/img/icon-bar-02.png"
+            } else if (_ratio2 < 0.7 && _ratio2 >= 0.5) {
+                style.img02.src = 'public/img/img-green-01.png'
+            } else if (_ratio2 < 0.5 && _ratio2 >= 0.3) {
+                style.img02.src = 'public/img/img-green-02.png'
+            } else if (_ratio2 < 0.3 && _ratio2 >= 0.1) {
+                style.img02.src = 'public/img/img-green-03.png'
+            } else if (_ratio2 < 0.1) {
+                style.img02.src = 'public/img/img-green-04.png'
             }
 
             if (data) {
-                _this.animateCircleOuter[propName] = _this.snap.paper.ellipse(0,0, 0, 0).attr({
+                _this.animateCircleOuter[propName] = _this.snap.paper.ellipse(0, 0, 0, 0).attr({
                     stroke: style.outer.stroke,
                     "stroke-width": style.outer.strokeWidth,
-                    opacity:0.05
+                    opacity: 0.05
                 }).data("data", {
                     x: 0,
                     y: 0,
@@ -520,7 +522,7 @@ MapCharts.prototype = {
                     fill: style.inner.fill,
                     stroke: style.inner.stroke,
                     "stroke-width": style.inner.strokeWidth,
-                    opacity:0.05
+                    opacity: 0.05
                 }).data("data", {
                     x: -20,
                     y: 0,
@@ -529,7 +531,7 @@ MapCharts.prototype = {
                 });
 
                 /*是否显示柱子*/
-                _this.animateImg[propName+"X"] = _this.snap.paper.image(style.img01.src,point.x, point.y, 0, 0).data("data", {
+                _this.animateImg[propName + "X"] = _this.snap.paper.image(style.img01.src, point.x, point.y, 0, 0).data("data", {
                     x: 0,
                     y: style.img01.size[1] * _ratio1,
                     width: style.img01.size[0],
@@ -537,7 +539,7 @@ MapCharts.prototype = {
                     show: style.img01.show,
                 });
                 /*是否显示柱子*/
-                _this.animateImg[propName+"Y"] = _this.snap.paper.image(style.img02.src, point.x, point.y, 0, 0).data("data", {
+                _this.animateImg[propName + "Y"] = _this.snap.paper.image(style.img02.src, point.x, point.y, 0, 0).data("data", {
                     x: -20,
                     y: style.img02.size[1] * _ratio2,
                     width: style.img02.size[0],
@@ -545,18 +547,17 @@ MapCharts.prototype = {
                     show: style.img02.show,
                 });
 
-                symbolSvg.add(_this.animateCircleOuter[propName],_this.animateCircleInner[propName],_this.animateImg[propName+"X"],_this.animateImg[propName+"Y"]);
+                symbolSvg.add(_this.animateCircleOuter[propName], _this.animateCircleInner[propName], _this.animateImg[propName + "X"], _this.animateImg[propName + "Y"]);
                 //  var height = style.img.show ? style.img.size[1] * _ratio : 0;
                 symbolSvg.attr({
                     display: style.show ? 'block' : 'none',
-                    transform:"translate("+point.x+","+point.y+")"
+                    transform: "translate(" + point.x + "," + point.y + ")"
                 })
 
             }
 
 
-
-        }else{
+        } else {
             //仅仅改变颜色
             _this.animateCircleOuter[propName].attr({
                 stroke: style.outer.stroke,
@@ -568,7 +569,7 @@ MapCharts.prototype = {
                 "stroke-width": style.inner.strokeWidth
             });
             /*如果元素不是最顶层元素将元素置为最顶层*/
-            if(_this.hoverName!=propName){
+            if (_this.hoverName != propName) {
                 _this.areaMapCircle[propName].parent().append(_this.areaMapCircle[propName]);
             }
         }
@@ -599,7 +600,7 @@ MapCharts.prototype = {
     requestSvgMap: function () {
         var _this = this;
         //  加载svg地图
-        getMapSvg().then(res=>{
+        getMapSvg().then(res => {
             _this.setSvgMap(res)
         })
     },
@@ -608,7 +609,7 @@ MapCharts.prototype = {
      * */
     renderJxz: function () {
         var _this = this;
-        var data={
+        var data = {
             1001: {
                 sas: 410,
                 jas: 883
@@ -633,27 +634,27 @@ MapCharts.prototype = {
                 sas: 460,
                 jas: 883
             },
-            1007:{
+            1007: {
                 sas: 470,
                 jas: 883
             },
-            1008:{
+            1008: {
                 sas: 480,
                 jas: 883
             },
-            1009:{
+            1009: {
                 sas: 490,
                 jas: 883
             },
-            1010:{
+            1010: {
                 sas: 500,
                 jas: 883
             },
-            1011:{
+            1011: {
                 sas: 510,
                 jas: 883
             },
-            1012:{
+            1012: {
                 sas: 520,
                 jas: 883
             },
@@ -681,27 +682,27 @@ MapCharts.prototype = {
                 sas: 460,
                 jas: 883
             },
-            1019:{
+            1019: {
                 sas: 470,
                 jas: 883
             },
-            1020:{
+            1020: {
                 sas: 480,
                 jas: 883
             },
-            1021:{
+            1021: {
                 sas: 490,
                 jas: 883
             },
-            1022:{
+            1022: {
                 sas: 500,
                 jas: 883
             },
-            1023:{
+            1023: {
                 sas: 510,
                 jas: 883
             },
-            1024:{
+            1024: {
                 sas: 520,
                 jas: 883
             },
@@ -729,27 +730,27 @@ MapCharts.prototype = {
                 sas: 460,
                 jas: 883
             },
-            1031:{
+            1031: {
                 sas: 470,
                 jas: 883
             },
-            1032:{
+            1032: {
                 sas: 480,
                 jas: 883
             },
-            1033:{
+            1033: {
                 sas: 490,
                 jas: 883
             },
-            1034:{
+            1034: {
                 sas: 500,
                 jas: 883
             },
-            1035:{
+            1035: {
                 sas: 510,
                 jas: 883
             },
-            1036:{
+            1036: {
                 sas: 520,
                 jas: 883
             },
@@ -777,19 +778,19 @@ MapCharts.prototype = {
                 sas: 460,
                 jas: 883
             },
-            1043:{
+            1043: {
                 sas: 490,
                 jas: 883
             },
-            1044:{
+            1044: {
                 sas: 500,
                 jas: 883
             },
-            1045:{
+            1045: {
                 sas: 510,
                 jas: 883
             },
-            1046:{
+            1046: {
                 sas: 520,
                 jas: 883
             },
@@ -817,19 +818,19 @@ MapCharts.prototype = {
                 sas: 460,
                 jas: 883
             },
-            1053:{
+            1053: {
                 sas: 490,
                 jas: 883
             },
-            1054:{
+            1054: {
                 sas: 500,
                 jas: 883
             },
-            1055:{
+            1055: {
                 sas: 510,
                 jas: 883
             },
-            1056:{
+            1056: {
                 sas: 520,
                 jas: 883
             },
@@ -857,19 +858,19 @@ MapCharts.prototype = {
                 sas: 460,
                 jas: 883
             },
-            1073:{
+            1073: {
                 sas: 490,
                 jas: 883
             },
-            1074:{
+            1074: {
                 sas: 500,
                 jas: 883
             },
-            1075:{
+            1075: {
                 sas: 510,
                 jas: 883
             },
-            1076:{
+            1076: {
                 sas: 520,
                 jas: 883
             },
@@ -897,19 +898,19 @@ MapCharts.prototype = {
                 sas: 460,
                 jas: 883
             },
-            1083:{
+            1083: {
                 sas: 490,
                 jas: 883
             },
-            1084:{
+            1084: {
                 sas: 500,
                 jas: 883
             },
-            1085:{
+            1085: {
                 sas: 510,
                 jas: 883
             },
-            1086:{
+            1086: {
                 sas: 520,
                 jas: 883
             },
@@ -937,19 +938,19 @@ MapCharts.prototype = {
                 sas: 460,
                 jas: 883
             },
-            1093:{
+            1093: {
                 sas: 490,
                 jas: 883
             },
-            1094:{
+            1094: {
                 sas: 500,
                 jas: 883
             },
-            1095:{
+            1095: {
                 sas: 510,
                 jas: 883
             },
-            1096:{
+            1096: {
                 sas: 520,
                 jas: 883
             },
@@ -977,19 +978,19 @@ MapCharts.prototype = {
                 sas: 460,
                 jas: 883
             },
-            1103:{
+            1103: {
                 sas: 490,
                 jas: 883
             },
-            1104:{
+            1104: {
                 sas: 500,
                 jas: 883
             },
-            1105:{
+            1105: {
                 sas: 510,
                 jas: 883
             },
-            1106:{
+            1106: {
                 sas: 520,
                 jas: 883
             },
@@ -1009,11 +1010,11 @@ MapCharts.prototype = {
                 sas: 440,
                 jas: 883
             },
-            1111:{
+            1111: {
                 sas: 510,
                 jas: 883
             },
-            1112:{
+            1112: {
                 sas: 520,
                 jas: 883
             },
@@ -1041,27 +1042,27 @@ MapCharts.prototype = {
                 sas: 460,
                 jas: 883
             },
-            1119:{
+            1119: {
                 sas: 470,
                 jas: 883
             },
-            1120:{
+            1120: {
                 sas: 480,
                 jas: 883
             },
-            1121:{
+            1121: {
                 sas: 490,
                 jas: 883
             },
-            1122:{
+            1122: {
                 sas: 500,
                 jas: 883
             },
-            1123:{
+            1123: {
                 sas: 510,
                 jas: 883
             },
-            1124:{
+            1124: {
                 sas: 520,
                 jas: 883
             },
@@ -1089,27 +1090,27 @@ MapCharts.prototype = {
                 sas: 460,
                 jas: 883
             },
-            1131:{
+            1131: {
                 sas: 470,
                 jas: 883
             },
-            1132:{
+            1132: {
                 sas: 480,
                 jas: 883
             },
-            1133:{
+            1133: {
                 sas: 490,
                 jas: 883
             },
-            1134:{
+            1134: {
                 sas: 500,
                 jas: 883
             },
-            1135:{
+            1135: {
                 sas: 510,
                 jas: 883
             },
-            1136:{
+            1136: {
                 sas: 520,
                 jas: 883
             },
@@ -1137,19 +1138,19 @@ MapCharts.prototype = {
                 sas: 460,
                 jas: 883
             },
-            1143:{
+            1143: {
                 sas: 490,
                 jas: 883
             },
-            1144:{
+            1144: {
                 sas: 500,
                 jas: 883
             },
-            1145:{
+            1145: {
                 sas: 510,
                 jas: 883
             },
-            1146:{
+            1146: {
                 sas: 520,
                 jas: 883
             },
@@ -1177,19 +1178,19 @@ MapCharts.prototype = {
                 sas: 460,
                 jas: 883
             },
-            1153:{
+            1153: {
                 sas: 490,
                 jas: 883
             },
-            1154:{
+            1154: {
                 sas: 500,
                 jas: 883
             },
-            1155:{
+            1155: {
                 sas: 510,
                 jas: 883
             },
-            1156:{
+            1156: {
                 sas: 520,
                 jas: 883
             },
@@ -1217,19 +1218,19 @@ MapCharts.prototype = {
                 sas: 460,
                 jas: 883
             },
-            1173:{
+            1173: {
                 sas: 490,
                 jas: 883
             },
-            1174:{
+            1174: {
                 sas: 500,
                 jas: 883
             },
-            1175:{
+            1175: {
                 sas: 510,
                 jas: 883
             },
-            1176:{
+            1176: {
                 sas: 520,
                 jas: 883
             },
@@ -1257,19 +1258,19 @@ MapCharts.prototype = {
                 sas: 460,
                 jas: 883
             },
-            1183:{
+            1183: {
                 sas: 490,
                 jas: 883
             },
-            1184:{
+            1184: {
                 sas: 500,
                 jas: 883
             },
-            1185:{
+            1185: {
                 sas: 510,
                 jas: 883
             },
-            1186:{
+            1186: {
                 sas: 520,
                 jas: 883
             },
@@ -1297,19 +1298,19 @@ MapCharts.prototype = {
                 sas: 460,
                 jas: 883
             },
-            1193:{
+            1193: {
                 sas: 490,
                 jas: 883
             },
-            1194:{
+            1194: {
                 sas: 500,
                 jas: 883
             },
-            1195:{
+            1195: {
                 sas: 510,
                 jas: 883
             },
-            1196:{
+            1196: {
                 sas: 520,
                 jas: 883
             },
@@ -1353,27 +1354,27 @@ MapCharts.prototype = {
                 sas: 460,
                 jas: 883
             },
-            1207:{
+            1207: {
                 sas: 470,
                 jas: 883
             },
-            1208:{
+            1208: {
                 sas: 480,
                 jas: 883
             },
-            1209:{
+            1209: {
                 sas: 490,
                 jas: 883
             },
-            1210:{
+            1210: {
                 sas: 500,
                 jas: 883
             },
-            1211:{
+            1211: {
                 sas: 510,
                 jas: 883
             },
-            1212:{
+            1212: {
                 sas: 520,
                 jas: 883
             },
@@ -1401,21 +1402,21 @@ MapCharts.prototype = {
                 sas: 460,
                 jas: 883
             },
-            1219:{
+            1219: {
                 sas: 470,
                 jas: 883
             },
-            1220:{
+            1220: {
                 sas: 480,
                 jas: 883
             },
 
         };
 
-        _this.opts.data=data;
+        _this.opts.data = data;
         //设置地图样式
         this.setMapJxzStyle();
-        _this.opts.activeMapId='';
+        _this.opts.activeMapId = '';
         //赋值渐变颜色
         _this.gradientColor = this.gradientColors(_this.opts.inRange.color, _this.opts.STEPS);
         //创建提示框
@@ -1558,7 +1559,7 @@ MapCharts.prototype = {
             _this.mapPathBjG.selectAll('path').attr({
                 stroke: _this.mapStyle.mapBj.stroke,
                 fill: _this.opts.setGray, // 默认设置灰色
-                strokeWidth:2
+                strokeWidth: 2
             });
             // 隐藏所有的 -outline
             $('[id$="-outline"]').css({
@@ -1700,8 +1701,8 @@ MapCharts.prototype = {
 
             _this.mapPathBjG.selectAll('path').attr({
                 stroke: _this.mapStyle.mapBj.stroke,
-                fill:'none', // 默认设置灰色
-                strokeWidth:2
+                fill: 'none', // 默认设置灰色
+                strokeWidth: 2
             });
             // 隐藏所有的 -outline
             $('[id$="-outline"]').css({
@@ -1767,16 +1768,16 @@ MapCharts.prototype = {
         _this.areaMapGroup = {};    //设置gruop，用来处理鼠标交互事件
         //设置地图文本样式
         _this.snap.selectAll('text').attr({
-            strokeWidth:0,
+            strokeWidth: 0,
             fontFamily: 'Microsoft YaHei',
             textAnchor: 'middle',
             dominantBaseline: 'middle',
-            color:'none',
+            color: 'none',
             fontSize: 15,
             fill: '#c6d5f4',
             hoverFill: '#fff'
         });
-        if(_this.opts.flagNew==1){
+        if (_this.opts.flagNew == 1) {
             $.each(_this.areaMapDataSource, function (index, value) {
                 _this.opts.mapCount.push(value.bqxfsljs);
             });
@@ -1784,12 +1785,12 @@ MapCharts.prototype = {
                 _this.opts.mapCount1.push(value.zbwxfsljs);
             });
         }
-        if(_this.opts.flagNew==2){
+        if (_this.opts.flagNew == 2) {
             $.each(_this.areaMapDataSource, function (index, value) {
                 _this.opts.mapCount.push(value.drtj);
             });
         }
-        if(_this.opts.flagNew==3){
+        if (_this.opts.flagNew == 3) {
             $.each(_this.areaMapDataSource, function (index, value) {
                 _this.opts.mapCount.push(value.scsas);
             });
@@ -1868,7 +1869,7 @@ MapCharts.prototype = {
                     x: _this.areaMapCircle[_this.mapidPrefix + mapId].attr('cx'),
                     y: _this.areaMapCircle[_this.mapidPrefix + mapId].attr('cy')
                 }).data('data', _this.areaMapData[_this.mapidPrefix + mapId]).data('index', _this.mapIdArr.length).appendTo(_this.snap);
-                _this.areaMapCircle[_this.mapidPrefix + mapId]=_this.snap.paper.g().attr({
+                _this.areaMapCircle[_this.mapidPrefix + mapId] = _this.snap.paper.g().attr({
                     x: _this.areaMapCircle[_this.mapidPrefix + mapId].attr('cx'),
                     y: _this.areaMapCircle[_this.mapidPrefix + mapId].attr('cy')
                 }).data('data', _this.areaMapData[_this.mapidPrefix + mapId]).data('index', _this.mapIdArr.length).appendTo(_this.snap);
@@ -1881,8 +1882,7 @@ MapCharts.prototype = {
                 });
 
 
-
-                _this.setSymbolStyle(_this.mapidPrefix + mapId,_this.opts.symbol.itemStyle.normal,_this.areaMapData[_this.mapidPrefix + mapId],circlePoint,_this.areaMapCircle[_this.mapidPrefix + mapId]);
+                _this.setSymbolStyle(_this.mapidPrefix + mapId, _this.opts.symbol.itemStyle.normal, _this.areaMapData[_this.mapidPrefix + mapId], circlePoint, _this.areaMapCircle[_this.mapidPrefix + mapId]);
 
 
             }
@@ -1891,19 +1891,19 @@ MapCharts.prototype = {
         }
     },
     // 联动
-    triggerClick:function(item){
-        var _this=this;
-        if(item.key=='110000'||item.key=='110100'){
+    triggerClick: function (item) {
+        var _this = this;
+        if (item.key == '110000' || item.key == '110100') {
             //地图上无法选北京市和北京市本委,因此不联动
-            _this.opts.activeMapId=''
-        }else{
-            _this.opts.activeMapId=item.key
+            _this.opts.activeMapId = ''
+        } else {
+            _this.opts.activeMapId = item.key
         }
 
         _this.clearAnimation();
-        _this.opts.mapidJxzPrefix='map-'+item.key+'-';
-        var dataValue=item.key;
-        _this.opts.mapName=item.value;
+        _this.opts.mapidJxzPrefix = 'map-' + item.key + '-';
+        var dataValue = item.key;
+        _this.opts.mapName = item.value;
         $('.js-map-value').text(dataValue);
         var dataName;
         // for(var i=0;i<_this.opts.list.length;i++){
@@ -1994,7 +1994,7 @@ MapCharts.prototype = {
         var _this = this;
         //防止最大值等于最小值的情况index出现无穷大的情况
 
-        if((_this.opts.xsMaxValue - _this.opts.xsMinValue) <= 0) {
+        if ((_this.opts.xsMaxValue - _this.opts.xsMinValue) <= 0) {
             return _this.gradientColor[0];
         }
         var fill = '';
@@ -2020,22 +2020,22 @@ MapCharts.prototype = {
             //如果当前元素时一个集合，则获取子集的path，否则子集则是一个path
             var _path = value.selectAll('path').length > 0 ? value.selectAll('path') : value;
 
-            if(_this.opts.flagNew==1){
+            if (_this.opts.flagNew == 1) {
                 _path.attr({
                     fill: "#047bdf", //根据案件合格率获取对应的颜色
-                    opacity:'1'
+                    opacity: '1'
                 });
             }
-            if(_this.opts.flagNew==2){
+            if (_this.opts.flagNew == 2) {
                 _path.attr({
                     fill: _this.getColorByValue(data.drtj), //根据案件合格率获取对应的颜色
-                    opacity:'0.30'
+                    opacity: '0.30'
                 });
             }
-            if(_this.opts.flagNew==3){
+            if (_this.opts.flagNew == 3) {
                 _path.attr({
                     fill: _this.getColorByValue(data.scsas), //根据案件合格率获取对应的颜色
-                    opacity:'0.30'
+                    opacity: '0.30'
                 });
             }
 
@@ -2059,21 +2059,21 @@ MapCharts.prototype = {
             //对应的数据
             var mapData = _this.areaMapData[name];
             //热力图 鼠标滑过事件
-            if(value[0]!=undefined){
-                _this.setdivJxz(name,value[0]);
+            if (value[0] != undefined) {
+                _this.setdivJxz(name, value[0]);
                 value[0].mouseover(function (event) {
                         _this.clearAnimation();
                         var event = event || window.event;
                         _this.mapAreaClick(name, _this.opts.flag);
-                        _this.setTooltipPositionJxz(event,name,value[0]);
+                        _this.setTooltipPositionJxz(event, name, value[0]);
                     }
                 ).mouseout(function (event) {
-                    // _this.resetActiveStyle();
+                        // _this.resetActiveStyle();
                         //name map-110101-1001
-                        var _name=name.substring(4,10);
+                        var _name = name.substring(4, 10);
                         setTimeout(function () {
                             _this.setMapBannerJxz(_name);
-                        },1500)
+                        }, 1500)
 
                     }
                 )
@@ -2083,19 +2083,19 @@ MapCharts.prototype = {
 
         $.each(_this.areaMapText, function (name, value) {
             //热力图 鼠标滑过事件
-            if(value!=undefined){
+            if (value != undefined) {
                 value.mouseover(function (event) {
                         var event = event || window.event;
                         _this.mapAreaClick(name, _this.opts.flag);
-                        _this.setTooltipPositionJxz(event,name,value);
+                        _this.setTooltipPositionJxz(event, name, value);
                     }
                 ).mouseout(function (event) {
-                    //_this.resetActiveStyle();
+                        //_this.resetActiveStyle();
                         //name map-110101-1001
-                        var _name=name.substring(4,10);
+                        var _name = name.substring(4, 10);
                         setTimeout(function () {
                             _this.setMapBannerJxz(_name);
-                        },1500)
+                        }, 1500)
                     }
                 )
             }
@@ -2122,32 +2122,32 @@ MapCharts.prototype = {
             //对应的数据
             var mapData = _this.areaMapData[name];
             //热力图 鼠标滑过事件
-            if(value[0]!=undefined){
+            if (value[0] != undefined) {
 
                 value[0].mouseover(function (event) {
                         _this.clearAnimation();
                         var event = event || window.event;
-                        _this.mapAreaClick(name, _this.opts.flag,event);
+                        _this.mapAreaClick(name, _this.opts.flag, event);
                         // debugger
-                        _this.setTooltipPositionJxz(event,name,value[0]);
+                        _this.setTooltipPositionJxz(event, name, value[0]);
                     }
                 ).mouseout(function (event) {
                     _this.opts.hoverCallback('')
                     _this.resetActiveStyle();
-                    if(!($('.fd-map-item').hasClass('fd-hide'))){
+                    if (!($('.fd-map-item').hasClass('fd-hide'))) {
                         $('.fd-map-item').addClass('fd-hide');
                     }
                 }).click(function () {
                     _this.clearAnimation();
-                    _this.opts.mapidJxzPrefix=name+'-';
+                    _this.opts.mapidJxzPrefix = name + '-';
 
-                    var dataValue=name.substring(4,11);
-                    _this.opts.mapName=dataValue;
+                    var dataValue = name.substring(4, 11);
+                    _this.opts.mapName = dataValue;
                     $('.js-map-value').text(dataValue);
                     var dataName;
-                    for(var i=0;i<_this.opts.list.length;i++){
-                        if(_this.opts.list[i].value==dataValue){
-                            dataName=_this.opts.list[i].name;
+                    for (var i = 0; i < _this.opts.list.length; i++) {
+                        if (_this.opts.list[i].value == dataValue) {
+                            dataName = _this.opts.list[i].name;
                         }
                     }
                     $('.js-map-name').text(dataName);
@@ -2183,44 +2183,44 @@ MapCharts.prototype = {
 
     },
     // 设置提示框位置
-    setdivJxz:function(name,path){
+    setdivJxz: function (name, path) {
         var _name = name;
-        _name=name.substring(4,10);
-        var _name2=name.substring(12,15);
-        _name2=_name+_name2;
-        var _event=$('#jsMap-'+_name2);
-        var node=path.node;
-        var rect=node.getBoundingClientRect();
-        var content=document.querySelector('#jsMapBox').getBoundingClientRect();
-        var left=rect.x+rect.width/2-content.x-25+'px';
-        var top=rect.y+rect.height/2-content.y-0+'px';
+        _name = name.substring(4, 10);
+        var _name2 = name.substring(12, 15);
+        _name2 = _name + _name2;
+        var _event = $('#jsMap-' + _name2);
+        var node = path.node;
+        var rect = node.getBoundingClientRect();
+        var content = document.querySelector('#jsMapBox').getBoundingClientRect();
+        var left = rect.x + rect.width / 2 - content.x - 25 + 'px';
+        var top = rect.y + rect.height / 2 - content.y - 0 + 'px';
         _event.css({
-            left : left,
-            top : top,
+            left: left,
+            top: top,
         });
     },
     // 设置提示框位置
-    setdiv:function(name,path){
+    setdiv: function (name, path) {
         var _name = name;
-        _name=name.substring(4,10);
-        var _event=$('#jsMap-'+_name);
-        var node=path.node;
-        var rect=node.getBoundingClientRect();
-        var content=document.querySelector('#jsMapBox').getBoundingClientRect();
-        var left=rect.x+rect.width/2-content.x-25+'px';
-        var top=rect.y+rect.height/2-content.y-0+'px';
+        _name = name.substring(4, 10);
+        var _event = $('#jsMap-' + _name);
+        var node = path.node;
+        var rect = node.getBoundingClientRect();
+        var content = document.querySelector('#jsMapBox').getBoundingClientRect();
+        var left = rect.x + rect.width / 2 - content.x - 25 + 'px';
+        var top = rect.y + rect.height / 2 - content.y - 0 + 'px';
         _event.css({
-            left : left,
-            top : top,
+            left: left,
+            top: top,
         });
     },
     //街乡镇的地图轮训方法
     setMapBannerJxz: function (name) {
-        var _this=this;
+        var _this = this;
 
-        var _name=name;
-        var beijingsy=_this.opts.ssqList[name];
-        if(_this.opts.ssqList[name]==undefined){
+        var _name = name;
+        var beijingsy = _this.opts.ssqList[name];
+        if (_this.opts.ssqList[name] == undefined) {
             return
         }
         var num = 0;
@@ -2238,20 +2238,20 @@ MapCharts.prototype = {
 
     },
     //执行地图轮询的方法
-    setMapBanner:function () {
-        var _this=this;
-        var beijingsy=[
-            ['110102','110117'],//西城，平谷
+    setMapBanner: function () {
+        var _this = this;
+        var beijingsy = [
+            ['110102', '110117'],//西城，平谷
             ['110105'], //朝阳
-            ['110112','110109'], //通州，门头沟
+            ['110112', '110109'], //通州，门头沟
             ['110101'], //东城
-            ['110107','110117'],//石景山，平谷
+            ['110107', '110117'],//石景山，平谷
             ['110113'], //顺义
-            ['110229','110115'],//延庆，大兴
-            ['110114','110117'],//昌平，平谷
+            ['110229', '110115'],//延庆，大兴
+            ['110114', '110117'],//昌平，平谷
             ['110108'],//海淀
-            ['110116','110111'],//怀柔，房山
-            ['110106','110117'],//丰台，平谷
+            ['110116', '110111'],//怀柔，房山
+            ['110106', '110117'],//丰台，平谷
         ]
         var num = 0;
         var _length = beijingsy.length;
@@ -2266,7 +2266,7 @@ MapCharts.prototype = {
 
     },
     clearAnimation: function () {
-        var _this=this;
+        var _this = this;
         $('.fd-map-items').addClass('fd-hide');
         $('.fd-map-items').removeClass('addAnimation');
         $('.fd-map-items-item').addClass('fd-hide');
@@ -2313,10 +2313,10 @@ MapCharts.prototype = {
     /*
      * 重置活跃的区域索引
      * */
-    resetActiveStyleNew: function() {
+    resetActiveStyleNew: function () {
         var _this = this;
         //如果当前没有活跃的区域，则跳出该方法
-        if(_this.opts.activeMapId === '') {
+        if (_this.opts.activeMapId === '') {
             return;
         }
         //隐藏之前选中区域id对应的icon及动画圆
@@ -2329,9 +2329,9 @@ MapCharts.prototype = {
         _this.setAreaMapFillColor()
         var curData = activeOutline.data('data');
         //如果是圆的话就不用换颜色
-        if(activePath.type !== 'circle') {
+        if (activePath.type !== 'circle') {
             // 重置之前选中区域的颜色
-            if(_this.opts.flagNew==1){
+            if (_this.opts.flagNew == 1) {
                 activePath.attr({
                     fill: '#ffac00',
                     stroke: _this.mapStyle.mapBj.clickStroke,
@@ -2344,7 +2344,7 @@ MapCharts.prototype = {
 
         _this.opts.activeMapId = '';
         //第二个区域的重置
-        if(_this.opts.activeMapId2!=''){
+        if (_this.opts.activeMapId2 != '') {
             //隐藏之前选中区域id对应的icon及动画圆
             $('#jsCircleAnimateg-' + _this.opts.activeMapId2).hide();
             $('.circleGroup').hide();
@@ -2354,9 +2354,9 @@ MapCharts.prototype = {
             // 获取当前区域的数据
             var curData = activeOutline.data('data');
             //如果是圆的话就不用换颜色
-            if(activePath.type !== 'circle') {
+            if (activePath.type !== 'circle') {
                 // 重置之前选中区域的颜色
-                if(_this.opts.flagNew==1){
+                if (_this.opts.flagNew == 1) {
                     activePath.attr({
                         fill: _this.getColorByValue(curData.sas),
                         stroke: _this.mapStyle.mapBj.stroke,
@@ -2374,19 +2374,19 @@ MapCharts.prototype = {
     /*
      * 地图区域点击
      */
-    mapAreaClick: function (name, flag,event) {
+    mapAreaClick: function (name, flag, event) {
         var _this = this;
-        var _id=name.split('-')[1];
+        var _id = name.split('-')[1];
         _this.opts.hoverCallback(_id);
         // debugger
         var _chooseName;
 
-        for(var i=0;i<_this.opts.list.length;i++){
-            if(_this.opts.list[i].value==_id){
-                _chooseName=_this.opts.list[i].name;
+        for (var i = 0; i < _this.opts.list.length; i++) {
+            if (_this.opts.list[i].value == _id) {
+                _chooseName = _this.opts.list[i].name;
             }
         }
-        if(_this.opts.mapName==_chooseName){
+        if (_this.opts.mapName == _chooseName) {
             return
         }
         //每次点击地图 清空轮循动画及元素
@@ -2412,8 +2412,6 @@ MapCharts.prototype = {
         var cy = _this.areaMapCircle[_this.mapidPrefix + _this.opts.activeMapId].attr('cy');
 
 
-
-
         _this.opts.animateObj.ellipse.circleAnimateg.attr({
             id: 'jsCircleAnimateg-' + _data.mapId
         });
@@ -2430,30 +2428,29 @@ MapCharts.prototype = {
          $('.circleGroup').show();*/
     },
     // 设置提示框位置
-    setTooltipPositionJxz:function (event,name,path) {
-        var node=path.node;
-        var rect=node.getBoundingClientRect();
+    setTooltipPositionJxz: function (event, name, path) {
+        var node = path.node;
+        var rect = node.getBoundingClientRect();
 
-        var content=document.querySelector('#jsMapArea').getBoundingClientRect();
-        var left=rect.left+rect.width/2-content.left+'px';
-        var top=rect.top+rect.height/2-content.top+'px';
+        var content = document.querySelector('#jsMapArea').getBoundingClientRect();
+        var left = rect.left + rect.width / 2 - content.left + 'px';
+        var top = rect.top + rect.height / 2 - content.top + 'px';
 
 
-
-        var tooltip= $('.fd-map-item');
+        var tooltip = $('.fd-map-item');
 
         // 设置位置
         tooltip.css({
-            left : left,
-            top : top,
+            left: left,
+            top: top,
         });
         var _this = this;
-        var data=_this.opts.qpData;
+        var data = _this.opts.qpData;
         //[_this.mapidPrefix + mapId] map-110105
         var newData;
 
-        var _newName=name.substring(4,10);
-        newData=data[_newName]
+        var _newName = name.substring(4, 10);
+        newData = data[_newName]
         $('.fd-area-title').text(newData.dqmc);
         $('.js-bqxf').text(newData.bqxfsljs);
         $('.js-zbw').text(newData.zbwxfsljs);
@@ -2479,44 +2476,43 @@ MapCharts.prototype = {
          }*/
     },
     //四舍五入 保留4位
-    changeDataNumSW:function(v,e){
-        if(v==null){
+    changeDataNumSW: function (v, e) {
+        if (v == null) {
             return;
         }
-        v=v.toString();
-        v=v.replace(/[^\d.]/g,"");
-        v=v.replace(/^\./g,"");
-        v=v.replace(".","$#$").replace(/\./g,"").replace("$#$",".");
-        var t=1;
-        for(;e>0;t*=10,e--);
-        for(;e<0;t/=10,e++);
-        return Math.round(v*t)/t;
+        v = v.toString();
+        v = v.replace(/[^\d.]/g, "");
+        v = v.replace(/^\./g, "");
+        v = v.replace(".", "$#$").replace(/\./g, "").replace("$#$", ".");
+        var t = 1;
+        for (; e > 0; t *= 10, e--) ;
+        for (; e < 0; t /= 10, e++) ;
+        return Math.round(v * t) / t;
     },
     // 设置提示框位置
-    setTooltipPosition:function (event,name,path) {
-        var node=path.node;
-        var rect=node.getBoundingClientRect();
+    setTooltipPosition: function (event, name, path) {
+        var node = path.node;
+        var rect = node.getBoundingClientRect();
 
-        var content=document.querySelector('#jsMapArea').getBoundingClientRect();
-        var left=rect.left+rect.width/2-content.left+'px';
-        var top=rect.top+rect.height/2-content.top+'px';
+        var content = document.querySelector('#jsMapArea').getBoundingClientRect();
+        var left = rect.left + rect.width / 2 - content.left + 'px';
+        var top = rect.top + rect.height / 2 - content.top + 'px';
 
 
-
-        var tooltip= $('.fd-map-item');
+        var tooltip = $('.fd-map-item');
 
         // 设置位置
         tooltip.css({
-            left : left,
-            top : top,
+            left: left,
+            top: top,
         });
         var _this = this;
-        var data=_this.opts.qpData;
+        var data = _this.opts.qpData;
         //[_this.mapidPrefix + mapId] map-110105
         var newData;
 
-        var _newName=name.substring(4,10);
-        newData=data[_newName]
+        var _newName = name.substring(4, 10);
+        newData = data[_newName]
         $('.fd-area-title').text(newData.dqmc);
         $('.js-bqxf').text(newData.bqxfsljs);
         $('.js-zbw').text(newData.zbwxfsljs);
@@ -2544,10 +2540,10 @@ MapCharts.prototype = {
     /*
      * 重置活跃的区域索引
      * */
-    resetActiveStyle: function() {
+    resetActiveStyle: function () {
         var _this = this;
         //如果当前没有活跃的区域，则跳出该方法
-        if(_this.opts.activeMapId === '') {
+        if (_this.opts.activeMapId === '') {
             return;
         }
         var activeOutline = _this.areaMap[_this.mapidPrefix + _this.opts.activeMapId] ? _this.areaMap[_this.mapidPrefix + _this.opts.activeMapId] : _this.areaMapCircle[_this.mapidPrefix + _this.opts.activeMapId];
@@ -2556,9 +2552,9 @@ MapCharts.prototype = {
         // 获取当前区域的数据
         var curData = activeOutline.data('data');
         //如果是圆的话就不用换颜色
-        if(activePath.type !== 'circle') {
+        if (activePath.type !== 'circle') {
             // 重置之前选中区域的颜色
-            if(_this.opts.flagNew==1){
+            if (_this.opts.flagNew == 1) {
                 activePath.attr({
                     fill: "#047bdf",
                     stroke: _this.mapStyle.mapBj.stroke,
@@ -2940,20 +2936,20 @@ MapCharts.prototype = {
             // update
             _this.update = function () {
                 circle01.attr({
-                    cx: _this.cx-50,
-                    cy: _this.cy-50,
+                    cx: _this.cx - 50,
+                    cy: _this.cy - 50,
                     rx: 20,
                     ry: 10
                 });
                 circle02.attr({
-                    cx: _this.cx-50,
-                    cy: _this.cy-50,
+                    cx: _this.cx - 50,
+                    cy: _this.cy - 50,
                     rx: 50,
                     ry: 15
                 });
                 circle03.attr({
-                    cx: _this.cx-50,
-                    cy: _this.cy-50,
+                    cx: _this.cx - 50,
+                    cy: _this.cy - 50,
                     rx: 70,
                     ry: 20
                 });
@@ -3038,21 +3034,21 @@ MapCharts.prototype = {
             _this.areaMapData[_this.mapidPrefix + mapId].mapId = mapId;
             _this.areaMapData[_this.mapidPrefix + mapId].fyjb = value.fyjb;
             _this.areaMapData[_this.mapidPrefix + mapId].name = $.trim(value.name);
-            if(_this.opts.flagNew==1){
+            if (_this.opts.flagNew == 1) {
                 _this.areaMapData[_this.mapidPrefix + mapId].sas = Number(value.sas);
                 // 更新文字
                 _this.areaMapText[_this.mapidPrefix + mapId].attr({
                     text: _this.areaMapData[_this.mapidPrefix + mapId].sas
                 });
             }
-            if(_this.opts.flagNew==2){
+            if (_this.opts.flagNew == 2) {
                 _this.areaMapData[_this.mapidPrefix + mapId].drtj = Number(value.drtj);
                 // 更新文字
                 _this.areaMapText[_this.mapidPrefix + mapId].attr({
                     text: _this.areaMapData[_this.mapidPrefix + mapId].drtj
                 });
             }
-            if(_this.opts.flagNew==3){
+            if (_this.opts.flagNew == 3) {
                 _this.areaMapData[_this.mapidPrefix + mapId].scsas = Number(value.scsas);
                 // 更新文字
                 _this.areaMapText[_this.mapidPrefix + mapId].attr({
