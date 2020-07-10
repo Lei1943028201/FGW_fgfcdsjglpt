@@ -305,12 +305,12 @@ MapCharts.prototype = {
                         ratio: 0.5,//缩放比例
                         img01: {
                             show: true,
-                            src: "http://172.16.193.212:8080/img/icon-bar-01.png",
+                            src: window.location.origin +"/img/icon-bar-01.png",
                             size: [12, 50],
                         },
                         img02: {
                             show: true,
-                            src: "http://172.16.193.212:8080/img/icon-bar-02.png",
+                            src:  window.location.origin +"/img/icon-bar-02.png",
                             size: [12, 50],
                         },
                         outer: {
@@ -483,9 +483,8 @@ MapCharts.prototype = {
                   _ratio2 *= 0.5;
               }*/
             _ratio2 = 1.0 * data.zbwxfsljs / _this.opts.xsMaxValue;
-
             if (_ratio1 >= 0.7 || true) {
-                style.img01.src = "http://172.16.193.212:8080/img/icon-bar-01.png"
+                style.img01.src = window.location.origin + "/img/icon-bar-01.png"
             } else if (_ratio1 < 0.7 && _ratio1 >= 0.5) {
                 style.img01.src = 'public/img/img-yellow-01.png'
             } else if (_ratio1 < 0.5 && _ratio1 >= 0.3) {
@@ -496,7 +495,7 @@ MapCharts.prototype = {
                 style.img01.src = 'public/img/img-yellow-04.png'
             }
             if (_ratio2 >= 0.7 || true) {
-                style.img02.src = "http://172.16.193.212:8080/img/icon-bar-02.png"
+                style.img02.src = window.location.origin + "/img/icon-bar-02.png"
             } else if (_ratio2 < 0.7 && _ratio2 >= 0.5) {
                 style.img02.src = 'public/img/img-green-01.png'
             } else if (_ratio2 < 0.5 && _ratio2 >= 0.3) {
