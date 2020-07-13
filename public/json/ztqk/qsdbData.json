@@ -2,32 +2,56 @@
   "code": 200,
   "data": {
     "cxsJkbDataList": [
-      33000,
-      33000,
-      33000,
-      33000,
-      33000,
-      33000,
-      33000,
-      33000,
-      33000,
-      33000
+      "1371",
+      "1580",
+      "1718",
+      "1578",
+      "1943",
+      "2021",
+      "2099",
+      "1868",
+      "2349",
+      "2349"
     ],
     "cxsJsjbDataList": [
-      150,
-      150,
-      150,
-      150,
-      150,
-      150,
-      150,
-      150,
-      150,
-      150
+      "2690",
+      "2195",
+      "2884",
+      "2974",
+      "2509",
+      "3197",
+      "2224",
+      "2446",
+      "3044",
+      "2588"
     ],
     "fgfcDateList": [
       {
+        "date": "06-03"
+      },
+      {
+        "date": "06-05"
+      },
+      {
+        "date": "06-08"
+      },
+      {
         "date": "06-10"
+      },
+      {
+        "date": "06-16"
+      },
+      {
+        "date": "06-17"
+      },
+      {
+        "date": "06-18"
+      },
+      {
+        "date": "06-23"
+      },
+      {
+        "date": "06-24"
       },
       {
         "date": "06-25",
@@ -36,11 +60,220 @@
       }
     ],
     "fgfcLjqzsDataList": [
-      500,
-      510
+      "700",
+      "700",
+      "700",
+      "700",
+      "700",
+      "700",
+      "700",
+      "727",
+      "728",
+      "729"
     ],
     "fgfcSjjzrq": "2020/06/25",
     "gwbfDataList": [
+      {
+        "bh": 556,
+        "date": 1591113600000,
+        "dqmc": "北京市",
+        "fgfczs": 88.56,
+        "gdqfgfczs": [
+          {
+            "bh": 525,
+            "date": 1591113600000,
+            "dqmc": "海淀区",
+            "fgfczs": 103.72,
+            "isEmpty": false,
+            "zrfgfczs": 0.0,
+            "zshb": 103.72
+          },
+          {
+            "bh": 522,
+            "date": 1591113600000,
+            "dqmc": "西城区",
+            "fgfczs": 100.2,
+            "isEmpty": false,
+            "zrfgfczs": 0.0,
+            "zshb": 100.2
+          },
+          {
+            "bh": 521,
+            "date": 1591113600000,
+            "dqmc": "东城区",
+            "fgfczs": 99.98,
+            "isEmpty": false,
+            "zrfgfczs": 0.0,
+            "zshb": 99.98
+          }
+        ],
+        "ghyfgfczs": [
+          {
+            "bh": 118,
+            "date": 1591113600000,
+            "fgfczs": 112.36,
+            "hymc": "金融业",
+            "isEmpty": false,
+            "zrfgfczs": 0.0,
+            "zshb": 112.36
+          },
+          {
+            "bh": 119,
+            "date": 1591113600000,
+            "fgfczs": 104.99,
+            "hymc": "房地产",
+            "isEmpty": false,
+            "zrfgfczs": 0.0,
+            "zshb": 104.99
+          },
+          {
+            "bh": 115,
+            "date": 1591113600000,
+            "fgfczs": 103.56,
+            "hymc": "软件服务",
+            "isEmpty": false,
+            "zrfgfczs": 0.0,
+            "zshb": 103.56
+          }
+        ],
+        "isEmpty": false,
+        "zrfgfczs": 0.0,
+        "zshb": 0.0
+      },
+      {
+        "bh": 559,
+        "date": 1591286400000,
+        "dqmc": "北京市",
+        "fgfczs": 86.56,
+        "gdqfgfczs": [
+          {
+            "bh": 541,
+            "date": 1591286400000,
+            "dqmc": "朝阳区",
+            "fgfczs": 79.56,
+            "isEmpty": false,
+            "zrfgfczs": 90.52,
+            "zshb": -10.96
+          },
+          {
+            "bh": 520,
+            "date": 1591286400000,
+            "dqmc": "延庆区",
+            "fgfczs": 85.41,
+            "isEmpty": false,
+            "zrfgfczs": 79.57,
+            "zshb": 5.84
+          },
+          {
+            "bh": 542,
+            "date": 1591286400000,
+            "dqmc": "海淀区",
+            "fgfczs": 99.75,
+            "isEmpty": false,
+            "zrfgfczs": 103.72,
+            "zshb": -3.97
+          }
+        ],
+        "ghyfgfczs": [
+          {
+            "bh": 123,
+            "date": 1591286400000,
+            "fgfczs": 77.21,
+            "hymc": "工业",
+            "isEmpty": false,
+            "zrfgfczs": 82.41,
+            "zshb": -5.2
+          },
+          {
+            "bh": 125,
+            "date": 1591286400000,
+            "fgfczs": 87.6,
+            "hymc": "交通仓储邮政",
+            "isEmpty": false,
+            "zrfgfczs": 90.4,
+            "zshb": -2.8
+          },
+          {
+            "bh": 130,
+            "date": 1591286400000,
+            "fgfczs": 102.36,
+            "hymc": "房地产",
+            "isEmpty": false,
+            "zrfgfczs": 104.99,
+            "zshb": -2.63
+          }
+        ],
+        "isEmpty": false,
+        "zrfgfczs": 88.56,
+        "zshb": 0.0
+      },
+      {
+        "bh": 563,
+        "date": 1591545600000,
+        "dqmc": "北京市",
+        "fgfczs": 97.32,
+        "gdqfgfczs": [
+          {
+            "bh": 567,
+            "date": 1591545600000,
+            "dqmc": "朝阳区",
+            "fgfczs": 119.85,
+            "isEmpty": false,
+            "zrfgfczs": 79.56,
+            "zshb": 40.29
+          },
+          {
+            "bh": 568,
+            "date": 1591545600000,
+            "dqmc": "海淀区",
+            "fgfczs": 112.85,
+            "isEmpty": false,
+            "zrfgfczs": 99.75,
+            "zshb": 13.1
+          },
+          {
+            "bh": 575,
+            "date": 1591545600000,
+            "dqmc": "大兴区",
+            "fgfczs": 101.72,
+            "isEmpty": false,
+            "zrfgfczs": 90.67,
+            "zshb": 11.05
+          }
+        ],
+        "ghyfgfczs": [
+          {
+            "bh": 145,
+            "date": 1591545600000,
+            "fgfczs": 99.49,
+            "hymc": "工业",
+            "isEmpty": false,
+            "zrfgfczs": 77.21,
+            "zshb": 22.28
+          },
+          {
+            "bh": 134,
+            "date": 1591545600000,
+            "fgfczs": 99.49,
+            "hymc": "工业",
+            "isEmpty": false,
+            "zrfgfczs": 77.21,
+            "zshb": 22.28
+          },
+          {
+            "bh": 152,
+            "date": 1591545600000,
+            "fgfczs": 115.82,
+            "hymc": "房地产",
+            "isEmpty": false,
+            "zrfgfczs": 102.36,
+            "zshb": 13.46
+          }
+        ],
+        "isEmpty": false,
+        "zrfgfczs": 86.56,
+        "zshb": 0.0
+      },
       {
         "bh": 617,
         "date": 1591718400000,
@@ -48,57 +281,371 @@
         "fgfczs": 95.6,
         "gdqfgfczs": [
           {
-            "bh": 621,
+            "bh": 625,
             "date": 1591718400000,
-            "dqmc": "朝阳区",
-            "fgfczs": 124.13,
-            "zrfgfczs": 0.0,
-            "zshb": 124.13
+            "dqmc": "经开区",
+            "fgfczs": 90.08,
+            "isEmpty": false,
+            "zrfgfczs": 97.76,
+            "zshb": -7.68
           },
           {
-            "bh": 622,
+            "bh": 632,
             "date": 1591718400000,
-            "dqmc": "海淀区",
-            "fgfczs": 111.3,
-            "zrfgfczs": 0.0,
-            "zshb": 111.3
+            "dqmc": "密云区",
+            "fgfczs": 82.08,
+            "isEmpty": false,
+            "zrfgfczs": 88.65,
+            "zshb": -6.57
           },
           {
-            "bh": 618,
+            "bh": 668,
             "date": 1591718400000,
-            "dqmc": "东城区",
-            "fgfczs": 111.03,
-            "zrfgfczs": 0.0,
-            "zshb": 111.03
+            "dqmc": "延庆区",
+            "fgfczs": 86.96,
+            "isEmpty": false,
+            "zrfgfczs": 92.2,
+            "zshb": -5.24
           }
         ],
         "ghyfgfczs": [
           {
-            "bh": 173,
+            "bh": 155,
             "date": 1591718400000,
-            "fgfczs": 118.7,
-            "hymc": "金融业",
-            "zrfgfczs": 0.0,
-            "zshb": 118.7
+            "fgfczs": 91.03,
+            "hymc": "农林牧渔",
+            "isEmpty": false,
+            "zrfgfczs": 96.19,
+            "zshb": -5.16
           },
           {
-            "bh": 162,
+            "bh": 166,
             "date": 1591718400000,
-            "fgfczs": 118.7,
-            "hymc": "金融业",
-            "zrfgfczs": 0.0,
-            "zshb": 118.7
+            "fgfczs": 91.03,
+            "hymc": "农林牧渔",
+            "isEmpty": false,
+            "zrfgfczs": 96.19,
+            "zshb": -5.16
           },
           {
-            "bh": 174,
+            "bh": 169,
             "date": 1591718400000,
-            "fgfczs": 115.3,
-            "hymc": "房地产",
-            "zrfgfczs": 0.0,
-            "zshb": 115.3
+            "fgfczs": 95.93,
+            "hymc": "交通仓储邮政",
+            "isEmpty": false,
+            "zrfgfczs": 99.68,
+            "zshb": -3.75
           }
         ],
-        "zrfgfczs": 0.0,
+        "isEmpty": false,
+        "zrfgfczs": 97.32,
+        "zshb": 0.0
+      },
+      {
+        "bh": 722,
+        "date": 1592236800000,
+        "dqmc": "北京市",
+        "fgfczs": 96.64,
+        "gdqfgfczs": [],
+        "ghyfgfczs": [
+          {
+            "bh": 178,
+            "date": 1592236800000,
+            "fgfczs": 111.97,
+            "hymc": "工业",
+            "isEmpty": false,
+            "zrfgfczs": 99.0,
+            "zshb": 12.97
+          },
+          {
+            "bh": 177,
+            "date": 1592236800000,
+            "fgfczs": 99.26,
+            "hymc": "农林牧渔",
+            "isEmpty": false,
+            "zrfgfczs": 91.03,
+            "zshb": 8.23
+          },
+          {
+            "bh": 180,
+            "date": 1592236800000,
+            "fgfczs": 102.09,
+            "hymc": "交通仓储邮政",
+            "isEmpty": false,
+            "zrfgfczs": 95.93,
+            "zshb": 6.16
+          }
+        ],
+        "isEmpty": false,
+        "zrfgfczs": 95.6,
+        "zshb": 0.0
+      },
+      {
+        "bh": 776,
+        "date": 1592323200000,
+        "dqmc": "北京市",
+        "fgfczs": 87.61,
+        "gdqfgfczs": [
+          {
+            "bh": 728,
+            "date": 1592323200000,
+            "dqmc": "丰台区",
+            "fgfczs": 122.68,
+            "isEmpty": false,
+            "zrfgfczs": 99.89,
+            "zshb": 22.79
+          },
+          {
+            "bh": 730,
+            "date": 1592323200000,
+            "dqmc": "经开区",
+            "fgfczs": 101.47,
+            "isEmpty": false,
+            "zrfgfczs": 90.08,
+            "zshb": 11.39
+          },
+          {
+            "bh": 724,
+            "date": 1592323200000,
+            "dqmc": "西城区",
+            "fgfczs": 103.44,
+            "isEmpty": false,
+            "zrfgfczs": 110.68,
+            "zshb": -7.24
+          }
+        ],
+        "ghyfgfczs": [
+          {
+            "bh": 193,
+            "date": 1592323200000,
+            "fgfczs": 96.07,
+            "hymc": "批发零售",
+            "isEmpty": false,
+            "zrfgfczs": 104.15,
+            "zshb": -8.08
+          },
+          {
+            "bh": 198,
+            "date": 1592323200000,
+            "fgfczs": 103.81,
+            "hymc": "服务和管理",
+            "isEmpty": false,
+            "zrfgfczs": 110.68,
+            "zshb": -6.87
+          },
+          {
+            "bh": 196,
+            "date": 1592323200000,
+            "fgfczs": 108.85,
+            "hymc": "房地产",
+            "isEmpty": false,
+            "zrfgfczs": 115.67,
+            "zshb": -6.82
+          }
+        ],
+        "isEmpty": false,
+        "zrfgfczs": 96.64,
+        "zshb": 0.0
+      },
+      {
+        "bh": 830,
+        "date": 1592409600000,
+        "dqmc": "北京市",
+        "fgfczs": 89.67,
+        "gdqfgfczs": [
+          {
+            "bh": 791,
+            "date": 1592409600000,
+            "dqmc": "密云区",
+            "fgfczs": 87.64,
+            "isEmpty": false,
+            "zrfgfczs": 76.16,
+            "zshb": 11.48
+          },
+          {
+            "bh": 782,
+            "date": 1592409600000,
+            "dqmc": "丰台区",
+            "fgfczs": 118.91,
+            "isEmpty": false,
+            "zrfgfczs": 122.68,
+            "zshb": -3.77
+          },
+          {
+            "bh": 792,
+            "date": 1592409600000,
+            "dqmc": "顺义区",
+            "fgfczs": 106.95,
+            "isEmpty": false,
+            "zrfgfczs": 104.02,
+            "zshb": 2.93
+          }
+        ],
+        "ghyfgfczs": [
+          {
+            "bh": 203,
+            "date": 1592409600000,
+            "fgfczs": 108.09,
+            "hymc": "软件服务",
+            "isEmpty": false,
+            "zrfgfczs": 103.43,
+            "zshb": 4.66
+          },
+          {
+            "bh": 201,
+            "date": 1592409600000,
+            "fgfczs": 77.69,
+            "hymc": "建筑业",
+            "isEmpty": false,
+            "zrfgfczs": 79.91,
+            "zshb": -2.22
+          },
+          {
+            "bh": 199,
+            "date": 1592409600000,
+            "fgfczs": 92.32,
+            "hymc": "农林牧渔",
+            "isEmpty": false,
+            "zrfgfczs": 93.72,
+            "zshb": -1.4
+          }
+        ],
+        "isEmpty": false,
+        "zrfgfczs": 87.61,
+        "zshb": 0.0
+      },
+      {
+        "bh": 905,
+        "date": 1592841600000,
+        "dqmc": "北京市",
+        "fgfczs": 94.71,
+        "gdqfgfczs": [
+          {
+            "bh": 906,
+            "date": 1592841600000,
+            "dqmc": "东城区",
+            "fgfczs": 108.22,
+            "isEmpty": false,
+            "zrfgfczs": 101.69,
+            "zshb": 6.53
+          },
+          {
+            "bh": 907,
+            "date": 1592841600000,
+            "dqmc": "西城区",
+            "fgfczs": 107.65,
+            "isEmpty": false,
+            "zrfgfczs": 101.2,
+            "zshb": 6.45
+          },
+          {
+            "bh": 908,
+            "date": 1592841600000,
+            "dqmc": "通州区",
+            "fgfczs": 98.16,
+            "isEmpty": false,
+            "zrfgfczs": 93.38,
+            "zshb": 4.78
+          }
+        ],
+        "ghyfgfczs": [
+          {
+            "bh": 240,
+            "date": 1592841600000,
+            "fgfczs": 115.48,
+            "hymc": "房地产",
+            "isEmpty": false,
+            "zrfgfczs": 109.43,
+            "zshb": 6.05
+          },
+          {
+            "bh": 234,
+            "date": 1592841600000,
+            "fgfczs": 83.33,
+            "hymc": "建筑业",
+            "isEmpty": false,
+            "zrfgfczs": 77.69,
+            "zshb": 5.64
+          },
+          {
+            "bh": 237,
+            "date": 1592841600000,
+            "fgfczs": 101.53,
+            "hymc": "批发零售",
+            "isEmpty": false,
+            "zrfgfczs": 96.89,
+            "zshb": 4.64
+          }
+        ],
+        "isEmpty": false,
+        "zrfgfczs": 89.67,
+        "zshb": 0.0
+      },
+      {
+        "bh": 959,
+        "date": 1592928000000,
+        "dqmc": "北京市",
+        "fgfczs": 91.53,
+        "gdqfgfczs": [
+          {
+            "bh": 963,
+            "date": 1592928000000,
+            "dqmc": "朝阳区",
+            "fgfczs": 109.73,
+            "isEmpty": false,
+            "zrfgfczs": 120.62,
+            "zshb": -10.89
+          },
+          {
+            "bh": 965,
+            "date": 1592928000000,
+            "dqmc": "丰台区",
+            "fgfczs": 114.81,
+            "isEmpty": false,
+            "zrfgfczs": 120.0,
+            "zshb": -5.19
+          },
+          {
+            "bh": 966,
+            "date": 1592928000000,
+            "dqmc": "石景山区",
+            "fgfczs": 100.25,
+            "isEmpty": false,
+            "zrfgfczs": 105.36,
+            "zshb": -5.11
+          }
+        ],
+        "ghyfgfczs": [
+          {
+            "bh": 244,
+            "date": 1592928000000,
+            "fgfczs": 101.64,
+            "hymc": "工业",
+            "isEmpty": false,
+            "zrfgfczs": 109.63,
+            "zshb": -7.99
+          },
+          {
+            "bh": 245,
+            "date": 1592928000000,
+            "fgfczs": 78.15,
+            "hymc": "建筑业",
+            "isEmpty": false,
+            "zrfgfczs": 83.33,
+            "zshb": -5.18
+          },
+          {
+            "bh": 251,
+            "date": 1592928000000,
+            "fgfczs": 110.59,
+            "hymc": "房地产",
+            "isEmpty": false,
+            "zrfgfczs": 115.48,
+            "zshb": -4.89
+          }
+        ],
+        "isEmpty": false,
+        "zrfgfczs": 94.71,
         "zshb": 0.0
       },
       {
@@ -112,24 +659,27 @@
             "date": 1593014400000,
             "dqmc": "朝阳区",
             "fgfczs": 93.36,
-            "zrfgfczs": 124.13,
-            "zshb": -30.769997
+            "isEmpty": false,
+            "zrfgfczs": 109.73,
+            "zshb": -16.37
           },
           {
-            "bh": 1012,
+            "bh": 1024,
             "date": 1593014400000,
-            "dqmc": "西城区",
-            "fgfczs": 88.38,
-            "zrfgfczs": 110.68,
-            "zshb": -22.300003
+            "dqmc": "怀柔区",
+            "fgfczs": 79.9,
+            "isEmpty": false,
+            "zrfgfczs": 94.74,
+            "zshb": -14.84
           },
           {
-            "bh": 1011,
+            "bh": 1026,
             "date": 1593014400000,
-            "dqmc": "东城区",
-            "fgfczs": 89.29,
-            "zrfgfczs": 111.03,
-            "zshb": -21.739998
+            "dqmc": "顺义区",
+            "fgfczs": 90.1,
+            "isEmpty": false,
+            "zrfgfczs": 104.91,
+            "zshb": -14.81
           }
         ],
         "ghyfgfczs": [
@@ -138,55 +688,36 @@
             "date": 1593014400000,
             "fgfczs": 85.06,
             "hymc": "租赁和服务",
-            "zrfgfczs": 109.52,
-            "zshb": -24.46
+            "isEmpty": false,
+            "zrfgfczs": 102.86,
+            "zshb": -17.8
           },
           {
-            "bh": 262,
+            "bh": 255,
             "date": 1593014400000,
-            "fgfczs": 96.44,
-            "hymc": "房地产",
-            "zrfgfczs": 115.3,
-            "zshb": -18.86
+            "fgfczs": 84.87,
+            "hymc": "工业",
+            "isEmpty": false,
+            "zrfgfczs": 101.64,
+            "zshb": -16.77
           },
           {
             "bh": 261,
             "date": 1593014400000,
             "fgfczs": 99.96,
             "hymc": "金融业",
-            "zrfgfczs": 118.7,
-            "zshb": -18.739998
+            "isEmpty": false,
+            "zrfgfczs": 116.02,
+            "zshb": -16.06
           }
         ],
-        "zrfgfczs": 95.6,
+        "isEmpty": false,
+        "zrfgfczs": 91.53,
         "zshb": 0.0
       }
     ],
     "jkbDateList": [
       {
-        "date": "06-21"
-      },
-      {
-        "date": "06-22"
-      },
-      {
-        "date": "06-23"
-      },
-      {
-        "date": "06-24"
-      },
-      {
-        "date": "06-25",
-        "sftsrq": true,
-        "tssj": "特殊事件1"
-      },
-      {
-        "date": "06-26"
-      },
-      {
-        "date": "06-27"
-      },
-      {
         "date": "06-28"
       },
       {
@@ -194,45 +725,43 @@
       },
       {
         "date": "06-30"
+      },
+      {
+        "date": "07-01"
+      },
+      {
+        "date": "07-02"
+      },
+      {
+        "date": "07-03"
+      },
+      {
+        "date": "07-04"
+      },
+      {
+        "date": "07-05"
+      },
+      {
+        "date": "07-06"
+      },
+      {
+        "date": "07-07"
       }
     ],
     "jkbLjqzsDataList": [
-      510,
-      510,
-      510,
-      510,
-      510,
-      510,
-      510,
-      510,
-      510,
-      510
+      "732",
+      "733",
+      "734",
+      "735",
+      "736",
+      "738",
+      "739",
+      "735",
+      "735",
+      "735"
     ],
-    "jkbSjjzrq": "2020/06/30",
+    "jkbSjjzrq": "2020/07/07",
     "jsjbDateList": [
-      {
-        "date": "06-21"
-      },
-      {
-        "date": "06-22"
-      },
-      {
-        "date": "06-23"
-      },
-      {
-        "date": "06-24"
-      },
-      {
-        "date": "06-25",
-        "sftsrq": true,
-        "tssj": "特殊事件1"
-      },
-      {
-        "date": "06-26"
-      },
-      {
-        "date": "06-27"
-      },
       {
         "date": "06-28"
       },
@@ -241,22 +770,78 @@
       },
       {
         "date": "06-30"
+      },
+      {
+        "date": "07-01"
+      },
+      {
+        "date": "07-02"
+      },
+      {
+        "date": "07-03"
+      },
+      {
+        "date": "07-04"
+      },
+      {
+        "date": "07-05"
+      },
+      {
+        "date": "07-06"
+      },
+      {
+        "date": "07-07"
       }
     ],
     "jsjbLjqzsDataList": [
-      510,
-      510,
-      510,
-      510,
-      510,
-      510,
-      510,
-      510,
-      510,
-      510
+      "732",
+      "733",
+      "734",
+      "735",
+      "736",
+      "738",
+      "739",
+      "735",
+      "735",
+      "735"
     ],
-    "jsjbSjjzrq": "2020/06/30",
+    "jsjbSjjzrq": "2020/07/07",
+    "maxCxsJkb": "2500",
+    "maxCxsJsjb": "3500",
     "sjxjDataList": [
+      {
+        "bh": 173,
+        "date": 1591113600000,
+        "dqmc": "北京市",
+        "fgfczs": 86.0,
+        "gdqfgfczs": [],
+        "ghyfgfczs": [],
+        "isEmpty": false,
+        "zrfgfczs": 0.0,
+        "zshb": 0.0
+      },
+      {
+        "bh": 175,
+        "date": 1591286400000,
+        "dqmc": "北京市",
+        "fgfczs": 88.0,
+        "gdqfgfczs": [],
+        "ghyfgfczs": [],
+        "isEmpty": false,
+        "zrfgfczs": 86.0,
+        "zshb": 0.0
+      },
+      {
+        "bh": 178,
+        "date": 1591545600000,
+        "dqmc": "北京市",
+        "fgfczs": 91.0,
+        "gdqfgfczs": [],
+        "ghyfgfczs": [],
+        "isEmpty": false,
+        "zrfgfczs": 88.0,
+        "zshb": 0.0
+      },
       {
         "bh": 6,
         "date": 1591718400000,
@@ -268,6 +853,7 @@
             "date": 1591718400000,
             "dqmc": "通州区",
             "fgfczs": 104.0,
+            "isEmpty": false,
             "zrfgfczs": 0.0,
             "zshb": 104.0
           },
@@ -276,6 +862,7 @@
             "date": 1591718400000,
             "dqmc": "东城区",
             "fgfczs": 103.0,
+            "isEmpty": false,
             "zrfgfczs": 0.0,
             "zshb": 103.0
           },
@@ -284,6 +871,7 @@
             "date": 1591718400000,
             "dqmc": "昌平区",
             "fgfczs": 102.0,
+            "isEmpty": false,
             "zrfgfczs": 0.0,
             "zshb": 102.0
           }
@@ -294,6 +882,7 @@
             "date": 1591718400000,
             "fgfczs": 117.0,
             "hymc": "住宿餐饮",
+            "isEmpty": false,
             "zrfgfczs": 0.0,
             "zshb": 117.0
           },
@@ -302,6 +891,7 @@
             "date": 1591718400000,
             "fgfczs": 116.0,
             "hymc": "租赁和服务",
+            "isEmpty": false,
             "zrfgfczs": 0.0,
             "zshb": 116.0
           },
@@ -310,32 +900,203 @@
             "date": 1591718400000,
             "fgfczs": 115.0,
             "hymc": "交通仓储邮政",
+            "isEmpty": false,
             "zrfgfczs": 0.0,
             "zshb": 115.0
           }
         ],
-        "zrfgfczs": 0.0,
+        "isEmpty": false,
+        "zrfgfczs": 91.0,
         "zshb": 0.0
       },
       {
-        "bh": 43,
+        "bh": 184,
+        "date": 1592236800000,
+        "dqmc": "北京市",
+        "fgfczs": 97.0,
+        "gdqfgfczs": [],
+        "ghyfgfczs": [],
+        "isEmpty": false,
+        "zrfgfczs": 105.0,
+        "zshb": 0.0
+      },
+      {
+        "bh": 185,
+        "date": 1592323200000,
+        "dqmc": "北京市",
+        "fgfczs": 98.0,
+        "gdqfgfczs": [],
+        "ghyfgfczs": [],
+        "isEmpty": false,
+        "zrfgfczs": 97.0,
+        "zshb": 0.0
+      },
+      {
+        "bh": 186,
+        "date": 1592409600000,
+        "dqmc": "北京市",
+        "fgfczs": 99.0,
+        "gdqfgfczs": [],
+        "ghyfgfczs": [],
+        "isEmpty": false,
+        "zrfgfczs": 98.0,
+        "zshb": 0.0
+      },
+      {
+        "bh": 196,
+        "date": 1592841600000,
+        "dqmc": "北京市",
+        "fgfczs": 73.36,
+        "gdqfgfczs": [
+          {
+            "bh": 221,
+            "date": 1592841600000,
+            "dqmc": "西城区",
+            "fgfczs": 75.38,
+            "isEmpty": false,
+            "zrfgfczs": 0.0,
+            "zshb": 75.38
+          },
+          {
+            "bh": 223,
+            "date": 1592841600000,
+            "dqmc": "海淀区",
+            "fgfczs": 74.38,
+            "isEmpty": false,
+            "zrfgfczs": 0.0,
+            "zshb": 74.38
+          },
+          {
+            "bh": 222,
+            "date": 1592841600000,
+            "dqmc": "朝阳区",
+            "fgfczs": 72.38,
+            "isEmpty": false,
+            "zrfgfczs": 0.0,
+            "zshb": 72.38
+          }
+        ],
+        "ghyfgfczs": [
+          {
+            "bh": 219,
+            "date": 1592841600000,
+            "fgfczs": 74.38,
+            "hymc": "金融业",
+            "isEmpty": false,
+            "zrfgfczs": 0.0,
+            "zshb": 74.38
+          },
+          {
+            "bh": 218,
+            "date": 1592841600000,
+            "fgfczs": 72.38,
+            "hymc": "建筑业",
+            "isEmpty": false,
+            "zrfgfczs": 114.0,
+            "zshb": -41.62
+          },
+          {
+            "bh": 216,
+            "date": 1592841600000,
+            "fgfczs": 73.36,
+            "hymc": "农林牧渔",
+            "isEmpty": false,
+            "zrfgfczs": 112.0,
+            "zshb": -38.64
+          }
+        ],
+        "isEmpty": false,
+        "zrfgfczs": 99.0,
+        "zshb": 0.0
+      },
+      {
+        "bh": 197,
+        "date": 1592928000000,
+        "dqmc": "北京市",
+        "fgfczs": 72.32,
+        "gdqfgfczs": [
+          {
+            "bh": 231,
+            "date": 1592928000000,
+            "dqmc": "海淀区",
+            "fgfczs": 69.33,
+            "isEmpty": false,
+            "zrfgfczs": 74.38,
+            "zshb": -5.05
+          },
+          {
+            "bh": 230,
+            "date": 1592928000000,
+            "dqmc": "朝阳区",
+            "fgfczs": 71.01,
+            "isEmpty": false,
+            "zrfgfczs": 72.38,
+            "zshb": -1.37
+          },
+          {
+            "bh": 229,
+            "date": 1592928000000,
+            "dqmc": "西城区",
+            "fgfczs": 75.38,
+            "isEmpty": false,
+            "zrfgfczs": 75.38,
+            "zshb": 0.0
+          }
+        ],
+        "ghyfgfczs": [
+          {
+            "bh": 227,
+            "date": 1592928000000,
+            "fgfczs": 71.38,
+            "hymc": "金融业",
+            "isEmpty": false,
+            "zrfgfczs": 74.38,
+            "zshb": -3.0
+          },
+          {
+            "bh": 224,
+            "date": 1592928000000,
+            "fgfczs": 72.32,
+            "hymc": "农林牧渔",
+            "isEmpty": false,
+            "zrfgfczs": 73.36,
+            "zshb": -1.04
+          },
+          {
+            "bh": 225,
+            "date": 1592928000000,
+            "fgfczs": 76.38,
+            "hymc": "工业",
+            "isEmpty": false,
+            "zrfgfczs": 75.38,
+            "zshb": 1.0
+          }
+        ],
+        "isEmpty": false,
+        "zrfgfczs": 73.36,
+        "zshb": 0.0
+      },
+      {
+        "bh": 198,
         "date": 1593014400000,
         "dqmc": "北京市",
-        "fgfczs": 105.0,
+        "fgfczs": 60.79,
         "gdqfgfczs": [
           {
             "bh": 41,
             "date": 1593014400000,
             "dqmc": "东城区",
             "fgfczs": 103.0,
-            "zrfgfczs": 103.0,
-            "zshb": 0.0
+            "isEmpty": false,
+            "zrfgfczs": 73.36,
+            "zshb": 29.64
           },
           {
             "bh": 38,
             "date": 1593014400000,
             "dqmc": "丰台区",
             "fgfczs": 100.0,
+            "isEmpty": false,
             "zrfgfczs": 100.0,
             "zshb": 0.0
           },
@@ -344,37 +1105,42 @@
             "date": 1593014400000,
             "dqmc": "石景山区",
             "fgfczs": 101.0,
+            "isEmpty": false,
             "zrfgfczs": 101.0,
             "zshb": 0.0
           }
         ],
         "ghyfgfczs": [
           {
-            "bh": 55,
+            "bh": 52,
             "date": 1593014400000,
-            "fgfczs": 117.0,
-            "hymc": "住宿餐饮",
-            "zrfgfczs": 117.0,
-            "zshb": 0.0
+            "fgfczs": 114.0,
+            "hymc": "建筑业",
+            "isEmpty": false,
+            "zrfgfczs": 71.38,
+            "zshb": 42.62
           },
           {
             "bh": 50,
             "date": 1593014400000,
             "fgfczs": 112.0,
             "hymc": "农林牧渔",
-            "zrfgfczs": 112.0,
-            "zshb": 0.0
+            "isEmpty": false,
+            "zrfgfczs": 72.32,
+            "zshb": 39.68
           },
           {
             "bh": 51,
             "date": 1593014400000,
             "fgfczs": 113.0,
             "hymc": "工业",
-            "zrfgfczs": 113.0,
-            "zshb": 0.0
+            "isEmpty": false,
+            "zrfgfczs": 76.38,
+            "zshb": 36.62
           }
         ],
-        "zrfgfczs": 105.0,
+        "isEmpty": false,
+        "zrfgfczs": 72.32,
         "zshb": 0.0
       }
     ]

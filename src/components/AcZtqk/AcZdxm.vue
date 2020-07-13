@@ -1,7 +1,7 @@
 <template>
     <div>
         <!-- 标题模块 -->
-        <CcTitle title="重点项目" :time="resData.jzrq"/>
+        <CcTitle title="重点项目" :time="resData.jzrq" @click.native="dialogVisible = true"/>
 
         <!-- 排行榜模块 -->
         <CcTop :data-list="topList"/>
@@ -50,7 +50,15 @@
         </div>
         <!-- 数据展示--开始 -->
 
-
+        <!-- 弹窗 -- 开始 -->
+        <el-dialog
+                title="提示"
+                :visible.sync="dialogVisible"
+                width="30%"
+                :before-close="handleClose">
+            <span>这是一段信息</span>
+        </el-dialog>
+        <!-- 弹窗 -- 结束 -->
     </div>
 </template>
 
@@ -62,6 +70,7 @@
         name: "AcZdxm",
         data() {
             return {
+                dialogVisible: false,
                 /* 后台返回的数据 */
                 resData: {},
                 /* 前三--排行 */
@@ -327,6 +336,9 @@
             },
         },
         methods: {
+            handleClose(done){
+                done()
+            },
             init() {
                 getZdgcData().then(res => {
                     this.resData = res.data

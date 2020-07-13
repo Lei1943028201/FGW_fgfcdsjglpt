@@ -1,7 +1,10 @@
 import request from './axios'
 import config from './config'
 
-// 国办平台
+/**
+ * 国办平台
+ * @param params
+ */
 export function getFgfcl(params) {
     return request({
         url: config.url.ztqk.fgfcl,
@@ -12,8 +15,10 @@ export function getFgfcl(params) {
         }
     })
 }
-
-// 重点项目
+/**
+ * 重点项目
+ * @param params
+ */
 export function getZdgcData(params) {
     return request({
         url: config.url.ztqk.zdgcData,
@@ -24,8 +29,10 @@ export function getZdgcData(params) {
         }
     })
 }
-
-// 商务楼宇
+/**
+ * 商务楼宇
+ * @param params
+ */
 export function getSwlyData(params) {
     return request({
         url: config.url.ztqk.swlyData,
@@ -36,8 +43,10 @@ export function getSwlyData(params) {
         }
     })
 }
-
-// 复工复产
+/**
+ * 复工复产
+ * @param params
+ */
 export function getFgfczsData(params) {
     return request({
         url: config.url.ztqk.fgfczsData,
@@ -48,8 +57,10 @@ export function getFgfczsData(params) {
         }
     })
 }
-
-// 趋势对比
+/**
+ * 趋势对比
+ * @param params
+ */
 export function getQsdbData(params) {
     return request({
         url: config.url.ztqk.qsdbData,
@@ -60,8 +71,10 @@ export function getQsdbData(params) {
         }
     })
 }
-
-// 重点领域
+/**
+ * 重点领域
+ * @param params
+ */
 export function getZdly(params) {
     return request({
         url: config.url.ztqk.zdly,
@@ -73,8 +86,10 @@ export function getZdly(params) {
     })
 }
 
-
-// 国电企业 - 所有区
+/**
+ * 国电企业 - 所有区
+ * @param params
+ */
 export function getSyq(params) {
     return request({
         url: config.url.ztqk.syq,
@@ -85,8 +100,10 @@ export function getSyq(params) {
         }
     })
 }
-
-// 国电企业 - 行业
+/**
+ * 国电企业 - 行业
+ * @param params
+ */
 export function getGhy(params) {
     return request({
         url: config.url.ztqk.ghy,
@@ -97,5 +114,3 @@ export function getGhy(params) {
         }
     })
 }
-
-
