@@ -1,7 +1,7 @@
 <template>
-    <div>
+    <div id="AcZdly">
         <!-- 标题模块 -->
-        <CcTitle title="重点领域" :time="jzrq"/>
+        <CcTitle title="重点领域" :time="jzrq" @clickTitle="handlerOpen"/>
 
         <!-- 数据展示--开始 -->
         <ul class="fd-content-card clear">
@@ -25,15 +25,31 @@
             <CcEcharts :option="option"/>
         </div>
         <!-- echarts图--结束 -->
+
+        <!-- 弹窗 -- 开始 -->
+        <el-dialog
+                title="提示"
+                :visible.sync="dialogVisible"
+                width="30%"
+                :before-close="handleClose">
+            <AcZdlyXz></AcZdlyXz>
+        </el-dialog>
+        <!-- 弹窗 -- 结束 -->
     </div>
 </template>
 
 <script>
     import echarts from 'echarts'
+    import AcZdlyXz from '../../components/AcZtqkxz/AcZdlyXz'
+    import mixinZdlyxz from '../../mixins/mixin-zdlyxz'
     import {getZdly} from '../../api/ztqk'
     /* 重点领域 */
     export default {
         name: "AcZdly",
+        mixins: [mixinZdlyxz],
+        components: {
+            AcZdlyXz,
+        },
         data() {
             return {
                 resData: {},
@@ -286,6 +302,7 @@
 </script>
 
 <style scoped lang="less" rel="stylesheet/less">
+
     .fd-content-card {
         margin-top: 10px;
         width: 100%;
@@ -365,5 +382,9 @@
         width: 100%;
         height: 245px;
         margin-bottom: 10px;
+    }
+
+    /deep/.fd-box-title h2{
+        cursor: pointer;
     }
 </style>

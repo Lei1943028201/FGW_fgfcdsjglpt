@@ -1,7 +1,7 @@
 <template>
     <div id="Gdqy">
         <!-- 标题模块 -->
-        <CcTitle title="国电企业" :time="jzrq"/>
+        <CcTitle title="国电企业" :time="jzrq" @clickTitle="handlerOpen"/>
 
         <!-- tab切换--模块 -->
         <CcTab :tab-list="tabList" @handlerTab="handlerTab"/>
@@ -35,15 +35,34 @@
                 <CcEcharts :option="option_hy"/>
             </div>
         </div>
+
+        <!-- 弹窗 -- 开始 -->
+        <el-dialog
+                title="提示"
+                :visible.sync="dialogVisible"
+                width="30%"
+                :before-close="handleClose">
+            <AcGdqyXzGhy></AcGdqyXzGhy>
+            <AcGdqyXzSyq></AcGdqyXzSyq>
+        </el-dialog>
+        <!-- 弹窗 -- 结束 -->
     </div>
 </template>
 
 <script>
     import echarts from 'echarts'
+    import AcGdqyXzGhy from '../../components/AcZtqkxz/AcGdqyXzGhy'
+    import AcGdqyXzSyq from '../../components/AcZtqkxz/AcGdqyXzSyq'
+    import mixinZdlyxz from '../../mixins/mixin-zdlyxz'
     import {getSyq, getGhy} from '../../api/ztqk'
     /* 国电企业 */
     export default {
         name: "AcGdqy",
+        mixins:[mixinZdlyxz],
+        components: {
+            AcGdqyXzGhy,
+            AcGdqyXzSyq,
+        },
         data() {
             return {
                 activeTab: '1',
@@ -491,6 +510,9 @@
         margin-top: 25px;
         padding-bottom: 30px;
         background: url("../../../public/img/bg-gdqy.png") no-repeat center bottom/390px 160px;
+        /deep/.fd-box-title h2{
+            cursor: pointer;
+        }
     }
 
     .fd-content-tab {

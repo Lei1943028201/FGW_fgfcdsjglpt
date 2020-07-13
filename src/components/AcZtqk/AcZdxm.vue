@@ -1,7 +1,7 @@
 <template>
     <div>
         <!-- 标题模块 -->
-        <CcTitle title="重点项目" :time="resData.jzrq" @click.native="dialogVisible = true"/>
+        <CcTitle title="重点项目" :time="resData.jzrq" @clickTitle="handlerOpen"/>
 
         <!-- 排行榜模块 -->
         <CcTop :data-list="topList"/>
@@ -56,7 +56,7 @@
                 :visible.sync="dialogVisible"
                 width="30%"
                 :before-close="handleClose">
-            <span>这是一段信息</span>
+            <AcZdxmXz></AcZdxmXz>
         </el-dialog>
         <!-- 弹窗 -- 结束 -->
     </div>
@@ -64,13 +64,18 @@
 
 <script>
     import echarts from 'echarts'
+    import AcZdxmXz from '../../components/AcZtqkxz/AcZdxmXz'
+    import mixinZdlyxz from '../../mixins/mixin-zdlyxz'
     import {getZdgcData} from '../../api/ztqk'
     /* 重点项目 */
     export default {
         name: "AcZdxm",
+        mixins: [mixinZdlyxz],
+        components: {
+            AcZdxmXz,
+        },
         data() {
             return {
-                dialogVisible: false,
                 /* 后台返回的数据 */
                 resData: {},
                 /* 前三--排行 */
@@ -336,9 +341,6 @@
             },
         },
         methods: {
-            handleClose(done){
-                done()
-            },
             init() {
                 getZdgcData().then(res => {
                     this.resData = res.data

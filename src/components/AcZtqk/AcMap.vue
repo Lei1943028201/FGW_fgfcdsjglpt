@@ -4,14 +4,14 @@
         <div class="fd-map-top">
             <div>
                 <p>
-                    <span class="fd-name">国网指数</span>
+                    <span class="fd-name hand" @click="handlerOpen">国网指数</span>
                     <span class="fd-value-01">{{qsfgfcData.gwbffgfczs }}</span>
                     <span class="fd-value-02" :class="classNameIsUp(qsfgfcData.gwbffgfczsbhz)">{{qsfgfcData.gwbffgfczsbhz | filterText}}</span>
                 </p>
             </div>
             <div>
                 <p>
-                    <span class="fd-name">日报指数</span>
+                    <span class="fd-name hand" @click="handlerOpen">日报指数</span>
                     <span class="fd-value-04">{{qsfgfcData.sjxjfgfczs}}</span>
                     <span class="fd-value-02" :class="classNameIsUp(qsfgfcData.sjxjfgfczsbhz)">{{qsfgfcData.sjxjfgfczsbhz | filterText}}</span>
                 </p>
@@ -77,19 +77,36 @@
             </div>
         </div>
         <!-- 三个圆球--结束 -->
+
+        <!-- 弹窗 -- 开始 -->
+        <el-dialog
+                title="提示"
+                :visible.sync="dialogVisible"
+                width="30%"
+                :before-close="handleClose">
+            <AcMapXzGwzs/>
+            <AcMapXzRbzs/>
+        </el-dialog>
+        <!-- 弹窗 -- 结束 -->
     </div>
 </template>
 
 <script>
 
     import ChartMap from '../../components/common/map/index.vue';
+    import AcMapXzGwzs from '../../components/AcZtqkxz/AcMapXzGwzs'
+    import AcMapXzRbzs from '../../components/AcZtqkxz/AcMapXzRbzs'
+    import mixinZdlyxz from '../../mixins/mixin-zdlyxz'
     import {mapState, mapGetters} from 'vuex'
     import {getFgfczsData} from '../../api/ztqk'
     /* 地图 */
     export default {
         name: "AcMap",
+        mixins: [mixinZdlyxz],
         components: {
-            ChartMap
+            ChartMap,
+            AcMapXzGwzs,
+            AcMapXzRbzs,
         },
         data() {
             return {

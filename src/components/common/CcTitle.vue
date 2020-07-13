@@ -2,7 +2,7 @@
     <div class="fd-box-title clear"
          :class="className"
          ref="theTitle">
-        <h2 class="left">{{title}}</h2>
+        <h2 class="left" @click="clickTitle">{{title}}</h2>
         <span class="fd-box-title-time right">{{label}}：{{time}}</span>
     </div>
 </template>
@@ -29,6 +29,11 @@
         computed: {
             className() {
                 return this.domWidth < 500 ? 'fd-box-title-01' : 'fd-box-title-02'
+            }
+        },
+        methods: {
+            clickTitle(){
+                this.$emit('clickTitle')
             }
         },
         mounted() {

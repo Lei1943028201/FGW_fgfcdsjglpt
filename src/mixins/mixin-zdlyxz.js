@@ -1,4 +1,9 @@
 export default {
+    data(){
+        return {
+            dialogVisible: false,
+        }
+    },
     filters: {
 
     },
@@ -7,6 +12,11 @@ export default {
 
     },
     methods: {
-
+        handlerOpen(){
+            this.dialogVisible = true
+        },
+        handleClose(done){
+            done()
+        },
     }
 }
