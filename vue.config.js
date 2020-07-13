@@ -4,7 +4,7 @@ const pxtorem = require('postcss-pxtorem');
 module.exports = {
     outputDir: 'dist',
     assetsDir: 'public',
-    publicPath: '/',
+    publicPath: '/fgfc/',
     devServer: {
         proxy: {
             '/api': {
@@ -32,5 +32,5 @@ module.exports = {
                 ]
             }
         }
-    }
+    },
 };

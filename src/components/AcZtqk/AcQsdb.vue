@@ -36,7 +36,7 @@
                             <td><span>{{item.dqmc}}</span></td>
                             <td><span>{{item.fgfczs}}</span></td>
                             <td><span>{{item.zrfgfczs}}</span></td>
-                            <td><span>{{item.zshb}}</span></td>
+                            <td><span :class="classNameIsUp(item.zshb)">{{item.zshb | filterText}}%</span></td>
                         </tr>
 
                         </tbody>
@@ -292,6 +292,16 @@
                     min: 600,
                     max: 1200
                 }
+                let yAxisName = ''
+                if(this.activeTab1 === '1'){
+                    yAxisName = ''
+                }
+                if(this.activeTab1 === '2'){
+                    yAxisName = '单位:万'
+                }
+                if(this.activeTab1 === '3'){
+                    yAxisName = '单位:次'
+                }
                 return {
                     legend: {
                         data: this.legendData,
@@ -360,7 +370,7 @@
                     yAxis: [
                         {
                             type: 'value',
-                            name: `单位:${this.activeTab1 === '3'? '次': '万'}`,
+                            name: yAxisName,
                             splitNumber : 3,
                             nameTextStyle: {
                                 color: "#00b6ff",
@@ -499,9 +509,8 @@
                 this.$refs.tooltipxAxis.style.display = 'none'
             },
             init() {
-                getQsdbData({sjfw: this.activeTab2, sfxsjjr: this.activeTabJjr})
+                getQsdbData({sjfw: this.activeTab2, sfxsjjr: !this.activeTabJjr})
                     .then(res => {
-                        console.log(res);
                         this.resData = res.data
 
                         this.cxsJkbDataList = res.data.cxsJkbDataList
