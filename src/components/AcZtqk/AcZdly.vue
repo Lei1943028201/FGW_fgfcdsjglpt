@@ -22,7 +22,7 @@
 
         <!-- echarts图--开始 -->
         <div class="fd-content-echarts">
-            <CcEcharts :option="option" @legendSelectChanged="legendSelectChanged"/>
+            <CcEcharts :option="option"/>
         </div>
         <!-- echarts图--结束 -->
 
@@ -33,7 +33,7 @@
                 :lock-scroll="false"
                 width="1060"
                 :before-close="handleClose">
-            <AcDialogTitle slot="title" @handlerShowType="handlerShowType"></AcDialogTitle>
+            <AcDialogTitle slot="title"></AcDialogTitle>
             <AcZdlyXzChart v-if="showType === 1"></AcZdlyXzChart>
             <AcZdlyXzTable v-else></AcZdlyXzTable>
         </el-dialog>
@@ -60,7 +60,6 @@
                 resData: {},
                 /* echarts数据 */
                 gzlsqk: {},
-                legendSelect: true
             }
         },
         computed: {
@@ -214,6 +213,7 @@
                                     color: '#ffd65c'
                                 }
                             ]),
+                            barGap: "-100%", /*这里设置包含关系*/
                             data: this.fgzsArr
                         },
                         {
@@ -282,13 +282,7 @@
             qyzsArr() {
                 let {qyzsArr} = this.gzlsqk
                 if(qyzsArr){
-                    if(this.legendSelect){
-                        return qyzsArr.map((item, index)=>{
-                            return item-this.fgzsArr[index]
-                        })
-                    }else{
-                        return qyzsArr
-                    }
+                    return qyzsArr
                 }
                 return []
             },
@@ -304,9 +298,6 @@
             },
         },
         methods: {
-            legendSelectChanged(params){
-                //this.legendSelect = params.selected.复工数
-            },
             handlerTab(tab) {
                 if (tab.code === this.activeTab) {
                     return

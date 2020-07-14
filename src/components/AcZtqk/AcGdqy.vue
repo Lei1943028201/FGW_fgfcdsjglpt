@@ -315,7 +315,7 @@
                         show: true,
                         formatter(params) {
                             let index = params.dataIndex
-                            return `企业总数:${_this.accAdd(_this.qyzsArr[index], _this.fgqysArr[index])}万<br/>复工企业数:${_this.fgqysArr[index]}万<br/>复工率:${_this.drfglArr[index]}%`
+                            return `企业总数:${_this.qyzsArr[index]}万<br/>复工企业数:${_this.fgqysArr[index]}万<br/>复工率:${_this.drfglArr[index]}%`
                         }
                     },
                     xAxis: [
@@ -341,6 +341,7 @@
                         {
                             name: '单位:万',
                             min: 0,
+                            max: Math.ceil(this.resData.fgqyzsMax/10000),
                             splitNumber: 3,
                             nameTextStyle: {
                                 color: "#00b6ff",
@@ -395,6 +396,7 @@
                             barWidth: 10,//柱图宽度
                             color: '#ffc300',
                             yAxisIndex: 0,
+                            barGap: "-100%", /*这里设置包含关系*/
                             data: this.fgqysArr
                         },
                         {
@@ -440,16 +442,12 @@
             /* 企业总数 */
             qyzsArr() {
                 let {qyzsArr} = this.resData
-                if (qyzsArr) {
-                    return qyzsArr.map((item, index) => {
-                        return this.accSub(item, this.fgqysArr[index])
-                    })
-                }
-                return []
+                return qyzsArr || []
             },
             /* 复工企业数 */
             fgqysArr() {
                 let {fgqysArr} = this.resData
+                console.log(fgqysArr);
                 return fgqysArr || []
             },
             /* 当日复工复产指数 */
@@ -551,7 +549,6 @@
     #Gdqy {
         margin-top: 25px;
         padding-bottom: 30px;
-        background: url("../../../public/img/bg-gdqy.png") no-repeat center bottom/390px 160px;
         /deep/ .fd-box-title h2 {
             cursor: pointer;
         }

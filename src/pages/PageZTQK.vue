@@ -70,7 +70,7 @@
         padding: 30px;
         width: 480px;
         height: 926px;
-        background: url("../../public/img/bg-border.png") no-repeat center/100% 100%;
+        background: url("../../public/img/bg-border.png") no-repeat center/100% 100%, url("../../public/img/bg-gdqy.png") no-repeat center bottom/390px 160px;
     }
     .fd-content-center{
         box-sizing: border-box;
