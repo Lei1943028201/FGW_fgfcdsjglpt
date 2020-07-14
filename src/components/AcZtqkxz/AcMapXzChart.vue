@@ -5,9 +5,13 @@
 </template>
 
 <script>
-    /* 地图 */
+    /**
+     * 地图下钻-图表
+     */
+    import {getGdqFgfczsqs, getGdqMtfgfczs, getGhyFgfczsqs, getGhyMtfgfczs} from '../../api/ztqkxz'
     export default {
         name: "AcMapXzChart",
+        props:['dialogActiveTab'],
         data() {
             return {
 
@@ -18,11 +22,18 @@
         },
         methods: {
             init() {
+                if(this.dialogActiveTab === '1'){
+                    getGdqFgfczsqs()
+                    getGdqMtfgfczs()
+                }else{
+                    getGhyFgfczsqs()
+                    getGhyMtfgfczs()
+                }
 
             }
         },
         created() {
-
+            this.init()
         }
     }
 

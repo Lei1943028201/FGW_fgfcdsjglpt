@@ -21,8 +21,11 @@ export default {
         handlerShowType(index){
             this.showType = index
         },
-        handlerOpen(){
+        handlerOpen(key,type){
             this.dialogVisible = true
+            if(key){
+                this[key] = type
+            }
         },
         handleClose(done){
             done()

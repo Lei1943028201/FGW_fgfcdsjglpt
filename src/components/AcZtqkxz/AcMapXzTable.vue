@@ -5,10 +5,13 @@
 </template>
 
 <script>
-
-    /* 地图 */
+    /**
+     * 地图下钻-表格
+     */
+    import {getGdqFgfczsqsbg, getGhyFgfczsqsbg} from '../../api/ztqkxz'
     export default {
         name: "AcMapXzTable",
+        props:['dialogActiveTab'],
         data() {
             return {
 
@@ -19,11 +22,15 @@
         },
         methods: {
             init() {
-
+                if(this.dialogActiveTab === '1'){
+                    getGdqFgfczsqsbg()
+                }else{
+                    getGhyFgfczsqsbg()
+                }
             }
         },
         created() {
-
+            this.init()
         }
     }
 

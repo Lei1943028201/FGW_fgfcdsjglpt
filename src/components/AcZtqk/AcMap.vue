@@ -4,14 +4,14 @@
         <div class="fd-map-top">
             <div>
                 <p>
-                    <span class="fd-name hand" @click="handlerOpen">国网指数</span>
+                    <span class="fd-name hand" @click="handlerOpen('mapDialogType', '1')">国网指数</span>
                     <span class="fd-value-01">{{qsfgfcData.gwbffgfczs }}</span>
                     <span class="fd-value-02" :class="classNameIsUp(qsfgfcData.gwbffgfczsbhz)">{{qsfgfcData.gwbffgfczsbhz | filterText}}</span>
                 </p>
             </div>
             <div>
                 <p>
-                    <span class="fd-name hand" @click="handlerOpen">日报指数</span>
+                    <span class="fd-name hand" @click="handlerOpen('mapDialogType', '2')">日报指数</span>
                     <span class="fd-value-04">{{qsfgfcData.sjxjfgfczs}}</span>
                     <span class="fd-value-02" :class="classNameIsUp(qsfgfcData.sjxjfgfczsbhz)">{{qsfgfcData.sjxjfgfczsbhz | filterText}}</span>
                 </p>
@@ -114,6 +114,7 @@
         },
         data() {
             return {
+                mapDialogType: '', // 国网指数/日报指数
                 dialogActiveTab: '1',
                 tabList: [
                     {
