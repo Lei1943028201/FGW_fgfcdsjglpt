@@ -1,14 +1,17 @@
 <template>
     <div>
-        AcMapXzRbzs
+        <CcEcharts/>
+        <CcEcharts/>
     </div>
 </template>
 
 <script>
-
-    /* 地图 */
+    /**
+     * 重点领域下钻页面-图表
+     */
+    import {getGlyFglqs, getMtglyfgl} from '../../api/ztqkxz'
     export default {
-        name: "AcMapXz",
+        name: "AcZdlyXzChart",
         data() {
             return {
 
@@ -19,11 +22,12 @@
         },
         methods: {
             init() {
-
+                getGlyFglqs()
+                getMtglyfgl()
             }
         },
         created() {
-
+            this.init()
         }
     }
 

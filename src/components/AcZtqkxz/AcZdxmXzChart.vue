@@ -1,14 +1,16 @@
 <template>
     <div>
-        重点领域
+        重点项目1
     </div>
 </template>
 
 <script>
-
-    /* 地图 */
+    /**
+     * 重点项目下钻页面-图表
+     */
+    import {getGlyFglqs, getMtglyfgl} from '../../api/ztqkxz'
     export default {
-        name: "AcZdlyXz",
+        name: "AcZdxmXzChart",
         data() {
             return {
 
@@ -19,11 +21,12 @@
         },
         methods: {
             init() {
-
+                getGlyFglqs()
+                getMtglyfgl()
             }
         },
         created() {
-
+            this.init()
         }
     }
 

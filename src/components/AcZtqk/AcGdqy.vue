@@ -46,10 +46,8 @@
             <AcDialogTitle slot="title" @handlerShowType="handlerShowType"></AcDialogTitle>
             <!-- tab切换--模块 -->
             <CcTab :tab-list="tabList" @handlerTab="dialogHandlerTab"/>
-            <AcGdqyXzChart :dialog-active-tab="dialogActiveTab"  v-if="showType === 1"></AcGdqyXzChart>
+            <AcGdqyXzChart :dialog-active-tab="dialogActiveTab" v-if="showType === 1"></AcGdqyXzChart>
             <AcGdqyXzTable :dialog-active-tab="dialogActiveTab" v-else></AcGdqyXzTable>
-            <div >
-            </div>
         </el-dialog>
         <!-- 弹窗 -- 结束 -->
     </div>

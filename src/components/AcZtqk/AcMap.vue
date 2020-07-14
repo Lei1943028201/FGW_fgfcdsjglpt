@@ -85,8 +85,11 @@
                 :lock-scroll="false"
                 width="1060"
                 :before-close="handleClose">
-            <AcMapXzGwzs/>
-            <AcMapXzRbzs/>
+            <AcDialogTitle slot="title" @handlerShowType="handlerShowType"></AcDialogTitle>
+            <!-- tab切换--模块 -->
+            <CcTab :tab-list="tabList" @handlerTab="dialogHandlerTab"/>
+            <AcMapXzChart :dialog-active-tab="dialogActiveTab" v-if="showType === 1"/>
+            <AcMapXzTable :dialog-active-tab="dialogActiveTab" v-else/>
         </el-dialog>
         <!-- 弹窗 -- 结束 -->
     </div>
@@ -95,8 +98,8 @@
 <script>
 
     import ChartMap from '../../components/common/map/index.vue';
-    import AcMapXzGwzs from '../../components/AcZtqkxz/AcMapXzGwzs'
-    import AcMapXzRbzs from '../../components/AcZtqkxz/AcMapXzRbzs'
+    import AcMapXzChart from '../AcZtqkxz/AcMapXzChart'
+    import AcMapXzTable from '../AcZtqkxz/AcMapXzTable'
     import mixinZdlyxz from '../../mixins/mixin-zdlyxz'
     import {mapState, mapGetters} from 'vuex'
     import {getFgfczsData} from '../../api/ztqk'
@@ -106,12 +109,23 @@
         mixins: [mixinZdlyxz],
         components: {
             ChartMap,
-            AcMapXzGwzs,
-            AcMapXzRbzs,
+            AcMapXzChart,
+            AcMapXzTable,
         },
         data() {
             return {
-                qsfgfcData: {}
+                dialogActiveTab: '1',
+                tabList: [
+                    {
+                        name: '所有区',
+                        code: '1'
+                    },
+                    {
+                        name: '行业',
+                        code: '2'
+                    }
+                ],
+                qsfgfcData: {},
             }
         },
         computed: {
@@ -119,6 +133,12 @@
             ...mapGetters(['showMapData']),
         },
         methods: {
+            dialogHandlerTab(tab) {
+                if (tab.code === this.dialogActiveTab) {
+                    return
+                }
+                this.dialogActiveTab = tab.code
+            },
             init() {
                 getFgfczsData().then(res => {
                     res.data.qsfgfcData.code = '1100000'
@@ -138,6 +158,7 @@
 </script>
 
 <style scoped lang="less" rel="stylesheet/less">
+    @import '../../style/mixin-dialog';
     .fd-content-map {
         position: relative;
         height: 620px;

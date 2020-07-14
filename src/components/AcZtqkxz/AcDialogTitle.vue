@@ -12,8 +12,9 @@
 </template>
 
 <script>
-
-    /* 地图 */
+    /**
+     * 弹窗头部组件
+     */
     export default {
         name: "AcDialogTitle",
         data() {

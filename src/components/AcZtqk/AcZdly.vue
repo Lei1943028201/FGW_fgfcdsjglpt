@@ -33,7 +33,9 @@
                 :lock-scroll="false"
                 width="1060"
                 :before-close="handleClose">
-            <AcZdlyXz></AcZdlyXz>
+            <AcDialogTitle slot="title" @handlerShowType="handlerShowType"></AcDialogTitle>
+            <AcZdlyXzChart v-if="showType === 1"></AcZdlyXzChart>
+            <AcZdlyXzTable v-else></AcZdlyXzTable>
         </el-dialog>
         <!-- 弹窗 -- 结束 -->
     </div>
@@ -41,7 +43,8 @@
 
 <script>
     import echarts from 'echarts'
-    import AcZdlyXz from '../../components/AcZtqkxz/AcZdlyXz'
+    import AcZdlyXzChart from '../AcZtqkxz/AcZdlyXzChart'
+    import AcZdlyXzTable from '../AcZtqkxz/AcZdlyXzTable'
     import mixinZdlyxz from '../../mixins/mixin-zdlyxz'
     import {getZdly} from '../../api/ztqk'
     /* 重点领域 */
@@ -49,7 +52,8 @@
         name: "AcZdly",
         mixins: [mixinZdlyxz],
         components: {
-            AcZdlyXz,
+            AcZdlyXzChart,
+            AcZdlyXzTable,
         },
         data() {
             return {
@@ -303,7 +307,7 @@
 </script>
 
 <style scoped lang="less" rel="stylesheet/less">
-
+    @import '../../style/mixin-dialog';
     .fd-content-card {
         margin-top: 10px;
         width: 100%;

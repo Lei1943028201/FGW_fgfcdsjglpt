@@ -6,8 +6,10 @@
 </template>
 
 <script>
+    /**
+     * 国电企业下钻页面-图表
+     */
     import {getGdqFglqs, getGdqMtfglqs, getGhyFglqs, getGhyMtfglqs} from '../../api/ztqkxz'
-    /* 国电企业-图表 */
     export default {
         name: "AcGdqyXzChart",
         data() {

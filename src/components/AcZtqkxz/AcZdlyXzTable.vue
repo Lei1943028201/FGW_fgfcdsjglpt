@@ -1,14 +1,16 @@
 <template>
     <div>
-        AcMapXzGwzs
+        重点领域Table
     </div>
 </template>
 
 <script>
-
-    /* 地图 */
+    /**
+     * 重点领域下钻页面-表格
+     */
+    import {getGlyGglqsbg} from '../../api/ztqkxz'
     export default {
-        name: "AcMapXz",
+        name: "AcZdlyXzTable",
         data() {
             return {
 
@@ -19,11 +21,11 @@
         },
         methods: {
             init() {
-
+                getGlyGglqsbg()
             }
         },
         created() {
-
+            this.init()
         }
     }
 

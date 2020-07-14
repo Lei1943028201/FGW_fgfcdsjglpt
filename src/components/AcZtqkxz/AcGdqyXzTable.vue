@@ -1,14 +1,16 @@
 <template>
     <div>
-        <p>table-各行业</p>
+        <p>table</p>
     </div>
 </template>
 
 <script>
+    /**
+     * 国电企业下钻页面-表格
+     */
     import {getGdqFgqkbg, getGhyFgqkbg} from '../../api/ztqkxz'
-    /* 地图 */
     export default {
-        name: "AcGdqyXzTableGhy",
+        name: "AcGdqyXzTable",
         data() {
             return {
 

@@ -57,7 +57,9 @@
                 :lock-scroll="false"
                 width="1060"
                 :before-close="handleClose">
-            <AcZdxmXz></AcZdxmXz>
+            <AcDialogTitle slot="title" @handlerShowType="handlerShowType"></AcDialogTitle>
+            <AcZdxmXzChart v-if="showType === 1"></AcZdxmXzChart>
+            <AcZdxmXzTable v-else></AcZdxmXzTable>
         </el-dialog>
         <!-- 弹窗 -- 结束 -->
     </div>
@@ -65,7 +67,8 @@
 
 <script>
     import echarts from 'echarts'
-    import AcZdxmXz from '../../components/AcZtqkxz/AcZdxmXz'
+    import AcZdxmXzTable from '../AcZtqkxz/AcZdxmXzTable'
+    import AcZdxmXzChart from '../AcZtqkxz/AcZdxmXzChart'
     import mixinZdlyxz from '../../mixins/mixin-zdlyxz'
     import {getZdgcData} from '../../api/ztqk'
     /* 重点项目 */
@@ -73,7 +76,8 @@
         name: "AcZdxm",
         mixins: [mixinZdlyxz],
         components: {
-            AcZdxmXz,
+            AcZdxmXzTable,
+            AcZdxmXzChart,
         },
         data() {
             return {
@@ -356,6 +360,7 @@
 </script>
 
 <style scoped lang="less" rel="stylesheet/less">
+    @import '../../style/mixin-dialog';
     .fd-content-card {
         position: relative;
         box-sizing: border-box;
