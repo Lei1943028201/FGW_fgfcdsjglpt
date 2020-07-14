@@ -72,34 +72,48 @@
 <style scoped lang="less" rel="stylesheet/less">
     header {
         box-sizing: border-box;
-        padding-top: 32px;
+        padding: 32px 30px 0;
         width: 100%;
         height: 96px;
         font-size: 20px;
         background: url("../../../public/img/bg-header.png") no-repeat center/100% 100%;
         color: #fff;
+        .left .fd-menu-item{
+            background: url("../../../public/img/bg-menu-left.png") no-repeat center/100% 100%;
+            &:hover {
+                color: #f8c207;
+                background: url("../../../public/img/bg-menu-left-active.png") no-repeat center/100% 100%;
+            }
+        }
+        .right .fd-menu-item{
+            background: url("../../../public/img/bg-menu-right.png") no-repeat center/100% 100%;
+            &:hover {
+                color: #f8c207;
+                background: url("../../../public/img/bg-menu-right-active.png") no-repeat center/100% 100%;
+            }
+        }
         .fd-menu-item {
             float: left;
-            width: 180px;
+            width: 160px;
             height: 45px;
             font-size: 20px;
             text-align: center;
             line-height: 45px;
             color: #d6f0ff;
-            background: url("../../../public/img/bg-menu.png") no-repeat center/100% 100%;
             margin-left: -15px;
             cursor: pointer;
             span{
                 font-weight: bold;
             }
-            &:hover {
-                color: #f8c207;
-                background: url("../../../public/img/bg-menu-active.png") no-repeat center/100% 100%;
-            }
+
         }
-        .active {
+        .left .active {
             color: #f8c207;
-            background: url("../../../public/img/bg-menu-active.png") no-repeat center/100% 100%;
+            background: url("../../../public/img/bg-menu-left-active.png") no-repeat center/100% 100%;
+        }
+        .right .active {
+            color: #f8c207;
+            background: url("../../../public/img/bg-menu-right-active.png") no-repeat center/100% 100%;
         }
         .fd-header-text {
             display: inline-block;

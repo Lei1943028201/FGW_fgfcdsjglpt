@@ -1,14 +1,14 @@
 <template>
     <div>
-        国电企业-各行业
+        <p>table-各行业</p>
     </div>
 </template>
 
 <script>
-
+    import {getGdqFgqkbg, getGhyFgqkbg} from '../../api/ztqkxz'
     /* 地图 */
     export default {
-        name: "AcGdqyXz",
+        name: "AcGdqyXzTableGhy",
         data() {
             return {
 
@@ -19,11 +19,16 @@
         },
         methods: {
             init() {
-
+                /* 1: 地区 2：行业 */
+                if(this.dialogActiveTab === '1'){
+                    getGdqFgqkbg()
+                }else{
+                    getGhyFgqkbg()
+                }
             }
         },
         created() {
-
+            this.init()
         }
     }
 

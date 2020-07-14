@@ -1,0 +1,25 @@
+.el-dialog__wrapper {
+  background: rgba(0, 0, 0, 0.6);
+  /deep/ .el-dialog {
+    border: 1px solid #00a2ff;
+    box-shadow: 0 0 32px rgba(52, 136, 201, 0.42) inset;
+    background: rgba(0, 36, 86, 0.95);
+    .el-dialog__header{
+      height: 55px;
+      padding:15px 40px 0;
+      background: url('../../public/img/bg-dialog-title.png') 40px bottom/ 960px 2px no-repeat;
+      .el-dialog__headerbtn {
+        width: 25px;
+        height: 25px;
+        border: 1px solid #00a2ff;
+        border-radius: 50%;
+        .el-icon-close {
+          color: #00a2ff;
+        }
+      }
+    }
+    .el-dialog__body{
+      padding: 0 40px;
+    }
+  }
+}

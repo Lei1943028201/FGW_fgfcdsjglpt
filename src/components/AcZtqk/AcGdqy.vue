@@ -40,10 +40,16 @@
         <el-dialog
                 title="提示"
                 :visible.sync="dialogVisible"
-                width="30%"
+                :lock-scroll="false"
+                width="1060"
                 :before-close="handleClose">
-            <AcGdqyXzGhy></AcGdqyXzGhy>
-            <AcGdqyXzSyq></AcGdqyXzSyq>
+            <AcDialogTitle slot="title" @handlerShowType="handlerShowType"></AcDialogTitle>
+            <!-- tab切换--模块 -->
+            <CcTab :tab-list="tabList" @handlerTab="dialogHandlerTab"/>
+            <AcGdqyXzChart :dialog-active-tab="dialogActiveTab"  v-if="showType === 1"></AcGdqyXzChart>
+            <AcGdqyXzTable :dialog-active-tab="dialogActiveTab" v-else></AcGdqyXzTable>
+            <div >
+            </div>
         </el-dialog>
         <!-- 弹窗 -- 结束 -->
     </div>
@@ -51,21 +57,25 @@
 
 <script>
     import echarts from 'echarts'
-    import AcGdqyXzGhy from '../../components/AcZtqkxz/AcGdqyXzGhy'
-    import AcGdqyXzSyq from '../../components/AcZtqkxz/AcGdqyXzSyq'
+    import AcGdqyXzChart from '../AcZtqkxz/AcGdqyXzChart'
+    import AcGdqyXzTable from '../AcZtqkxz/AcGdqyXzTable'
     import mixinZdlyxz from '../../mixins/mixin-zdlyxz'
     import {getSyq, getGhy} from '../../api/ztqk'
     /* 国电企业 */
     export default {
         name: "AcGdqy",
-        mixins:[mixinZdlyxz],
+        mixins: [mixinZdlyxz],
         components: {
-            AcGdqyXzGhy,
-            AcGdqyXzSyq,
+            AcGdqyXzChart,
+            AcGdqyXzTable,
         },
         data() {
             return {
-                activeTab: '1',
+                activeTab: '1',         // 首页 1 所有区 2 行业
+                dialogActiveTab: '1',   // 弹窗 1 所有区 2 行业
+                query: {
+
+                },
                 tabList: [
                     {
                         name: '所有区',
@@ -183,7 +193,7 @@
                             color: '#c9e7ff',
                             fontSize: 18
                         },
-                        subtext: this.xwData.fgl+'%',
+                        subtext: this.xwData.fgl + '%',
                         subtextStyle: {
                             fontSize: 22,
                             fontWeight: 'bold',
@@ -289,7 +299,7 @@
                     },
                     tooltip: {
                         show: true,
-                        formatter(params){
+                        formatter(params) {
                             let index = params.dataIndex
                             return `企业总数:${_this.accAdd(_this.qyzsArr[index], _this.fgqysArr[index])}万<br/>复工企业数:${_this.fgqysArr[index]}万<br/>复工率:${_this.drfglArr[index]}%`
                         }
@@ -304,8 +314,8 @@
                                 }
                             },
                             axisLabel: {
-                                interval:0, //强制显示文字
-                                rotate:30,
+                                interval: 0, //强制显示文字
+                                rotate: 30,
                                 textStyle: {
                                     color: '#00b6ff',  //更改坐标轴文字颜色
                                     fontSize: 15      //更改坐标轴文字大小
@@ -316,8 +326,8 @@
                     yAxis: [
                         {
                             name: '单位:万',
-                            min:0,
-                            splitNumber : 3,
+                            min: 0,
+                            splitNumber: 3,
                             nameTextStyle: {
                                 color: "#00b6ff",
                                 fontSize: 15,
@@ -342,9 +352,9 @@
                         },
                         {
                             type: 'value',
-                            min:0,
+                            min: 0,
                             max: this.resData.drfglMax || 100,
-                            splitNumber : 2,
+                            splitNumber: 2,
                             axisLine: {
                                 show: false,
                             },
@@ -369,7 +379,7 @@
                             type: 'bar',
                             stack: '万',
                             barWidth: 10,//柱图宽度
-                            color:'#ffc300',
+                            color: '#ffc300',
                             yAxisIndex: 0,
                             data: this.fgqysArr
                         },
@@ -406,12 +416,12 @@
             /* 企业总数 */
             qyzsArr() {
                 let {qyzsArr} = this.resData
-                if(qyzsArr){
-                    return qyzsArr.map((item, index)=>{
+                if (qyzsArr) {
+                    return qyzsArr.map((item, index) => {
                         return this.accSub(item, this.fgqysArr[index])
                     })
                 }
-                return  []
+                return []
             },
             /* 复工企业数 */
             fgqysArr() {
@@ -424,11 +434,11 @@
                 return drfglArr || []
             },
             /* 截至日期 */
-            jzrq(){
+            jzrq() {
                 return this.resData.jzrq
             },
             /* 全国数据 */
-            cardData(){
+            cardData() {
                 let {qsData} = this.resData
                 return qsData ? [
                     {
@@ -449,7 +459,7 @@
                 ] : []
             },
             /* 重点数据 */
-            zdData(){
+            zdData() {
                 let {zdqyData} = this.resData
                 return zdqyData || {
                     "qyyhs": '',
@@ -460,7 +470,7 @@
                 }
             },
             /* 小微数据 */
-            xwData(){
+            xwData() {
                 let {xwqyData} = this.resData
                 return xwqyData || {
                     "qyyhs": '',
@@ -472,15 +482,21 @@
             }
         },
         methods: {
-            handlerTab(tab){
-                if(tab.code === this.activeTab){
+            handlerTab(tab) {
+                if (tab.code === this.activeTab) {
                     return
                 }
                 this.activeTab = tab.code
                 this.init()
             },
+            dialogHandlerTab(tab) {
+                if (tab.code === this.dialogActiveTab) {
+                    return
+                }
+                this.dialogActiveTab = tab.code
+            },
             init() {
-                if(this.activeTab === '1'){
+                if (this.activeTab === '1') {
                     getSyq()
                         .then(res => {
                             this.resData = res.data
@@ -488,7 +504,7 @@
                         .catch(err => {
                             console.log(err)
                         })
-                }else{
+                } else {
                     getGhy()
                         .then(res => {
                             this.resData = res.data
@@ -506,11 +522,13 @@
 </script>
 
 <style scoped lang="less" rel="stylesheet/less">
+    @import '../../style/mixin-dialog';
+
     #Gdqy {
         margin-top: 25px;
         padding-bottom: 30px;
         background: url("../../../public/img/bg-gdqy.png") no-repeat center bottom/390px 160px;
-        /deep/.fd-box-title h2{
+        /deep/ .fd-box-title h2 {
             cursor: pointer;
         }
     }
@@ -573,10 +591,12 @@
             height: 100%;
         }
     }
-    .fd-content-echarts-hy{
+
+    .fd-content-echarts-hy {
         width: 100%;
         height: 260px;
     }
+
     .fd-content-list {
         & > div {
             width: 50%;

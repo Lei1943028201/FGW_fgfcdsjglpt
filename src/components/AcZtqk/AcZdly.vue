@@ -30,7 +30,8 @@
         <el-dialog
                 title="提示"
                 :visible.sync="dialogVisible"
-                width="30%"
+                :lock-scroll="false"
+                width="1060"
                 :before-close="handleClose">
             <AcZdlyXz></AcZdlyXz>
         </el-dialog>
