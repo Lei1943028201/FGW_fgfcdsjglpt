@@ -25,9 +25,9 @@
                     <table>
                         <thead>
                         <tr>
-                            <td></td>
-                            <td><span>今日</span></td>
-                            <td><span>昨日</span></td>
+                            <td><span></span></td>
+                            <td><span>{{activeTabName2==='日'? '今日': `本${activeTabName2}`}}</span></td>
+                            <td><span>{{activeTabName2==='日'? '昨日': `上${activeTabName2}`}}</span></td>
                             <td><span>环比</span></td>
                         </tr>
                         </thead>
@@ -47,9 +47,9 @@
                     <table>
                         <thead>
                         <tr>
-                            <td></td>
-                            <td><span>今日</span></td>
-                            <td><span>昨日</span></td>
+                            <td><span></span></td>
+                            <td><span>{{activeTabName2==='日'? '今日' : `本${activeTabName2}`}}</span></td>
+                            <td><span>{{activeTabName2==='日'? '昨日' : `上${activeTabName2}`}}</span></td>
                             <td><span>环比</span></td>
                         </tr>
                         </thead>
@@ -79,6 +79,7 @@
             return {
                 activeTab1: '1', //
                 activeTab2: '1', // 日月周
+                activeTabName2: '日', // 日月周
                 activeTabJjr: false, // 是否包含节假日
                 tabList1: [
                     {
@@ -142,7 +143,7 @@
                 /* 鼠标移入图表中需要展示的数据 */
                 hoverEChartsLine: {
                     name: '',
-                    index: ''
+                    dataIndex: ''
                 },
                 /* 鼠标移入图表中需要展示的数据 */
                 hoverEChartsXAxis: '',
@@ -293,13 +294,13 @@
                     max: 1200
                 }
                 let yAxisName = ''
-                if(this.activeTab1 === '1'){
+                if (this.activeTab1 === '1') {
                     yAxisName = ''
                 }
-                if(this.activeTab1 === '2'){
+                if (this.activeTab1 === '2') {
                     yAxisName = '单位:万'
                 }
-                if(this.activeTab1 === '3'){
+                if (this.activeTab1 === '3') {
                     yAxisName = '单位:次'
                 }
                 return {
@@ -370,8 +371,10 @@
                     yAxis: [
                         {
                             type: 'value',
+                            min: 0,
+                            max: 120,
                             name: yAxisName,
-                            splitNumber : 3,
+                            splitNumber: 4,
                             nameTextStyle: {
                                 color: "#00b6ff",
                                 fontSize: 15,
@@ -396,7 +399,7 @@
                         {
                             ...minAndMax,
                             type: 'value',
-                            splitNumber : 4,
+                            splitNumber: 4,
                             axisLine: {
                                 show: false,
                             },
@@ -434,21 +437,22 @@
 
             /* 浮显框中展示的数据 */
             tooltipData() {
-                if (this.hoverEChartsLine.name === '国网北分复工复产指数') {
-                    return this.gwbfData.data[this.hoverEChartsLine.dataIndex]
+                let {name, dataIndex} = this.hoverEChartsLine
+                if (name === '国网北分复工复产指数') {
+                    return this.gwbfData.data[dataIndex]
                 }
-                if (this.hoverEChartsLine.name === '市经信局复工复产指数') {
-                    return this.sjxjData.data[this.hoverEChartsLine.dataIndex]
+                if (name === '市经信局复工复产指数') {
+                    return this.sjxjData.data[dataIndex]
                 }
                 return {
                     gdqfgfczs: [],
                     ghyfgfczs: [],
                 }
             },
-            tooltipxAxisData(){
+            tooltipxAxisData() {
                 let str = ''
-                this.xAxisData.map(item=>{
-                    if(item.value === this.hoverEChartsXAxis){
+                this.xAxisData.map(item => {
+                    if (item.value === this.hoverEChartsXAxis) {
                         str = item.tssj
                     }
                 })
@@ -470,6 +474,7 @@
                     this.activeTabJjr = !this.activeTabJjr;
                 } else {
                     this.activeTab2 = tab.code
+                    this.activeTabName2 = tab.name
                 }
                 this.init()
             },
@@ -481,13 +486,14 @@
             },
             /* 进入 */
             mousemoveEcharts(params) {
+                let f = window.innerWidth/1920
                 if (params.componentType === 'series') {
                     this.hoverEChartsLine.name = params.seriesName
                     this.hoverEChartsLine.dataIndex = params.dataIndex
                     if (params.seriesName === '国网北分复工复产指数' || params.seriesName === '市经信局复工复产指数') {
                         let $tooltip = this.$refs.tooltip.style
-                        $tooltip.top = params.event.event.zrY - 50 + 'px'
-                        $tooltip.left = params.event.event.zrX + 30 + 'px'
+                        $tooltip.top = params.event.event.zrY - 150*f + 'px'
+                        $tooltip.left = params.event.event.zrX - 350*f + 'px'
                         $tooltip.display = 'block'
                     }
                 }
@@ -496,8 +502,8 @@
                     if (text.indexOf('company') > -1) {
                         this.hoverEChartsXAxis = params.value
                         let $tooltip = this.$refs.tooltipxAxis.style
-                        $tooltip.top = params.event.event.zrY - 30 + 'px'
-                        $tooltip.left = params.event.event.zrX - 100 + 'px'
+                        $tooltip.top = params.event.event.zrY - 30*f + 'px'
+                        $tooltip.left = params.event.event.zrX - 90*f + 'px'
                         $tooltip.display = 'block'
                     }
                 }
@@ -587,8 +593,8 @@
         top: 0;
         left: 0;
         padding: 10px 15px;
-        width: 573px;
-        height: 185px;
+        width: 720px;
+        height: 183px;
         font-size: 15px;
         background: rgba(0, 36, 86, 0.95);
         border: 1px solid #00a1e9;
@@ -606,15 +612,15 @@
             color: #208fff;
         }
         & > .left {
-            width: 236px;
+            width: 50%;
             height: 100%;
         }
         & > .right {
-            width: 274px;
+            width: 50%;
             height: 100%;
         }
         table {
-            table-layout: fixed;
+            /*table-layout: fixed;*/
             width: 100%;
             text-align: right;
             span {

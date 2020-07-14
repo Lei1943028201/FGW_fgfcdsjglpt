@@ -41,7 +41,9 @@
                 this.theEchart.on('mouseout', params => {
                     this.$emit('mouseoutEcharts', params)
                 })
-
+                this.theEchart.on('legendselectchanged', params => {
+                    this.$emit('legendSelectChanged', params)
+                });
 
 
                 /* 图表自适应 */

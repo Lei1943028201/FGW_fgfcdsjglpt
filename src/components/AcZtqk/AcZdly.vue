@@ -22,7 +22,7 @@
 
         <!-- echarts图--开始 -->
         <div class="fd-content-echarts">
-            <CcEcharts :option="option"/>
+            <CcEcharts :option="option" @legendSelectChanged="legendSelectChanged"/>
         </div>
         <!-- echarts图--结束 -->
 
@@ -59,23 +59,40 @@
             return {
                 resData: {},
                 /* echarts数据 */
-                gzlsqk: {}
+                gzlsqk: {},
+                legendSelect: true
             }
         },
         computed: {
             option() {
                 let _this = this
                 return {
-                    legend: {
-                        data: this.legend,
-                        icon: 'roundRect',
-                        y: 20,
-                        x: 'right',
-                        textStyle: {
-                            color: '#00b6ff',
-                            fontSize: 15
+                    legend: [
+                        {
+                            data: this.legend.filter(item => item.icon === 'roundRect'),
+                            icon: 'roundRect',
+                            itemWidth: 14,
+                            itemHeight: 14,
+                            y: 20,
+                            x2: 70,
+                            textStyle: {
+                                color: '#00b6ff',
+                                fontSize: 15,
+                            },
                         },
-                    },
+                        {
+                            data: this.legend.filter(item => item.icon === 'rect'),
+                            icon: 'roundRect',
+                            itemWidth: 14,
+                            itemHeight: 5,
+                            y: 20,
+                            x: 'right',
+                            textStyle: {
+                                color: '#00b6ff',
+                                fontSize: 15,
+                            },
+                        }
+                    ],
                     grid: {
                         x: 48,
                         x2: 0,
@@ -245,6 +262,7 @@
             /* 图例 */
             legend() {
                 let {legend} = this.gzlsqk
+
                 if(legend){
                     return legend.map(item=>{
                         return {
@@ -264,9 +282,13 @@
             qyzsArr() {
                 let {qyzsArr} = this.gzlsqk
                 if(qyzsArr){
-                    return qyzsArr.map((item, index)=>{
-                        return item-this.fgzsArr[index]
-                    })
+                    if(this.legendSelect){
+                        return qyzsArr.map((item, index)=>{
+                            return item-this.fgzsArr[index]
+                        })
+                    }else{
+                        return qyzsArr
+                    }
                 }
                 return []
             },
@@ -282,6 +304,9 @@
             },
         },
         methods: {
+            legendSelectChanged(params){
+                //this.legendSelect = params.selected.复工数
+            },
             handlerTab(tab) {
                 if (tab.code === this.activeTab) {
                     return

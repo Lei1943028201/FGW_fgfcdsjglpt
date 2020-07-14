@@ -281,16 +281,32 @@
             option_hy() {
                 let _this = this
                 return {
-                    legend: {
-                        data: this.legend,
-                        icon: 'roundRect',
-                        x: 'center',
-                        y: 0,
-                        textStyle: {
-                            color: '#00b6ff',
-                            fontSize: 15
+                    legend: [
+                        {
+                            data: this.legend.filter(item => item.icon === 'roundRect'),
+                            icon: 'roundRect',
+                            itemWidth: 14,
+                            itemHeight: 14,
+                            y: 20,
+                            x2: 70,
+                            textStyle: {
+                                color: '#00b6ff',
+                                fontSize: 15,
+                            },
                         },
-                    },
+                        {
+                            data: this.legend.filter(item => item.icon === 'rect'),
+                            icon: 'roundRect',
+                            itemWidth: 14,
+                            itemHeight: 5,
+                            y: 20,
+                            x: 'right',
+                            textStyle: {
+                                color: '#00b6ff',
+                                fontSize: 15,
+                            },
+                        }
+                    ],
                     grid: {
                         x: 58,
                         x2: 35
@@ -404,7 +420,17 @@
             /* 图例 */
             legend() {
                 let {legend} = this.resData
-                return legend || []
+
+                if(legend){
+                    return legend.map(item=>{
+                        return {
+                            name: item,
+                            icon: item === '复工率' ? 'rect': 'roundRect',
+                        }
+                    }) || []
+                }
+                return  []
+
             },
             /* 部门 */
             bmArr() {
