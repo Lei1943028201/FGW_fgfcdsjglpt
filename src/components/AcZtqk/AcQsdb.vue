@@ -312,7 +312,7 @@
                         x: 'center',
                         textStyle: {
                             color: '#00b6ff',
-                            fontSize: 15
+                            fontSize: 15*this.K
                         },
                     },
                     grid: {
@@ -335,11 +335,11 @@
                                 interval: 0, //强制显示文字
                                 rich: {
                                     white: {
-                                        fontSize: 15,      //更改坐标轴文字大小
+                                        fontSize: 15*this.K,      //更改坐标轴文字大小
                                         color: "#00b6ff"
                                     },
                                     company: {
-                                        fontSize: 15,      //更改坐标轴文字大小
+                                        fontSize: 15*this.K,      //更改坐标轴文字大小
                                         color: "#ff3a56"
                                     }
                                 },
@@ -377,7 +377,7 @@
                             splitNumber: 4,
                             nameTextStyle: {
                                 color: "#00b6ff",
-                                fontSize: 15,
+                                fontSize: 15*this.K,
                                 padding: [0, 0, 0, -60]
                             },
                             axisLine: {
@@ -386,7 +386,7 @@
                             axisLabel: {
                                 textStyle: {
                                     color: '#00b6ff',  //更改坐标轴文字颜色
-                                    fontSize: 15      //更改坐标轴文字大小
+                                    fontSize: 15*this.K  //更改坐标轴文字大小
                                 },
                             },
                             //设置网格线颜色
@@ -406,7 +406,7 @@
                             axisLabel: {
                                 textStyle: {
                                     color: '#00b6ff',  //更改坐标轴文字颜色
-                                    fontSize: 15      //更改坐标轴文字大小
+                                    fontSize: 15*this.K  //更改坐标轴文字大小
                                 },
                             },
                             //设置网格线颜色

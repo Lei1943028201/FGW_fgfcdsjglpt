@@ -6,6 +6,7 @@ export default {
     },
     data(){
         return {
+            K: window.innerWidth/1920, // 比例系数
             dialogVisible: false,
             showType: 1, // 展示类型 1 图表 2 表格
         }
@@ -14,7 +15,6 @@ export default {
 
     },
     computed: {
-
 
     },
     methods: {

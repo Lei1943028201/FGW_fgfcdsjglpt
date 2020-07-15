@@ -272,12 +272,12 @@
                                     },
                                     rich: {
                                         white: {
-                                            fontSize: 20,
+                                            fontSize: 20*this.K,
                                             fontWeight: 700,
                                             color: "#00ffff"
                                         },
                                         company: {
-                                            fontSize: 15,
+                                            fontSize: 15*this.K,
                                             color: "#00ffff"
                                         }
                                     },

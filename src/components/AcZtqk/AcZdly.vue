@@ -76,7 +76,7 @@
                             x2: 70,
                             textStyle: {
                                 color: '#00b6ff',
-                                fontSize: 15,
+                                fontSize: this.fontSize ,
                             },
                         },
                         {
@@ -88,7 +88,7 @@
                             x: 'right',
                             textStyle: {
                                 color: '#00b6ff',
-                                fontSize: 15,
+                                fontSize: this.fontSize ,
                             },
                         }
                     ],
@@ -116,7 +116,7 @@
                                 interval:0, //强制显示文字
                                 textStyle: {
                                     color: '#00b6ff',  //更改坐标轴文字颜色
-                                    fontSize: 15      //更改坐标轴文字大小
+                                    fontSize: this.fontSize       //更改坐标轴文字大小
                                 },
                                 formatter: function (value) {
                                     if(value === '商场（超市）'){
@@ -156,7 +156,7 @@
                             splitNumber : 2,
                             nameTextStyle: {
                                 color: "#00b6ff",
-                                fontSize: 15,
+                                fontSize: this.fontSize ,
                                 padding: [0, 0, 0, -60]
                             },
                             axisLine: {
@@ -165,7 +165,7 @@
                             axisLabel: {
                                 textStyle: {
                                     color: '#00b6ff',  //更改坐标轴文字颜色
-                                    fontSize: 15      //更改坐标轴文字大小
+                                    fontSize: this.fontSize       //更改坐标轴文字大小
                                 },
                                 formatter: function (value) {
                                     return `${value}%`

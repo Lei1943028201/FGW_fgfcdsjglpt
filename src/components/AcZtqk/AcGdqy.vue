@@ -94,11 +94,11 @@
                         text: '重点',
                         textStyle: {
                             color: '#c9e7ff',
-                            fontSize: 18
+                            fontSize: 18*this.K
                         },
                         subtext: this.zdData.fgl + '%',
                         subtextStyle: {
-                            fontSize: 22,
+                            fontSize: 22*this.K,
                             fontWeight: 'bold',
                             color: '#c9e7ff',
                         },
@@ -189,11 +189,11 @@
                         text: '小微',
                         textStyle: {
                             color: '#c9e7ff',
-                            fontSize: 18
+                            fontSize: 18*this.K
                         },
                         subtext: this.xwData.fgl + '%',
                         subtextStyle: {
-                            fontSize: 22,
+                            fontSize: 22*this.K,
                             fontWeight: 'bold',
                             color: '#c9e7ff',
                         },
@@ -291,7 +291,7 @@
                             x2: 70,
                             textStyle: {
                                 color: '#00b6ff',
-                                fontSize: 15,
+                                fontSize: 15*this.K ,
                             },
                         },
                         {
@@ -303,13 +303,14 @@
                             x: 'right',
                             textStyle: {
                                 color: '#00b6ff',
-                                fontSize: 15,
+                                fontSize: 15*this.K ,
                             },
                         }
                     ],
                     grid: {
                         x: 58,
-                        x2: 35
+                        x2: 35,
+                        y2: 85*this.K,
                     },
                     tooltip: {
                         show: true,
@@ -329,10 +330,10 @@
                             },
                             axisLabel: {
                                 interval: 0, //强制显示文字
-                                rotate: 30,
+                                rotate: 45,
                                 textStyle: {
                                     color: '#00b6ff',  //更改坐标轴文字颜色
-                                    fontSize: 15      //更改坐标轴文字大小
+                                    fontSize: 15*this.K      //更改坐标轴文字大小
                                 },
                             },
                         }
@@ -345,7 +346,7 @@
                             splitNumber: 3,
                             nameTextStyle: {
                                 color: "#00b6ff",
-                                fontSize: 15,
+                                fontSize: 15*this.K ,
                                 padding: [0, 0, 0, -60]
                             },
                             type: 'value',
@@ -355,7 +356,7 @@
                             axisLabel: {
                                 textStyle: {
                                     color: '#00b6ff',  //更改坐标轴文字颜色
-                                    fontSize: 15      //更改坐标轴文字大小
+                                    fontSize: 15*this.K      //更改坐标轴文字大小
                                 },
                             },
                             //设置网格线颜色
@@ -376,7 +377,7 @@
                             axisLabel: {
                                 textStyle: {
                                     color: '#00b6ff',  //更改坐标轴文字颜色
-                                    fontSize: 15      //更改坐标轴文字大小
+                                    fontSize: 15*this.K       //更改坐标轴文字大小
                                 },
                             },
                             //设置网格线颜色
@@ -605,7 +606,7 @@
 
     .fd-content-echarts {
         width: 100%;
-        height: 160px;
+        height: 170px;
         & > div {
             width: 50%;
             height: 100%;
