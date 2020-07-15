@@ -198,10 +198,26 @@
                     ],
                     series: [
                         {
+                            name: '企业总数',
+                            type: 'bar',
+                            yAxisIndex: 1,
+                            barWidth: 10,//柱图宽度
+                            color: new echarts.graphic.LinearGradient(0, 1, 0, 0, [
+                                {
+                                    offset: 1,
+                                    color: '#0066ff'
+                                },
+                                {
+                                    offset: 0,
+                                    color: '#00f4ff'
+                                }
+                            ]),
+                            data: this.qyzsArr
+                        },
+                        {
                             name: '复工数',
                             type: 'bar',
                             yAxisIndex: 1,
-                            stack: '万',
                             barWidth: 10,//柱图宽度
                             color: new echarts.graphic.LinearGradient(0, 1, 0, 0, [
                                 {
@@ -217,29 +233,10 @@
                             data: this.fgzsArr
                         },
                         {
-                            name: '企业总数',
-                            type: 'bar',
-                            yAxisIndex: 1,
-                            stack: '万',
-                            barWidth: 10,//柱图宽度
-                            color: new echarts.graphic.LinearGradient(0, 1, 0, 0, [
-                                {
-                                    offset: 1,
-                                    color: '#0066ff'
-                                },
-                                {
-                                    offset: 0,
-                                    color: '#00f4ff'
-                                }
-                            ]),
-                            data: this.qyzsArr
-                        },
-                        {
                             name: '复工率',
                             type: 'line',
                             yAxisIndex: 0,
                             smooth: true,
-                            stack: '%',
                             color: '#10f680',
                             data: this.fglArr
                         },

@@ -390,28 +390,27 @@
                     ],
                     series: [
                         {
-                            name: '复工企业数',
-                            type: 'bar',
-                            stack: '万',
-                            barWidth: 10,//柱图宽度
-                            color: '#ffc300',
-                            yAxisIndex: 0,
-                            barGap: "-100%", /*这里设置包含关系*/
-                            data: this.fgqysArr
-                        },
-                        {
                             name: '企业总数',
                             type: 'bar',
-                            stack: '万',
                             barWidth: 10,//柱图宽度
                             color: '#02edff',
                             yAxisIndex: 0,
                             data: this.qyzsArr
                         },
                         {
+                            name: '复工企业数',
+                            type: 'bar',
+                            barWidth: 10,//柱图宽度
+                            color: '#ffc300',
+                            yAxisIndex: 0,
+                            barGap: "-100%", /*这里设置包含关系*/
+                            data: this.fgqysArr,
+                        },
+
+                        {
                             name: '复工率',
                             type: 'line',
-                            stack: '%',
+                            /*stack: '%',*/
                             color: '#d841fe',
                             yAxisIndex: 1,
                             data: this.drfglArr
