@@ -92,6 +92,9 @@
         methods: {
             /*  */
             progressBarWidth(value){
+                if(value > 100){
+                    value = 100
+                }
                 return `width: ${value}%`
             },
             init() {

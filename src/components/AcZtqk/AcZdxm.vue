@@ -54,10 +54,15 @@
         <el-dialog
                 title="提示"
                 :visible.sync="dialogVisible"
-                :lock-scroll="false"
                 width="1060"
                 :before-close="handleClose">
             <AcDialogTitle slot="title" :title="dialogTitle" @handlerShowType="handlerShowType"></AcDialogTitle>
+            <div class="fd-query-content">
+                <!-- tab切换--模块 -->
+                <CcSelect class="fd-select-01"></CcSelect>
+                <button class="fd-btn fd-btn-export">导出</button>
+                <button class="fd-btn fd-btn-confirm">确定</button>
+            </div>
             <AcZdxmXzChart v-if="showType === 1"></AcZdxmXzChart>
             <AcZdxmXzTable v-else></AcZdxmXzTable>
         </el-dialog>

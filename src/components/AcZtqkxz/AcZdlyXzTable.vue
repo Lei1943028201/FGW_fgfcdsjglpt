@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div  class="fd-xz-content-table">
         <el-table
                 :data="tableData"
                 stripe
@@ -8,14 +8,12 @@
             <el-table-column
                     align="center"
                     prop="date"
-                    label="日期"
-                    width="180">
+                    label="日期">
             </el-table-column>
             <el-table-column
                     align="center"
                     prop="value1"
-                    label="部门"
-                    width="180">
+                    label="部门">
             </el-table-column>
             <el-table-column
                     align="center"
@@ -42,7 +40,7 @@
                 @current-change="handleCurrentChange"
                 background
                 layout="prev, pager, next"
-                :page-size="5"
+                :page-size="10"
                 :current-page="currentPage"
                 :total="total">
         </el-pagination>
@@ -106,7 +104,9 @@
                 ]
             }
         },
-        computed: {},
+        computed: {
+
+        },
         methods: {
             // 翻页操作
             handleCurrentChange(currentPage) {
@@ -116,6 +116,9 @@
                 getGlyGglqsbg()
             }
         },
+        updated(){
+            this.init()
+        },
         created() {
             this.init()
         }
@@ -124,5 +127,5 @@
 </script>
 
 <style lang="less" rel="stylesheet/less">
-
+    @import "../../style/mixin-dialog";
 </style>

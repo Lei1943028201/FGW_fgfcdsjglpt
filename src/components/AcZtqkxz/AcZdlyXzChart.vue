@@ -1,6 +1,8 @@
 <template>
-    <div id="AcZdlyXzChart">
+    <div id="AcZdlyXzChart" class="fd-xz-content-chart">
+        <h2 class="fd-title-01">全市各区企业复工率趋势</h2>
         <CcEcharts :option="option" class="fd-chart-top"/>
+        <h2>X月X日 各区/重点企业/小微企业 复工率</h2>
         <CcEcharts :option="option" class="fd-chart-bottom"/>
     </div>
 </template>
@@ -257,11 +259,5 @@
 </script>
 
 <style scoped lang="less" rel="stylesheet/less">
-    #AcZdlyXzChart{
-        width: 100%;
-        height: 510PX;
-        .fd-chart-top,.fd-chart-bottom{
-            height: 50%;
-        }
-    }
+    @import "../../style/mixin-dialog";
 </style>

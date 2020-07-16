@@ -40,12 +40,17 @@
         <el-dialog
                 title="提示"
                 :visible.sync="dialogVisible"
-                :lock-scroll="false"
                 width="1060"
                 :before-close="handleClose">
             <AcDialogTitle slot="title" @handlerShowType="handlerShowType" :title="dialogTitle"></AcDialogTitle>
+            <div class="fd-query-content">
+                <!-- tab切换--模块 -->
+                <CcTab :tab-list="tabList" @handlerTab="dialogHandlerTab"/>
+                <CcSelect class="fd-select-01"></CcSelect>
+                <button class="fd-btn fd-btn-export">导出</button>
+                <button class="fd-btn fd-btn-confirm">确定</button>
+            </div>
             <!-- tab切换--模块 -->
-            <CcTab :tab-list="tabList" @handlerTab="dialogHandlerTab"/>
             <AcGdqyXzChart :dialog-active-tab="dialogActiveTab" v-if="showType === 1"></AcGdqyXzChart>
             <AcGdqyXzTable :dialog-active-tab="dialogActiveTab" v-else></AcGdqyXzTable>
         </el-dialog>

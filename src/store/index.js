@@ -5,7 +5,19 @@ Vue.use(Vuex);
 export default new Vuex.Store({
     state: {
         mapId: '',
-        mapData: []
+        mapData: [],
+        /* 弹窗页面参数 */
+        params_xz: {
+            offset: 1, // 页码
+            limit: 10, // 展示条数
+            ksrq: '', // 开始日期
+            jzrq: '', // 结束日期
+            rq: '',   // 日期
+            sjfw: '', // 是否包含节假日
+            dq: '',   // 地区
+            lylx: '', // 部门领域
+            hylx: '', // 行业领域
+        },
     },
     getters: {
         /* 正在展示的地图数据 */
@@ -23,6 +35,9 @@ export default new Vuex.Store({
         SET_MAPDATA: (state, _mapData) => {
             state.mapData = _mapData
         },
+        SET_PARAMS: (state, _params) => {
+            state.params_xz[_params.key] = _params.value
+        },
     },
     actions: {
         SetMapId({commit}, _mapId) {
@@ -31,5 +46,8 @@ export default new Vuex.Store({
         SetMapData({commit}, _mapData){
             commit('SET_MAPDATA', _mapData)
         },
+        SetParams({commit}, _params){
+            commit('SET_PARAMS', _params)
+        }
     }
 })

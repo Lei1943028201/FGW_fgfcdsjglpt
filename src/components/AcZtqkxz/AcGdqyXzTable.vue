@@ -1,5 +1,6 @@
 <template>
-    <div>
+    <div id="AcGdqyXzTable" class="fd-xz-content-table">
+        <h2 class="fd-title-01">x月x日全市各区企业复工详情</h2>
         <!-- 各地区 -->
         <el-table
                 v-show="dialogActiveTab === '1'"
@@ -239,6 +240,6 @@
 </script>
 
 <style scoped lang="less" rel="stylesheet/less">
-
+    @import "../../style/mixin-dialog";
 
 </style>

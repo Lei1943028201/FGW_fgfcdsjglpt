@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div  class="fd-xz-content-table">
         <div v-show="mapDialogType==='1'">
             <div v-show="dialogActiveTab === '1'">
                 <el-table
@@ -146,7 +146,6 @@
                 </el-pagination>
             </div>
         </div>
-
     </div>
 </template>
 
@@ -368,6 +367,6 @@
 </script>
 
 <style scoped lang="less" rel="stylesheet/less">
-
+    @import "../../style/mixin-dialog";
 
 </style>

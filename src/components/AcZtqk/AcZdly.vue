@@ -31,14 +31,14 @@
         <el-dialog
                 title="提示"
                 :visible.sync="dialogVisible"
-                :lock-scroll="false"
                 width="1060PX"
                 :before-close="handleClose">
             <AcDialogTitle slot="title" :title="dialogTitle" @handlerShowType="handlerShowType"></AcDialogTitle>
-            <div>
+            <div class="fd-query-content">
+                <!-- tab切换--模块 -->
+                <CcSelect select-name="请选择领域" :data-list="selectData" class="fd-select-01"></CcSelect>
                 <button class="fd-btn fd-btn-export">导出</button>
-                <button class="fd-btn fd-btn-confirm">确定</button>
-                <CcSelect></CcSelect>
+                <button class="fd-btn fd-btn-confirm" @click="handlerConfirm">确定</button>
             </div>
             <AcZdlyXzChart v-if="showType === 1"></AcZdlyXzChart>
             <AcZdlyXzTable v-else></AcZdlyXzTable>
@@ -70,6 +70,27 @@
                 resData: {},
                 /* echarts数据 */
                 gzlsqk: {},
+                selectData:[
+                    {
+                        name: '东城区',
+                        code: '共计'
+                    },
+                    {
+                        name: '西城区',
+                        code: '复工数'
+                    },
+                    {
+                        name: '昌平区',
+                        code: '%'
+                    },
+                ],
+                /* 查询参数 */
+                queryParams:{
+                    ly: '',
+                    startDate: '',
+                    endDate: '',
+                    bhjjr: '',
+                }
             }
         },
         computed: {
@@ -305,6 +326,10 @@
             },
         },
         methods: {
+            /* 确认 */
+            handlerConfirm(){
+
+            },
             handlerTab(tab) {
                 if (tab.code === this.activeTab) {
                     return
