@@ -1,6 +1,23 @@
 <template>
     <div>
-        AcMapXzRbzs
+        <div v-show="mapDialogType==='1'">
+            <div v-show="dialogActiveTab === '1'">
+                1 国网-地区
+
+            </div>
+            <div v-show="dialogActiveTab === '2'">
+                2 国网-行业
+            </div>
+        </div>
+        <div v-show="mapDialogType==='2'">
+            <div v-show="dialogActiveTab === '1'">
+                1 日报-地区
+
+            </div>
+            <div v-show="dialogActiveTab === '2'">
+                2 日报-行业
+            </div>
+        </div>
     </div>
 </template>
 
@@ -11,7 +28,7 @@
     import {getGdqFgfczsqsbg, getGhyFgfczsqsbg} from '../../api/ztqkxz'
     export default {
         name: "AcMapXzTable",
-        props:['dialogActiveTab'],
+        props:['mapDialogType', 'dialogActiveTab'],
         data() {
             return {
 

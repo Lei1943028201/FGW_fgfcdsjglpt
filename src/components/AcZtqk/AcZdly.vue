@@ -31,9 +31,15 @@
                 title="提示"
                 :visible.sync="dialogVisible"
                 :lock-scroll="false"
-                width="1060"
+                width="1060PX"
                 :before-close="handleClose">
-            <AcDialogTitle slot="title"></AcDialogTitle>
+            <AcDialogTitle slot="title" title="重点领域复工复产情况" @handlerShowType="handlerShowType"></AcDialogTitle>
+            <div>
+                <h2>X月X日全市各领域复工详情</h2>
+                <button class="fd-btn fd-btn-export">导出</button>
+                <button class="fd-btn fd-btn-confirm">确定</button>
+                <CcSelect></CcSelect>
+            </div>
             <AcZdlyXzChart v-if="showType === 1"></AcZdlyXzChart>
             <AcZdlyXzTable v-else></AcZdlyXzTable>
         </el-dialog>

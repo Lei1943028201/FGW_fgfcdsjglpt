@@ -8,7 +8,7 @@
  *@description    config.js ,所有的配置文件
  *                      详细说明看注释  !important
  */
-const develop = false;
+const develop = true;
 //
 const config = {
     //  是否是调试模式，true 为json数据，false 为服务器数据
@@ -62,27 +62,27 @@ const localUrl = {
         /**
          * 中间数据
          */
-        sxtj: '/api/v1/fgfcxzym/sxtj',                      // 筛选条件
-        gdq_fgfczsqs: '/api/v1/fgfcxzym/gdq/fgfczsqs',      // 全市各区企业复工指数趋势
-        gdq_mtfgfczs: '/api/v1/fgfcxzym/gdq/mtfgfczs',      // 某天各区复工复产指数
-        gdq_fgfczsqsbg: '/api/v1/fgfcxzym/gdq/fgfczsqsbg',  // 各区复工复产指数趋势表格
-        ghy_fgfczsqs: '/api/v1/fgfcxzym/ghy/fgfczsqs',      // 全市各行业复工指数趋势
-        ghy_mtfgfczs: '/api/v1/fgfcxzym/ghy/mtfgfczs',      // 某天各行业复工复产指数
-        ghy_fgfczsqsbg: '/api/v1/fgfcxzym/ghy/fgfczsqsbg',  // 各行业复工复产指数趋势表格
+        sxtj: 'json/ztqkxz/sxtj.json',                      // 筛选条件
+        gdq_fgfczsqs: 'json/ztqkxz/gdq_fgfczsqs.json',      // 全市各区企业复工指数趋势
+        gdq_mtfgfczs: 'json/ztqkxz/gdq_mtfgfczs.json',      // 某天各区复工复产指数
+        gdq_fgfczsqsbg: 'json/ztqkxz/gdq_fgfczsqsbg.json',  // 各区复工复产指数趋势表格
+        ghy_fgfczsqs: 'json/ztqkxz/ghy_fgfczsqs.json',      // 全市各行业复工指数趋势
+        ghy_mtfgfczs: 'json/ztqkxz/ghy_mtfgfczs.json',      // 某天各行业复工复产指数
+        ghy_fgfczsqsbg: 'json/ztqkxz/ghy_fgfczsqsbg.json',  // 各行业复工复产指数趋势表格
         /**
          * 右侧数据
          */
-        glysj: '/api/v1/zdly/glysj',                    // 筛选条件
-        glyfglqs: '/api/v1/zdly/glyfglqs',              // 各领域复工率趋势
-        mtglyfgl: '/api/v1/zdly/mtglyfgl',              // 某天各领域复工率
-        glyfglqsbg: '/api/v1/zdly/glyfglqs/bg',         // 各领域复工率趋势表格
-        gdq_fglqs: '/api/v1/gdqy/gdq/fglqs',            // 全市各区企业复工率趋势
-        gdq_mtfglqs: '/api/v1/gdqy/gdq/mtfglqs',        // 某天各区复工率
-        gdq_fgqkbg: '/api/v1/gdqy/gdq/fgqkbg',          // 各区复工率趋势表格
-        exportbg: '/api/v1/zdly/glyfglqs/bg/export',    // 各区复工率趋势表格-导出Excel
-        ghy_fglqs: '/api/v1/gdqy/ghy/fglqs',            // 全市各行业复工率趋势
-        ghy_mtfglqs: '/api/v1/gdqy/ghy/mtfglqs',        // 某天各行业复工率
-        ghy_fgqkbg: '/api/v1/gdqy/ghy/fgqkbg',          // 各行业复工率趋势表格
+        glysj: 'json/ztqkxz/glysj.json',                    // 筛选条件
+        glyfglqs: 'json/ztqkxz/glyfglqs.json',              // 各领域复工率趋势
+        mtglyfgl: 'json/ztqkxz/mtglyfgl.json',              // 某天各领域复工率
+        glyfglqsbg: 'json/ztqkxz/glyfglqsbg.json',         // 各领域复工率趋势表格
+        gdq_fglqs: 'json/ztqkxz/gdq_fglqs.json',            // 全市各区企业复工率趋势
+        gdq_mtfglqs: 'json/ztqkxz/gdq_mtfglqs.json',        // 某天各区复工率
+        gdq_fgqkbg: 'json/ztqkxz/gdq_fgqkbg.json',          // 各区复工率趋势表格
+        exportbg: 'json/ztqkxz/exportbg.json',    // 各区复工率趋势表格-导出Excel
+        ghy_fglqs: 'json/ztqkxz/ghy_fglqs.json',            // 全市各行业复工率趋势
+        ghy_mtfglqs: 'json/ztqkxz/ghy_mtfglqs.json',        // 某天各行业复工率
+        ghy_fgqkbg: 'json/ztqkxz/ghy_fgqkbg.json',          // 各行业复工率趋势表格
     }
 };
 

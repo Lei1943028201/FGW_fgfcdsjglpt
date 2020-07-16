@@ -1,12 +1,13 @@
 <template>
     <div class="clear">
-        <h1 class="left">国网北分复工监测情况(分区)</h1>
+        <h1 class="left">{{title}}</h1>
         <ul class="fd-content-tab left clear">
             <li v-for="index of 2"
                 class="fd-tab-item left"
                 :class="{'active': index === activeTab}"
                 @click="handlerTab(index)"
-                :key="index">{{index}}</li>
+                :key="index">
+            </li>
         </ul>
     </div>
 </template>
@@ -17,6 +18,7 @@
      */
     export default {
         name: "AcDialogTitle",
+        props:['title'],
         data() {
             return {
                 activeTab: 1,
@@ -49,8 +51,20 @@
         text-align: center;
         line-height: 30px;
     }
-    .active{
+    .fd-tab-item:nth-child(1){
+        background: url('../../../public/img/icon-chart.png') no-repeat;
+        background-size: 34px 69px;
+        background-position: 10px -3px;
+
+    }
+    .fd-tab-item:nth-child(2){
+        background: url('../../../public/img/icon-table.png') no-repeat;
+        background-size: 34px 69px;
+        background-position: 10px -3px;
+    }
+    &>.active{
         border: 1px solid #155683;
+        background-position: 10px -42px !important;
     }
 }
 

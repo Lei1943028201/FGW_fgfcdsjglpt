@@ -7,6 +7,7 @@ import CcTabText from './common/CcTabText'
 import CcTop from './common/CcTop'
 import CcEcharts from './common/CcEcharts'
 import CcCard from './common/CcCard'
+import CcSelect from './common/CcSelect'
 
 Vue.component('TheHeader', TheHeader)
 Vue.component('TheFooter', TheFooter)
@@ -16,3 +17,4 @@ Vue.component('CcTabText', CcTabText)
 Vue.component('CcTop', CcTop)
 Vue.component('CcEcharts', CcEcharts)
 Vue.component('CcCard', CcCard)
+Vue.component('CcSelect', CcSelect)

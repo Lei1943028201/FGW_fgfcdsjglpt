@@ -88,8 +88,8 @@
             <AcDialogTitle slot="title" @handlerShowType="handlerShowType"></AcDialogTitle>
             <!-- tab切换--模块 -->
             <CcTab :tab-list="tabList" @handlerTab="dialogHandlerTab"/>
-            <AcMapXzChart :dialog-active-tab="dialogActiveTab" v-if="showType === 1"/>
-            <AcMapXzTable :dialog-active-tab="dialogActiveTab" v-else/>
+            <AcMapXzChart :map-dialog-type="mapDialogType" :dialog-active-tab="dialogActiveTab" v-if="showType === 1"/>
+            <AcMapXzTable :map-dialog-type="mapDialogType" :dialog-active-tab="dialogActiveTab" v-else/>
         </el-dialog>
         <!-- 弹窗 -- 结束 -->
     </div>

@@ -1,27 +1,27 @@
 body, div, span, header, footer, nav, section, aside, article, ul, dl, dt, dd, li, a, p, h1, h2, h3, h4, h5, h6, i, b, textarea, button, input, select, figure, figcaption {
-    padding: 0;
-    margin: 0;
-    list-style: none;
-    font-style: normal;
-    text-decoration: none;
-    border: none;
-    font-family: "Microsoft Yahei", sans-serif;
-    -webkit-tap-highlight-color: transparent;
-    -webkit-font-smoothing: antialiased;
-    box-sizing: border-box;
-    font-weight: normal;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  font-style: normal;
+  text-decoration: none;
+  border: none;
+  font-family: "Microsoft Yahei", sans-serif;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+  font-weight: normal;
 
-    &:focus {
-        outline: none;
-    }
+  &:focus {
+    outline: none;
+  }
 }
 
 input[type="button"], input[type="submit"], input[type="search"], input[type="reset"] {
-    -webkit-appearance: none;
+  -webkit-appearance: none;
 }
 
 textarea {
-    -webkit-appearance: none;
+  -webkit-appearance: none;
 }
 
 .clear:after {
@@ -54,7 +54,7 @@ textarea {
   display: block;
 }
 
-.hand{
+.hand {
   cursor: pointer;
 }
 
@@ -82,27 +82,126 @@ html, body, #app {
 }
 
 [v-cloak] {
-    display: none;
+  display: none;
 }
 
 //边框样式
 .scale-1px {
-    position: relative;
-    border: none;
+  position: relative;
+  border: none;
 }
 
 .scale-1px:after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    border-top: 1px solid #c2c2c2;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    width: 200%;
-    height: 200%;
-    -webkit-transform: scale(0.5);
-    transform: scale(0.5);
-    -webkit-transform-origin: left top;
-    transform-origin: left top;
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-top: 1px solid #c2c2c2;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 200%;
+  height: 200%;
+  -webkit-transform: scale(0.5);
+  transform: scale(0.5);
+  -webkit-transform-origin: left top;
+  transform-origin: left top;
+}
+
+/* 按钮 */
+.fd-btn {
+  padding: 0 20px;
+  font-size: 15px;
+  line-height: 30px;
+  border-radius: 3px;
+  color: #fff;
+}
+
+.fd-btn-export {
+  background: #fd8122;
+}
+
+.fd-btn-confirm {
+  background: #009fff;
+}
+
+/* 表格样式 */
+/* 头部文字 */
+.el-table {
+  background: rgba(0, 0, 0, 0) !important;
+  color: #c9e7ff;
+  thead {
+    color: #00eaff !important;
+    th, tr {
+      background: rgba(2, 76, 172, 0.8) !important;
+    }
+  }
+  th, tr, td {
+    //background: rgba(8, 39, 72, 0.9) !important;
+    background: rgba(8, 39, 72, 0) !important;
+    padding: 10px 0;
+    border: none !important;
+  }
+}
+
+.el-table--border::after, .el-table--group::after, .el-table::before {
+  content: '';
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0) !important;
+  z-index: 1;
+}
+
+/* 隔行变色 */
+.el-table--striped .el-table__body tr.el-table__row--striped td {
+  background: rgba(2, 76, 172, 0.9) !important;
+}
+
+.el-table tbody tr:nth-child(2n):hover > td {
+  background: rgba(2, 76, 172, 0.9) !important;
+}
+
+.el-table tbody tr:nth-child(2n-1):hover > td {
+  background-color: rgba(0, 0, 0, 0) !important;
+
+}
+
+
+/* 分页样式 */
+.el-pagination {
+  margin: 15px auto 0;
+  width: 350px;
+  button,
+  .number,
+  .el-icon {
+    margin: 0 !important;
+    background-color: rgba(8, 39, 72, 0) !important;
+    color: #1461b1 !important;
+  }
+  button:hover,
+  button:hover i,
+  .number:hover,
+  .el-icon:hover {
+    background-color: #039bf1 !important;
+    color: #fff !important;
+    border-radius: 3px !important;
+  }
+  .active {
+    background-color: #039bf1 !important;
+    color: #fff !important;
+    border-radius: 3px !important;
+  }
+  button {
+    margin: 0 10px !important;
+    border: 1px solid #1461b1;
+    border-radius: 3px !important;
+  }
+}
+
+/* 弹出层 */
+.el-popover {
+  padding: 0 !important;
+  border: none;
+}
+
+.popper__arrow {
+  display: none !important;
 }

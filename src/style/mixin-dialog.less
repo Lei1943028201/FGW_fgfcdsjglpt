@@ -1,9 +1,12 @@
 .el-dialog__wrapper {
   background: rgba(0, 0, 0, 0.6);
   /deep/ .el-dialog {
+    @media screen and (max-width: 1440px) {
+      margin-top: 30px !important;
+    }
     border: 1px solid #00a2ff;
     box-shadow: 0 0 32px rgba(52, 136, 201, 0.42) inset;
-    background: rgba(0, 36, 86, 0.95);
+    background: rgba(5, 18, 43, 0.90);
     .el-dialog__header{
       height: 55px;
       padding:15px 40px 0;
@@ -19,7 +22,10 @@
       }
     }
     .el-dialog__body{
-      padding: 0 40px;
+      padding: 0 40px 30px;
     }
   }
+
 }
+
+
