@@ -307,6 +307,9 @@
                     yAxisName = '单位:次'
                 }
                 return {
+                    tooltip: {
+                        show: true,
+                    },
                     legend: {
                         data: this.legendData,
                         icon: 'roundRect',

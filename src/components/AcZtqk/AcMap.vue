@@ -25,55 +25,58 @@
         </div>
 
         <!-- 三个圆球--开始 -->
+        <!-- 疫情期间 -->
+
+        <!-- 非疫情期间 -->
         <!-- 圆球--左 -->
         <div class="fd-ball fd-ball-1">
             <div class="fd-top">
                 <p>
-                    <span class="fd-value-01">{{showMapData.qzbldw}}</span>
-                    <span class="fd-unit">个</span>
+                    <span class="fd-value-01">{{ballData[0].top.value}}</span>
+                    <span class="fd-unit">{{ballData[0].top.unit}}</span>
                 </p>
-                <p><span class="fd-name">确诊病例单位</span></p>
+                <p><span class="fd-name">{{ballData[0].top.name}}</span></p>
             </div>
             <div class="fd-bottom">
                 <p>
-                    <span class="fd-value-01">{{showMapData.gtdw}}</span>
-                    <span class="fd-unit">个</span>
+                    <span class="fd-value-01">{{ballData[0].bottom.value}}</span>
+                    <span class="fd-unit">{{ballData[0].bottom.unit}}</span>
                 </p>
-                <p><span class="fd-name">关停单位</span></p>
+                <p><span class="fd-name">{{ballData[0].bottom.name}}</span></p>
             </div>
         </div>
         <!-- 圆球--中 -->
         <div class="fd-ball fd-ball-2">
             <div class="fd-top">
                 <p>
-                    <span class="fd-value-01">{{showMapData.ljqz}}</span>
-                    <span class="fd-unit">例</span>
+                    <span class="fd-value-01">{{ballData[1].top.value}}</span>
+                    <span class="fd-unit">{{ballData[1].top.unit}}</span>
                 </p>
-                <p><span class="fd-name">累计确诊</span></p>
+                <p><span class="fd-name">{{ballData[1].top.name}}</span></p>
             </div>
             <div class="fd-bottom">
                 <p>
-                    <span class="fd-value-01">{{showMapData.xyqz}}</span>
-                    <span class="fd-unit">例</span>
+                    <span class="fd-value-01">{{ballData[1].bottom.value}}</span>
+                    <span class="fd-unit">{{ballData[1].bottom.unit}}</span>
                 </p>
-                <p><span class="fd-name">现有确诊</span></p>
+                <p><span class="fd-name">{{ballData[1].bottom.name}}</span></p>
             </div>
         </div>
         <!-- 圆球--右 -->
         <div class="fd-ball fd-ball-3">
             <div class="fd-top">
                 <p>
-                    <span class="fd-value-01">{{showMapData.fxdq}}</span>
-                    <span class="fd-unit">个</span>
+                    <span class="fd-value-01">{{ballData[2].top.value}}</span>
+                    <span class="fd-unit">{{ballData[2].top.unit}}</span>
                 </p>
-                <p><span class="fd-name">风险地区</span></p>
+                <p><span class="fd-name">{{ballData[2].top.name}}</span></p>
             </div>
             <div class="fd-bottom">
                 <p class="fd-high-risk">
-                    <span class="fd-value-01">{{showMapData.gfxdq}}</span>
-                    <span class="fd-unit">个</span>
+                    <span class="fd-value-01">{{ballData[2].bottom.value}}</span>
+                    <span class="fd-unit">{{ballData[2].bottom.unit}}</span>
                 </p>
-                <p><span class="fd-name">高风险地区</span></p>
+                <p><span class="fd-name">{{ballData[2].bottom.name}}</span></p>
             </div>
         </div>
         <!-- 三个圆球--结束 -->
@@ -114,6 +117,7 @@
         },
         data() {
             return {
+                isYq: true, // 是否疫情
                 mapDialogType: '', // 国网指数/日报指数
                 dialogActiveTab: '1',
                 tabList: [
@@ -144,7 +148,89 @@
                         code: 'map_rb'
                     }
                 }
-            }
+            },
+            ballData(){
+                if(this.isYq){
+                    return [
+                        {
+                            top: {
+                                name: '确诊病例单位',
+                                unit: '个',
+                                value: this.showMapData.qzbldw,
+                            },
+                            bottom:{
+                                name: '关停单位',
+                                unit: '个',
+                                value: this.showMapData.gtdw,
+                            }
+                        },
+                        {
+                            top: {
+                                name: '累计确诊',
+                                unit: '例',
+                                value: this.showMapData.ljqz,
+                            },
+                            bottom:{
+                                name: '现有确诊',
+                                unit: '例',
+                                value: this.showMapData.xyqz,
+                            }
+                        },
+                        {
+                            top: {
+                                name: '风险地区',
+                                unit: '个',
+                                value: this.showMapData.fxdq,
+                            },
+                            bottom:{
+                                name: '高风险地区',
+                                unit: '个',
+                                value: this.showMapData.gfxdq,
+                            }
+                        },
+                    ]
+                }else{
+                    return [
+                        {
+                            top: {
+                                name: '规上工地',
+                                unit: '个',
+                                value: this.showMapData.gsgd,
+                            },
+                            bottom:{
+                                name: '规上工业企业',
+                                unit: '个',
+                                value: this.showMapData.gsgyqy,
+                            }
+                        },
+                        {
+                            top: {
+                                name: '规上餐饮',
+                                unit: '个',
+                                value: this.showMapData.gscy,
+                            },
+                            bottom:{
+                                name: '规下工地',
+                                unit: '个',
+                                value: this.showMapData.gxgd,
+                            }
+                        },
+                        {
+                            top: {
+                                name: '规下工业企业',
+                                unit: '个',
+                                value: this.showMapData.gxgyqy,
+                            },
+                            bottom:{
+                                name: '规下餐饮',
+                                unit: '个',
+                                value: this.showMapData.gxcy,
+                            }
+                        },
+                    ]
+                }
+            },
+
         },
         methods: {
             dialogHandlerTab(tab) {

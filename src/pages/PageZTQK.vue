@@ -54,7 +54,7 @@
         },
         methods: {
             clickBanner(){
-                window.open('http://172.26.72.128/bjfgw/pages/unicom.html?menu=3#')
+                window.open('http://172.26.72.128/bjfgw/pages/index.html')
             }
         }
     }
