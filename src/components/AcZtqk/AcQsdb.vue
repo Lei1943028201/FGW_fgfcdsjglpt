@@ -71,10 +71,12 @@
 </template>
 
 <script>
+    import mixinZdlyxz from '../../mixins/mixin-zdlyxz'
     import {getQsdbData} from '../../api/ztqk'
     /* 趋势对比 */
     export default {
         name: "AcQsdb",
+        mixins: [mixinZdlyxz],
         data() {
             return {
                 activeTab1: '1', //
@@ -289,6 +291,7 @@
             },
             /* echarts配置 */
             option() {
+                let rotate = this.activeTab2 === '2'? 30 : 0
                 let minAndMax = {
                     min: 600,
                     max: 1200
@@ -308,7 +311,7 @@
                         data: this.legendData,
                         icon: 'roundRect',
                         itemHeight: 4,
-                        y: 55,
+                        y: 55 * this.K,
                         x: 'center',
                         textStyle: {
                             color: '#00b6ff',
@@ -317,7 +320,7 @@
                     },
                     grid: {
                         x: 58,
-                        y: 90,
+                        y: 90 * this.K,
                         x2: 55,
                         y2: 45
                     },
@@ -333,6 +336,7 @@
                             },
                             axisLabel: {
                                 interval: 0, //强制显示文字
+                                rotate: rotate,
                                 rich: {
                                     white: {
                                         fontSize: 15*this.K,      //更改坐标轴文字大小
@@ -356,12 +360,12 @@
                                         str = this.jsjbDateList[index].sftsrq ? 'company' : 'white'
                                     }
                                     /* 判断是否错位展示 */
-                                    if (this.clientWidth >= 1660 && this.activeTab2 === '1') {
+                                    /*if (this.clientWidth >= 1660 && this.activeTab2 === '1') {
                                         return `{${str}|${value}}`
                                     }
                                     if (index % 2 === 1) {
                                         return `{${str}|\n${value}}`
-                                    }
+                                    }*/
                                     return `{${str}|${value}}`
                                 }
                             },
@@ -371,8 +375,8 @@
                     yAxis: [
                         {
                             type: 'value',
-                            min: 0,
-                            max: 120,
+                           /* min: 0,
+                            max: 120,*/
                             name: yAxisName,
                             splitNumber: 4,
                             nameTextStyle: {

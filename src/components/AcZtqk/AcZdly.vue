@@ -14,7 +14,8 @@
                 <p class="fd-text-2">复工数</p>
             </li>
             <li>
-                <p class="fd-text-1" :class="classNameIsUp(cardData.fgl)">{{cardData.fgl | filterText}}<span>%</span></p>
+                <p class="fd-text-1" :class="classNameIsUp(cardData.fgl)">{{cardData.fgl | filterText}}<span>%</span>
+                </p>
                 <p class="fd-text-2">复工率</p>
             </li>
         </ul>
@@ -34,7 +35,7 @@
                 width="1060PX"
                 :before-close="handleClose">
             <AcDialogTitle slot="title" :title="dialogTitle" @handlerShowType="handlerShowType"></AcDialogTitle>
-            <div >
+            <div>
                 <button class="fd-btn fd-btn-export">导出</button>
                 <button class="fd-btn fd-btn-confirm">确定</button>
                 <CcSelect></CcSelect>
@@ -85,7 +86,7 @@
                             x2: 70,
                             textStyle: {
                                 color: '#00b6ff',
-                                fontSize: this.fontSize ,
+                                fontSize: 15 * this.K,
                             },
                         },
                         {
@@ -97,7 +98,7 @@
                             x: 'right',
                             textStyle: {
                                 color: '#00b6ff',
-                                fontSize: this.fontSize ,
+                                fontSize: 15 * this.K,
                             },
                         }
                     ],
@@ -107,7 +108,7 @@
                     },
                     tooltip: {
                         show: true,
-                        formatter(params){
+                        formatter(params) {
                             let index = params.dataIndex
                             return `企业总数:${_this.qyzsArr[index]}<br/>复工数:${_this.fgzsArr[index]}<br/>复工率:${_this.fglArr[index]}%`
                         }
@@ -122,16 +123,16 @@
                                 }
                             },
                             axisLabel: {
-                                interval:0, //强制显示文字
+                                interval: 0, //强制显示文字
                                 textStyle: {
                                     color: '#00b6ff',  //更改坐标轴文字颜色
-                                    fontSize: this.fontSize       //更改坐标轴文字大小
+                                    fontSize: 15 * this.K       //更改坐标轴文字大小
                                 },
                                 formatter: function (value) {
-                                    if(value === '商场（超市）'){
+                                    if (value === '商场（超市）') {
                                         return '商场\n（超市）'
                                     }
-                                    if(value === '餐馆（食堂）'){
+                                    if (value === '餐馆（食堂）') {
                                         return '餐馆\n（食堂）'
 
                                     }
@@ -160,12 +161,12 @@
                     yAxis: [
                         {
                             type: 'value',
-                            min:0,
+                            min: 0,
                             max: this.gzlsqk.fglMax || 100,
-                            splitNumber : 2,
+                            splitNumber: 2,
                             nameTextStyle: {
                                 color: "#00b6ff",
-                                fontSize: this.fontSize ,
+                                fontSize: 15 * this.K,
                                 padding: [0, 0, 0, -60]
                             },
                             axisLine: {
@@ -174,7 +175,7 @@
                             axisLabel: {
                                 textStyle: {
                                     color: '#00b6ff',  //更改坐标轴文字颜色
-                                    fontSize: this.fontSize       //更改坐标轴文字大小
+                                    fontSize: 15 * this.K       //更改坐标轴文字大小
                                 },
                                 formatter: function (value) {
                                     return `${value}%`
@@ -189,7 +190,7 @@
                         },
                         {
                             type: 'value',
-                            min:0,
+                            min: 0,
                             max: this.gzlsqk.qyzsMax || 100,
                             axisLine: {
                                 show: false,
@@ -269,15 +270,15 @@
             legend() {
                 let {legend} = this.gzlsqk
 
-                if(legend){
-                    return legend.map(item=>{
+                if (legend) {
+                    return legend.map(item => {
                         return {
                             name: item,
-                            icon: item === '复工率' ? 'rect': 'roundRect',
+                            icon: item === '复工率' ? 'rect' : 'roundRect',
                         }
                     }) || []
                 }
-                return  []
+                return []
             },
             /* 部门 */
             bmArr() {
@@ -287,7 +288,7 @@
             /* 企业总数 */
             qyzsArr() {
                 let {qyzsArr} = this.gzlsqk
-                if(qyzsArr){
+                if (qyzsArr) {
                     return qyzsArr
                 }
                 return []
@@ -330,6 +331,7 @@
 
 <style scoped lang="less" rel="stylesheet/less">
     @import '../../style/mixin-dialog';
+
     .fd-content-card {
         margin-top: 10px;
         width: 100%;
@@ -411,7 +413,7 @@
         margin-bottom: 10px;
     }
 
-    /deep/.fd-box-title h2{
+    /deep/ .fd-box-title h2 {
         cursor: pointer;
     }
 </style>
