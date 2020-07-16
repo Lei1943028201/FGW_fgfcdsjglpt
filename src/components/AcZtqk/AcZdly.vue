@@ -33,9 +33,8 @@
                 :lock-scroll="false"
                 width="1060PX"
                 :before-close="handleClose">
-            <AcDialogTitle slot="title" title="重点领域复工复产情况" @handlerShowType="handlerShowType"></AcDialogTitle>
-            <div>
-                <h2>X月X日全市各领域复工详情</h2>
+            <AcDialogTitle slot="title" :title="dialogTitle" @handlerShowType="handlerShowType"></AcDialogTitle>
+            <div >
                 <button class="fd-btn fd-btn-export">导出</button>
                 <button class="fd-btn fd-btn-confirm">确定</button>
                 <CcSelect></CcSelect>
@@ -63,6 +62,10 @@
         },
         data() {
             return {
+                dialogTitle: {
+                    name: '重点领域复工复产情况',
+                    code: 'zdly'
+                },
                 resData: {},
                 /* echarts数据 */
                 gzlsqk: {},
@@ -106,7 +109,7 @@
                         show: true,
                         formatter(params){
                             let index = params.dataIndex
-                            return `企业总数:${_this.qyzsArr[index] + _this.fgzsArr[index]}万<br/>复工数:${_this.fgzsArr[index]}万<br/>复工率:${_this.fglArr[index]}%`
+                            return `企业总数:${_this.qyzsArr[index]}<br/>复工数:${_this.fgzsArr[index]}<br/>复工率:${_this.fglArr[index]}%`
                         }
                     },
                     xAxis: [

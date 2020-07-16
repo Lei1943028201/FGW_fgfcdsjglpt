@@ -57,7 +57,7 @@
                 :lock-scroll="false"
                 width="1060"
                 :before-close="handleClose">
-            <AcDialogTitle slot="title" @handlerShowType="handlerShowType"></AcDialogTitle>
+            <AcDialogTitle slot="title" :title="dialogTitle" @handlerShowType="handlerShowType"></AcDialogTitle>
             <AcZdxmXzChart v-if="showType === 1"></AcZdxmXzChart>
             <AcZdxmXzTable v-else></AcZdxmXzTable>
         </el-dialog>
@@ -81,6 +81,10 @@
         },
         data() {
             return {
+                dialogTitle: {
+                    name: '重点项目各区开工情况',
+                    code: 'zdxm'
+                },
                 /* 后台返回的数据 */
                 resData: {},
                 /* 前三--排行 */

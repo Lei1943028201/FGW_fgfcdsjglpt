@@ -117,6 +117,9 @@
                 total: 1111,
                 currentPage: 1,
                 pageSizes: 5,
+                tableTitle:[
+
+                ],
                 tableDataGdq: [
                     {
                         date: '2016-05-02',

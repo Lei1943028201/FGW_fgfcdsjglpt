@@ -85,7 +85,7 @@
                 :lock-scroll="false"
                 width="1060"
                 :before-close="handleClose">
-            <AcDialogTitle slot="title" @handlerShowType="handlerShowType"></AcDialogTitle>
+            <AcDialogTitle slot="title" :title="dialogTitle" @handlerShowType="handlerShowType"></AcDialogTitle>
             <!-- tab切换--模块 -->
             <CcTab :tab-list="tabList" @handlerTab="dialogHandlerTab"/>
             <AcMapXzChart :map-dialog-type="mapDialogType" :dialog-active-tab="dialogActiveTab" v-if="showType === 1"/>
@@ -132,6 +132,19 @@
         computed: {
             ...mapState(['mapId']),
             ...mapGetters(['showMapData']),
+            dialogTitle(){
+                if(this.mapDialogType=== '1'){
+                    return {
+                        name: '国网北分复工复产情况',
+                        code: 'map_gw'
+                    }
+                }else{
+                    return{
+                        name: '市经信局复工复产情况',
+                        code: 'map_rb'
+                    }
+                }
+            }
         },
         methods: {
             dialogHandlerTab(tab) {

@@ -43,7 +43,7 @@
                 :lock-scroll="false"
                 width="1060"
                 :before-close="handleClose">
-            <AcDialogTitle slot="title" @handlerShowType="handlerShowType"></AcDialogTitle>
+            <AcDialogTitle slot="title" @handlerShowType="handlerShowType" :title="dialogTitle"></AcDialogTitle>
             <!-- tab切换--模块 -->
             <CcTab :tab-list="tabList" @handlerTab="dialogHandlerTab"/>
             <AcGdqyXzChart :dialog-active-tab="dialogActiveTab" v-if="showType === 1"></AcGdqyXzChart>
@@ -71,8 +71,9 @@
             return {
                 activeTab: '1',         // 首页 1 所有区 2 行业
                 dialogActiveTab: '1',   // 弹窗 1 所有区 2 行业
-                query: {
-
+                dialogTitle:{
+                    name: '国网北分复工监测情况',
+                    code: 'gdqy'
                 },
                 tabList: [
                     {
@@ -84,6 +85,9 @@
                         code: '2'
                     }
                 ],
+                query: {
+
+                },
                 resData: {},
             }
         },
