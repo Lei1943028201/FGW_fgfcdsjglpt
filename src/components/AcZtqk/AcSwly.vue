@@ -129,7 +129,7 @@
             }
         }
         .fd-progress--name{
-            margin-left: 5px;
+            margin: 0 5px;
             font-size: 16px;
             color: #c9e7ff;
         }

@@ -17,6 +17,21 @@ export function getSxtj(params) {
 }
 
 /**
+ * 获取各部门领域
+ * @param params
+ */
+export function getGbmly(params) {
+    return request({
+        url: config.url.ztqkxz.gbmly,
+        method: config.methodGet,
+        params: {
+            time: new Date().getTime(),
+            ...params
+        }
+    })
+}
+
+/**
  * 全市各区企业复工指数趋势
  * @param params
  */

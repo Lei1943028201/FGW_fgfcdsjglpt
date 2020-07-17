@@ -38,7 +38,8 @@
                 <!-- tab切换--模块 -->
                 <CcSelect select-name="请选择领域"
                           :data-list="selectData"
-                          @handlerSelect="handlerConfirm"
+                          @handlerSelect="handlerSelect"
+                          @selectHide="handlerConfirm"
                           class="fd-select-01"></CcSelect>
                 <el-date-picker
                         size="small"
@@ -64,6 +65,7 @@
     import AcZdlyXzTable from '../AcZtqkxz/AcZdlyXzTable'
     import mixinZdlyxz from '../../mixins/mixin-zdlyxz'
     import {getZdly} from '../../api/ztqk'
+    import {getGbmly} from '../../api/ztqkxz'
     /* 重点领域 */
     export default {
         name: "AcZdly",
@@ -81,20 +83,7 @@
                 resData: {},
                 /* echarts数据 */
                 gzlsqk: {},
-                selectData:[
-                    {
-                        name: '东城区',
-                        code: '共计'
-                    },
-                    {
-                        name: '西城区',
-                        code: '复工数'
-                    },
-                    {
-                        name: '昌平区',
-                        code: '%'
-                    },
-                ],
+                selectData:[],
                 /* 查询参数 */
                 value1: '',
                 sjfw: false
@@ -190,7 +179,7 @@
                         {
                             type: 'value',
                             min: 0,
-                            max: this.gzlsqk.fglMax || 100,
+                            max: 100,
                             splitNumber: 2,
                             nameTextStyle: {
                                 color: "#00b6ff",
@@ -310,8 +299,8 @@
             },
             /* 部门 */
             bmArr() {
-                let {bmArr} = this.gzlsqk
-                return bmArr || []
+                let bmArr = this.gzlsqk.bmArr || []
+                return bmArr
             },
             /* 企业总数 */
             qyzsArr() {
@@ -336,6 +325,10 @@
             handlerSJFW(){
                 this.sjfw = !this.sjfw
                 this.$store.dispatch('SetParams', {sjfw: this.sjfw})
+            },
+            /* 选择下拉选 */
+            handlerSelect(index){
+                this.selectData[index].active = !this.selectData[index].active
             },
             /* 确认 */
             handlerConfirm(){
@@ -365,6 +358,13 @@
                     .catch(err => {
                         console.log(err)
                         loading.close();
+                    })
+                getGbmly()
+                    .then((res)=>{
+                        this.selectData = res.data.dataList.map(item=>({
+                            name: item.ly,
+                            active: true
+                        }))
                     })
             }
         },

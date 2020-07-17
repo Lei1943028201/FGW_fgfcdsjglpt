@@ -1,8 +1,8 @@
 <template>
     <div id="AcZdlyXzChart" class="fd-xz-content-chart">
-        <h2 class="fd-title-01">全市各区企业复工率趋势</h2>
+        <h2 class="fd-title-01">各领域复工率趋势</h2>
         <CcEcharts :option="option" class="fd-chart-top"/>
-        <h2>X月X日 各区/重点企业/小微企业 复工率</h2>
+        <h2>X月X日 各领域复工率</h2>
         <CcEcharts :option="option" class="fd-chart-bottom"/>
     </div>
 </template>
@@ -39,18 +39,6 @@
                                 fontSize: this.fontSize ,
                             },
                         },
-                        {
-                            data: this.legend.filter(item => item.icon === 'rect'),
-                            icon: 'roundRect',
-                            itemWidth: 14,
-                            itemHeight: 5,
-                            y: 20,
-                            x: 'right',
-                            textStyle: {
-                                color: '#00b6ff',
-                                fontSize: this.fontSize ,
-                            },
-                        }
                     ],
                     grid: {
                         x: 48,
@@ -216,29 +204,6 @@
                     }) || []
                 }
                 return  []
-            },
-            /* 部门 */
-            bmArr() {
-                let {bmArr} = this.gzlsqk
-                return bmArr || []
-            },
-            /* 企业总数 */
-            qyzsArr() {
-                let {qyzsArr} = this.gzlsqk
-                if(qyzsArr){
-                    return qyzsArr
-                }
-                return []
-            },
-            /* 复工数 */
-            fgzsArr() {
-                let {fgzsArr} = this.gzlsqk
-                return fgzsArr || []
-            },
-            /* 复工率 */
-            fglArr() {
-                let {fglArr} = this.gzlsqk
-                return fglArr || []
             },
         },
         methods: {

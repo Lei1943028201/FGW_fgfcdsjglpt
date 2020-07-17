@@ -1,5 +1,6 @@
 <template>
-    <div>
+    <div class="fd-xz-content-table">
+        <h2 class="fd-title-01">全市各区复工详情</h2>
         <el-table
                 :data="tableData"
                 stripe
@@ -165,6 +166,5 @@
 </script>
 
 <style scoped lang="less" rel="stylesheet/less">
-
-
+    @import "../../style/mixin-dialog";
 </style>

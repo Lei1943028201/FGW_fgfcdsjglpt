@@ -1,8 +1,8 @@
 <template>
     <div id="AcZdxmXzChart" class="fd-xz-content-chart">
-        <h2 class="fd-title-01">全市各区企业复工率趋势</h2>
+        <h2 class="fd-title-01">全市重点项目复工率趋势</h2>
         <CcEcharts :option="option" class="fd-chart-top"/>
-        <h2>X月X日 各区/重点企业/小微企业 复工率</h2>
+        <h2>X月X日各区复工率</h2>
         <CcEcharts :option="option" class="fd-chart-bottom"/>
     </div>
 </template>

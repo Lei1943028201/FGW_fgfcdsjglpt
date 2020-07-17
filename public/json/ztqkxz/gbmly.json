@@ -1,0 +1,25 @@
+{
+  "code": 200,
+  "message": "6Tg",
+  "success": true,
+  "data": {
+    "dataList": [
+      {
+        "ly": "规上工业企业",
+        "bm": "eu dolore"
+      },
+      {
+        "ly": "商超",
+        "bm": "Lorem in nostrud"
+      },
+      {
+        "ly": "商超物流",
+        "bm": "velit laborum aliqua labore"
+      },
+      {
+        "ly": "工地",
+        "bm": "ea laboris proident"
+      }
+    ]
+  }
+}

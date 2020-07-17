@@ -28,12 +28,10 @@
                 default: () => ([
                     {
                         name: '东城区',
-                        code: '共计',
                         active: false,
                     },
                     {
                         name: '东城区',
-                        code: '复工数',
                         active: false,
                     },
                 ])
@@ -41,28 +39,29 @@
         },
         data() {
             return {
-                activeData: {
-                    name: '东城区',
-                    value: '东城区'
-                },
                 dialogVisible: false
+            }
+        },
+        computed: {
+            activeSelectList(){
+                return this.dataList.filter(item=>{
+                    return item.active
+                })
             }
         },
         methods: {
             clickSelect(index){
-
+                this.$emit('handlerSelect', index)
             },
             selectShow() {
                 this.dialogVisible = true
             },
             selectHide() {
                 this.dialogVisible = false
-                this.$emit('handlerSelect', this.selectName)
+                this.$emit('selectHide', this.activeSelectList)
             },
-        },
-        created(){
 
-        }
+        },
     }
 </script>
 

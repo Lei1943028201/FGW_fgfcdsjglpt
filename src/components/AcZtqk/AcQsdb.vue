@@ -188,9 +188,35 @@
                     data
                 }
             },
-            /* 累计查询次数 */
-            ljqzsData() {
+            /* 12345累计确诊数数据 */
+            jsjbLjqzsData() {
                 let data = this.jsjbLjqzsDataList.map(item => item)
+                return {
+                    name: '累计确诊数',
+                    type: 'line',
+                    smooth: true,
+                    color: '#8e40e7',
+                    yAxisIndex: 1,
+                    connectNulls: true,
+                    data
+                }
+            },
+            /* 健康宝累计确诊数数据 */
+            jkbLjqzsData() {
+                let data = this.jkbLjqzsDataList.map(item => item)
+                return {
+                    name: '累计确诊数',
+                    type: 'line',
+                    smooth: true,
+                    color: '#8e40e7',
+                    yAxisIndex: 1,
+                    connectNulls: true,
+                    data
+                }
+            },
+            /* 复工复产累计确诊数数据 */
+            fgfcLjqzsData() {
+                let data = this.fgfcLjqzsDataList.map(item => item)
                 return {
                     name: '累计确诊数',
                     type: 'line',
@@ -273,17 +299,17 @@
                         return [
                             this.gwbfData,
                             this.sjxjData,
-                            this.ljqzsData
+                            this.fgfcLjqzsData
                         ]
                     case '2':
                         return [
                             this.cxsJkbData,
-                            this.ljqzsData
+                            this.jkbLjqzsData
                         ]
                     case '3':
                         return [
                             this.cxsJsjbData,
-                            this.ljqzsData
+                            this.jsjbLjqzsData
                         ]
                     default:
                         return []

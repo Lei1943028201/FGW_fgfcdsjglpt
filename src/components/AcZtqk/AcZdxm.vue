@@ -59,12 +59,16 @@
             <AcDialogTitle slot="title" :title="dialogTitle" @handlerShowType="handlerShowType"></AcDialogTitle>
             <div class="fd-query-content">
                 <!-- tab切换--模块 -->
-                <CcSelect class="fd-select-01"></CcSelect>
+                <CcSelect select-name="请选择领域"
+                          :data-list="selectData"
+                          @handlerSelect="handlerSelect"
+                          @selectHide="handlerConfirm"
+                          class="fd-select-01"></CcSelect>
                 <button class="fd-btn fd-btn-export">导出</button>
                 <button class="fd-btn fd-btn-confirm">确定</button>
             </div>
-            <AcZdxmXzChart v-if="showType === 1"></AcZdxmXzChart>
-            <AcZdxmXzTable v-else></AcZdxmXzTable>
+            <AcZdxmXzChart ref="AcZdxmXzChart" v-if="showType === 1"></AcZdxmXzChart>
+            <AcZdxmXzTable ref="AcZdxmXzTable" v-else></AcZdxmXzTable>
         </el-dialog>
         <!-- 弹窗 -- 结束 -->
     </div>
@@ -90,6 +94,16 @@
                     name: '重点项目各区开工情况',
                     code: 'zdxm'
                 },
+                selectData:[
+                    {
+                        name: '东城区',
+                        active: false,
+                    },
+                    {
+                        name: '东城区',
+                        active: false,
+                    },
+                ],
                 /* 后台返回的数据 */
                 resData: {},
                 /* 前三--排行 */
@@ -355,6 +369,19 @@
             },
         },
         methods: {
+            /* 选择下拉选 */
+            handlerSelect(index){
+                this.selectData[index].active = !this.selectData[index].active
+            },
+            /* 确认 */
+            handlerConfirm(){
+                if(this.showType === 1){
+                    this.$refs.AcZdxmXzChart.init();
+
+                }else{
+                    this.$refs.AcZdxmXzTable.init();
+                }
+            },
             init() {
                 const loading = this.$loading({background: 'rgba(0, 0, 0, 0.6)'})
                 getZdgcData()

@@ -98,13 +98,13 @@ export default {
                 m += s1.split(".")[1].length;
             }
             catch (e) {
-                console.log(e);
+                //console.log(e);
             }
             try {
                 m += s2.split(".")[1].length;
             }
             catch (e) {
-                console.log(e);
+                //console.log(e);
             }
 
             return Number(s1.replace(".", "")) * Number(s2.replace(".", "")) / Math.pow(10, m);

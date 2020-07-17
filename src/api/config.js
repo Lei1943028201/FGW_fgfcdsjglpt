@@ -73,6 +73,7 @@ const localUrl = {
          * 右侧数据
          */
         glysj: 'json/ztqkxz/glysj.json',                    // 筛选条件
+        gbmly: 'json/ztqkxz/gbmly.json',                    // 获取各部门领域
         glyfglqs: 'json/ztqkxz/glyfglqs.json',              // 各领域复工率趋势
         mtglyfgl: 'json/ztqkxz/mtglyfgl.json',              // 某天各领域复工率
         glyfglqsbg: 'json/ztqkxz/glyfglqsbg.json',         // 各领域复工率趋势表格
@@ -131,6 +132,7 @@ const serverUrl = {
          * 右侧数据
          */
         glysj: '/api/v1/zdly/glysj',                    // 筛选条件
+        gbmly: '/api/v1/zdly/gbmly',                    // 获取各部门领域
         glyfglqs: '/api/v1/zdly/glyfglqs',              // 各领域复工率趋势
         mtglyfgl: '/api/v1/zdly/mtglyfgl',              // 某天各领域复工率
         glyfglqsbg: '/api/v1/zdly/glyfglqs/bg',         // 各领域复工率趋势表格

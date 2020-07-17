@@ -9,6 +9,10 @@
             </div>
             <!-- 地图绘制容器 -->
             <div class="fd-bar-map-render-wrapper" ref="jsMapArea" id="jsMapArea"></div>
+            <div class="fd-map--other">
+                <span class="fd-map-dc" @mouseenter="setMapId('110101')" @mouseleave="setMapId('')">东城</span><br/>
+                <span class="fd-map-xc" @mouseenter="setMapId('110102')" @mouseleave="setMapId('')">西城</span>
+            </div>
         </div>
     </div>
 </template>
@@ -60,6 +64,9 @@
             }
         },
         methods: {
+            setMapId(mapId){
+                this.$store.dispatch('SetMapId',mapId)
+            },
             //地图渲染更新方法
             upDataMap: function () {
                 // debugger
@@ -90,5 +97,25 @@
 <!--样式表-->
 <style lang="less">
     @import "./index.less";
+    .fd-map--other{
+        position: absolute;
+        right: 112px;
+        top: 200px;
+        span{
+            display: inline-block;
+            width: 60px;
+            height: 25px;
+            line-height: 25px;
+            font-size: 15px;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+        .fd-map-dc{
+            background: url("../../../../public/img/map-dc.png") no-repeat right center/30px 25px;
+        }
+        .fd-map-xc{
+            background: url("../../../../public/img/map-xc.png") no-repeat right center/25px 22px;
+        }
+    }
 </style>
 
