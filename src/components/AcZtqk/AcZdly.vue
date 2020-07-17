@@ -41,15 +41,35 @@
                           @handlerSelect="handlerSelect"
                           @selectHide="handlerConfirm"
                           class="fd-select-01"></CcSelect>
-                <el-date-picker
-                        size="small"
-                        v-model="value1"
-                        type="daterange"
-                        start-placeholder="开始日期"
-                        end-placeholder="结束日期">
-                </el-date-picker>
+                <div>
+                    <el-date-picker
+                            class="fd-date-picker-start"
+                            :editable="false"
+                            :clearable="false"
+                            size="small"
+                            v-model="value1"
+                            type="date"
+                            placeholder="开始日期">
+                    </el-date-picker>
+                    <el-date-picker
+                            :editable="false"
+                            :clearable="false"
+                            class="fd-date-picker-end"
+                            size="small"
+                            v-model="value1"
+                            type="date"
+                            placeholder="结束日期">
+                    </el-date-picker>
+                    <!--<el-date-picker
+                            size="small"
+                            v-model="value1"
+                            type="date"
+                            placeholder="结束日期">
+                    </el-date-picker>-->
+                </div>
                 <el-button size="small" type="text" :class="[{'fd-btn--text': !sjfw}, {'fd-btn--text-active': sjfw}, 'hand']" @click="handlerSJFW">不包含节假日</el-button>
                 <button class="fd-btn fd-btn-export">导出</button>
+                <button class="fd-btn fd-btn-export--chart">导出</button>
                 <button class="fd-btn fd-btn-confirm" @click="handlerConfirm">确定</button>
             </div>
             <AcZdlyXzChart v-if="showType === 1" ref="AcZdlyXzChart"></AcZdlyXzChart>
@@ -127,7 +147,7 @@
                         show: true,
                         formatter(params) {
                             let index = params.dataIndex
-                            return `企业总数:${_this.qyzsArr[index]}<br/>复工数:${_this.fgzsArr[index]}<br/>复工率:${_this.fglArr[index]}%`
+                            return `企业总数:${_this.qyzsArr[index]}<br/>复工数:${_this.fgzsArr[index]}<br/>复工率:${_this.fglArr[index]}%<br/>当日复工率:${_this.resData.drfgl}%`
                         }
                     },
                     xAxis: [

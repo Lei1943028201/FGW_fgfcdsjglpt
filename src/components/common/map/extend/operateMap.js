@@ -2126,7 +2126,7 @@ MapCharts.prototype = {
             if (value[0] != undefined) {
 
                 value[0].mouseover(function (event) {
-                        _this.clearAnimation();
+                    _this.clearAnimation();
                         var event = event || window.event;
                         _this.mapAreaClick(name, _this.opts.flag, event);
                         // debugger
@@ -2139,7 +2139,8 @@ MapCharts.prototype = {
                         $('.fd-map-item').addClass('fd-hide');
                     }
                 }).click(function () {
-                    _this.clearAnimation();
+
+                    /*_this.clearAnimation();
                     _this.opts.mapidJxzPrefix = name + '-';
 
                     var dataValue = name.substring(4, 11);
@@ -2153,7 +2154,7 @@ MapCharts.prototype = {
                     }
                     $('.js-map-name').text(dataName);
                     //_this.requestSvgMapJxz('../svg/'+name+'.svg');
-                    _this.opts.clickCallback(dataName, dataValue);
+                    _this.opts.clickCallback(dataName, dataValue);*/
                 })
 
             }
