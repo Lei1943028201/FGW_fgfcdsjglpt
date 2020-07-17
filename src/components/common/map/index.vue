@@ -10,8 +10,8 @@
             <!-- 地图绘制容器 -->
             <div class="fd-bar-map-render-wrapper" ref="jsMapArea" id="jsMapArea"></div>
             <div class="fd-map--other">
-                <span class="fd-map-dc" @mouseenter="setMapId('110101')" @mouseleave="setMapId('')">东城</span><br/>
-                <span class="fd-map-xc" @mouseenter="setMapId('110102')" @mouseleave="setMapId('')">西城</span>
+                <span class="fd-map-dc" :class="{'fd-map-dc-active': mapId==='110101'}" @mouseenter="setMapId('110101')" @mouseleave="setMapId('')">东城</span><br/>
+                <span class="fd-map-xc" :class="{'fd-map-xc-active': mapId==='110102'}" @mouseenter="setMapId('110102')" @mouseleave="setMapId('')">西城</span>
             </div>
         </div>
     </div>
@@ -46,7 +46,7 @@
             };
         },
         computed: {
-            ...mapState(['mapData']),
+            ...mapState(['mapData', 'mapId']),
             ...mapGetters(['showMapData']),
         },
         watch: {
@@ -110,11 +110,26 @@
             cursor: pointer;
             text-decoration: underline;
         }
+
         .fd-map-dc{
-            background: url("../../../../public/img/map-dc.png") no-repeat right center/30px 25px;
+            background: url("../../../../public/img/map-dc.png") no-repeat;
+            background-size: 36px 83px;
+            background-position: 30px -5px;
         }
         .fd-map-xc{
-            background: url("../../../../public/img/map-xc.png") no-repeat right center/25px 22px;
+            background: url("../../../../public/img/map-xc.png") no-repeat;
+            background-size: 36px 83px;
+            background-position: 30px -5px;
+        }
+        .fd-map-dc-active{
+            background: url("../../../../public/img/map-dc.png") no-repeat;
+            background-size: 36px 83px;
+            background-position: 30px -45px;
+        }
+        .fd-map-xc-active{
+            background: url("../../../../public/img/map-xc.png") no-repeat;
+            background-size: 36px 83px;
+            background-position: 30px -45px;
         }
     }
 </style>

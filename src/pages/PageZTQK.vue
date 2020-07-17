@@ -21,7 +21,7 @@
         <!-- 页面中间内容区--结束 -->
 
         <!-- 页面右侧内容区--开始 -->
-        <div class="fd-box right">
+        <div class="fd-box fd-box-right right">
             <!-- 重点领域模块 -->
             <AcZdly></AcZdly>
             <!-- banner图 -->
@@ -70,6 +70,9 @@
         padding: 30px;
         width: 480px;
         height: 926px;
+        background: url("../../public/img/bg-border.png") no-repeat center/100% 100%;
+    }
+    .fd-box-right{
         background: url("../../public/img/bg-border.png") no-repeat center/100% 100%, url("../../public/img/bg-gdqy.png") no-repeat center bottom/390px 160px;
     }
     .fd-content-center{
