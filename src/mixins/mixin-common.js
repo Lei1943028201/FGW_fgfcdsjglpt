@@ -83,5 +83,32 @@ export default {
             n = (r1 >= r2) ? r1 : r2;
             return ((arg1 * m - arg2 * m) / m).toFixed(n);
         },
+        accMul(arg1, arg2) {
+            if (isNaN(arg1)) {
+                arg1 = 0;
+            }
+            if (isNaN(arg2)) {
+                arg2 = 0;
+            }
+            arg1 = Number(arg1);
+            arg2 = Number(arg2);
+
+            var m = 0, s1 = arg1.toString(), s2 = arg2.toString();
+            try {
+                m += s1.split(".")[1].length;
+            }
+            catch (e) {
+                console.log(e);
+            }
+            try {
+                m += s2.split(".")[1].length;
+            }
+            catch (e) {
+                console.log(e);
+            }
+
+            return Number(s1.replace(".", "")) * Number(s2.replace(".", "")) / Math.pow(10, m);
+        }
+
     }
 }

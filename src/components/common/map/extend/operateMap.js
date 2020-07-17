@@ -82,7 +82,7 @@ MapCharts.prototype = {
                     strokeWidth: 1,
                     hoverFill: '#ffac00',//地图划过区域颜色
                     clickFill: 'rgba(28,80,206,0.5)', //地图点击区域颜色
-                    clickStroke: '#ffd221'//地图点击区域描边颜色
+                    clickStroke: '#82caee'//地图点击区域描边颜色
                 },
                 areaMap: {
                     fill: 'rgba(20,167,209,0.3)',
@@ -93,7 +93,7 @@ MapCharts.prototype = {
                     textFill: 'none',
                     hoverFill: '#ffac00',//地图划过区域颜色
                     clickFill: 'rgba(28,80,206,0.5)', //地图点击区域颜色
-                    clickStroke: '#ffd221'//地图点击区域描边颜色
+                    clickStroke: '#82caee'//地图点击区域描边颜色
                 },
                 circle: {
                     stroke: 'rgba(0,70,156,1)',

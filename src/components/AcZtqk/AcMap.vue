@@ -72,7 +72,7 @@
                 <p><span class="fd-name">{{ballData[2].top.name}}</span></p>
             </div>
             <div class="fd-bottom">
-                <p class="fd-high-risk">
+                <p :class="{'fd-high-risk': isYq}">
                     <span class="fd-value-01">{{ballData[2].bottom.value}}</span>
                     <span class="fd-unit">{{ballData[2].bottom.unit}}</span>
                 </p>
@@ -122,7 +122,7 @@
         },
         data() {
             return {
-                isYq: true, // 是否疫情
+                isYq: false, // 是否疫情
                 mapDialogType: '', // 国网指数/日报指数
                 dialogActiveTab: '1',
                 tabList: [
@@ -199,37 +199,39 @@
                         {
                             top: {
                                 name: '规上工地',
-                                unit: '个',
-                                value: this.showMapData.gsgd,
+                                unit: '%',
+                                value: this.accMul(this.showMapData.gsgd, 100),
                             },
                             bottom: {
+                                name: '规下工地',
+                                unit: '%',
+                                value: this.accMul(this.showMapData.gxgd, 100),
+
+                            }
+                        },
+                        {
+                            top: {
                                 name: '规上工业企业',
-                                unit: '个',
-                                value: this.showMapData.gsgyqy,
+                                unit: '%',
+                                value: this.accMul(this.showMapData.gsgyqy, 100),
+
+                            },
+                            bottom: {
+                                name: '规下工业企业',
+                                unit: '%',
+                                value: this.accMul(this.showMapData.gxgyqy, 100),
                             }
                         },
                         {
                             top: {
                                 name: '规上餐饮',
-                                unit: '个',
-                                value: this.showMapData.gscy,
-                            },
-                            bottom: {
-                                name: '规下工地',
-                                unit: '个',
-                                value: this.showMapData.gxgd,
-                            }
-                        },
-                        {
-                            top: {
-                                name: '规下工业企业',
-                                unit: '个',
-                                value: this.showMapData.gxgyqy,
+                                unit: '%',
+                                value: this.accMul(this.showMapData.gscy, 100),
                             },
                             bottom: {
                                 name: '规下餐饮',
-                                unit: '个',
-                                value: this.showMapData.gxcy,
+                                unit: '%',
+                                value: this.accMul(this.showMapData.gxcy, 100),
                             }
                         },
                     ]
