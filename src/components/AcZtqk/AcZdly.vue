@@ -36,12 +36,23 @@
             <AcDialogTitle slot="title" :title="dialogTitle" @handlerShowType="handlerShowType"></AcDialogTitle>
             <div class="fd-query-content">
                 <!-- tab切换--模块 -->
-                <CcSelect select-name="请选择领域" :data-list="selectData" class="fd-select-01"></CcSelect>
+                <CcSelect select-name="请选择领域"
+                          :data-list="selectData"
+                          @handlerSelect="handlerConfirm"
+                          class="fd-select-01"></CcSelect>
+                <el-date-picker
+                        size="small"
+                        v-model="value1"
+                        type="daterange"
+                        start-placeholder="开始日期"
+                        end-placeholder="结束日期">
+                </el-date-picker>
+                <el-button size="small" type="text" :class="[{'fd-btn--text': !sjfw}, {'fd-btn--text-active': sjfw}, 'hand']" @click="handlerSJFW">不包含节假日</el-button>
                 <button class="fd-btn fd-btn-export">导出</button>
                 <button class="fd-btn fd-btn-confirm" @click="handlerConfirm">确定</button>
             </div>
-            <AcZdlyXzChart v-if="showType === 1"></AcZdlyXzChart>
-            <AcZdlyXzTable v-else></AcZdlyXzTable>
+            <AcZdlyXzChart v-if="showType === 1" ref="AcZdlyXzChart"></AcZdlyXzChart>
+            <AcZdlyXzTable v-else ref="AcZdlyXzTable"></AcZdlyXzTable>
         </el-dialog>
         <!-- 弹窗 -- 结束 -->
     </div>
@@ -85,12 +96,8 @@
                     },
                 ],
                 /* 查询参数 */
-                queryParams:{
-                    ly: '',
-                    startDate: '',
-                    endDate: '',
-                    bhjjr: '',
-                }
+                value1: '',
+                sjfw: false
             }
         },
         computed: {
@@ -326,9 +333,18 @@
             },
         },
         methods: {
+            handlerSJFW(){
+                this.sjfw = !this.sjfw
+                this.$store.dispatch('SetParams', {sjfw: this.sjfw})
+            },
             /* 确认 */
             handlerConfirm(){
+                if(this.showType === 1){
+                    this.$refs.AcZdlyXzChart.init();
 
+                }else{
+                    this.$refs.AcZdlyXzTable.init();
+                }
             },
             handlerTab(tab) {
                 if (tab.code === this.activeTab) {
@@ -337,14 +353,18 @@
                 this.activeTab = tab.code
                 this.init()
             },
+
             init() {
+                const loading = this.$loading({background: 'rgba(0, 0, 0, 0.6)'})
                 getZdly()
                     .then(res => {
                         this.resData = res.data
                         this.gzlsqk = res.data.gzlsqk
+                        loading.close();
                     })
                     .catch(err => {
                         console.log(err)
+                        loading.close();
                     })
             }
         },

@@ -527,21 +527,26 @@
                 this.dialogActiveTab = tab.code
             },
             init() {
+                const loading = this.$loading({background: 'rgba(0, 0, 0, 0.6)'})
                 if (this.activeTab === '1') {
                     getSyq()
                         .then(res => {
                             this.resData = res.data
+                            loading.close();
                         })
                         .catch(err => {
                             console.log(err)
+                            loading.close();
                         })
                 } else {
                     getGhy()
                         .then(res => {
                             this.resData = res.data
+                            loading.close();
                         })
                         .catch(err => {
                             console.log(err)
+                            loading.close();
                         })
                 }
             }

@@ -291,7 +291,7 @@
             },
             /* echarts配置 */
             option() {
-                let rotate = this.activeTab2 === '2'? 30 : 0
+                let rotate = this.activeTab2 === '2'? 25 : 0
                 let minAndMax = {
                     min: 600,
                     max: 1200
@@ -324,7 +324,7 @@
                     grid: {
                         x: 58,
                         y: 90 * this.K,
-                        x2: 55,
+                        x2: 65,
                         y2: 45
                     },
                     xAxis: [
@@ -522,6 +522,7 @@
                 this.$refs.tooltipxAxis.style.display = 'none'
             },
             init() {
+                const loading = this.$loading({background: 'rgba(0, 0, 0, 0.6)'})
                 getQsdbData({sjfw: this.activeTab2, sfxsjjr: !this.activeTabJjr})
                     .then(res => {
                         this.resData = res.data
@@ -540,9 +541,11 @@
                         this.fgfcDateList = res.data.fgfcDateList
                         this.jkbDateList = res.data.jkbDateList
                         this.jsjbDateList = res.data.jsjbDateList
+                        loading.close();
                     })
                     .catch(err => {
                         console.log(err)
+                        loading.close();
                     })
             }
         },

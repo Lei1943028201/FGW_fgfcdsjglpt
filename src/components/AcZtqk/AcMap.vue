@@ -141,21 +141,21 @@
         computed: {
             ...mapState(['mapId']),
             ...mapGetters(['showMapData']),
-            dialogTitle(){
-                if(this.mapDialogType=== '1'){
+            dialogTitle() {
+                if (this.mapDialogType === '1') {
                     return {
                         name: '国网北分复工复产情况',
                         code: 'map_gw'
                     }
-                }else{
-                    return{
+                } else {
+                    return {
                         name: '市经信局复工复产情况',
                         code: 'map_rb'
                     }
                 }
             },
-            ballData(){
-                if(this.isYq){
+            ballData() {
+                if (this.isYq) {
                     return [
                         {
                             top: {
@@ -163,7 +163,7 @@
                                 unit: '个',
                                 value: this.showMapData.qzbldw,
                             },
-                            bottom:{
+                            bottom: {
                                 name: '关停单位',
                                 unit: '个',
                                 value: this.showMapData.gtdw,
@@ -175,7 +175,7 @@
                                 unit: '例',
                                 value: this.showMapData.ljqz,
                             },
-                            bottom:{
+                            bottom: {
                                 name: '现有确诊',
                                 unit: '例',
                                 value: this.showMapData.xyqz,
@@ -187,14 +187,14 @@
                                 unit: '个',
                                 value: this.showMapData.fxdq,
                             },
-                            bottom:{
+                            bottom: {
                                 name: '高风险地区',
                                 unit: '个',
                                 value: this.showMapData.gfxdq,
                             }
                         },
                     ]
-                }else{
+                } else {
                     return [
                         {
                             top: {
@@ -202,7 +202,7 @@
                                 unit: '个',
                                 value: this.showMapData.gsgd,
                             },
-                            bottom:{
+                            bottom: {
                                 name: '规上工业企业',
                                 unit: '个',
                                 value: this.showMapData.gsgyqy,
@@ -214,7 +214,7 @@
                                 unit: '个',
                                 value: this.showMapData.gscy,
                             },
-                            bottom:{
+                            bottom: {
                                 name: '规下工地',
                                 unit: '个',
                                 value: this.showMapData.gxgd,
@@ -226,7 +226,7 @@
                                 unit: '个',
                                 value: this.showMapData.gxgyqy,
                             },
-                            bottom:{
+                            bottom: {
                                 name: '规下餐饮',
                                 unit: '个',
                                 value: this.showMapData.gxcy,
@@ -245,18 +245,22 @@
                 this.dialogActiveTab = tab.code
             },
             init() {
-                getFgfczsData().then(res => {
-                    res.data.qsfgfcData.code = '1100000'
-                    this.qsfgfcData = res.data.qsfgfcData
-                    this.$store.dispatch('SetMapData', [
-                        res.data.qsfgfcData,
-                        ...res.data.gdqfgfcDataList,
-                    ])
-                })
+                const loading = this.$loading({background: 'rgba(0, 0, 0, 0.6)'})
+                getFgfczsData()
+                    .then(res => {
+                        res.data.qsfgfcData.code = '1100000'
+                        this.qsfgfcData = res.data.qsfgfcData
+                        this.$store.dispatch('SetMapData', [
+                            res.data.qsfgfcData,
+                            ...res.data.gdqfgfcDataList,
+                        ])
+                        loading.close();
+                    })
+                    .catch(() => loading.close())
             }
         },
         created() {
-            setTimeout(()=>{this.init()}, 1000)
+            this.init()
         }
     }
 
@@ -264,6 +268,7 @@
 
 <style scoped lang="less" rel="stylesheet/less">
     @import '../../style/mixin-dialog';
+
     .fd-content-map {
         position: relative;
         height: 620px;

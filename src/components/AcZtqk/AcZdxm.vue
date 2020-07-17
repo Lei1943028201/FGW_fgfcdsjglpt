@@ -281,12 +281,12 @@
                                     },
                                     rich: {
                                         white: {
-                                            fontSize: 20*this.K,
+                                            fontSize: 20 * this.K,
                                             fontWeight: 700,
                                             color: "#00ffff"
                                         },
                                         company: {
-                                            fontSize: 15*this.K,
+                                            fontSize: 15 * this.K,
                                             color: "#00ffff"
                                         }
                                     },
@@ -356,10 +356,14 @@
         },
         methods: {
             init() {
-                getZdgcData().then(res => {
-                    this.resData = res.data
-                    this.dqQsKgl = res.data.dqQsKgl
-                })
+                const loading = this.$loading({background: 'rgba(0, 0, 0, 0.6)'})
+                getZdgcData()
+                    .then(res => {
+                        this.resData = res.data
+                        this.dqQsKgl = res.data.dqQsKgl
+                        loading.close();
+                    })
+                    .catch(()=>loading.close())
             }
         },
         created() {
@@ -370,6 +374,7 @@
 
 <style scoped lang="less" rel="stylesheet/less">
     @import '../../style/mixin-dialog';
+
     .fd-content-card {
         position: relative;
         box-sizing: border-box;
@@ -426,7 +431,8 @@
             }
         }
     }
-    /deep/.fd-box-title h2{
+
+    /deep/ .fd-box-title h2 {
         cursor: pointer;
     }
 </style>

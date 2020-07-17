@@ -2,12 +2,13 @@
     <el-popover width="428"
                 placement="bottom-start"
                 @show="selectShow"
-                @hide="selecthide"
+                @hide="selectHide"
                 trigger="click">
         <ul class="fd-select-content clear">
             <li class="fd-select-item left hand"
-                :class="{'active': item.name === activeData.name}"
+                :class="{'active': item.active}"
                 v-for="(item, index) in dataList"
+                @click="clickSelect(index)"
                 :key="index">{{item.name}}
             </li>
         </ul>
@@ -27,39 +28,13 @@
                 default: () => ([
                     {
                         name: '东城区',
-                        code: '共计'
+                        code: '共计',
+                        active: false,
                     },
                     {
                         name: '东城区',
-                        code: '复工数'
-                    },
-                    {
-                        name: '东城区',
-                        code: '%'
-                    },
-                    {
-                        name: '东城区',
-                        code: '共计'
-                    },
-                    {
-                        name: '东城区',
-                        code: '复工数'
-                    },
-                    {
-                        name: '东城区',
-                        code: '%'
-                    },
-                    {
-                        name: '东城区',
-                        code: '共计'
-                    },
-                    {
-                        name: '东城区',
-                        code: '复工数'
-                    },
-                    {
-                        name: '东城区',
-                        code: '%'
+                        code: '复工数',
+                        active: false,
                     },
                 ])
             }
@@ -74,12 +49,19 @@
             }
         },
         methods: {
+            clickSelect(index){
+
+            },
             selectShow() {
                 this.dialogVisible = true
             },
-            selecthide() {
+            selectHide() {
                 this.dialogVisible = false
+                this.$emit('handlerSelect', this.selectName)
             },
+        },
+        created(){
+
         }
     }
 </script>

@@ -36,7 +36,7 @@ export default new Vuex.Store({
             state.mapData = _mapData
         },
         SET_PARAMS: (state, _params) => {
-            state.params_xz[_params.key] = _params.value
+            Object.assign(state.params_xz, _params)
         },
     },
     actions: {

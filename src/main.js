@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
-import {Table, TableColumn, Dialog, Pagination, Popover } from 'element-ui';
+import {Table, TableColumn, Dialog, Pagination, Popover, DatePicker , Button, Loading} from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import router from './router'
 import './components' // 注册全局组件
@@ -14,6 +14,9 @@ Vue.use(TableColumn)
 Vue.use(Dialog)
 Vue.use(Pagination)
 Vue.use(Popover)
+Vue.use(DatePicker)
+Vue.use(Button)
+Vue.use(Loading)
 Vue.mixin(minxinCommon)
 new Vue({
     el: '#app',

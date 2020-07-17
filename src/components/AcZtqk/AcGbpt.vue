@@ -22,17 +22,20 @@
             <li>
                 <p class="fd-text-1"><span>{{cardData1.value1 | filterText}}</span>%</p>
                 <p class="fd-text-2">全国{{activeTabName1}}率</p>
-                <p class="fd-text-3"><span :class="classNameIsUp(cardData1.value2)">{{cardData1.value2 | filterText}}%</span>昨日</p>
+                <p class="fd-text-3"><span
+                        :class="classNameIsUp(cardData1.value2)">{{cardData1.value2 | filterText}}%</span>昨日</p>
             </li>
             <li>
                 <p class="fd-text-1"><span>{{cardData2.value1 | filterText}}</span>%</p>
                 <p class="fd-text-2">北京{{activeTabName1}}率</p>
-                <p class="fd-text-3"><span :class="classNameIsUp(cardData2.value2)">{{cardData2.value2 | filterText}}%</span>昨日</p>
+                <p class="fd-text-3"><span
+                        :class="classNameIsUp(cardData2.value2)">{{cardData2.value2 | filterText}}%</span>昨日</p>
             </li>
             <li>
                 <p class="fd-text-1"><span>{{cardData3.value1 | filterText}}</span></p>
                 <p class="fd-text-2">全国排名</p>
-                <p class="fd-text-3"><span :class="classNameIsUp(cardData3.value2)">{{cardData3.value2 | filterText}}</span>昨日</p>
+                <p class="fd-text-3"><span
+                        :class="classNameIsUp(cardData3.value2)">{{cardData3.value2 | filterText}}</span>昨日</p>
             </li>
         </ul>
         <!-- 数据展示--开始 -->
@@ -88,24 +91,24 @@
                     return this.sfFglPm.map(item => ({
                         name: item.dqmc,
                         value1: item.pm,
-                        value2: item.fgl+'%',
+                        value2: item.fgl + '%',
                     }))
                 } else {
                     return this.sfFclPm.map(item => ({
                         name: item.dqmc,
                         value1: item.pm,
-                        value2: item.fcl+'%',
+                        value2: item.fcl + '%',
                     }))
                 }
             },
             /* 展示数据 */
             cardData1() {
-                if(this.activeTab1 === '1'){
+                if (this.activeTab1 === '1') {
                     return {
                         value1: this.resData.qgfgl,
                         value2: this.resData.qgfglbh
                     }
-                }else{
+                } else {
                     return {
                         value1: this.resData.qgfcl,
                         value2: this.resData.qgfclbh
@@ -114,12 +117,12 @@
 
             },
             cardData2() {
-                if(this.activeTab1 === '1'){
+                if (this.activeTab1 === '1') {
                     return {
                         value1: this.resData.bjfgl,
                         value2: this.resData.bjfglbh
                     }
-                }else{
+                } else {
                     return {
                         value1: this.resData.bjfcl,
                         value2: this.resData.bjfclbh
@@ -127,12 +130,12 @@
                 }
             },
             cardData3() {
-                if(this.activeTab1 === '1'){
+                if (this.activeTab1 === '1') {
                     return {
                         value1: this.resData.bjfglpm,
                         value2: this.resData.bjfglpmbh
                     }
-                }else{
+                } else {
                     return {
                         value1: this.resData.bjfclpm,
                         value2: this.resData.bjfclpmbh
@@ -152,11 +155,15 @@
                 this.init()
             },
             init() {
-                getFgfcl({hylb: this.activeTab2}).then(res => {
-                    this.resData = res.data
-                    this.sfFglPm = res.data.sfFglPm
-                    this.sfFclPm = res.data.sfFclPm
-                })
+                const loading = this.$loading({background: 'rgba(0, 0, 0, 0.6)'})
+                getFgfcl({hylb: this.activeTab2})
+                    .then(res => {
+                        this.resData = res.data
+                        this.sfFglPm = res.data.sfFglPm
+                        this.sfFclPm = res.data.sfFclPm
+                        loading.close();
+                    })
+                    .catch(()=>loading.close())
             }
         },
         created() {

@@ -98,11 +98,14 @@
                 return `width: ${value}%`
             },
             init() {
+                const loading = this.$loading({background: 'rgba(0, 0, 0, 0.6)'})
                 getSwlyData()
                     .then(res => {
                         this.resData = res.data
                         this.swlyList = res.data.cyyqList
+                        loading.close();
                     })
+                    .catch(()=>loading.close())
             }
         },
         created() {
