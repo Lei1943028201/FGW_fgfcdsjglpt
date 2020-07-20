@@ -358,7 +358,7 @@
         },
         created() {
             this.init()
-            //this.initSelectList()
+            this.initSelectList()
         }
     }
 

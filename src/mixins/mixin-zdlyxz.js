@@ -32,11 +32,11 @@ export default {
         },
         /* 打开弹窗 */
         handlerOpen(key,type){
-            /*this.$store.dispatch('SetParams', this.params)
+            this.$store.dispatch('SetParams', this.params)
             this.dialogVisible = true
             if(key){
                 this[key] = type
-            }*/
+            }
         },
         /* 关闭弹窗 */
         handleClose(done){
