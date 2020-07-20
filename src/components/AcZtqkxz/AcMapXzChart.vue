@@ -12,7 +12,8 @@
      * 地图下钻-图表
      */
     import echarts from 'echarts'
-    import {getGdqFgfczsqs, getGdqMtfgfczs, getGhyFgfczsqs, getGhyMtfgfczs} from '../../api/ztqkxz'
+    import {mapState} from 'vuex'
+    import { getGdqFgfczsqs, getGdqMtfgfczs, getGhyFgfczsqs, getGhyMtfgfczs} from '../../api/ztqkxz'
     export default {
         name: "AcMapXzChart",
         props:['dialogActiveTab'],
@@ -24,6 +25,7 @@
             }
         },
         computed: {
+            ...mapState(['params_xz']),
             option() {
                 let _this = this
                 return {
@@ -241,23 +243,33 @@
                 let {fglArr} = this.gzlsqk
                 return fglArr || []
             },
+            params(){
+                return {
+                    sjly: this.dialogActiveTab, // 数据来源（1：国网北分，2：市经信局）（数据来源为市经信局时，企业类型传空数组）
+                    sjfw: this.params_xz.sjfw, //数据范围（1：包含节假日，2：不包含节假日）
+                    ksrq: this.params_xz.ksrq,  // 开始日期(开始日期为空时，表示默认情况取近15天数据)
+                    jzrq: this.params_xz.jzrq, // 截至日期(截至日期为空时，表示默认情况取近15天数据)
+                    qylx: this.params_xz.qylx, // 企业类型(数组)（企业，重点企业，小微企业）
+                    dq: this.params_xz.dq,     // 地区(数组)：全市，东城区,西城区等
+                }
+            }
         },
         methods: {
             init() {
                 if(this.dialogActiveTab === '1'){
-                    getGdqFgfczsqs()
+                    getGdqFgfczsqs(this.params)
                         .then(res => {
                             this.resData = res.data
                             this.gzlsqk = res.data.gzlsqk
                         })
-                    getGdqMtfgfczs()
+                    getGdqMtfgfczs(this.params)
                 }else{
-                    getGhyFgfczsqs()
+                    getGhyFgfczsqs(this.params)
                         .then(res => {
                             this.resData = res.data
                             this.gzlsqk = res.data.gzlsqk
                         })
-                    getGhyMtfgfczs()
+                    getGhyMtfgfczs(this.params)
                 }
 
             }

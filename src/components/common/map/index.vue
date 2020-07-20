@@ -3,9 +3,9 @@
         <div class="fd-bar-map-wrapper">
             <div class="fd-tooltip">
                 <p class="fd-name">{{showMapData.dqmc}}</p>
-                <p>国网北分：<span class="fd-value-01">{{showMapData.gwbffgfczs}}</span></p>
-                <p>市经信局：<span class="fd-value-02">{{showMapData.sjxjfgfczs}}</span></p>
-                <p>确诊人数：<span class="fd-value-03">{{showMapData.xyqz}}</span>人</p>
+                <p>国网指数：<span class="fd-value-01">{{showMapData.gwbffgfczs}}</span></p>
+                <p>日报指数：<span class="fd-value-02">{{showMapData.sjxjfgfczs}}</span></p>
+                <!--<p>确诊人数：<span class="fd-value-03">{{showMapData.xyqz}}</span>人</p>-->
             </div>
             <!-- 地图绘制容器 -->
             <div class="fd-bar-map-render-wrapper" ref="jsMapArea" id="jsMapArea"></div>

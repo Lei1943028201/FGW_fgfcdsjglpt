@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-
+import {getSxtj} from '../api/ztqkxz'
 Vue.use(Vuex);
 export default new Vuex.Store({
     state: {
@@ -17,6 +17,7 @@ export default new Vuex.Store({
             dq: '',   // 地区
             lylx: '', // 部门领域
             hylx: '', // 行业领域
+            qylx: '', // 区域类型
         },
     },
     getters: {
@@ -48,6 +49,6 @@ export default new Vuex.Store({
         },
         SetParams({commit}, _params){
             commit('SET_PARAMS', _params)
-        }
+        },
     }
 })

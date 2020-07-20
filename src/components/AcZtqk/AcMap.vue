@@ -91,13 +91,42 @@
             <div class="fd-query-content">
                 <!-- tab切换--模块 -->
                 <CcTab :tab-list="tabList" @handlerTab="dialogHandlerTab"/>
-                <CcSelect class="fd-select-01"></CcSelect>
+                <CcSelect select-name="选择地区" :data-list="selectList_dq" class="fd-select-01" v-show="dialogActiveTab==='1'" @handlerSelect="handlerSelectDQ"></CcSelect>
+                <CcSelect select-name="企业类型" :data-list="selectList_qylx" class="fd-select-02" v-show="dialogActiveTab==='1'" @handlerSelect="handlerSelectQYLX"></CcSelect>
+                <CcSelect select-name="选择行业" :data-list="selectList_hy" class="fd-select-03" v-show="dialogActiveTab==='2'" @handlerSelect="handlerSelectHY"></CcSelect>
+                <div>
+                    <el-date-picker
+                            class="fd-date-picker-start"
+                            :editable="false"
+                            :clearable="false"
+                            size="small"
+                            v-model="params.ksrq"
+                            type="date"
+                            value-format="yyyy-MM-dd"
+                            placeholder="开始日期">
+                    </el-date-picker>
+                    <el-date-picker
+                            :editable="false"
+                            :clearable="false"
+                            class="fd-date-picker-end"
+                            size="small"
+                            v-model="params.jzrq"
+                            type="date"
+                            value-format="yyyy-MM-dd"
+                            placeholder="结束日期">
+                    </el-date-picker>
+                </div>
+                <el-button size="small" type="text"
+                           v-show="dialogActiveTab==='1'"
+                           :class="[{'fd-btn--text': params.sjfw==='1'}, {'fd-btn--text-active': params.sjfw==='2'}, 'hand']"
+                           @click="handlerSJFW">不包含节假日
+                </el-button>
                 <button class="fd-btn fd-btn-export">导出</button>
-                <button class="fd-btn fd-btn-confirm">确定</button>
+                <button class="fd-btn fd-btn-confirm" @click="handlerConfirm">确定</button>
             </div>
             <!-- tab切换--模块 -->
-            <AcMapXzChart :map-dialog-type="mapDialogType" :dialog-active-tab="dialogActiveTab" v-if="showType === 1"/>
-            <AcMapXzTable :map-dialog-type="mapDialogType" :dialog-active-tab="dialogActiveTab" v-else/>
+            <AcMapXzChart ref="AcMapXzChart" :map-dialog-type="mapDialogType" :dialog-active-tab="dialogActiveTab" v-if="showType === 1"/>
+            <AcMapXzTable ref="AcMapXzTable" :map-dialog-type="mapDialogType" :dialog-active-tab="dialogActiveTab" v-else/>
         </el-dialog>
         <!-- 弹窗 -- 结束 -->
     </div>
@@ -111,6 +140,7 @@
     import mixinZdlyxz from '../../mixins/mixin-zdlyxz'
     import {mapState, mapGetters} from 'vuex'
     import {getFgfczsData} from '../../api/ztqk'
+    import {getSxtj} from '../../api/ztqkxz'
     /* 地图 */
     export default {
         name: "AcMap",
@@ -135,7 +165,31 @@
                         code: '2'
                     }
                 ],
+                selectList_qylx: [
+                    {
+                        name: '全部企业',
+                        active: true,
+                    },
+                    {
+                        name: '重点企业',
+                        active: true,
+                    },
+                    {
+                        name: '小微企业',
+                        active: true,
+                    },
+                ],
+                selectList_hy: [],
+                selectList_dq: [],
                 qsfgfcData: {},
+                /* 查询参数 */
+                params: {
+                    ksrq: '',
+                    jzrq: '',
+                    sjfw: '1',
+                    dq: '',
+                    qylx: '',
+                },
             }
         },
         computed: {
@@ -237,15 +291,81 @@
                     ]
                 }
             },
-
         },
         methods: {
+            /* 是否包含节假日 */
+            handlerSJFW() {
+                if(this.params.sjfw === '1'){
+                    this.params.sjfw = '2'
+                }else {
+                    this.params.sjfw = '1'
+                }
+            },
+            /* 选择地区 */
+            handlerSelectDQ(index){
+                this.selectList_dq[index].active = !this.selectList_dq[index].active
+                this.params.dq = this.selectList_dq.filter(item=>item.active).map(item=>item.name).join()
+            },
+            /* 选择行业 */
+            handlerSelectHY(index){
+                this.selectList_hy[index].active = !this.selectList_hy[index].active
+                this.params.dq = this.selectList_hy.filter(item=>item.active).map(item=>item.name).join()
+            },
+            /* 选择企业类型 */
+            handlerSelectQYLX(index){
+                this.selectList_qylx[index].active = !this.selectList_qylx[index].active
+                this.params.qylx = this.selectList_qylx.filter(item=>item.active).map(item=>item.name).join()
+            },
+            /* 切换地区/行业 */
             dialogHandlerTab(tab) {
                 if (tab.code === this.dialogActiveTab) {
                     return
                 }
                 this.dialogActiveTab = tab.code
             },
+            /* 点击确认 */
+            handlerConfirm(){
+
+                this.$store.dispatch('SetParams', this.params)
+                if(this.showType === 1){
+                    this.$refs.AcMapXzChart.init()
+                }else{
+                    this.$refs.AcMapXzTable.init()
+                }
+            },
+            /* 初始化参数 */
+            initParams(){
+                this.params.dq = this.selectList_dq.filter(item=>item.active).map(item=>item.name).join()
+                this.params.qylx = this.selectList_qylx.filter(item=>item.active).map(item=>item.name).join()
+            },
+            /* 初始化下拉 */
+            initSelectList(){
+                getSxtj({tjlx: 'dq'})
+                    .then((response) => {
+                        this.selectList_dq = response.data.tjmcArr.map(item=>{
+                            if(item === '北京市'){
+                                return {
+                                    name: item,
+                                    active: true,
+                                }
+                            }else{
+                                return {
+                                    name: item,
+                                    active: false,
+                                }
+                            }
+                        })
+                        this.initParams()
+                    })
+                getSxtj({tjlx: 'hy'})
+                    .then((response) => {
+                        this.selectList_hy = response.data.tjmcArr.map(item=>({
+                            name: item,
+                            active: true,
+                        }))
+                    })
+            },
+            /* 初始化页面 */
             init() {
                 const loading = this.$loading({background: 'rgba(0, 0, 0, 0.6)'})
                 getFgfczsData()
@@ -263,6 +383,7 @@
         },
         created() {
             this.init()
+            this.initSelectList()
         }
     }
 

@@ -75,14 +75,16 @@
         background: #112550;
         padding: 15px;
         li {
+            min-width: 82px;
             margin-right: 10px;
             margin-bottom: 10px;
             border: 1px solid #0461a1;
             background: #112550;
             line-height: 30px;
             font-size: 15px;
-            padding: 0 20px;
+            padding: 0 10px;
             color: #fff;
+            text-align: center;
         }
         .active {
             border: 1px solid #ffa910;

@@ -94,7 +94,8 @@
             return {
                 dialogTitle: {
                     name: '重点项目各区开工情况',
-                    code: 'zdxm'
+                    code: 'zdxm',
+
                 },
                 selectData:[
                     {
@@ -291,9 +292,10 @@
                                 },
                                 detail: {
                                     formatter: function () {//图表中间文字数据展示
-                                        return (
+                                        /*return (
                                             "{white|" + value + "}{company|" + datas.company + "}"
-                                        );
+                                        );*/
+                                        return ''
                                     },
                                     rich: {
                                         white: {

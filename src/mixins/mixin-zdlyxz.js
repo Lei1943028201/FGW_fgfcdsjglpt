@@ -22,6 +22,7 @@ export default {
             this.showType = index
         },
         handlerOpen(key,type){
+            this.$store.dispatch('SetParams', this.params)
             this.dialogVisible = true
             if(key){
                 this[key] = type

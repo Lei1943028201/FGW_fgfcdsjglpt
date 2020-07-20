@@ -60,12 +60,6 @@
                             type="date"
                             placeholder="结束日期">
                     </el-date-picker>
-                    <!--<el-date-picker
-                            size="small"
-                            v-model="value1"
-                            type="date"
-                            placeholder="结束日期">
-                    </el-date-picker>-->
                 </div>
                 <el-button size="small" type="text"
                            :class="[{'fd-btn--text': !sjfw}, {'fd-btn--text-active': sjfw}, 'hand']"
