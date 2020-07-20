@@ -33,6 +33,7 @@
         <div class="fd-content-card clear">
             <div class="left">
                 <CcEcharts :option="option(resData.jdfgl || '')"/>
+                <p class="fd-chart-p-01"><span>{{resData.jdfgl || ''}}</span>%</p>
                 <div class="fd-content-detail">
                     <p class="fd-detail-p1 clear"><span class="left">已开工{{resData.jdykgs}}</span><span class="right">项目数{{resData.jdxms}}</span>
                     </p>
@@ -41,6 +42,7 @@
             </div>
             <div class="right">
                 <CcEcharts :option="option(resData.qnfgl || '')"/>
+                <p class="fd-chart-p-02"><span>{{resData.qnfgl || ''}}</span>%</p>
                 <div class="fd-content-detail">
                     <p class="fd-detail-p1 clear"><span class="left">已开工{{resData.qnykgs}}</span><span class="right">项目数{{resData.qnxms}}</span>
                     </p>
@@ -268,7 +270,7 @@
                                 },
                                 pointer: {
                                     show: true,
-                                    length: '75%',
+                                    length: '95%',
                                     radius: '20%',
                                     width: 3, //指针粗细
                                 },
@@ -308,61 +310,6 @@
                                 },
 
                             },
-                            /*{
-                                name: "外圈", //刻度背景
-                                type: "gauge",
-                                z: 6,
-                                radius: "65%",
-                                splitNumber: 0,
-                                startAngle: 180,
-                                endAngle: 0,
-                                min: 0,
-                                max: max,
-                                center: centerArr, //整体的位置设置
-                                axisLine: {
-                                    lineStyle: {
-                                        color: [
-                                            [
-                                                1, new echarts.graphic.LinearGradient(0, 1, 0, 0,
-                                                [
-                                                    {
-                                                        offset: 1,
-                                                        color: '#0066ff'
-                                                    },
-                                                    {
-                                                        offset: 0,
-                                                        color: '#0af4ff'
-                                                    }
-                                                ]
-                                            )
-                                            ],
-                                            [
-                                                1, '#413e54'
-                                            ]
-                                        ],
-                                        width: 4
-                                    }
-                                },
-                                splitLine: {
-                                    show: false
-                                },
-                                data: [{
-                                    show: false,
-                                    value: "80"
-                                }],
-                                axisLabel: {
-                                    show: false
-                                },
-                                pointer: {
-                                    show: false
-                                },
-                                axisTick: {
-                                    show: false
-                                },
-                                detail: {
-                                    show: 0
-                                }
-                            },*/
                         ]
                     };
                 }
@@ -461,5 +408,29 @@
 
     /deep/ .fd-box-title h2 {
         cursor: pointer;
+    }
+    .fd-chart-p-01{
+        position: absolute;
+        bottom: 50px;
+        left: 80px;
+        color: #00ffff;
+        font-size: 15px;
+        background: #051027;
+        span{
+            font-size: 22px;
+            font-weight: bold;
+        }
+    }
+    .fd-chart-p-02{
+        position: absolute;
+        bottom: 50px;
+        right: 75px;
+        color: #00ffff;
+        font-size: 15px;
+        background: #051027;
+        span{
+            font-size: 22px;
+            font-weight: bold;
+        }
     }
 </style>
