@@ -2,7 +2,7 @@
     <div id="AcMapXzChart" class="fd-xz-content-chart">
         <h2 class="fd-title-01">全市各区企业复工率趋势</h2>
         <CcEcharts :option="optionTop" class="fd-chart-top"/>
-        <h2>X月X日 各区/重点企业/小微企业 复工率</h2>
+        <h2>6月30日重点企业复工率</h2>
         <CcEcharts :option="optionBottom" class="fd-chart-bottom"/>
     </div>
 </template>
@@ -19,31 +19,34 @@
         props:['dialogActiveTab'],
         data() {
             return {
+                /* echarts数据 */
                 resDataTop: {},
                 resDataBottom: {},
-                /* echarts数据 */
-                gzlsqk: {},
             }
         },
         computed: {
             ...mapState(['params_xz']),
+            /**
+             * 全市chart配置
+             ***/
             optionTop() {
                 return {
-                    legend:  {
-                        data: this.legendTop.filter(item => item.icon === 'roundRect'),
+                    legend: {
+                        data: this.resDataTop.legend || [],
                         icon: 'roundRect',
-                        itemWidth: 14,
-                        itemHeight: 14,
-                        y: 20,
-                        x2: 70,
+                        itemHeight: 4,
+                        y2: 10,
+                        x: 'center',
                         textStyle: {
                             color: '#00b6ff',
-                            fontSize: this.fontSize,
+                            fontSize: 15*this.K
                         },
                     },
                     grid: {
                         x: 48,
+                        y: 30,
                         x2: 0,
+                        y2: 90,
                     },
                     tooltip: {
                         show: true,
@@ -68,6 +71,7 @@
                     },
                     yAxis: {
                         type: 'value',
+                        min: Math.floor(this.resDataTop.fgzsMin),
                         nameTextStyle: {
                             color: "#00b6ff",
                             fontSize: this.fontSize ,
@@ -92,21 +96,13 @@
                     series: this.seriesTop
                 };
             },
-            /* 图例 */
-            legendTop() {
-                let {legend} = this.resDataTop
-                if(legend){
-                    return legend|| []
-                }
-                return  []
-            },
             seriesTop(){
                 let {gqDataList} = this.resDataTop
                 let colorList = ['#ffa50e','#00ffff','#8e40e7','#32cd32','#6495ed']
                 if(gqDataList){
                     return gqDataList.map((item, index)=>{
                         return {
-                            name: '复工率',
+                            name: this.resDataTop.legend[index],
                             type: 'line',
                             smooth: true,
                             color: colorList[index%5],
@@ -117,19 +113,14 @@
                     return []
                 }
             },
+
+            /**
+             * 某天chart配置
+             ***/
             optionBottom() {
                 return {
-                    legend:  {
-                        data: this.legendBottom.filter(item => item.icon === 'roundRect'),
-                        icon: 'roundRect',
-                        itemWidth: 14,
-                        itemHeight: 14,
-                        y: 20,
-                        x2: 70,
-                        textStyle: {
-                            color: '#00b6ff',
-                            fontSize: this.fontSize ,
-                        },
+                    legend: {
+                        show: false
                     },
                     grid: {
                         x: 48,
@@ -181,32 +172,26 @@
                     },
                     series: [
                         {
-                            name: '企业总数',
+                            name: '全区',
                             type: 'bar',
                             barWidth: 10,//柱图宽度
                             color: new echarts.graphic.LinearGradient(0, 1, 0, 0, [
                                 {
-                                    offset: 1,
-                                    color: '#0066ff'
+                                    offset: 0,
+                                    color: '#fd7d20'
                                 },
                                 {
-                                    offset: 0,
-                                    color: '#00f4ff'
+                                    offset: 1,
+                                    color: '#ffd65c'
                                 }
                             ]),
-                            barBorderRadius: [5,5,0,0],
+                            itemStyle:{
+                                barBorderRadius: [5,5,0,0],
+                            },
                             data: this.resDataBottom.fgzsArr || []
                         },
                     ]
                 };
-            },
-            /* 图例 */
-            legendBottom() {
-                let {legend} = this.resDataTop
-                if(legend){
-                    return legend|| []
-                }
-                return  []
             },
             /* 第一个图表接口参数 */
             paramsTop(){
