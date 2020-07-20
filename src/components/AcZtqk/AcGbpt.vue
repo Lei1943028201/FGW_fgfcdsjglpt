@@ -230,7 +230,6 @@
                 }
             }
             .fd-text-2 {
-                margin: 10px 0;
                 color: #c9e7ff;
             }
             .fd-text-3 {

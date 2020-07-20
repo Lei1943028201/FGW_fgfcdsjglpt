@@ -67,7 +67,10 @@
                             placeholder="结束日期">
                     </el-date-picker>-->
                 </div>
-                <el-button size="small" type="text" :class="[{'fd-btn--text': !sjfw}, {'fd-btn--text-active': sjfw}, 'hand']" @click="handlerSJFW">不包含节假日</el-button>
+                <el-button size="small" type="text"
+                           :class="[{'fd-btn--text': !sjfw}, {'fd-btn--text-active': sjfw}, 'hand']"
+                           @click="handlerSJFW">不包含节假日
+                </el-button>
                 <button class="fd-btn fd-btn-export">导出</button>
                 <button class="fd-btn fd-btn-export--chart">导出</button>
                 <button class="fd-btn fd-btn-confirm" @click="handlerConfirm">确定</button>
@@ -103,7 +106,7 @@
                 resData: {},
                 /* echarts数据 */
                 gzlsqk: {},
-                selectData:[],
+                selectData: [],
                 /* 查询参数 */
                 value1: '',
                 sjfw: false
@@ -117,8 +120,8 @@
                         {
                             data: this.legend.filter(item => item.icon === 'roundRect'),
                             icon: 'roundRect',
-                            itemWidth: 14,
-                            itemHeight: 14,
+                            itemWidth: 14 * this.K,
+                            itemHeight: 14 * this.K,
                             y: 20,
                             x2: 70,
                             textStyle: {
@@ -129,7 +132,7 @@
                         {
                             data: this.legend.filter(item => item.icon === 'rect'),
                             icon: 'roundRect',
-                            itemWidth: 14,
+                            itemWidth: 14* this.K,
                             itemHeight: 5,
                             y: 20,
                             x: 'right',
@@ -227,8 +230,6 @@
                         },
                         {
                             type: 'value',
-                            min: 0,
-                            max: this.gzlsqk.qyzsMax || 100,
                             axisLine: {
                                 show: false,
                             },
@@ -342,20 +343,20 @@
             },
         },
         methods: {
-            handlerSJFW(){
+            handlerSJFW() {
                 this.sjfw = !this.sjfw
                 this.$store.dispatch('SetParams', {sjfw: this.sjfw})
             },
             /* 选择下拉选 */
-            handlerSelect(index){
+            handlerSelect(index) {
                 this.selectData[index].active = !this.selectData[index].active
             },
             /* 确认 */
-            handlerConfirm(){
-                if(this.showType === 1){
+            handlerConfirm() {
+                if (this.showType === 1) {
                     this.$refs.AcZdlyXzChart.init();
 
-                }else{
+                } else {
                     this.$refs.AcZdlyXzTable.init();
                 }
             },
@@ -380,8 +381,8 @@
                         loading.close();
                     })
                 getGbmly()
-                    .then((res)=>{
-                        this.selectData = res.data.dataList.map(item=>({
+                    .then((res) => {
+                        this.selectData = res.data.dataList.map(item => ({
                             name: item.ly,
                             active: true
                         }))

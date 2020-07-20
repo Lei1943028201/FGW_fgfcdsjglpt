@@ -294,8 +294,8 @@
                         {
                             data: this.legend.filter(item => item.icon === 'roundRect'),
                             icon: 'roundRect',
-                            itemWidth: 14,
-                            itemHeight: 14,
+                            itemWidth: 14* this.K,
+                            itemHeight: 14* this.K,
                             y: 20,
                             x2: 70,
                             textStyle: {
@@ -306,7 +306,7 @@
                         {
                             data: this.legend.filter(item => item.icon === 'rect'),
                             icon: 'roundRect',
-                            itemWidth: 14,
+                            itemWidth: 14* this.K,
                             itemHeight: 5,
                             y: 20,
                             x: 'right',
@@ -640,7 +640,7 @@
             color: #c9e7ff;
         }
         .fd-list-item {
-            margin-bottom: 10px;
+            margin-bottom: 5px;
             & > span {
                 margin: 0 5px;
                 font-size: 18px;

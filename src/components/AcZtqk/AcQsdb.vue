@@ -322,6 +322,16 @@
                     min: 600,
                     max: 1200
                 }
+                let max = 0
+                if(this.activeTab1 === '1'){
+                    max = 120
+                }
+                if(this.activeTab1 === '2'){
+                    max = this.resData.maxCxsJkb
+                }
+                if(this.activeTab1 === '3'){
+                    max = this.resData.maxCxsJsjb
+                }
                 let yAxisName = ''
                 if (this.activeTab1 === '1') {
                     yAxisName = ''
@@ -404,9 +414,9 @@
                     yAxis: [
                         {
                             type: 'value',
-                           /* min: 0,
-                            max: 120,*/
                             name: yAxisName,
+                            min: 0,
+                            max: max,
                             splitNumber: 4,
                             nameTextStyle: {
                                 color: "#00b6ff",
