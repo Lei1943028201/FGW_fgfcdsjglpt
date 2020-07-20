@@ -38,7 +38,7 @@
                         x2: 70,
                         textStyle: {
                             color: '#00b6ff',
-                            fontSize: this.fontSize ,
+                            fontSize: this.fontSize,
                         },
                     },
                     grid: {

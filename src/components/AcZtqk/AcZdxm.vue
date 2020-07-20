@@ -113,6 +113,7 @@
                 dqQsKgl: [],
                 /* 后三--排行 */
                 dqHsKgl: [],
+                selectList_ly: []
             }
         },
         computed: {

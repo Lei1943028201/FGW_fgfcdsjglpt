@@ -37,8 +37,8 @@
             <div class="fd-query-content">
                 <!-- tab切换--模块 -->
                 <CcSelect select-name="请选择领域"
-                          :data-list="handlerSelectLYLX"
-                          @handlerSelect="handlerSelect"
+                          :data-list="selectList_lylx"
+                          @handlerSelect="handlerSelectLYLX"
                           @selectHide="handlerConfirm"
                           class="fd-select-01"></CcSelect>
                 <div>
@@ -377,17 +377,11 @@
                         console.log(err)
                         loading.close();
                     })
-                getGbmly()
-                    .then((res) => {
-                        this.selectData = res.data.dataList.map(item => ({
-                            name: item.ly,
-                            active: true
-                        }))
-                    })
             }
         },
         created() {
             this.init()
+            //this.initSelectList()
         }
     }
 </script>

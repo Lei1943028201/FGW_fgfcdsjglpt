@@ -567,6 +567,14 @@
             }
         },
         methods: {
+            /* 切换地区/行业 */
+            handlerTab(tab) {
+                if (tab.code === this.activeTab) {
+                    return
+                }
+                this.activeTab = tab.code
+                this.init()
+            },
             /* 选择地区 */
             handlerSelectDQ(index){
                 this.selectList_dq[index].active = !this.selectList_dq[index].active
