@@ -118,7 +118,7 @@
     .fd-content-progress{
         min-height: 160px;
         li{
-            margin-top: 15px;
+            margin-top: 18px;
             height: 30px;
             font-size: 15px;
             .left{

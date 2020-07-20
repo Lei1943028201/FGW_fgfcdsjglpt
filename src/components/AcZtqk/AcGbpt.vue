@@ -196,7 +196,7 @@
 
     .fd-content-card {
         width: 100%;
-        margin: 20px 0 28px;
+        margin: 10px 0 28px;
         & > li:nth-child(2) {
             position: relative;
             .fd-line {
