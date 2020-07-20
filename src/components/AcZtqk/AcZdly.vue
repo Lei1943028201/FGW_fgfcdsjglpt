@@ -37,7 +37,7 @@
             <div class="fd-query-content">
                 <!-- tab切换--模块 -->
                 <CcSelect select-name="请选择领域"
-                          :data-list="selectData"
+                          :data-list="handlerSelectLYLX"
                           @handlerSelect="handlerSelect"
                           @selectHide="handlerConfirm"
                           class="fd-select-01"></CcSelect>
@@ -47,7 +47,7 @@
                             :editable="false"
                             :clearable="false"
                             size="small"
-                            v-model="value1"
+                            v-model="params.ksrq"
                             type="date"
                             placeholder="开始日期">
                     </el-date-picker>
@@ -56,17 +56,17 @@
                             :clearable="false"
                             class="fd-date-picker-end"
                             size="small"
-                            v-model="value1"
+                            v-model="params.jzrq"
                             type="date"
                             placeholder="结束日期">
                     </el-date-picker>
                 </div>
                 <el-button size="small" type="text"
-                           :class="[{'fd-btn--text': !sjfw}, {'fd-btn--text-active': sjfw}, 'hand']"
+                           :class="[{'fd-btn--text': params.sjfw==='1'}, {'fd-btn--text-active': params.sjfw==='2'}, 'hand']"
                            @click="handlerSJFW">不包含节假日
                 </el-button>
-                <button class="fd-btn fd-btn-export">导出</button>
-                <button class="fd-btn fd-btn-export--chart">导出</button>
+                <button class="fd-btn fd-btn-export" v-show="showType === 2">导出</button>
+                <button class="fd-btn fd-btn-export--chart"  v-show="showType === 1">导出</button>
                 <button class="fd-btn fd-btn-confirm" @click="handlerConfirm">确定</button>
             </div>
             <AcZdlyXzChart v-if="showType === 1" ref="AcZdlyXzChart"></AcZdlyXzChart>
@@ -100,10 +100,15 @@
                 resData: {},
                 /* echarts数据 */
                 gzlsqk: {},
-                selectData: [],
+                selectList_lylx: [],
+                qsfgfcData: {},
                 /* 查询参数 */
-                value1: '',
-                sjfw: false
+                params: {
+                    ksrq: '',
+                    jzrq: '',
+                    sjfw: '1',
+                    lylx: '',
+                },
             }
         },
         computed: {
@@ -337,31 +342,29 @@
             },
         },
         methods: {
-            handlerSJFW() {
-                this.sjfw = !this.sjfw
-                this.$store.dispatch('SetParams', {sjfw: this.sjfw})
+            /* 选择领域 */
+            handlerSelectLYLX(index){
+                this.selectList_lylx[index].active = !this.selectList_lylx[index].active
+                this.params.lylx = this.selectList_lylx.filter(item=>item.active).map(item=>item.name).join()
             },
-            /* 选择下拉选 */
-            handlerSelect(index) {
-                this.selectData[index].active = !this.selectData[index].active
+            /* 初始化参数 */
+            initParams(){
+                this.params.lylx = this.selectList_lylx.filter(item=>item.active).map(item=>item.name).join()
             },
-            /* 确认 */
-            handlerConfirm() {
-                if (this.showType === 1) {
-                    this.$refs.AcZdlyXzChart.init();
-
-                } else {
-                    this.$refs.AcZdlyXzTable.init();
-                }
+            /* 初始化下拉 */
+            initSelectList(){
+                getGbmly()
+                    .then((response) => {
+                        this.selectList_dq = response.data.dataList.map(item=>{
+                            return {
+                                name: item.ly,
+                                bm: item.bm,
+                                active: true,
+                            }
+                        })
+                        this.initParams()
+                    })
             },
-            handlerTab(tab) {
-                if (tab.code === this.activeTab) {
-                    return
-                }
-                this.activeTab = tab.code
-                this.init()
-            },
-
             init() {
                 const loading = this.$loading({background: 'rgba(0, 0, 0, 0.6)'})
                 getZdly()

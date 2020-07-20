@@ -12,12 +12,13 @@ export default new Vuex.Store({
             limit: 10, // 展示条数
             ksrq: '', // 开始日期
             jzrq: '', // 结束日期
-            rq: '',   // 日期
+            rq: '2020-06-10',   // 日期
             sjfw: '', // 是否包含节假日
             dq: '',   // 地区
             lylx: '', // 部门领域
             hylx: '', // 行业领域
             qylx: '', // 区域类型
+            mtqylx: '重点企业', // 每天区域类型
         },
     },
     getters: {

@@ -62,7 +62,7 @@
             <div class="fd-query-content">
                 <!-- tab切换--模块 -->
                 <CcSelect select-name="请选择领域"
-                          :data-list="selectData"
+                          :data-list="selectList_ly"
                           @handlerSelect="handlerSelect"
                           @selectHide="handlerConfirm"
                           class="fd-select-01"></CcSelect>

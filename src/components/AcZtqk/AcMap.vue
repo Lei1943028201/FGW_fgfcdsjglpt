@@ -92,7 +92,7 @@
                 <!-- tab切换--模块 -->
                 <CcTab :tab-list="tabList" @handlerTab="dialogHandlerTab"/>
                 <CcSelect select-name="选择地区" :data-list="selectList_dq" class="fd-select-01" v-show="dialogActiveTab==='1'" @handlerSelect="handlerSelectDQ"></CcSelect>
-                <CcSelect select-name="企业类型" :data-list="selectList_qylx" class="fd-select-02" v-show="dialogActiveTab==='1'" @handlerSelect="handlerSelectQYLX"></CcSelect>
+                <CcSelect select-name="企业类型" :data-list="selectList_qylx" class="fd-select-02" v-show="dialogActiveTab==='1' && mapDialogType==='1'" @handlerSelect="handlerSelectQYLX"></CcSelect>
                 <CcSelect select-name="选择行业" :data-list="selectList_hy" class="fd-select-03" v-show="dialogActiveTab==='2'" @handlerSelect="handlerSelectHY"></CcSelect>
                 <div>
                     <el-date-picker
@@ -184,8 +184,8 @@
                 qsfgfcData: {},
                 /* 查询参数 */
                 params: {
-                    ksrq: '',
-                    jzrq: '',
+                    ksrq: '2020-06-06',
+                    jzrq: '2020-07-07',
                     sjfw: '1',
                     dq: '',
                     qylx: '',
@@ -293,14 +293,6 @@
             },
         },
         methods: {
-            /* 是否包含节假日 */
-            handlerSJFW() {
-                if(this.params.sjfw === '1'){
-                    this.params.sjfw = '2'
-                }else {
-                    this.params.sjfw = '1'
-                }
-            },
             /* 选择地区 */
             handlerSelectDQ(index){
                 this.selectList_dq[index].active = !this.selectList_dq[index].active
@@ -315,23 +307,6 @@
             handlerSelectQYLX(index){
                 this.selectList_qylx[index].active = !this.selectList_qylx[index].active
                 this.params.qylx = this.selectList_qylx.filter(item=>item.active).map(item=>item.name).join()
-            },
-            /* 切换地区/行业 */
-            dialogHandlerTab(tab) {
-                if (tab.code === this.dialogActiveTab) {
-                    return
-                }
-                this.dialogActiveTab = tab.code
-            },
-            /* 点击确认 */
-            handlerConfirm(){
-
-                this.$store.dispatch('SetParams', this.params)
-                if(this.showType === 1){
-                    this.$refs.AcMapXzChart.init()
-                }else{
-                    this.$refs.AcMapXzTable.init()
-                }
             },
             /* 初始化参数 */
             initParams(){
