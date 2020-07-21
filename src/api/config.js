@@ -58,7 +58,9 @@ const localUrl = {
         /**
          * 左侧数据
          */
-
+        fglqs: 'json/ztqkxz/fglqs',                      // 重点工程复工率趋势
+        mtfgl: 'json/ztqkxz/mtfgl',                      // 某天复工率
+        fglbg: 'json/ztqkxz/fglbg',                      // 重点工程复工率表格
         /**
          * 中间数据
          */
@@ -80,7 +82,6 @@ const localUrl = {
         gdq_fglqs: 'json/ztqkxz/gdq_fglqs.json',            // 全市各区企业复工率趋势
         gdq_mtfglqs: 'json/ztqkxz/gdq_mtfglqs.json',        // 某天各区复工率
         gdq_fgqkbg: 'json/ztqkxz/gdq_fgqkbg.json',          // 各区复工率趋势表格
-        exportbg: 'json/ztqkxz/exportbg.json',    // 各区复工率趋势表格-导出Excel
         ghy_fglqs: 'json/ztqkxz/ghy_fglqs.json',            // 全市各行业复工率趋势
         ghy_mtfglqs: 'json/ztqkxz/ghy_mtfglqs.json',        // 某天各行业复工率
         ghy_fgqkbg: 'json/ztqkxz/ghy_fgqkbg.json',          // 各行业复工率趋势表格
@@ -117,7 +118,10 @@ const serverUrl = {
         /**
          * 左侧数据
          */
-
+        fglqs: '/api/v1/zdgcData/fglqs',                      // 重点工程复工率趋势
+        mtfgl: '/api/v1/zdgcData/mtfgl',                      // 某天复工率
+        fglbg: '/api/v1/zdgcData/fglbg',                      // 重点工程复工率表格
+        exportFglbg: '/api/v1/zdgcData/fglbg/export',         // 重点工程复工率表格导出
         /**
          * 中间数据
          */

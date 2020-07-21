@@ -154,7 +154,7 @@
             return {
                 isYq: false, // 是否疫情
                 mapDialogType: '', // 国网指数/日报指数
-                dialogActiveTab: '1',
+                dialogActiveTab: '1', // 地区/行业
                 tabList: [
                     {
                         name: '所有区',

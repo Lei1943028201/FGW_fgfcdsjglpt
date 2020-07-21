@@ -292,3 +292,63 @@ export function getGhyFgqkbg(params) {
         }
     })
 }
+
+/**
+ * 重点工程复工率趋势
+ * @param params
+ */
+export function getFglqs(params) {
+    return request({
+        url: config.url.ztqkxz.fglqs,
+        method: config.methodGet,
+        params: {
+            time: new Date().getTime(),
+            ...params
+        }
+    })
+}
+
+/**
+ * 某天复工率
+ * @param params
+ */
+export function getMtfgl(params) {
+    return request({
+        url: config.url.ztqkxz.mtfgl,
+        method: config.methodGet,
+        params: {
+            time: new Date().getTime(),
+            ...params
+        }
+    })
+}
+
+/**
+ * 重点工程复工率表格
+ * @param params
+ */
+export function getFglbg(params) {
+    return request({
+        url: config.url.ztqkxz.fglbg,
+        method: config.methodGet,
+        params: {
+            time: new Date().getTime(),
+            ...params
+        }
+    })
+}
+
+/**
+ * 重点工程复工率表格导出
+ * @param params
+ */
+export function downloadFglbg(params) {
+    return request({
+        url: config.url.ztqkxz.exportFglbg,
+        method: config.methodGet,
+        params: {
+            time: new Date().getTime(),
+            ...params
+        }
+    })
+}
