@@ -36,7 +36,7 @@
             <AcDialogTitle slot="title" :title="dialogTitle" @handlerShowType="handlerShowType"></AcDialogTitle>
             <div class="fd-query-content">
                 <!-- tab切换--模块 -->
-                <CcSelect select-name="请选择领域"
+                <CcSelect select-name="选择领域"
                           :data-list="selectList_lylx"
                           @handlerSelect="handlerSelectLYLX"
                           @selectHide="handlerConfirm"
@@ -66,7 +66,6 @@
                            @click="handlerSJFW">不包含节假日
                 </el-button>
                 <button class="fd-btn fd-btn-export" v-show="showType === 2">导出</button>
-                <button class="fd-btn fd-btn-export--chart"  v-show="showType === 1">导出</button>
                 <button class="fd-btn fd-btn-confirm" @click="handlerConfirm">确定</button>
             </div>
             <AcZdlyXzChart v-if="showType === 1" ref="AcZdlyXzChart"></AcZdlyXzChart>
@@ -355,7 +354,7 @@
             initSelectList(){
                 getGbmly()
                     .then((response) => {
-                        this.selectList_dq = response.data.dataList.map(item=>{
+                        this.selectList_lylx = response.data.dataList.map(item=>{
                             return {
                                 name: item.ly,
                                 bm: item.bm,

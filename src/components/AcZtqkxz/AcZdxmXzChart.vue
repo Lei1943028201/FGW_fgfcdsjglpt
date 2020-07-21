@@ -1,8 +1,8 @@
 <template>
     <div id="AcZdxmXzChart" class="fd-xz-content-chart">
-        <h2 class="fd-title-01">全市重点项目复工率趋势</h2>
+        <h2 class="fd-title-01">全市重点项目复工率趋势<button class="fd-btn fd-btn-export--chart">导出</button></h2>
         <CcEcharts :option="optionTop" class="fd-chart-top"/>
-        <h2>X月X日各区复工率</h2>
+        <h2>X月X日各区复工率<button class="fd-btn fd-btn-export--chart">导出</button></h2>
         <CcEcharts :option="optionBottom" class="fd-chart-bottom"/>
     </div>
 </template>
@@ -14,13 +14,14 @@
     import echarts from 'echarts'
     import {mapState} from 'vuex'
     import {getFglqs, getMtfgl} from '../../api/ztqkxz'
+
     export default {
         name: "AcZdxmXzChart",
         data() {
             return {
                 /* echarts数据 */
                 resDataTop: {
-                    gqDataList:[],
+                    gqDataList: [],
                     kglMin: 0,
                     rqArr: [],
                     legend: [],
@@ -44,11 +45,11 @@
                         data: this.resDataTop.legend || [],
                         icon: 'roundRect',
                         itemHeight: 4,
-                        y2: 10,
+                        y2: 30,
                         x: 'center',
                         textStyle: {
                             color: '#00b6ff',
-                            fontSize: 15*this.K
+                            fontSize: 15 * this.K
                         },
                     },
                     grid: {
@@ -70,7 +71,7 @@
                             }
                         },
                         axisLabel: {
-                            interval:0, //强制显示文字
+                            interval: 0, //强制显示文字
                             rotate: 35,
                             textStyle: {
                                 color: '#00b6ff',  //更改坐标轴文字颜色
@@ -83,7 +84,7 @@
                         min: Math.floor(this.resDataTop.kglMin),
                         nameTextStyle: {
                             color: "#00b6ff",
-                            fontSize: this.fontSize ,
+                            fontSize: this.fontSize,
                             padding: [0, 0, 0, -60]
                         },
                         axisLine: {
@@ -105,16 +106,16 @@
                     series: this.seriesTop
                 };
             },
-            seriesTop(){
+            seriesTop() {
                 let {gqDataList} = this.resDataTop
-                let colorList = ['#ffa50e','#00ffff','#8e40e7','#32cd32','#6495ed']
-                return gqDataList.map((item, index)=>{
+                let colorList = ['#ffa50e', '#00ffff', '#8e40e7', '#32cd32', '#6495ed']
+                return gqDataList.map((item, index) => {
                     return {
-                        name: '',
+                        name: this.resDataTop.legend[index],
                         type: 'line',
                         smooth: true,
-                        color: colorList[index%5],
-                        data: item.map((value)=>{
+                        color: colorList[index % 5],
+                        data: item.map((value) => {
                             return value.fgl
                         })
                     }
@@ -127,11 +128,19 @@
             optionBottom() {
                 return {
                     legend: {
-                        show: false
+                        show: true,
+                        x: 'center',
+                        y2: 30,
+                        textStyle: {
+                            color: '#00b6ff',
+                            fontSize: 15 * this.K
+                        },
                     },
                     grid: {
                         x: 48,
                         x2: 0,
+                        y: 30,
+                        y2: 100
                     },
                     tooltip: {
                         show: true,
@@ -146,7 +155,7 @@
                             }
                         },
                         axisLabel: {
-                            interval:0, //强制显示文字
+                            interval: 0, //强制显示文字
                             rotate: 35,
                             textStyle: {
                                 color: '#00b6ff',  //更改坐标轴文字颜色
@@ -158,7 +167,7 @@
                         type: 'value',
                         nameTextStyle: {
                             color: "#00b6ff",
-                            fontSize: this.fontSize ,
+                            fontSize: this.fontSize,
                             padding: [0, 0, 0, -60]
                         },
                         axisLine: {
@@ -193,8 +202,8 @@
                                     color: '#0af4ff'
                                 }
                             ]),
-                            itemStyle:{
-                                barBorderRadius: [5,5,0,0],
+                            itemStyle: {
+                                barBorderRadius: [5, 5, 0, 0],
                             },
                             data: this.resDataBottom.xmgsArr || []
                         },
@@ -212,8 +221,8 @@
                                     color: '#ffd65c'
                                 }
                             ]),
-                            itemStyle:{
-                                barBorderRadius: [5,5,0,0],
+                            itemStyle: {
+                                barBorderRadius: [5, 5, 0, 0],
                             },
                             data: this.resDataBottom.ykgsArr || []
                         },
@@ -227,7 +236,7 @@
                 };
             },
             /* 第一个图表接口参数 */
-            paramsTop(){
+            paramsTop() {
                 return {
                     sjfw: this.params_xz.sjfw, //数据范围（1：包含节假日，2：不包含节假日）
                     ksrq: this.params_xz.ksrq,  // 开始日期(开始日期为空时，表示默认情况取近15天数据)
@@ -237,7 +246,7 @@
                 }
             },
             /* 第二个图表接口参数 */
-            paramsBottom(){
+            paramsBottom() {
                 return {
                     rq: this.params_xz.rq, // 日期
                 }

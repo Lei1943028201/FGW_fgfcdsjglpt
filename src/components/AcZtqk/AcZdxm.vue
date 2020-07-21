@@ -55,6 +55,7 @@
         <!-- 弹窗 -- 开始 -->
         <el-dialog
                 title="提示"
+                :destroy-on-close="true"
                 :visible.sync="dialogVisible"
                 width="80%"
                 :before-close="handleClose">
@@ -97,7 +98,7 @@
                            :class="[{'fd-btn--text': params.sjfw==='1'}, {'fd-btn--text-active': params.sjfw==='2'}, 'hand']"
                            @click="handlerSJFW">不包含节假日
                 </el-button>
-                <button class="fd-btn fd-btn-export">导出</button>
+                <button class="fd-btn fd-btn-export" v-show="showType === 2">导出</button>
                 <button class="fd-btn fd-btn-confirm">确定</button>
             </div>
             <AcZdxmXzChart ref="AcZdxmXzChart" v-if="showType === 1"></AcZdxmXzChart>

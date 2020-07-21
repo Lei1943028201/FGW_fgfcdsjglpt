@@ -12,208 +12,246 @@
      * 重点领域下钻页面-图表
      */
     import echarts from 'echarts'
+    import {mapState} from 'vuex'
     import {getGlyFglqs, getMtglyfgl} from '../../api/ztqkxz'
     export default {
         name: "AcZdlyXzChart",
         data() {
             return {
-                resData: {},
                 /* echarts数据 */
-                gzlsqk: {},
+                resDataTop: {
+                    gqDataList:[],
+                    kglMin: 0,
+                    rqArr: [],
+                    legend: [],
+                },
+                resDataBottom: {
+                    dqmcArr: [],
+                    kglArr: [],
+                    xmgsArr: [],
+                    ykgsArr: [],
+                },
             }
         },
         computed: {
-            option() {
-                let _this = this
+            ...mapState(['params_xz']),
+            /**
+             * 全市chart配置
+             ***/
+            optionTop() {
                 return {
-                    legend: [
-                        {
-                            data: this.legend.filter(item => item.icon === 'roundRect'),
-                            icon: 'roundRect',
-                            itemWidth: 14,
-                            itemHeight: 14,
-                            y: 20,
-                            x2: 70,
+                    legend: {
+                        data: this.resDataTop.legend || [],
+                        icon: 'roundRect',
+                        itemHeight: 4,
+                        y2: 10,
+                        x: 'center',
+                        textStyle: {
+                            color: '#00b6ff',
+                            fontSize: 15*this.K
+                        },
+                    },
+                    grid: {
+                        x: 48,
+                        y: 30,
+                        x2: 0,
+                        y2: 90,
+                    },
+                    tooltip: {
+                        show: true,
+                    },
+                    xAxis: {
+                        type: 'category',
+                        triggerEvent: true,
+                        data: this.resDataTop.rqArr || [],
+                        axisLine: {
+                            lineStyle: {
+                                color: '#041f51'
+                            }
+                        },
+                        axisLabel: {
+                            interval:0, //强制显示文字
+                            rotate: 35,
                             textStyle: {
-                                color: '#00b6ff',
-                                fontSize: this.fontSize ,
+                                color: '#00b6ff',  //更改坐标轴文字颜色
+                                fontSize: this.fontSize       //更改坐标轴文字大小
                             },
                         },
-                    ],
+                    },
+                    yAxis: {
+                        type: 'value',
+                        min: Math.floor(this.resDataTop.kglMin),
+                        nameTextStyle: {
+                            color: "#00b6ff",
+                            fontSize: this.fontSize ,
+                            padding: [0, 0, 0, -60]
+                        },
+                        axisLine: {
+                            show: false,
+                        },
+                        axisLabel: {
+                            textStyle: {
+                                color: '#00b6ff',  //更改坐标轴文字颜色
+                                fontSize: this.fontSize       //更改坐标轴文字大小
+                            },
+                        },
+                        //设置网格线颜色
+                        splitLine: {
+                            lineStyle: {
+                                color: ['#0d2f58'],
+                            }
+                        }
+                    },
+                    series: this.seriesTop
+                };
+            },
+            seriesTop(){
+                let {gqDataList} = this.resDataTop
+                let colorList = ['#ffa50e','#00ffff','#8e40e7','#32cd32','#6495ed']
+                return gqDataList.map((item, index)=>{
+                    return {
+                        name: '',
+                        type: 'line',
+                        smooth: true,
+                        color: colorList[index%5],
+                        data: item.map((value)=>{
+                            return value.fgl
+                        })
+                    }
+                })
+            },
+
+            /**
+             * 某天chart配置
+             ***/
+            optionBottom() {
+                return {
+                    legend: {
+                        show: false
+                    },
                     grid: {
                         x: 48,
                         x2: 0,
                     },
                     tooltip: {
                         show: true,
-                        formatter(params){
-                            let index = params.dataIndex
-                            return `企业总数:${_this.qyzsArr[index] + _this.fgzsArr[index]}万<br/>复工数:${_this.fgzsArr[index]}万<br/>复工率:${_this.fglArr[index]}%`
-                        }
                     },
-                    xAxis: [
-                        {
-                            type: 'category',
-                            data: this.bmArr,
-                            axisLine: {
-                                lineStyle: {
-                                    color: '#041f51'
-                                }
-                            },
-                            axisLabel: {
-                                interval:0, //强制显示文字
-                                textStyle: {
-                                    color: '#00b6ff',  //更改坐标轴文字颜色
-                                    fontSize: this.fontSize       //更改坐标轴文字大小
-                                },
-                                formatter: function (value) {
-                                    if(value === '商场（超市）'){
-                                        return '商场\n（超市）'
-                                    }
-                                    if(value === '餐馆（食堂）'){
-                                        return '餐馆\n（食堂）'
-
-                                    }
-                                    let ret = "";//拼接加\n返回的类目项
-                                    let maxLength = 2;//每项显示文字个数
-                                    let valLength = value.length;//X轴类目项的文字个数
-                                    let rowN = Math.ceil(valLength / maxLength); //类目项需要换行的行数
-                                    if (rowN > 1) {
-                                        for (let i = 0; i < rowN; i++) {
-                                            let temp = "";//每次截取的字符串
-                                            let start = i * maxLength;//开始截取的位置
-                                            let end = start + maxLength;//结束截取的位置
-                                            temp = value.substring(start, end) + "\n";
-                                            ret += temp; //凭借最终的字符串
-                                        }
-                                        return ret;
-                                    }
-                                    else {
-                                        return value;
-                                    }
-                                }
-                            },
-
-                        }
-                    ],
-                    yAxis: [
-                        {
-                            type: 'value',
-                            min:0,
-                            max: this.gzlsqk.fglMax || 100,
-                            splitNumber : 2,
-                            nameTextStyle: {
-                                color: "#00b6ff",
-                                fontSize: this.fontSize ,
-                                padding: [0, 0, 0, -60]
-                            },
-                            axisLine: {
-                                show: false,
-                            },
-                            axisLabel: {
-                                textStyle: {
-                                    color: '#00b6ff',  //更改坐标轴文字颜色
-                                    fontSize: this.fontSize       //更改坐标轴文字大小
-                                },
-                                formatter: function (value) {
-                                    return `${value}%`
-                                }
-                            },
-                            //设置网格线颜色
-                            splitLine: {
-                                lineStyle: {
-                                    color: ['#0d2f58'],
-                                }
+                    xAxis: {
+                        type: 'category',
+                        triggerEvent: true,
+                        data: this.resDataBottom.dqmcArr || [],
+                        axisLine: {
+                            lineStyle: {
+                                color: '#041f51'
                             }
                         },
-                        {
-                            type: 'value',
-                            min:0,
-                            max: this.gzlsqk.qyzsMax || 100,
-                            axisLine: {
-                                show: false,
-                            },
-                            //设置网格线颜色
-                            splitLine: {
-                                show: false,
-                            },
-                            axisLabel: {
-                                formatter: function () {
-                                    return ''
-                                }
+                        axisLabel: {
+                            interval:0, //强制显示文字
+                            rotate: 35,
+                            textStyle: {
+                                color: '#00b6ff',  //更改坐标轴文字颜色
+                                fontSize: this.fontSize       //更改坐标轴文字大小
                             },
                         },
-                    ],
+                    },
+                    yAxis: {
+                        type: 'value',
+                        nameTextStyle: {
+                            color: "#00b6ff",
+                            fontSize: this.fontSize ,
+                            padding: [0, 0, 0, -60]
+                        },
+                        axisLine: {
+                            show: false,
+                        },
+                        axisLabel: {
+                            textStyle: {
+                                color: '#00b6ff',  //更改坐标轴文字颜色
+                                fontSize: this.fontSize       //更改坐标轴文字大小
+                            },
+                        },
+                        //设置网格线颜色
+                        splitLine: {
+                            lineStyle: {
+                                color: ['#0d2f58'],
+                            }
+                        }
+                    },
                     series: [
                         {
-                            name: '企业总数',
+                            name: '项目个数',
                             type: 'bar',
-                            yAxisIndex: 1,
                             barWidth: 10,//柱图宽度
+
                             color: new echarts.graphic.LinearGradient(0, 1, 0, 0, [
                                 {
-                                    offset: 1,
+                                    offset: 0,
                                     color: '#0066ff'
                                 },
                                 {
-                                    offset: 0,
-                                    color: '#00f4ff'
+                                    offset: 1,
+                                    color: '#0af4ff'
                                 }
                             ]),
-                            data: this.qyzsArr
+                            itemStyle:{
+                                barBorderRadius: [5,5,0,0],
+                            },
+                            data: this.resDataBottom.xmgsArr || []
                         },
                         {
-                            name: '复工数',
+                            name: '已开工数',
                             type: 'bar',
-                            yAxisIndex: 1,
                             barWidth: 10,//柱图宽度
                             color: new echarts.graphic.LinearGradient(0, 1, 0, 0, [
                                 {
-                                    offset: 1,
+                                    offset: 0,
                                     color: '#fd7d20'
                                 },
                                 {
-                                    offset: 0,
+                                    offset: 1,
                                     color: '#ffd65c'
                                 }
                             ]),
-                            barGap: "-100%", /*这里设置包含关系*/
-                            data: this.fgzsArr
+                            itemStyle:{
+                                barBorderRadius: [5,5,0,0],
+                            },
+                            data: this.resDataBottom.ykgsArr || []
                         },
                         {
-                            name: '复工率',
+                            name: '开工率',
                             type: 'line',
-                            yAxisIndex: 0,
-                            smooth: true,
-                            color: '#10f680',
-                            data: this.fglArr
+                            color: '#fd7d20',
+                            data: this.resDataBottom.kglArr || []
                         },
                     ]
                 };
             },
-            /* 图例 */
-            legend() {
-                let {legend} = this.gzlsqk
-
-                if(legend){
-                    return legend.map(item=>{
-                        return {
-                            name: item,
-                            icon: item === '复工率' ? 'rect': 'roundRect',
-                        }
-                    }) || []
+            /* 第一个图表接口参数 */
+            paramsTop(){
+                return {
+                    sjfw: this.params_xz.sjfw, //数据范围（1：包含节假日，2：不包含节假日）
+                    ksrq: this.params_xz.ksrq,  // 开始日期(开始日期为空时，表示默认情况取近15天数据)
+                    jzrq: this.params_xz.jzrq, // 截至日期(截至日期为空时，表示默认情况取近15天数据)
+                    ly: this.params_xz.dq,     // 部门领域
                 }
-                return  []
             },
+            /* 第二个图表接口参数 */
+            paramsBottom(){
+                return {
+                    rq: this.params_xz.rq, // 日期
+                }
+            }
         },
         methods: {
             init() {
-                getGlyFglqs()
+                getGlyFglqs(this.paramsTop)
                     .then(res => {
-                        this.resData = res.data
-                        this.gzlsqk = res.data.gzlsqk
+                        this.resDataTop = res.data
                     })
-                getMtglyfgl()
+                getMtglyfgl(this.paramsBottom)
+                    .then(res => {
+                        this.resDataBottom = res.data
+                    })
             }
         },
         created() {
