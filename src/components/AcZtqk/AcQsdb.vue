@@ -361,7 +361,7 @@
                         x: 58,
                         y: 90 * this.K,
                         x2: 65,
-                        y2: 45
+                        y2: 55
                     },
                     xAxis: [
                         {
@@ -523,7 +523,6 @@
             },
             clickEcharts(params) {
                 if (params.componentType === 'xAxis') {
-                    console.log(params.event.event, params.event.event.layerX)
                     this.tooltipStyle = `position: absolute; bottom: 50px;left: ${params.event.event.layerX}px;`
                 }
             },
