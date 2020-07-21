@@ -55,7 +55,6 @@
         <!-- 弹窗 -- 开始 -->
         <el-dialog
                 title="提示"
-                :destroy-on-close="true"
                 :visible.sync="dialogVisible"
                 width="80%"
                 :before-close="handleClose">
@@ -167,6 +166,7 @@
                 ],
                 /* 查询参数 */
                 params: {
+                    key: 'params_zdxm',
                     ksrq: '2020-06-06',
                     jzrq: '2020-07-07',
                     sjfw: '1',
@@ -377,6 +377,14 @@
                 }
             },
         },
+        watch:{
+            params: {
+                deep: true,
+                handler(){
+                    this.$store.dispatch('SetParams', this.params)
+                }
+            }
+        },
         methods: {
             /* 选择下拉选 */
             handlerSelectLY(index){
@@ -388,6 +396,9 @@
             },
             /* 确认 */
             handlerConfirm(){
+                this.params.jd = this.selectList_jd.filter(item=>item.active).map(item=>item.name).join()
+                this.params.ly = this.selectList_ly.filter(item=>item.active).map(item=>item.name).join()
+
                 if(this.showType === 1){
                     this.$refs.AcZdxmXzChart.init();
 

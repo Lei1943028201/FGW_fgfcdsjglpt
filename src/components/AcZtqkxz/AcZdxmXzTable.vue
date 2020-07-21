@@ -98,16 +98,16 @@
             }
         },
         computed: {
-            ...mapState(['params_xz']),
+            ...mapState(['params_zdxm']),
             params(){
                 return {
-                    sjfw: this.params_xz.sjfw, //数据范围（1：包含节假日，2：不包含节假日）
-                    ksrq: this.params_xz.ksrq,  // 开始日期(开始日期为空时，表示默认情况取近15天数据)
-                    jzrq: this.params_xz.jzrq, // 截至日期(截至日期为空时，表示默认情况取近15天数据)
-                    dq: this.params_xz.dq,     // 地区(数组)：全市，东城区,西城区等
-                    jd: this.params_xz.jd, // 日期
-                    limit: this.params_xz.limit, // 日期
-                    offset: this.params_xz.offset, // 日期
+                    sjfw: this.params_zdxm.sjfw, //数据范围（1：包含节假日，2：不包含节假日）
+                    ksrq: this.params_zdxm.ksrq,  // 开始日期(开始日期为空时，表示默认情况取近15天数据)
+                    jzrq: this.params_zdxm.jzrq, // 截至日期(截至日期为空时，表示默认情况取近15天数据)
+                    dq: this.params_zdxm.dq,     // 地区(数组)：全市，东城区,西城区等
+                    jd: this.params_zdxm.jd, // 日期
+                    limit: this.params_zdxm.limit, // 日期
+                    offset: this.params_zdxm.offset, // 日期
                 }
             },
         },

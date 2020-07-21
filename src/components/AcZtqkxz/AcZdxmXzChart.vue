@@ -35,7 +35,7 @@
             }
         },
         computed: {
-            ...mapState(['params_xz']),
+            ...mapState(['params_zdxm']),
             /**
              * 全市chart配置
              ***/
@@ -115,7 +115,7 @@
                         type: 'line',
                         smooth: true,
                         color: colorList[index % 5],
-                        data: item.map((value) => {
+                        data: item.dqDataArr.map((value) => {
                             return value.fgl
                         })
                     }
@@ -238,17 +238,17 @@
             /* 第一个图表接口参数 */
             paramsTop() {
                 return {
-                    sjfw: this.params_xz.sjfw, //数据范围（1：包含节假日，2：不包含节假日）
-                    ksrq: this.params_xz.ksrq,  // 开始日期(开始日期为空时，表示默认情况取近15天数据)
-                    jzrq: this.params_xz.jzrq, // 截至日期(截至日期为空时，表示默认情况取近15天数据)
-                    dq: this.params_xz.dq,     // 地区(数组)：全市，东城区,西城区等
-                    jd: this.params_xz.jd, // 日期
+                    sjfw: this.params_zdxm.sjfw, //数据范围（1：包含节假日，2：不包含节假日）
+                    ksrq: this.params_zdxm.ksrq,  // 开始日期(开始日期为空时，表示默认情况取近15天数据)
+                    jzrq: this.params_zdxm.jzrq, // 截至日期(截至日期为空时，表示默认情况取近15天数据)
+                    dq: this.params_zdxm.dq,     // 地区(数组)：全市，东城区,西城区等
+                    jd: this.params_zdxm.jd, // 日期
                 }
             },
             /* 第二个图表接口参数 */
             paramsBottom() {
                 return {
-                    rq: this.params_xz.rq, // 日期
+                    rq: this.params_zdxm.rq, // 日期
                 }
             }
         },
