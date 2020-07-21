@@ -74,8 +74,8 @@
                 @current-change="handleCurrentChange"
                 background
                 layout="prev, pager, next"
-                :page-size="5"
-                :current-page="currentPage"
+                :page-size="limit"
+                :current-page="offset"
                 :total="total">
         </el-pagination>
     </div>
@@ -91,9 +91,9 @@
         name: "AcZdxmXzTable",
         data() {
             return {
-                total: 1111,
-                currentPage: 1,
-                pageSizes: 5,
+                total: 0,
+                offset: 1,
+                limit: 10,
                 tableData: []
             }
         },
@@ -105,9 +105,9 @@
                     ksrq: this.params_zdxm.ksrq,  // 开始日期(开始日期为空时，表示默认情况取近15天数据)
                     jzrq: this.params_zdxm.jzrq, // 截至日期(截至日期为空时，表示默认情况取近15天数据)
                     dq: this.params_zdxm.dq,     // 地区(数组)：全市，东城区,西城区等
-                    jd: this.params_zdxm.jd, // 日期
-                    limit: this.params_zdxm.limit, // 日期
-                    offset: this.params_zdxm.offset, // 日期
+                    jd: this.params_zdxm.jd, // 季度
+                    limit: this.params_zdxm.limit, //
+                    offset: this.offset, //
                 }
             },
         },
@@ -121,8 +121,9 @@
                 ])
             },
             // 翻页操作
-            handleCurrentChange(currentPage) {
-                this.currentPage = currentPage
+            handleCurrentChange(offset) {
+                this.offset = offset
+                this.init()
             },
             init() {
                 getFglbg(this.params).then((res)=>{

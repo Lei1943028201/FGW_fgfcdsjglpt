@@ -98,7 +98,7 @@
                            @click="handlerSJFW">不包含节假日
                 </el-button>
                 <button class="fd-btn fd-btn-export" v-show="showType === 2">导出</button>
-                <button class="fd-btn fd-btn-confirm">确定</button>
+                <button class="fd-btn fd-btn-confirm" @click="handlerConfirm">确定</button>
             </div>
             <AcZdxmXzChart ref="AcZdxmXzChart" v-if="showType === 1"></AcZdxmXzChart>
             <AcZdxmXzTable ref="AcZdxmXzTable" v-else></AcZdxmXzTable>
@@ -378,6 +378,7 @@
             },
         },
         watch:{
+            /* 监听参数的变化 */
             params: {
                 deep: true,
                 handler(){
