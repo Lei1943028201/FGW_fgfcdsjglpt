@@ -56,16 +56,47 @@
         <el-dialog
                 title="提示"
                 :visible.sync="dialogVisible"
-                width="1060"
+                width="80%"
                 :before-close="handleClose">
             <AcDialogTitle slot="title" :title="dialogTitle" @handlerShowType="handlerShowType"></AcDialogTitle>
             <div class="fd-query-content">
                 <!-- tab切换--模块 -->
-                <CcSelect select-name="请选择领域"
+                <CcSelect select-name="选择地区"
                           :data-list="selectList_ly"
-                          @handlerSelect="handlerSelect"
+                          @handlerSelect="handlerSelectLY"
                           @selectHide="handlerConfirm"
                           class="fd-select-01"></CcSelect>
+                <CcSelect select-name="选择季度"
+                          :data-list="selectList_jd"
+                          @handlerSelect="handlerSelectJD"
+                          @selectHide="handlerConfirm"
+                          class="fd-select-02"></CcSelect>
+                <div>
+                    <el-date-picker
+                            class="fd-date-picker-start"
+                            :editable="false"
+                            :clearable="false"
+                            size="small"
+                            v-model="params.ksrq"
+                            type="date"
+                            value-format="yyyy-MM-dd"
+                            placeholder="开始日期">
+                    </el-date-picker>
+                    <el-date-picker
+                            :editable="false"
+                            :clearable="false"
+                            class="fd-date-picker-end"
+                            size="small"
+                            v-model="params.jzrq"
+                            type="date"
+                            value-format="yyyy-MM-dd"
+                            placeholder="结束日期">
+                    </el-date-picker>
+                </div>
+                <el-button size="small" type="text"
+                           :class="[{'fd-btn--text': params.sjfw==='1'}, {'fd-btn--text-active': params.sjfw==='2'}, 'hand']"
+                           @click="handlerSJFW">不包含节假日
+                </el-button>
                 <button class="fd-btn fd-btn-export">导出</button>
                 <button class="fd-btn fd-btn-confirm">确定</button>
             </div>
@@ -82,6 +113,7 @@
     import AcZdxmXzChart from '../AcZtqkxz/AcZdxmXzChart'
     import mixinZdlyxz from '../../mixins/mixin-zdlyxz'
     import {getZdgcData} from '../../api/ztqk'
+    import {getZdgcSxtj} from '../../api/ztqkxz'
     /* 重点项目 */
     export default {
         name: "AcZdxm",
@@ -113,7 +145,33 @@
                 dqQsKgl: [],
                 /* 后三--排行 */
                 dqHsKgl: [],
-                selectList_ly: []
+                selectList_ly: [],
+                selectList_jd: [
+                    {
+                        name: '一季度',
+                        active: false,
+                    },
+                    {
+                        name: '二季度',
+                        active: false,
+                    },
+                    {
+                        name: '三季度',
+                        active: false,
+                    },
+                    {
+                        name: '四季度',
+                        active: false,
+                    },
+                ],
+                /* 查询参数 */
+                params: {
+                    ksrq: '2020-06-06',
+                    jzrq: '2020-07-07',
+                    sjfw: '1',
+                    dq: '',
+                    jd: '',
+                },
             }
         },
         computed: {
@@ -320,8 +378,12 @@
         },
         methods: {
             /* 选择下拉选 */
-            handlerSelect(index){
-                this.selectData[index].active = !this.selectData[index].active
+            handlerSelectLY(index){
+                this.selectList_ly[index].active = !this.selectList_ly[index].active
+            },
+            /* 选择下拉选 */
+            handlerSelectJD(index){
+                this.selectList_jd[index].active = !this.selectList_jd[index].active
             },
             /* 确认 */
             handlerConfirm(){
@@ -331,6 +393,30 @@
                 }else{
                     this.$refs.AcZdxmXzTable.init();
                 }
+            },
+            /* 初始化参数 */
+            initParams(){
+                this.params.dq = this.selectList_ly.filter(item=>item.active).map(item=>item.name).join()
+            },
+            /* 初始化下拉 */
+            initSelectList(){
+                getZdgcSxtj()
+                    .then((response) => {
+                        this.selectList_ly = response.data.map(item=>{
+                            if(item === '北京市'){
+                                return {
+                                    name: item,
+                                    active: true,
+                                }
+                            }else{
+                                return {
+                                    name: item,
+                                    active: false,
+                                }
+                            }
+                        })
+                        this.initParams()
+                    })
             },
             init() {
                 const loading = this.$loading({background: 'rgba(0, 0, 0, 0.6)'})
@@ -345,6 +431,7 @@
         },
         created() {
             this.init()
+            this.initSelectList()
         }
     }
 </script>

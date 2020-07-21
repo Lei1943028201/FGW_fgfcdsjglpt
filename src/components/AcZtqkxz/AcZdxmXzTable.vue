@@ -8,63 +8,63 @@
                 style="width: 100%">
             <el-table-column
                     align="center"
-                    prop="date"
+                    prop="rq"
                     width="100"
                     label="日期">
             </el-table-column>
             <el-table-column
                     align="center"
-                    prop="value1"
+                    prop="dqmc"
                     label="单位">
             </el-table-column>
             <el-table-column
                     align="center"
-                    prop="value2"
+                    prop="xmgs"
                     label="项目个数">
             </el-table-column>
             <el-table-column
                     align="center"
-                    prop="value3"
+                    prop="ykgs"
                     label="已开工数">
             </el-table-column>
             <el-table-column
                     align="center"
-                    prop="value4"
+                    prop="dtkgs"
                     :render-header="renderheader"
                     label="当天新|开工数">
             </el-table-column>
             <el-table-column
                     align="center"
-                    prop="value5"
+                    prop="kgrs"
                     label="开工人数">
             </el-table-column>
             <el-table-column
                     align="center"
-                    prop="value5"
+                    prop="kgl"
                     label="总开工率">
             </el-table-column>
             <el-table-column
                     align="center"
-                    prop="value5"
+                    prop="sjxmkgs"
                     :render-header="renderheader"
                     label="市级部门|主责项目|已开工数">
             </el-table-column>
             <el-table-column
                     align="center"
-                    prop="value5"
+                    prop="sjxmkgl"
                     :render-header="renderheader"
                     label="市级部门|主责项目|开工率">
             </el-table-column>
             <el-table-column
                     align="center"
-                    prop="value5"
+                    prop="qjxmkgs"
                     width="100"
                     :render-header="renderheader"
                     label="区主责项目|已开工数">
             </el-table-column>
             <el-table-column
                     align="center"
-                    prop="value5"
+                    prop="qjxmkgl"
                     width="100"
                     :render-header="renderheader"
                     label="区主责项目|已开工率">
@@ -85,7 +85,8 @@
     /**
      * 重点项目下钻页面-表格
      */
-    import {getGlyFglqs, getMtglyfgl} from '../../api/ztqkxz'
+    import {mapState} from 'vuex'
+    import {getFglbg} from '../../api/ztqkxz'
     export default {
         name: "AcZdxmXzTable",
         data() {
@@ -93,52 +94,22 @@
                 total: 1111,
                 currentPage: 1,
                 pageSizes: 5,
-                tableData: [
-                    {
-                        date: '2016-05-02',
-                        value1: '市住建委',
-                        value2: '规上工地',
-                        value3: '2130',
-                        value4: '2130',
-                        value5: '100',
-                    },
-                    {
-                        date: '2016-05-02',
-                        value1: '市住建委',
-                        value2: '规上工地',
-                        value3: '2130',
-                        value4: '2130',
-                        value5: '100',
-                    },
-                    {
-                        date: '2016-05-02',
-                        value1: '市住建委',
-                        value2: '规上工地',
-                        value3: '2130',
-                        value4: '2130',
-                        value5: '100',
-                    },
-                    {
-                        date: '2016-05-02',
-                        value1: '市住建委',
-                        value2: '规上工地',
-                        value3: '2130',
-                        value4: '2130',
-                        value5: '100',
-                    },
-                    {
-                        date: '2016-05-02',
-                        value1: '市住建委',
-                        value2: '规上工地',
-                        value3: '2130',
-                        value4: '2130',
-                        value5: '100',
-                    },
-                ]
+                tableData: []
             }
         },
         computed: {
-
+            ...mapState(['params_xz']),
+            params(){
+                return {
+                    sjfw: this.params_xz.sjfw, //数据范围（1：包含节假日，2：不包含节假日）
+                    ksrq: this.params_xz.ksrq,  // 开始日期(开始日期为空时，表示默认情况取近15天数据)
+                    jzrq: this.params_xz.jzrq, // 截至日期(截至日期为空时，表示默认情况取近15天数据)
+                    dq: this.params_xz.dq,     // 地区(数组)：全市，东城区,西城区等
+                    jd: this.params_xz.jd, // 日期
+                    limit: this.params_xz.limit, // 日期
+                    offset: this.params_xz.offset, // 日期
+                }
+            },
         },
         methods: {
             // 表头换行
@@ -154,8 +125,10 @@
                 this.currentPage = currentPage
             },
             init() {
-                getGlyFglqs()
-                getMtglyfgl()
+                getFglbg(this.params).then((res)=>{
+                    this.total = res.data.total
+                    this.tableData = res.data.gqDataList
+                })
             }
         },
         created() {

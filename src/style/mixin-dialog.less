@@ -1,9 +1,16 @@
 .el-dialog__wrapper {
   background: rgba(0, 0, 0, 0.6);
   /deep/ .el-dialog {
-    @media screen and (max-width: 1440px) {
+    /*@media screen and (max-width: 1440px) {
       margin-top: 30px !important;
-    }
+    }*/
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 80%;
+    margin: auto !important;
     border: 1px solid #00a2ff;
     box-shadow: 0 0 32px rgba(52, 136, 201, 0.42) inset;
     background: rgba(5, 18, 43, 0.90);

@@ -352,3 +352,18 @@ export function downloadFglbg(params) {
         }
     })
 }
+
+/**
+ * 获取筛选条件
+ * @param params
+ */
+export function getZdgcSxtj(params) {
+    return request({
+        url: config.url.ztqkxz.zdgcSxtj,
+        method: config.methodGet,
+        params: {
+            time: new Date().getTime(),
+            ...params
+        }
+    })
+}

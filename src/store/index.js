@@ -19,6 +19,7 @@ export default new Vuex.Store({
             hylx: '', // 行业领域
             qylx: '', // 区域类型
             mtqylx: '重点企业', // 每天区域类型
+            jd: '', // 季度
         },
     },
     getters: {

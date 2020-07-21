@@ -8,7 +8,7 @@
  *@description    config.js ,所有的配置文件
  *                      详细说明看注释  !important
  */
-const develop = false;
+const develop = true;
 //
 const config = {
     //  是否是调试模式，true 为json数据，false 为服务器数据
@@ -58,9 +58,9 @@ const localUrl = {
         /**
          * 左侧数据
          */
-        fglqs: 'json/ztqkxz/fglqs',                      // 重点工程复工率趋势
-        mtfgl: 'json/ztqkxz/mtfgl',                      // 某天复工率
-        fglbg: 'json/ztqkxz/fglbg',                      // 重点工程复工率表格
+        fglqs: 'json/ztqkxz/fglqs.json',                      // 重点工程复工率趋势
+        mtfgl: 'json/ztqkxz/mtfgl.json',                      // 某天复工率
+        fglbg: 'json/ztqkxz/fglbg.json',                      // 重点工程复工率表格
         /**
          * 中间数据
          */
@@ -118,6 +118,7 @@ const serverUrl = {
         /**
          * 左侧数据
          */
+        zdgcSxtj: '/api/v1/zdgcData/sxtj',                    // 筛选条件
         fglqs: '/api/v1/zdgcData/fglqs',                      // 重点工程复工率趋势
         mtfgl: '/api/v1/zdgcData/mtfgl',                      // 某天复工率
         fglbg: '/api/v1/zdgcData/fglbg',                      // 重点工程复工率表格
