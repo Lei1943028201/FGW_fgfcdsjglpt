@@ -46,9 +46,24 @@
             <div class="fd-query-content">
                 <!-- tab切换--模块 -->
                 <CcTab :tab-list="tabList" @handlerTab="dialogHandlerTab"/>
-                <CcSelect select-name="选择地区" :data-list="selectList_dq" class="fd-select-01" v-show="dialogActiveTab==='1'" @handlerSelect="handlerSelectDQ"></CcSelect>
-                <CcSelect select-name="企业类型" :data-list="selectList_qylx" class="fd-select-02" v-show="dialogActiveTab==='1'" @handlerSelect="handlerSelectQYLX"></CcSelect>
-                <CcSelect select-name="选择行业" :data-list="selectList_hy" class="fd-select-03" v-show="dialogActiveTab==='2'" @handlerSelect="handlerSelectHY"></CcSelect>
+                <CcSelect select-name="选择地区"
+                          :data-list="selectList_dq"
+                          class="fd-select-01"
+                          v-show="dialogActiveTab==='1'"
+                          @selectHide="handlerConfirm"
+                          @handlerSelect="handlerSelectDQ"></CcSelect>
+                <CcSelect select-name="企业类型"
+                          :data-list="selectList_qylx"
+                          class="fd-select-02"
+                          v-show="dialogActiveTab==='1'"
+                          @selectHide="handlerConfirm"
+                          @handlerSelect="handlerSelectQYLX"></CcSelect>
+                <CcSelect select-name="选择行业"
+                          :data-list="selectList_hy"
+                          class="fd-select-03"
+                          v-show="dialogActiveTab==='2'"
+                          @selectHide="handlerConfirm"
+                          @handlerSelect="handlerSelectHY"></CcSelect>
                 <div>
                     <el-date-picker
                             class="fd-date-picker-start"
@@ -80,8 +95,8 @@
                 <button class="fd-btn fd-btn-confirm" @click="handlerConfirm">确定</button>
             </div>
             <!-- tab切换--模块 -->
-            <AcGdqyXzChart :dialog-active-tab="dialogActiveTab" v-if="showType === 1"></AcGdqyXzChart>
-            <AcGdqyXzTable :dialog-active-tab="dialogActiveTab" v-else></AcGdqyXzTable>
+            <AcGdqyXzChart ref="theChart" :dialog-active-tab="dialogActiveTab" v-if="showType === 1"></AcGdqyXzChart>
+            <AcGdqyXzTable ref="theTable" :dialog-active-tab="dialogActiveTab" v-else></AcGdqyXzTable>
         </el-dialog>
         <!-- 弹窗 -- 结束 -->
     </div>
@@ -120,9 +135,6 @@
                         code: '2'
                     }
                 ],
-                query: {
-
-                },
                 resData: {},
                 selectList_qylx: [
                     {
@@ -142,6 +154,7 @@
                 selectList_dq: [],
                 /* 查询参数 */
                 params: {
+                    key: 'params_gdqy',
                     ksrq: '',
                     jzrq: '',
                     sjfw: '1',
@@ -566,6 +579,15 @@
                 }
             }
         },
+        watch:{
+            /* 监听参数的变化 */
+            params: {
+                deep: true,
+                handler(){
+                    this.$store.dispatch('SetParams', this.params)
+                }
+            }
+        },
         methods: {
             /* 切换地区/行业 */
             handlerTab(tab) {
@@ -600,6 +622,43 @@
                 getSxtj({tjlx: 'dq'})
                     .then((response) => {
                         this.selectList_dq = response.data.tjmcArr.map(item=>{
+                            if(item === '北京市'){
+                                return {
+                                    name: item,
+                                    active: true,
+                                }
+                            }else{
+                                return {
+                                    name: item,
+                                    active: false,
+                                }
+                            }
+                        })
+                        this.initParams()
+                    })
+                    .catch(()=>{
+                        let res = [
+                            "北京市",
+                            "东城区",
+                            "西城区",
+                            "朝阳区",
+                            "海淀区",
+                            "丰台区",
+                            "石景山区",
+                            "房山区",
+                            "通州区",
+                            "顺义区",
+                            "昌平区",
+                            "大兴区",
+                            "门头沟区",
+                            "平谷区",
+                            "怀柔区",
+                            "密云区",
+                            "延庆区",
+                            "经济技术开发区",
+                            "跨区项目"
+                        ]
+                        this.selectList_dq = res.map(item=>{
                             if(item === '北京市'){
                                 return {
                                     name: item,

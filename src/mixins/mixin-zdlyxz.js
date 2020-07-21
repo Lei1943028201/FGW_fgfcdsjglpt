@@ -46,9 +46,9 @@ export default {
         handlerConfirm(){
             this.$store.dispatch('SetParams', this.params)
             if(this.showType === 1){
-                this.$refs.AcMapXzChart.init()
+                this.$refs.theChart.init()
             }else{
-                this.$refs.AcMapXzTable.init()
+                this.$refs.theTable.init()
             }
         },
         /* 是否包含节假日 */

@@ -114,7 +114,8 @@ export default new Vuex.Store({
             state.mapData = _mapData
         },
         SET_PARAMS: (state, _params) => {
-            Object.assign(state.params_xz, _params)
+            Object.assign(state[_params.key], _params)
+            console.log(state.params_gdqy)
         },
     },
     actions: {

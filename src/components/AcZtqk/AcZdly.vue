@@ -103,6 +103,7 @@
                 qsfgfcData: {},
                 /* 查询参数 */
                 params: {
+                    key: 'params_zdly',
                     ksrq: '',
                     jzrq: '',
                     sjfw: '1',
@@ -340,11 +341,29 @@
                 return fglArr || []
             },
         },
+        watch:{
+            /* 监听参数的变化 */
+            params: {
+                deep: true,
+                handler(){
+                    this.$store.dispatch('SetParams', this.params)
+                }
+            }
+        },
         methods: {
             /* 选择领域 */
             handlerSelectLYLX(index){
                 this.selectList_lylx[index].active = !this.selectList_lylx[index].active
+            },
+            /* 确认 */
+            handlerConfirm(){
                 this.params.lylx = this.selectList_lylx.filter(item=>item.active).map(item=>item.name).join()
+                if(this.showType === 1){
+                    this.$refs.AcZdxmXzChart.init();
+
+                }else{
+                    this.$refs.AcZdxmXzTable.init();
+                }
             },
             /* 初始化参数 */
             initParams(){
@@ -354,7 +373,7 @@
             initSelectList(){
                 getGbmly()
                     .then((response) => {
-                        this.selectList_lylx = response.data.dataList.map(item=>{
+                        this.selectList_lylx = response.data.map(item=>{
                             return {
                                 name: item.ly,
                                 bm: item.bm,

@@ -98,8 +98,8 @@
                 @current-change="handleCurrentChange"
                 background
                 layout="prev, pager, next"
-                :page-size="5"
-                :current-page="currentPage"
+                :page-size="limit"
+                :current-page="offset"
                 :total="total">
         </el-pagination>
     </div>
@@ -109,6 +109,7 @@
     /**
      * 国电企业下钻页面-表格
      */
+    import {mapState} from 'vuex'
     import {getGdqFgqkbg, getGhyFgqkbg} from '../../api/ztqkxz'
     export default {
         name: "AcGdqyXzTable",
@@ -116,11 +117,8 @@
         data() {
             return {
                 total: 1111,
-                currentPage: 1,
-                pageSizes: 5,
-                tableTitle:[
-
-                ],
+                offset: 1,
+                limit: 10,
                 tableDataGdq: [
                     {
                         date: '2016-05-02',
@@ -208,7 +206,18 @@
             }
         },
         computed: {
-
+            ...mapState(['params_gdqy']),
+            params(){
+                return {
+                    sjfw: this.params_gdqy.sjfw, //数据范围（1：包含节假日，2：不包含节假日）
+                    ksrq: this.params_gdqy.ksrq,  // 开始日期(开始日期为空时，表示默认情况取近15天数据)
+                    jzrq: this.params_gdqy.jzrq, // 截至日期(截至日期为空时，表示默认情况取近15天数据)
+                    dq: this.params_gdqy.dq,     // 地区(数组)：全市，东城区,西城区等
+                    jd: this.params_gdqy.jd, // 季度
+                    limit: this.params_gdqy.limit, //
+                    offset: this.offset, //
+                }
+            },
         },
         methods: {
             // 表头换行
@@ -220,15 +229,16 @@
                 ])
             },
             // 翻页操作
-            handleCurrentChange(currentPage) {
-                this.currentPage = currentPage
+            handleCurrentChange(offset) {
+                this.offset = offset
+                this.init()
             },
             init() {
                 /* 1: 地区 2：行业 */
                 if(this.dialogActiveTab === '1'){
-                    getGdqFgqkbg()
+                    getGdqFgqkbg(this.params)
                 }else{
-                    getGhyFgqkbg()
+                    getGhyFgqkbg(this.params)
                 }
             }
         },

@@ -184,6 +184,7 @@
                 qsfgfcData: {},
                 /* 查询参数 */
                 params: {
+                    key: 'params_gwzs',
                     ksrq: '2020-06-06',
                     jzrq: '2020-07-07',
                     sjfw: '1',
@@ -195,6 +196,7 @@
         computed: {
             ...mapState(['mapId']),
             ...mapGetters(['showMapData']),
+            /* 弹窗标题 */
             dialogTitle() {
                 if (this.mapDialogType === '1') {
                     return {
@@ -208,6 +210,7 @@
                     }
                 }
             },
+            /* 圆球数据 */
             ballData() {
                 if (this.isYq) {
                     return [
@@ -291,6 +294,22 @@
                     ]
                 }
             },
+        },
+        watch:{
+            mapDialogType(newValue){
+                if(newValue === 1){
+                    this.params.key = 'params_gwzs'
+                }else{
+                    this.params.key = 'params_rbzs'
+                }
+            },
+            /* 监听参数的变化 */
+            params: {
+                deep: true,
+                handler(){
+                    this.$store.dispatch('SetParams', this.params)
+                }
+            }
         },
         methods: {
             /* 选择地区 */

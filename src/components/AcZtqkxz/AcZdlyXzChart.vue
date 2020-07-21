@@ -34,7 +34,7 @@
             }
         },
         computed: {
-            ...mapState(['params_xz']),
+            ...mapState(['params_zdly']),
             /**
              * 全市chart配置
              ***/
@@ -229,16 +229,16 @@
             /* 第一个图表接口参数 */
             paramsTop(){
                 return {
-                    sjfw: this.params_xz.sjfw, //数据范围（1：包含节假日，2：不包含节假日）
-                    ksrq: this.params_xz.ksrq,  // 开始日期(开始日期为空时，表示默认情况取近15天数据)
-                    jzrq: this.params_xz.jzrq, // 截至日期(截至日期为空时，表示默认情况取近15天数据)
-                    ly: this.params_xz.dq,     // 部门领域
+                    sjfw: this.params_zdly.sjfw, //数据范围（1：包含节假日，2：不包含节假日）
+                    ksrq: this.params_zdly.ksrq,  // 开始日期(开始日期为空时，表示默认情况取近15天数据)
+                    jzrq: this.params_zdly.jzrq, // 截至日期(截至日期为空时，表示默认情况取近15天数据)
+                    ly: this.params_zdly.dq,     // 部门领域
                 }
             },
             /* 第二个图表接口参数 */
             paramsBottom(){
                 return {
-                    rq: this.params_xz.rq, // 日期
+                    rq: this.params_zdly.rq, // 日期
                 }
             }
         },
